@@ -27,7 +27,7 @@ def run_cmd(cmd, check=True):
 def main():
     parser = argparse.ArgumentParser(description="Colab Autonomous Quant ML Experiment Runner")
     parser.add_argument("--exp-id", type=str, default="EXP_02_HYBRID_META_FILTER", help="Experiment ID to execute")
-    args = parser.parse_args()
+    args, _ = parser.parse_known_args()
 
     print("=" * 80)
     print(f"🔬 COLAB WORKER: AUTONOMOUS QUANT ML RESEARCH EXPERIMENT ({args.exp_id})")
