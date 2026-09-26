@@ -472,6 +472,14 @@ def main():
     # Results dictionary
     benchmark_results: Dict[str, Dict[str, Any]] = {}
     equity_curves: Dict[str, np.ndarray] = {}
+    json_path = os.path.join(out_dir, "benchmark_10_models.json")
+    if os.path.exists(json_path):
+        try:
+            with open(json_path, "r", encoding="utf-8") as f:
+                benchmark_results = json.load(f)
+            print(f"[Checkpoint] Loaded {len(benchmark_results)} existing benchmark results from: {json_path}")
+        except Exception as e:
+            pass
 
     # Pre-build fixed flat state feature matrix for fast-path 2025 out-of-sample backtesting
     mf_val_arr = feat_val.to_numpy(dtype=np.float32)
@@ -753,6 +761,10 @@ def main():
                 "train_time_sec": float(round(train_time, 1)),
                 "eval_time_sec": float(round(eval_time, 1))
             }
+
+            # Save checkpoint JSON immediately after each model completes
+            with open(json_path, "w", encoding="utf-8") as f:
+                json.dump(benchmark_results, f, indent=2)
 
             print(f"[{model_id}] 2025 Results -> Net Profit: ${res['net_profit']:,.2f} ({res['return_pct']:.1f}%) | PF: {res['profit_factor']:.2f} | WR: {res['win_rate']:.1f}% | DD: {res['max_drawdown_pct']:.1f}% | Trades: {res['total_trades']:,} | Sharpe: {sharpe:.2f}")
 

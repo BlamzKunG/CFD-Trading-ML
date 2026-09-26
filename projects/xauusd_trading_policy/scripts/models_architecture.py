@@ -330,12 +330,23 @@ class TwoStageMetaLabelingPolicy:
     """Model 8: Two-Stage Meta-Labeling (Marcos López de Prado Architecture)"""
     def __init__(self):
         # Stage 1: Primary Model (Proposes Direction Buy/Sell/Hold)
-        self.primary_model = RandomForestClassifier(n_estimators=100, max_depth=5, random_state=42, n_jobs=-1)
-        # Stage 2: Meta-Model (Predicts Probability of Success / Overcoming Friction)
-        self.meta_model = LogisticRegression(C=1.0, max_iter=500, random_state=42)
+        if LGB_AVAILABLE:
+            self.primary_model = lgb.LGBMClassifier(
+                n_estimators=100, max_depth=5, num_leaves=24,
+                learning_rate=0.05, n_jobs=-1, random_state=42, verbose=-1
+            )
+            # Stage 2: Meta-Model (Predicts Probability of Success / Overcoming Friction)
+            self.meta_model = lgb.LGBMClassifier(
+                n_estimators=80, max_depth=4, num_leaves=16,
+                learning_rate=0.05, n_jobs=-1, random_state=42, verbose=-1
+            )
+        else:
+            from sklearn.ensemble import HistGradientBoostingClassifier
+            self.primary_model = HistGradientBoostingClassifier(max_iter=100, max_depth=5, random_state=42)
+            self.meta_model = LogisticRegression(C=1.0, max_iter=200, random_state=42)
 
     def fit(self, X: np.ndarray, y_act: np.ndarray):
-        print("[M8 Meta-Labeling] Training Primary Direction Model...")
+        print("[M8 Meta-Labeling] Training Fast GBDT Primary Direction Model...")
         self.primary_model.fit(X, y_act)
         
         # Meta-label: 1 if primary model was correct, 0 otherwise
