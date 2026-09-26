@@ -24,7 +24,7 @@
 ## 📁 โครงสร้างโปรเจกต์ (Project Structure)
 
 ```text
-XAUUSD-ML-Excursion-EA/
+CFD-Trading-ML/
 ├── models/                         # ไฟล์โมเดลที่ผ่านการเทรน
 │   ├── xauusd_sensor_30heads.onnx  # 📡 30-Head Neural Market Sensor (MT5 Ready)
 │   ├── market_sensor_summary.json  # สรุปผล Metrics และ Monotonicity ของ Sensor

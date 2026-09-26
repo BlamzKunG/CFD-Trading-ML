@@ -24,7 +24,7 @@ import matplotlib.pyplot as plt
 import torch
 
 # Add repository and project to path
-root_repo_dir = "/content/XAUUSD-Trading-Policy-ML"
+root_repo_dir = "/content/CFD-Trading-ML"
 repo_dir = os.path.join(root_repo_dir, "projects", "xauusd_trading_policy")
 for p in [root_repo_dir, repo_dir]:
     if p not in sys.path:
@@ -208,7 +208,7 @@ def main():
     os.system(f"cd {root_repo_dir} && git config user.name 'BlamzKunG' && git config user.email 'blamzkung@users.noreply.github.com'")
     gh_token = os.environ.get("GITHUB_TOKEN", "")
     if gh_token:
-        os.system(f"cd {root_repo_dir} && git remote set-url origin https://BlamzKunG:{gh_token}@github.com/BlamzKunG/XAUUSD-Trading-Policy-ML.git")
+        os.system(f"cd {root_repo_dir} && git remote set-url origin https://BlamzKunG:{gh_token}@github.com/BlamzKunG/CFD-Trading-ML.git")
     os.system(f"cd {root_repo_dir} && git add projects/xauusd_trading_policy/models/ projects/xauusd_trading_policy/docs/ && git commit -m 'feat(model): add trained ONNX policy model and 2025 backtest results [skip ci]'")
     push_out = os.popen(f"cd {root_repo_dir} && git push origin main").read()
     print(f"[GitHub Push] {push_out}")

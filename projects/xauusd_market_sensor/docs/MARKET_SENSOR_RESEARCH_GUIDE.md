@@ -108,6 +108,6 @@ $$Y_{\text{down}}(D, H)_t = \begin{cases} 1 & \text{ถ้า } \min(\text{Low}_
 ## 6. การทำงานร่วมกับ MetaTrader 5 EA
 
 โมเดลทั้งหมดถูกแปลงเป็น **ONNX Tensor [1, 22] $\to$ [1, 30]**:
-* ใน MT5 EA เรียกใช้ผ่าน [`XAUUSD_Sensor.mqh`](file:///root/XAUUSD-ML-Excursion-EA/mql5/Include/XAUUSD_Sensor.mqh)
+* ใน MT5 EA เรียกใช้ผ่าน [`XAUUSD_Sensor.mqh`](file:///root/CFD-Trading-ML/mql5/Include/XAUUSD_Sensor.mqh)
 * แสดงผล Probability Surface แบบสดบนหน้าจอกราฟ
 * บันทึกค่าทั้ง 30 ช่องลงไฟล์ `.csv` ใน `MQL5\Files\` ทุกแท่งเทียน M1 เพื่อใช้ตรวจสอบกับ Actual Event ของปี 2026 อย่างโปร่งใส 100%

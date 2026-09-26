@@ -1,10 +1,10 @@
 //+------------------------------------------------------------------+
 //|                      XAUUSD_Trading_Policy_EA_Standalone.mq5     |
 //|                    Copyright 2026, BlamzKunG (GitHub: BlamzKunG) |
-//|               https://github.com/BlamzKunG/XAUUSD-Trading-Policy-ML |
+//|               https://github.com/BlamzKunG/CFD-Trading-ML |
 //+------------------------------------------------------------------+
 #property copyright   "Copyright 2026, BlamzKunG (GitHub: BlamzKunG)"
-#property link        "https://github.com/BlamzKunG/XAUUSD-Trading-Policy-ML"
+#property link        "https://github.com/BlamzKunG/CFD-Trading-ML"
 #property version     "1.00"
 #property description "Autonomous Closed-Loop ML Trading Policy & Position Management EA for XAUUSD M1"
 #property strict
@@ -59,7 +59,7 @@ int OnInit()
 {
    Print("==================================================================");
    Print(" Initializing XAUUSD Autonomous Trading Policy EA (Standalone)   ");
-   Print(" Author: BlamzKunG | Repo: BlamzKunG/XAUUSD-Trading-Policy-ML    ");
+   Print(" Author: BlamzKunG | Repo: BlamzKunG/CFD-Trading-ML    ");
    Print("==================================================================");
 
    // 1. Attempt to load ONNX Model
@@ -505,7 +505,7 @@ void OnTick()
    // 5. On-Chart Dashboard
    string dash = "========================================================\n";
    dash += "   🚀 XAUUSD AUTONOMOUS ML POLICY EA (STANDALONE)      \n";
-   dash += "   Author: BlamzKunG | Repo: BlamzKunG/XAUUSD-Trading-Policy-ML\n";
+   dash += "   Author: BlamzKunG | Repo: BlamzKunG/CFD-Trading-ML\n";
    dash += "========================================================\n";
    dash += StringFormat(" Engine Mode:         %s\n", (g_onnx_handle != INVALID_HANDLE) ? "DEEP ONNX POLICY AGENT" : "ADAPTIVE HEURISTIC");
    dash += StringFormat(" Position State:      %s (Vol: %.2f Lots)\n", (pos_dir > 0 ? "LONG" : (pos_dir < 0 ? "SHORT" : "FLAT")), pos_lot);

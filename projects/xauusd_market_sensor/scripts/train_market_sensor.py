@@ -178,8 +178,8 @@ def build_and_export_onnx(weights, biases, output_path):
 def main():
     parser = argparse.ArgumentParser(description="Train XAUUSD 30-Target Market Sensor")
     parser.add_argument("--data_path", type=str, default="/storage/emulated/0/Download/EA/XAUUSD.iux_M1_20200102_to_20251230.csv")
-    parser.add_argument("--output_dir", type=str, default="/root/XAUUSD-ML-Excursion-EA/models")
-    parser.add_argument("--mql5_files_dir", type=str, default="/root/XAUUSD-ML-Excursion-EA/mql5/Files")
+    parser.add_argument("--output_dir", type=str, default="/root/CFD-Trading-ML/models")
+    parser.add_argument("--mql5_files_dir", type=str, default="/root/CFD-Trading-ML/mql5/Files")
     parser.add_argument("--max_train_samples", type=int, default=60000, help="Max train samples for fast robust training")
     args = parser.parse_args()
     

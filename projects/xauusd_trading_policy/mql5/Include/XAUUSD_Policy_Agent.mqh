@@ -1,10 +1,10 @@
 //+------------------------------------------------------------------+
 //|                                        XAUUSD_Policy_Agent.mqh   |
 //|                    Copyright 2026, BlamzKunG (GitHub: BlamzKunG) |
-//|               https://github.com/BlamzKunG/XAUUSD-Trading-Policy-ML |
+//|               https://github.com/BlamzKunG/CFD-Trading-ML |
 //+------------------------------------------------------------------+
 #property copyright "Copyright 2026, BlamzKunG (GitHub: BlamzKunG)"
-#property link      "https://github.com/BlamzKunG/XAUUSD-Trading-Policy-ML"
+#property link      "https://github.com/BlamzKunG/CFD-Trading-ML"
 #property strict
 
 // Action Definitions
