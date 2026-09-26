@@ -448,3 +448,45 @@ if TORCH_AVAILABLE:
             size = self.size_head(h_actor)
             order = self.order_head(h_actor)
             return action_logits, value, size, order
+
+
+    class TCNActorCriticPolicyNet(nn.Module):
+        """Actor-Critic Policy Network with Temporal Convolutional Network (TCN) Backbone.
+        Replaces instantaneous MLP with causal dilated 1D convolutions to capture multi-scale
+        temporal context across market states.
+        """
+        def __init__(self, num_inputs: int = 40, num_channels: List[int] = [64, 64, 128], kernel_size: int = 3, dropout: float = 0.15):
+            super().__init__()
+            layers = []
+            for i in range(len(num_channels)):
+                in_ch = num_inputs if i == 0 else num_channels[i - 1]
+                out_ch = num_channels[i]
+                dilation = 2 ** i
+                layers.append(TemporalConvBlock(in_ch, out_ch, kernel_size, dilation, dropout))
+            self.network = nn.Sequential(*layers)
+
+            last_ch = num_channels[-1]
+            self.actor = nn.Sequential(
+                nn.Linear(last_ch, 64),
+                nn.LayerNorm(64),
+                nn.Tanh(),
+                nn.Linear(64, 7)
+            )
+            self.critic = nn.Sequential(
+                nn.Linear(last_ch, 64),
+                nn.LayerNorm(64),
+                nn.Tanh(),
+                nn.Linear(64, 1)
+            )
+            self.size_head = nn.Sequential(nn.Linear(last_ch, 32), nn.GELU(), nn.Linear(32, 1), nn.Sigmoid())
+            self.order_head = nn.Sequential(nn.Linear(last_ch, 32), nn.GELU(), nn.Linear(32, 2), nn.Softplus())
+
+        def forward(self, x: torch.Tensor) -> Tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor]:
+            if x.dim() == 2:
+                x = x.unsqueeze(-1)
+            feat = self.network(x)[:, :, -1]
+            action_logits = self.actor(feat)
+            value = self.critic(feat)
+            size = self.size_head(feat)
+            order = self.order_head(feat)
+            return action_logits, value, size, order

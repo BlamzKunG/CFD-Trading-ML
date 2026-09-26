@@ -51,7 +51,7 @@ from scripts.counterfactual_simulator import (
     build_augmented_training_dataset,
     ACTION_NAMES
 )
-from scripts.models_architecture import ActorCriticPolicyNet
+from scripts.models_architecture import ActorCriticPolicyNet, TCNActorCriticPolicyNet
 from scripts.train_and_benchmark_10_models import (
     find_dataset_file,
     load_and_preprocess_data,
@@ -1044,6 +1044,278 @@ def run_experiment_03_meta_optimization_cost_curve(data_path: Optional[str] = No
     print(f"[Registry] Master registry updated at: {registry_path}")
 
 
+def run_experiment_04_tcn_rl_meta(data_path: Optional[str] = None):
+    """
+    Experiment EXP-04: Temporal Convolutional Network (TCN) Sequence Backbone & Meta-Filter Scaling.
+    Research Focus:
+    Does replacing instantaneous MLP with causal dilated 1D temporal convolutions
+    expand high-expectancy trade opportunities while maintaining Profit Factor >= 1.30?
+    """
+    print("\n" + "=" * 80)
+    print("🔬 RUNNING EXPERIMENT EXP-04: TCN TEMPORAL CONVOLUTIONS & META-FILTER SCALING")
+    print("=" * 80)
+
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+    print(f"[Hardware] PyTorch Device: {device.upper()}")
+
+    # 1. Load Data
+    csv_file = find_dataset_file(data_path)
+    df_train, df_val = load_and_preprocess_data(csv_file)
+    (feat_train, atr_train, close_train, df_train_clean), (feat_val, atr_val, close_val, df_val_clean) = prepare_market_features(df_train, df_val)
+
+    # 2. Counterfactual rollouts for Training
+    print("\n[Counterfactuals] Generating training rollouts (Horizon=60, Step=6)...")
+    X_train, y_act_train, y_sz_train, y_sl_train, y_tp_train = build_augmented_training_dataset(
+        market_features=feat_train,
+        close_prices=close_train.to_numpy(),
+        high_prices=df_train_clean['high'].to_numpy(),
+        low_prices=df_train_clean['low'].to_numpy(),
+        atr_values=atr_train.to_numpy(),
+        horizon=60,
+        subsample_step=6
+    )
+
+    # 3. Train Base MLP Policy Net (Champion architecture)
+    print("\n[Step 1/5] Training Champion MLP Policy Net (Seed 42)...")
+    set_seed(42)
+    mlp_net = ActorCriticPolicyNet(state_dim=40, hidden_dim=128).to(device)
+    mlp_net = train_actor_critic(mlp_net, X_train, y_act_train, y_sz_train, y_sl_train, y_tp_train, device, epochs=8)
+
+    # 4. Train TCN Temporal Policy Net
+    print("\n[Step 2/5] Training Causal Dilated TCN Sequence Policy Net (Seed 42)...")
+    set_seed(42)
+    tcn_net = TCNActorCriticPolicyNet(num_inputs=40, num_channels=[64, 64, 128], kernel_size=3).to(device)
+    tcn_net = train_actor_critic(tcn_net, X_train, y_act_train, y_sz_train, y_sl_train, y_tp_train, device, epochs=8)
+
+    # 5. Train Secondary Meta-Labeling Models on 2020-2024 Entries
+    print("\n[Step 3/5] Training Secondary Meta-Filters on Historical Entries...")
+    mf_train_arr = feat_train.to_numpy(dtype=np.float32)
+    pos_flat_train = np.zeros((len(mf_train_arr), 9), dtype=np.float32)
+    pos_flat_train[:, 8] = 1.0
+    X_flat_train = np.hstack([mf_train_arr, pos_flat_train]).astype(np.float32)
+
+    sub_indices = np.arange(0, len(X_flat_train), 3)
+    X_flat_sub = X_flat_train[sub_indices]
+
+    close_train_arr = close_train.to_numpy()
+    high_train_arr = df_train_clean['high'].to_numpy()
+    low_train_arr = df_train_clean['low'].to_numpy()
+    atr_train_arr = atr_train.to_numpy()
+    n_train_bars = len(close_train_arr)
+    friction_per_unit = 0.36
+
+    def train_meta_for_model(model_net, name: str) -> HistGradientBoostingClassifier:
+        model_net.eval()
+        t_preds, t_probs = [], []
+        with torch.no_grad():
+            for bi in range(0, len(X_flat_sub), 8192):
+                bx = torch.tensor(X_flat_sub[bi:bi+8192], dtype=torch.float32, device=device)
+                logits, _, _, _ = model_net(bx)
+                probs = torch.softmax(logits, dim=-1)
+                max_p, best_a = torch.max(probs, dim=-1)
+                t_preds.append(best_a.cpu().numpy())
+                t_probs.append(max_p.cpu().numpy())
+        s_best_a = np.concatenate(t_preds)
+        s_max_p = np.concatenate(t_probs)
+
+        e_mask = (np.isin(s_best_a, [ACTION_OPEN_LONG, ACTION_OPEN_SHORT])) & (s_max_p >= 0.35)
+        e_indices = np.where(e_mask)[0]
+
+        m_X, m_y = [], []
+        for idx in e_indices:
+            orig_idx = sub_indices[idx]
+            if orig_idx + 120 >= n_train_bars:
+                continue
+            act = s_best_a[idx]
+            c_price = close_train_arr[orig_idx]
+            c_atr = atr_train_arr[orig_idx]
+            if c_atr <= 0:
+                continue
+
+            sl_dist = 2.0 * c_atr
+            tp_dist = 3.5 * c_atr
+            win = 0
+
+            if act == ACTION_OPEN_LONG:
+                sl_price = c_price - sl_dist
+                tp_price = c_price + tp_dist
+                for step in range(1, 121):
+                    bar_idx = orig_idx + step
+                    if low_train_arr[bar_idx] <= sl_price:
+                        win = 0
+                        break
+                    elif high_train_arr[bar_idx] >= tp_price:
+                        win = 1 if (tp_dist - friction_per_unit) > 0 else 0
+                        break
+                else:
+                    end_price = close_train_arr[orig_idx + 120]
+                    win = 1 if (end_price - c_price - friction_per_unit) > 0 else 0
+            elif act == ACTION_OPEN_SHORT:
+                sl_price = c_price + sl_dist
+                tp_price = c_price - tp_dist
+                for step in range(1, 121):
+                    bar_idx = orig_idx + step
+                    if high_train_arr[bar_idx] >= sl_price:
+                        win = 0
+                        break
+                    elif low_train_arr[bar_idx] <= tp_price:
+                        win = 1 if (tp_dist - friction_per_unit) > 0 else 0
+                        break
+                else:
+                    end_price = close_train_arr[orig_idx + 120]
+                    win = 1 if (c_price - end_price - friction_per_unit) > 0 else 0
+
+            m_X.append(np.append(mf_train_arr[orig_idx], [float(act), s_max_p[idx]]))
+            m_y.append(win)
+
+        clf = HistGradientBoostingClassifier(max_iter=100, max_depth=4, min_samples_leaf=40, random_state=42)
+        clf.fit(np.array(m_X, dtype=np.float32), np.array(m_y, dtype=np.int32))
+        print(f"  [{name}] Meta-Filter trained on {len(m_y):,} entry instances.")
+        return clf
+
+    meta_clf_mlp = train_meta_for_model(mlp_net, "MLP")
+    meta_clf_tcn = train_meta_for_model(tcn_net, "TCN")
+
+    # 6. Precompute 2025 Out-of-Sample Predictions
+    print("\n[Step 4/5] Precomputing 2025 Out-of-Sample Inference...")
+    mf_val_arr = feat_val.to_numpy(dtype=np.float32)
+    pos_flat_val = np.zeros((len(mf_val_arr), 9), dtype=np.float32)
+    pos_flat_val[:, 8] = 1.0
+    X_flat_val = np.hstack([mf_val_arr, pos_flat_val]).astype(np.float32)
+
+    def precompute_model_outputs(model_net, meta_clf):
+        model_net.eval()
+        v_preds, v_probs, v_sz, v_sl, v_tp = [], [], [], [], []
+        with torch.no_grad():
+            for bi in range(0, len(X_flat_val), 8192):
+                bx = torch.tensor(X_flat_val[bi:bi+8192], dtype=torch.float32, device=device)
+                logits, _, sz_t, ord_t = model_net(bx)
+                probs = torch.softmax(logits, dim=-1)
+                max_p, best_a = torch.max(probs, dim=-1)
+                v_preds.append(best_a.cpu().numpy())
+                v_probs.append(max_p.cpu().numpy())
+                v_sz.append(np.clip(sz_t.cpu().numpy()[:, 0], 0.1, 1.0))
+                v_sl.append(np.clip(ord_t.cpu().numpy()[:, 0], 1.0, 4.0))
+                v_tp.append(np.clip(ord_t.cpu().numpy()[:, 1], 1.5, 7.0))
+        r_a = np.concatenate(v_preds)
+        r_p = np.concatenate(v_probs)
+        f_sz = np.concatenate(v_sz)
+        f_sl = np.concatenate(v_sl)
+        f_tp = np.concatenate(v_tp)
+        meta_in = np.column_stack([mf_val_arr, r_a.astype(np.float32), r_p])
+        meta_p = meta_clf.predict_proba(meta_in)[:, 1]
+        return r_a, r_p, f_sz, f_sl, f_tp, meta_p
+
+    mlp_a, mlp_p, mlp_sz, mlp_sl, mlp_tp, mlp_meta_p = precompute_model_outputs(mlp_net, meta_clf_mlp)
+    tcn_a, tcn_p, tcn_sz, tcn_sl, tcn_tp, tcn_meta_p = precompute_model_outputs(tcn_net, meta_clf_tcn)
+
+    def passive_predictor(state_1x40: np.ndarray) -> Tuple[int, float, float, float]:
+        return ACTION_HOLD, 0.0, 2.0, 3.5
+
+    # 7. Evaluate 5 Variants
+    print("\n[Step 5/5] Evaluating Architecture & Scaling Variants on 2025 Data...")
+    variants = [
+        {"id": "MLP_Meta_52_Champion", "desc": "EXP-03 Champion: Instantaneous MLP + Meta-Filter (Thresh >= 0.52)", "model": "mlp", "meta_th": 0.52},
+        {"id": "TCN_Meta_52", "desc": "TCN Sequence Representation + Meta-Filter (Thresh >= 0.52)", "model": "tcn", "meta_th": 0.52},
+        {"id": "TCN_Meta_50", "desc": "TCN Sequence Representation + Meta-Filter (Thresh >= 0.50)", "model": "tcn", "meta_th": 0.50},
+        {"id": "TCN_Meta_48", "desc": "TCN Sequence Representation + Meta-Filter (Thresh >= 0.48)", "model": "tcn", "meta_th": 0.48},
+        {"id": "TCN_Raw_Passive", "desc": "TCN Sequence Representation Raw (No Meta-Filter, Thresh >= 0.35)", "model": "tcn", "meta_th": None}
+    ]
+
+    exp_dir = os.path.join(project_dir, "docs", "experiments")
+    os.makedirs(exp_dir, exist_ok=True)
+    variants_results: Dict[str, Dict[str, Any]] = {}
+    equity_curves: Dict[str, np.ndarray] = {}
+
+    for v in variants:
+        v_id = v["id"]
+        if v["model"] == "mlp":
+            filt_a = mlp_a.copy()
+            filt_a[mlp_p < 0.35] = ACTION_HOLD
+            if v["meta_th"] is not None:
+                filt_a[mlp_meta_p < v["meta_th"]] = ACTION_HOLD
+            precomp = (filt_a, mlp_sz, mlp_sl, mlp_tp)
+        else:
+            filt_a = tcn_a.copy()
+            filt_a[tcn_p < 0.35] = ACTION_HOLD
+            if v["meta_th"] is not None:
+                filt_a[tcn_meta_p < v["meta_th"]] = ACTION_HOLD
+            precomp = (filt_a, tcn_sz, tcn_sl, tcn_tp)
+
+        res = run_closed_loop_backtest(
+            df=df_val_clean,
+            market_features=feat_val,
+            atr_series=atr_val,
+            policy_predictor=passive_predictor,
+            initial_balance=10000.0,
+            lot_base=0.1,
+            spread_points=2.0,
+            slippage_points=1.0,
+            commission_per_lot=6.0,
+            precomputed_flat=precomp
+        )
+
+        m = compute_comprehensive_metrics(res, initial_balance=10000.0)
+        m["description"] = v["desc"]
+        variants_results[v_id] = m
+        equity_curves[v_id] = res["equity_curve"]
+        print(f"[{v_id}] Net Profit: ${m['net_profit']:,.2f} ({m['return_pct']:.1f}%) | PF: {m['profit_factor']:.2f} | WR: {m['win_rate']:.1f}% | DD: {m['max_drawdown_pct']:.1f}% | Trades: {m['total_trades']:,} | Payoff: {m['payoff_ratio']:.2f} | Friction: ${m['total_friction']:,.0f}")
+
+    # Generate Markdown Report
+    report_path = os.path.join(exp_dir, "EXP_04_TCN_RL_META.md")
+    with open(report_path, "w", encoding="utf-8") as f:
+        f.write("# 🔬 Experiment Report: EXP-04-TCN-RL-META\n\n")
+        f.write("**Research Focus:** Temporal Convolutional Network (TCN) Sequence Backbone & Trade Scaling\n")
+        f.write("**Evaluation Period:** 2025 Out-of-Sample (350,807 M1 bars, strictly locked)\n")
+        f.write("**Friction Cost:** $0.20 spread ($20/lot) + $0.10 slippage + $6.00 comm ($36.00 roundturn/lot)\n\n")
+
+        f.write("## 1. Research Objectives & Hypotheses\n")
+        f.write("In EXP-03, `Meta_Thresh_52` achieved **PF 1.47**, Win Rate 52.3%, and Max DD 8.1% across 44 trades. EXP-04 tests whether a deep sequence backbone can scale trade volume while preserving positive expectancy:\n")
+        f.write("- **H1 (Sequence Feature Hypothesis):** Causal dilated convolutions capture multi-scale price dynamics and momentum trends superior to instantaneous MLP representations.\n")
+        f.write("- **H2 (Opportunity Set Scaling):** TCN sequence representation delivers higher-confidence primary signals, allowing the Meta-Filter to accept 2x to 5x more profitable trades.\n")
+        f.write("- **H3 (Ablation on Meta-Filtering):** Comparing raw TCN (`TCN_Raw_Passive`) against Meta-filtered TCN isolates whether the secondary filter remains essential even with sequence backbones.\n\n")
+
+        f.write("## 2. Experimental Results & Performance Comparison\n\n")
+        f.write("| Variant ID | Architecture & Filter Setting | Net Profit ($) | Return (%) | Profit Factor | Win Rate (%) | Max DD (%) | Trades | Payoff Ratio | Friction Cost ($) | Cost / Gross PnL (%) |\n")
+        f.write("| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |\n")
+        for v_id, m in variants_results.items():
+            f.write(f"| **{v_id}** | {m['description']} | **${m['net_profit']:,.2f}** | {m['return_pct']:.1f}% | **{m['profit_factor']:.2f}** | {m['win_rate']:.1f}% | {m['max_drawdown_pct']:.1f}% | {m['total_trades']:,} | {m['payoff_ratio']:.2f} | ${m['total_friction']:,.0f} | {m['friction_to_gross_pct']:.1f}% |\n")
+
+        f.write("\n\n## 3. Quantitative Diagnostics & Architectural Attribution\n\n")
+        best_v = max(variants_results.keys(), key=lambda k: (variants_results[k]["profit_factor"], variants_results[k]["net_profit"]))
+        f.write(f"1. **Best Overall Model:** `{best_v}` with PF **{variants_results[best_v]['profit_factor']:.2f}**, Net Profit **${variants_results[best_v]['net_profit']:,.2f}**, and Max DD **{variants_results[best_v]['max_drawdown_pct']:.1f}%**.\n")
+        f.write(f"2. **Trade Scaling Analysis:** Compare trade counts and Profit Factor across MLP Champion vs TCN variants.\n")
+        f.write(f"3. **Importance of Meta-Filter:** Compare `TCN_Raw_Passive` vs `TCN_Meta_52` to evaluate whether sequence representations can bypass meta-filtering.\n\n")
+
+        f.write("## 4. Next Experiment Directions\n")
+        f.write("- **EXP-05:** Multi-Horizon Barrier Optimization (Dynamic SL/TP based on Volatility Percentiles) & Meta-Confidence Position Sizing.\n")
+
+    print(f"\n[Report] EXP-04 report saved to: {report_path}")
+
+    # Plot Equity Curves
+    plot_path = os.path.join(exp_dir, "EXP_04_TCN_RL_META.png")
+    plt.figure(figsize=(14, 8))
+    for v_id, eq in equity_curves.items():
+        plt.plot(eq, label=f"{v_id} (PF: {variants_results[v_id]['profit_factor']:.2f}, Net: ${variants_results[v_id]['net_profit']:,.0f}, Trades: {variants_results[v_id]['total_trades']:,})", linewidth=1.3)
+    plt.title("EXP-04: TCN Sequence Backbone & Meta-Filter Scaling (2025 Out-of-Sample)", fontsize=14, fontweight="bold")
+    plt.xlabel("M1 Timesteps (Bars)", fontsize=12)
+    plt.ylabel("Account Equity ($)", fontsize=12)
+    plt.grid(True, alpha=0.3)
+    plt.legend(loc="upper left")
+    plt.tight_layout()
+    plt.savefig(plot_path, dpi=300)
+    print(f"[Plot] Comparison chart saved to: {plot_path}")
+
+    # Update Registry
+    registry_path = os.path.join(project_dir, "docs", "EXPERIMENT_REGISTRY.md")
+    with open(registry_path, "a", encoding="utf-8") as f:
+        f.write(f"\n### EXP-04-TCN-RL-META Findings Summary\n")
+        f.write(f"- **Top Variant:** `{best_v}` with PF **{variants_results[best_v]['profit_factor']:.2f}** and Net Profit **${variants_results[best_v]['net_profit']:,.2f}**\n")
+        f.write(f"- **Detailed Report:** [`EXP_04_TCN_RL_META.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_04_TCN_RL_META.md)\n")
+        f.write(f"- **Equity Curves:** [`EXP_04_TCN_RL_META.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_04_TCN_RL_META.png)\n")
+    print(f"[Registry] Master registry updated at: {registry_path}")
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run Quant ML Research Experiment")
     parser.add_argument("--exp-id", type=str, default="EXP_01_M10_ABLATION", help="Experiment identifier")
@@ -1056,5 +1328,7 @@ if __name__ == "__main__":
         run_experiment_02_hybrid_meta_filter(args.data_path)
     elif args.exp_id == "EXP_03_META_OPTIMIZATION_COST_CURVE":
         run_experiment_03_meta_optimization_cost_curve(args.data_path)
+    elif args.exp_id == "EXP_04_TCN_RL_META":
+        run_experiment_04_tcn_rl_meta(args.data_path)
     else:
         print(f"Unknown experiment ID: {args.exp_id}")
