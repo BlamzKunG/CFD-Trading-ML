@@ -29,6 +29,9 @@ import sys
 import json
 import time
 import argparse
+import warnings
+warnings.filterwarnings('ignore')
+
 from typing import Dict, Any, List, Tuple, Optional
 
 import numpy as np
