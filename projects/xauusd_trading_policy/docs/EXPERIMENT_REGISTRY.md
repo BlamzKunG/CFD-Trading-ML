@@ -57,3 +57,8 @@
 - **Optimal Variant:** `Meta_Thresh_52` with PF **1.47**
 - **Detailed Report:** [`EXP_03_META_OPTIMIZATION_COST_CURVE.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_03_META_OPTIMIZATION_COST_CURVE.md)
 - **Equity Curves:** [`EXP_03_META_OPTIMIZATION_COST_CURVE.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_03_META_OPTIMIZATION_COST_CURVE.png)
+
+### EXP-04-TCN-RL-META Findings Summary
+- **Top Variant:** `TCN_Meta_52` with PF **999.00** and Net Profit **$58.02**
+- **Detailed Report:** [`EXP_04_TCN_RL_META.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_04_TCN_RL_META.md)
+- **Equity Curves:** [`EXP_04_TCN_RL_META.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_04_TCN_RL_META.png)
