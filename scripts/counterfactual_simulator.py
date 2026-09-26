@@ -81,7 +81,7 @@ def generate_counterfactual_rollouts(
     for start in range(0, valid_len, chunk_size):
         end = min(start + chunk_size, valid_len)
         chunk_c0 = close_prices[start:end]
-        chunk_atr = np.maximum(atr_values[start:end], 1e-4)
+        chunk_atr = np.maximum(np.nan_to_num(atr_values[start:end], nan=1.0), 1e-4)
 
         # Build forward matrix [chunk_len, horizon]
         sub_highs = np.lib.stride_tricks.sliding_window_view(high_prices[start:end + horizon], horizon)[:end - start]
@@ -89,7 +89,7 @@ def generate_counterfactual_rollouts(
         sub_c_end = close_prices[start + horizon:end + horizon]
 
         # Terminal return
-        fwd_ret = (sub_c_end - chunk_c0) / chunk_atr
+        fwd_ret = np.nan_to_num((sub_c_end - chunk_c0) / chunk_atr, nan=0.0)
         forward_ret_long[start:end] = fwd_ret
         forward_ret_short[start:end] = -fwd_ret
 
@@ -97,11 +97,11 @@ def generate_counterfactual_rollouts(
         max_h = np.max(sub_highs, axis=1)
         min_l = np.min(sub_lows, axis=1)
 
-        max_fav_long[start:end] = (max_h - chunk_c0) / chunk_atr
-        max_adv_long[start:end] = (chunk_c0 - min_l) / chunk_atr
+        max_fav_long[start:end] = np.nan_to_num((max_h - chunk_c0) / chunk_atr, nan=0.0)
+        max_adv_long[start:end] = np.nan_to_num((chunk_c0 - min_l) / chunk_atr, nan=0.0)
 
-        max_fav_short[start:end] = (chunk_c0 - min_l) / chunk_atr
-        max_adv_short[start:end] = (max_h - chunk_c0) / chunk_atr
+        max_fav_short[start:end] = np.nan_to_num((chunk_c0 - min_l) / chunk_atr, nan=0.0)
+        max_adv_short[start:end] = np.nan_to_num((max_h - chunk_c0) / chunk_atr, nan=0.0)
 
     return {
         "valid_len": valid_len,
@@ -172,10 +172,8 @@ def evaluate_counterfactual_actions(
         # LONG POSITION:
         # HOLD: forward continuation from current position
         u_hold = fwd_long - (drawdown_penalty * madv_long)
-        # CLOSE: lock current PnL, pay exit friction
-        u_close = np.full(valid_len, unrl_pnl - friction_atr, dtype=np.float32)
-        # REDUCE: take partial profit / cut risk in half
-        u_reduce = 0.5 * (unrl_pnl - friction_atr) + 0.5 * (fwd_long - drawdown_penalty * madv_long)
+        # REDUCE: take partial profit / cut risk in half (drawdown risk on remaining half is significantly reduced)
+        u_reduce = 0.5 * (unrl_pnl - friction_atr) + 0.5 * fwd_long - (drawdown_penalty * 0.35 * madv_long)
         # ADD: scale in if momentum is exceptionally strong
         u_add = (1.5 * fwd_long) - (drawdown_penalty * 1.5 * madv_long) - friction_atr
         # REVERSE: close long and open short
@@ -192,8 +190,8 @@ def evaluate_counterfactual_actions(
         u_hold = fwd_short - (drawdown_penalty * madv_short)
         # CLOSE
         u_close = np.full(valid_len, unrl_pnl - friction_atr, dtype=np.float32)
-        # REDUCE
-        u_reduce = 0.5 * (unrl_pnl - friction_atr) + 0.5 * (fwd_short - drawdown_penalty * madv_short)
+        # REDUCE: take partial profit / cut risk in half
+        u_reduce = 0.5 * (unrl_pnl - friction_atr) + 0.5 * fwd_short - (drawdown_penalty * 0.35 * madv_short)
         # ADD
         u_add = (1.5 * fwd_short) - (drawdown_penalty * 1.5 * madv_short) - friction_atr
         # REVERSE
@@ -300,6 +298,12 @@ def build_augmented_training_dataset(
     y_size = np.concatenate(all_sizes)
     y_sl = np.concatenate(all_sls)
     y_tp = np.concatenate(all_tps)
+
+    # Ensure absolute numerical cleanliness (no NaNs or Infs)
+    X = np.nan_to_num(X, nan=0.0, posinf=10.0, neginf=-10.0).astype(np.float32)
+    y_size = np.nan_to_num(y_size, nan=0.5, posinf=1.0, neginf=0.1).astype(np.float32)
+    y_sl = np.nan_to_num(y_sl, nan=2.0, posinf=3.5, neginf=1.0).astype(np.float32)
+    y_tp = np.nan_to_num(y_tp, nan=3.0, posinf=6.0, neginf=1.5).astype(np.float32)
 
     print(f"[Counterfactual Simulator] Done! Generated {len(X):,} augmented training instances.")
     unique_acts, counts = np.unique(y_action, return_counts=True)

@@ -143,11 +143,12 @@ def train_pytorch_policy(
 
     # Class weighting for balanced action learning
     classes, counts = np.unique(y_action_train, return_counts=True)
-    weights = len(y_action_train) / (len(classes) * counts.astype(np.float32))
-    class_weights = torch.ones(7, dtype=torch.float32)
-    for c, w in zip(classes, weights):
-        class_weights[c] = w
-    class_weights = class_weights.to(device)
+    raw_w = len(y_action_train) / (len(classes) * counts.astype(np.float32))
+    raw_w = np.clip(raw_w, 0.1, 10.0)
+    w_arr = np.ones(7, dtype=np.float32)
+    for c, w in zip(classes, raw_w):
+        w_arr[int(c)] = float(w)
+    class_weights = torch.from_numpy(w_arr).to(device)
 
     model = TradingPolicyNetwork(input_dim=X_train.shape[1]).to(device)
     criterion_action = nn.CrossEntropyLoss(weight=class_weights)
@@ -239,22 +240,42 @@ def export_model_to_onnx(
 
     os.makedirs(os.path.dirname(os.path.abspath(output_path)), exist_ok=True)
     
-    torch.onnx.export(
-        wrapper,
-        dummy_input,
-        output_path,
-        export_params=True,
-        opset_version=opset_version,
-        do_constant_folding=True,
-        input_names=["input_features"],
-        output_names=["action_probs", "position_size", "order_params"],
-        dynamic_axes={
-            "input_features": {0: "batch_size"},
-            "action_probs": {0: "batch_size"},
-            "position_size": {0: "batch_size"},
-            "order_params": {0: "batch_size"}
-        }
-    )
+    try:
+        torch.onnx.export(
+            wrapper,
+            dummy_input,
+            output_path,
+            export_params=True,
+            opset_version=opset_version,
+            do_constant_folding=True,
+            input_names=["input_features"],
+            output_names=["action_probs", "position_size", "order_params"],
+            dynamic_axes={
+                "input_features": {0: "batch_size"},
+                "action_probs": {0: "batch_size"},
+                "position_size": {0: "batch_size"},
+                "order_params": {0: "batch_size"}
+            }
+        )
+    except Exception as e:
+        print(f"[ONNX Exporter] First attempt gave {e}, trying with dynamo=False fallback...")
+        torch.onnx.export(
+            wrapper,
+            dummy_input,
+            output_path,
+            export_params=True,
+            opset_version=opset_version,
+            do_constant_folding=True,
+            dynamo=False,
+            input_names=["input_features"],
+            output_names=["action_probs", "position_size", "order_params"],
+            dynamic_axes={
+                "input_features": {0: "batch_size"},
+                "action_probs": {0: "batch_size"},
+                "position_size": {0: "batch_size"},
+                "order_params": {0: "batch_size"}
+            }
+        )
     print(f"[ONNX Exporter] Model successfully saved to {output_path}")
     return output_path
 
