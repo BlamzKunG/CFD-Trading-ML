@@ -81,6 +81,7 @@ def main():
 
     run_cmd(f"cd {repo_dir} && git add projects/xauusd_trading_policy/models/ projects/xauusd_trading_policy/docs/")
     run_cmd(f"cd {repo_dir} && git commit -m 'feat(benchmark): trained 10 Quant ML models and 2025 out-of-sample benchmark [skip ci]'", check=False)
+    run_cmd(f"cd {repo_dir} && git pull --rebase origin main", check=False)
     run_cmd(f"cd {repo_dir} && git push origin main", check=False)
 
     print("\n" + "=" * 80)
