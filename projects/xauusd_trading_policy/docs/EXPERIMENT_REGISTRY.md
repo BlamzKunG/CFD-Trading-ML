@@ -45,3 +45,8 @@
 - **Top Variant:** `M10_Passive_Exits` with PF **0.91** and Net Profit **$-15,556.28**
 - **Detailed Report:** [`EXP_01_M10_ABLATION.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_01_M10_ABLATION.md)
 - **Equity Curves:** [`EXP_01_M10_ABLATION.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_01_M10_ABLATION.png)
+
+### EXP-02-HYBRID-META-FILTER Findings Summary
+- **Top Variant:** `M10_TwoStage_MetaFilter` with PF **1.03** and Net Profit **$77.42**
+- **Detailed Report:** [`EXP_02_HYBRID_META_FILTER.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_02_HYBRID_META_FILTER.md)
+- **Equity Curves:** [`EXP_02_HYBRID_META_FILTER.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_02_HYBRID_META_FILTER.png)
