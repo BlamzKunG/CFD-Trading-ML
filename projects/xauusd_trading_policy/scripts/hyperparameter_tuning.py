@@ -47,7 +47,7 @@ TUNED_HYPERPARAMETERS: Dict[str, Dict[str, Any]] = {
         "dropout": 0.20,              # Higher dropout for market generalization
         "lr": 8e-4,
         "weight_decay": 2e-4,
-        "epochs": 25,
+        "epochs": 8,
         "batch_size": 1024
     },
     "M5_TCN": {
@@ -56,7 +56,7 @@ TUNED_HYPERPARAMETERS: Dict[str, Dict[str, Any]] = {
         "dropout": 0.20,
         "lr": 7e-4,
         "weight_decay": 1e-4,
-        "epochs": 25,
+        "epochs": 8,
         "batch_size": 1024
     },
     "M6_GRU_Attention": {
@@ -65,7 +65,7 @@ TUNED_HYPERPARAMETERS: Dict[str, Dict[str, Any]] = {
         "dropout": 0.20,
         "lr": 8e-4,
         "weight_decay": 1e-4,
-        "epochs": 25,
+        "epochs": 8,
         "batch_size": 1024
     },
     "M7_PatchTransformer": {
@@ -75,7 +75,7 @@ TUNED_HYPERPARAMETERS: Dict[str, Dict[str, Any]] = {
         "dropout": 0.20,
         "lr": 6e-4,
         "weight_decay": 2e-4,
-        "epochs": 25,
+        "epochs": 8,
         "batch_size": 1024
     },
 
@@ -92,7 +92,7 @@ TUNED_HYPERPARAMETERS: Dict[str, Dict[str, Any]] = {
         "hidden_dim": 128,
         "turnover_penalty_weight": 3.5, # Strong penalty against unnecessary trades
         "lr": 8e-4,
-        "epochs": 25,
+        "epochs": 8,
         "batch_size": 1024
     },
     "M10_ActorCritic_RL": {
@@ -101,7 +101,7 @@ TUNED_HYPERPARAMETERS: Dict[str, Dict[str, Any]] = {
         "critic_lr": 1e-3,
         "gamma": 0.99,
         "entropy_coef": 0.01,
-        "epochs": 20,
+        "epochs": 8,
         "batch_size": 1024
     }
 }

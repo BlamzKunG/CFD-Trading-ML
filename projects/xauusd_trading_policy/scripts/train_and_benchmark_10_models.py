@@ -314,7 +314,8 @@ def export_pytorch_to_onnx(
             probs = self.softmax(logits)
             return probs, size, order
 
-    wrapper = MT5PolicyWrapper(model.cpu(), is_actor_critic=is_ac).eval()
+    orig_device = next(model.parameters()).device
+    wrapper = MT5PolicyWrapper(model.to("cpu"), is_actor_critic=is_ac).eval()
     dummy_input = torch.zeros(1, input_dim, dtype=torch.float32)
 
     os.makedirs(output_dir, exist_ok=True)
@@ -356,6 +357,7 @@ def export_pytorch_to_onnx(
                 "order_params": {0: "batch_size"}
             }
         )
+    model.to(orig_device)
     print(f"[{model_name}] Successfully exported ONNX model to: {onnx_file}")
     return onnx_file
 
@@ -366,7 +368,7 @@ def export_pytorch_to_onnx(
 
 def make_pytorch_eval_predictor(model: "nn.Module", model_name: str, device: str, threshold: float = 0.35):
     """Creates a standardized callable for the closed-loop backtest evaluator."""
-    model.eval()
+    model = model.to(device).eval()
     is_ac = (model_name == "M10_ActorCritic_RL")
 
     def predictor(state_1x40: np.ndarray) -> Tuple[int, float, float, float]:
@@ -689,7 +691,7 @@ def main():
                 flat_tp = np.full(len(X_flat_val), 3.5, dtype=np.float32)
                 precomputed_flat = (final_a, flat_sz, flat_sl, flat_tp)
             else:
-                trained_model.eval()
+                trained_model = trained_model.to(device).eval()
                 all_a, all_sz, all_sl, all_tp = [], [], [], []
                 is_ac = (model_id == "M10_ActorCritic_RL")
                 with torch.no_grad():
