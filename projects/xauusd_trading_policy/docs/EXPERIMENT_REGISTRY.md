@@ -40,6 +40,7 @@
 | **`EXP-01-M10-ABLATION`** | 2026-09-26 | M10 RL Component Attribution | Positive expectancy of M10 is driven by dynamic position sizing and active position management. | ✅ Completed | **H2 Refuted:** Active in-position churning generates $100k+ friction; `M10_Passive_Exits` reduced trades by 86%, improved Payoff to 1.61, and achieved top PF 0.91. |
 | **`EXP-02-HYBRID-META-FILTER`** | 2026-09-26 | Two-Stage Meta-Labeling & Conviction Barriers | Secondary Meta-classifier can filter false breakouts from M10 and achieve positive net expectancy under $36 friction. | ✅ Completed | **H2 Confirmed:** Two-Stage MetaFilter achieved **PF 1.03**, Net Profit **+$77.42**, Payoff **1.86**, Max DD **10.5%**, cutting friction drag to 6.9%. |
 | **`EXP-03-META-OPTIMIZATION-COST-CURVE`** | 2026-09-26 | Meta-Threshold Optimization & Cost Sensitivity | Optimization of meta-probability threshold + empirical spread tolerance curves ($0.10 to $0.40). | ✅ Completed | **Breakthrough:** `Meta_Thresh_52` achieved **PF 1.47**, **Net Profit +$958.28 (+9.6%)**, **Win Rate 52.3%**, **Max DD 8.1%**; Policy remains profitable up to $0.40 spread (PF 1.41). |
+| **`EXP-04-TCN-RL-META`** | 2026-09-26 | TCN Temporal Backbone vs MLP Champion | Causal dilated 1D sequence convolutions vs instantaneous MLP paired with Meta-Filtering. | ✅ Completed | **H3 Confirmed:** Raw TCN suffers -$21k drag (PF 0.88), proving Meta-Filter is mandatory; `MLP_Meta_52` retains champion status (**PF 1.51, +$966.78, DD 5.5%**), while `TCN_Meta_50` achieves **PF 3.59**. |
 
 ---
 
