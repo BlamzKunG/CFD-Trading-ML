@@ -23,10 +23,12 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import torch
 
-# Add repository to path
-repo_dir = "/content/XAUUSD-Trading-Policy-ML"
-if repo_dir not in sys.path:
-    sys.path.insert(0, repo_dir)
+# Add repository and project to path
+root_repo_dir = "/content/XAUUSD-Trading-Policy-ML"
+repo_dir = os.path.join(root_repo_dir, "projects", "xauusd_trading_policy")
+for p in [root_repo_dir, repo_dir]:
+    if p not in sys.path:
+        sys.path.insert(0, p)
 
 import importlib
 import scripts.features_policy as fp
@@ -203,12 +205,12 @@ def main():
 
     # Push to GitHub
     print("\n[GitHub] Committing and pushing trained models to repository...")
-    os.system(f"cd {repo_dir} && git config user.name 'BlamzKunG' && git config user.email 'blamzkung@users.noreply.github.com'")
+    os.system(f"cd {root_repo_dir} && git config user.name 'BlamzKunG' && git config user.email 'blamzkung@users.noreply.github.com'")
     gh_token = os.environ.get("GITHUB_TOKEN", "")
     if gh_token:
-        os.system(f"cd {repo_dir} && git remote set-url origin https://BlamzKunG:{gh_token}@github.com/BlamzKunG/XAUUSD-Trading-Policy-ML.git")
-    os.system(f"cd {repo_dir} && git add models/ docs/ && git commit -m 'feat(model): add trained ONNX policy model and 2025 backtest results [skip ci]'")
-    push_out = os.popen(f"cd {repo_dir} && git push origin main").read()
+        os.system(f"cd {root_repo_dir} && git remote set-url origin https://BlamzKunG:{gh_token}@github.com/BlamzKunG/XAUUSD-Trading-Policy-ML.git")
+    os.system(f"cd {root_repo_dir} && git add projects/xauusd_trading_policy/models/ projects/xauusd_trading_policy/docs/ && git commit -m 'feat(model): add trained ONNX policy model and 2025 backtest results [skip ci]'")
+    push_out = os.popen(f"cd {root_repo_dir} && git push origin main").read()
     print(f"[GitHub Push] {push_out}")
 
     print("\n🎉 ALL TRAINING, EVALUATION, AND EXPORT TASKS COMPLETED SUCCESSFULLY!")
