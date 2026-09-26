@@ -115,5 +115,18 @@
     "sharpe_ratio": 0.11633117360767752,
     "train_time_sec": 390.6,
     "eval_time_sec": 46.6
+  },
+  "M8_MetaLabeling": {
+    "algorithm": "MetaLabeling",
+    "net_profit": -2573.617500000028,
+    "return_pct": -25.73617500000272,
+    "profit_factor": 0.8780782821547617,
+    "win_rate": 41.39917695473251,
+    "max_drawdown_pct": 33.669263330352486,
+    "total_trades": 2430,
+    "avg_trade_pnl": -1.0591018518518633,
+    "sharpe_ratio": -1.8032397252784724,
+    "train_time_sec": 388.2,
+    "eval_time_sec": 28.8
   }
 }

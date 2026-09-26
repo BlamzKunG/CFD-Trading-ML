@@ -5,6 +5,7 @@ Strictly evaluated on out-of-sample 2025 M1 data (350,807 bars) with realistic t
 | Model ID | Paradigm / Algorithm | Net Profit ($) | Return (%) | Profit Factor | Win Rate (%) | Max DD (%) | Trades | Sharpe | Train Time (s) |
 | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | **M10_ActorCritic_RL** | ActorCritic_RL | $29,528.54 | 295.1% | **1.10** | 39.1% | 103.8% | 48,425 | 0.12 | 390.6s |
+| **M8_MetaLabeling** | MetaLabeling | $-2,573.62 | -25.7% | **0.88** | 41.4% | 33.7% | 2,430 | -1.80 | 388.2s |
 | **M3_XGBoost** | XGBoost | $-31,027.07 | -309.9% | **0.84** | 35.0% | 316.7% | 10,381 | -1.07 | 95.0s |
 | **M5_TCN** | TCN | $-90,836.84 | -908.3% | **0.63** | 42.6% | 909.8% | 44,211 | 1.09 | 272.7s |
 | **M1_LightGBM** | LightGBM | $-92,487.40 | -924.8% | **0.61** | 39.2% | 930.9% | 39,277 | -1.82 | 90.0s |
