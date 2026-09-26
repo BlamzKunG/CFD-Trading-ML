@@ -14,7 +14,7 @@ Purpose:
 
 import numpy as np
 import pandas as pd
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Optional, Tuple
 from scripts.counterfactual_simulator import (
     ACTION_HOLD, ACTION_OPEN_LONG, ACTION_OPEN_SHORT,
     ACTION_ADD, ACTION_REDUCE, ACTION_CLOSE, ACTION_REVERSE,
