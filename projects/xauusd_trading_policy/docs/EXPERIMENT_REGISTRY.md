@@ -37,7 +37,7 @@
 | Experiment ID | Date (UTC) | Focus / Objective | Core Hypothesis | Status | Key Finding / Outcome |
 | :--- | :---: | :--- | :--- | :---: | :--- |
 | **`EXP-00-BENCHMARK-10`** | 2026-09-26 | 10-Model Architectural Survey | GBDTs, Deep Temporal Nets, Hybrids, and RL behave differently under friction. | ✅ Completed | Supervised models suffer severe fee drag (39k-59k trades); M10 RL achieved PF 1.10 (+295%), M8 cut DD to 33.7%. |
-| **`EXP-01-M10-ABLATION`** | 2026-09-26 | M10 RL Component Attribution | Positive expectancy of M10 is driven by dynamic position sizing and active position management. | 🔄 In Progress | Testing 4 variants (Baseline, Fixed Sizing, No Active Management, Cost-Aware Reward). |
+| **`EXP-01-M10-ABLATION`** | 2026-09-26 | M10 RL Component Attribution | Positive expectancy of M10 is driven by dynamic position sizing and active position management. | ✅ Completed | **H2 Refuted:** Active in-position churning generates $100k+ friction; `M10_Passive_Exits` reduced trades by 86%, improved Payoff to 1.61, and achieved top PF 0.91. |
 
 ---
 
