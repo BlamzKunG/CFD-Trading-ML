@@ -51,3 +51,8 @@
 - **Top Variant:** `M10_TwoStage_MetaFilter` with PF **1.03** and Net Profit **$77.42**
 - **Detailed Report:** [`EXP_02_HYBRID_META_FILTER.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_02_HYBRID_META_FILTER.md)
 - **Equity Curves:** [`EXP_02_HYBRID_META_FILTER.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_02_HYBRID_META_FILTER.png)
+
+### EXP-03-META-OPTIMIZATION-COST-CURVE Findings Summary
+- **Optimal Variant:** `Meta_Thresh_52` with PF **1.47**
+- **Detailed Report:** [`EXP_03_META_OPTIMIZATION_COST_CURVE.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_03_META_OPTIMIZATION_COST_CURVE.md)
+- **Equity Curves:** [`EXP_03_META_OPTIMIZATION_COST_CURVE.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_03_META_OPTIMIZATION_COST_CURVE.png)
