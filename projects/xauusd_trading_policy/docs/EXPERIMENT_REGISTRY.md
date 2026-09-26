@@ -40,3 +40,8 @@
 | **`EXP-01-M10-ABLATION`** | 2026-09-26 | M10 RL Component Attribution | Positive expectancy of M10 is driven by dynamic position sizing and active position management. | 🔄 In Progress | Testing 4 variants (Baseline, Fixed Sizing, No Active Management, Cost-Aware Reward). |
 
 ---
+
+### EXP-01-M10-ABLATION Findings Summary
+- **Top Variant:** `M10_Passive_Exits` with PF **0.91** and Net Profit **$-15,556.28**
+- **Detailed Report:** [`EXP_01_M10_ABLATION.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_01_M10_ABLATION.md)
+- **Equity Curves:** [`EXP_01_M10_ABLATION.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_01_M10_ABLATION.png)
