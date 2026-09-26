@@ -76,7 +76,7 @@ def main():
         bench_script,
         "--data-path", data_path,
         "--models", "all",
-        "--subsample-step", "4",
+        "--subsample-step", "6",
         "--horizon", "60"
     ]
     run_cmd(train_cmd)

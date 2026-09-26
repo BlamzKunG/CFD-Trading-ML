@@ -147,19 +147,35 @@ def run_closed_loop_backtest(
             p_act_norm = 1.0
             p_size_frac = 0.0
 
+        # Periodic Heartbeat for Live WebSocket Streaming & Anti-Timeout
+        if t % 35000 == 0 and t > 0:
+            print(f"    [sim] {t:,}/{n_bars:,} bars ({t/n_bars*100:.0f}%) | Equity: ${balance:,.0f} | Trades: {len(trades):,}", flush=True)
+
         # 3. Form state input and get ML Model Policy Decision
-        if pos_dir == 0.0 and precomputed_flat is not None:
-            action_id = int(precomputed_flat[0][t])
-            size_frac = float(precomputed_flat[1][t])
-            sl_atr = float(precomputed_flat[2][t])
-            tp_atr = float(precomputed_flat[3][t])
+        if pos_dir == 0.0:
+            if precomputed_flat is not None:
+                action_id = int(precomputed_flat[0][t])
+                size_frac = float(precomputed_flat[1][t])
+                sl_atr = float(precomputed_flat[2][t])
+                tp_atr = float(precomputed_flat[3][t])
+            else:
+                pos_features = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0], dtype=np.float32)
+                state_40 = np.concatenate([mf_arr[t], pos_features]).reshape(1, -1)
+                action_id, size_frac, sl_atr, tp_atr = policy_predictor(state_40)
         else:
-            pos_features = np.array([
-                pos_dir, p_size_frac, p_dist_entry, p_unrl,
-                p_time_norm, p_dist_sl, p_dist_tp, max_adv_atr, p_act_norm
-            ], dtype=np.float32)
-            state_40 = np.concatenate([mf_arr[t], pos_features]).reshape(1, -1)
-            action_id, size_frac, sl_atr, tp_atr = policy_predictor(state_40)
+            # In position: evaluate management policy with 5-bar cadence to reflect realistic order cooldown
+            if (t - last_action_bar) < 5:
+                action_id = ACTION_HOLD
+                size_frac = pos_lot / (lot_base * 2.0)
+                sl_atr = abs(close_t - sl_price) / atr_t
+                tp_atr = abs(close_t - tp_price) / atr_t
+            else:
+                pos_features = np.array([
+                    pos_dir, p_size_frac, p_dist_entry, p_unrl,
+                    p_time_norm, p_dist_sl, p_dist_tp, max_adv_atr, p_act_norm
+                ], dtype=np.float32)
+                state_40 = np.concatenate([mf_arr[t], pos_features]).reshape(1, -1)
+                action_id, size_frac, sl_atr, tp_atr = policy_predictor(state_40)
 
         # 5. Process Decision
         if pos_dir == 0.0:
