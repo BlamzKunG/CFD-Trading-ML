@@ -9,6 +9,7 @@ Executes a targeted research experiment on Colab VM and syncs results to GitHub.
 import os
 import sys
 import subprocess
+import argparse
 
 def run_cmd(cmd, check=True):
     print(f"\n[Colab VM] Executing: {' '.join(cmd) if isinstance(cmd, list) else cmd}", flush=True)
@@ -24,8 +25,12 @@ def run_cmd(cmd, check=True):
         return subprocess.run(cmd, check=check, shell=True)
 
 def main():
+    parser = argparse.ArgumentParser(description="Colab Autonomous Quant ML Experiment Runner")
+    parser.add_argument("--exp-id", type=str, default="EXP_02_HYBRID_META_FILTER", help="Experiment ID to execute")
+    args = parser.parse_args()
+
     print("=" * 80)
-    print("🔬 COLAB WORKER: AUTONOMOUS QUANT ML RESEARCH EXPERIMENT")
+    print(f"🔬 COLAB WORKER: AUTONOMOUS QUANT ML RESEARCH EXPERIMENT ({args.exp_id})")
     print("=" * 80)
 
     repo_dir = "/content/CFD-Trading-ML"
@@ -43,18 +48,18 @@ def main():
     if not os.path.exists(data_path):
         raise FileNotFoundError(f"Dataset not found at {data_path}")
 
-    print("\n[Step 3/4] Launching run_research_experiment.py...")
+    print(f"\n[Step 3/4] Launching run_research_experiment.py for {args.exp_id}...")
     exp_script = os.path.join(repo_dir, "projects", "xauusd_trading_policy", "scripts", "run_research_experiment.py")
     exp_cmd = [
         sys.executable,
         "-u",
         exp_script,
-        "--exp-id", "EXP_01_M10_ABLATION",
+        "--exp-id", args.exp_id,
         "--data-path", data_path
     ]
     run_cmd(exp_cmd)
 
-    print("\n[Step 4/4] Syncing experiment findings & registry back to GitHub...")
+    print(f"\n[Step 4/4] Syncing experiment findings & registry back to GitHub...")
     gh_token = os.environ.get("GITHUB_TOKEN", "")
     run_cmd(f"cd {repo_dir} && git config user.name 'BlamzKunG'")
     run_cmd(f"cd {repo_dir} && git config user.email 'blamzkung@users.noreply.github.com'")
@@ -62,12 +67,12 @@ def main():
         run_cmd(f"cd {repo_dir} && git remote set-url origin https://BlamzKunG:{gh_token}@github.com/BlamzKunG/CFD-Trading-ML.git")
 
     run_cmd(f"cd {repo_dir} && git add projects/xauusd_trading_policy/docs/ projects/xauusd_trading_policy/models/")
-    run_cmd(f"cd {repo_dir} && git commit -m 'docs(experiment): record EXP-01 M10 RL ablation study findings [skip ci]'", check=False)
+    run_cmd(f"cd {repo_dir} && git commit -m 'docs(experiment): record {args.exp_id} findings [skip ci]'", check=False)
     run_cmd(f"cd {repo_dir} && git pull --rebase origin main", check=False)
     run_cmd(f"cd {repo_dir} && git push origin main", check=False)
 
     print("\n" + "=" * 80)
-    print("🎉 EXPERIMENT EXP-01 COMPLETED, DOCUMENTED, AND SYNCED TO GITHUB!")
+    print(f"🎉 EXPERIMENT {args.exp_id} COMPLETED, DOCUMENTED, AND SYNCED TO GITHUB!")
     print("=" * 80)
 
 if __name__ == "__main__":

@@ -27,6 +27,7 @@ from typing import Dict, Any, List, Tuple, Optional
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from sklearn.ensemble import HistGradientBoostingClassifier
 
 # Path setup
 script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -457,6 +458,284 @@ def run_experiment_01_m10_ablation(data_path: Optional[str] = None):
     print(f"[Registry] Master registry updated at: {registry_path}")
 
 
+def run_experiment_02_hybrid_meta_filter(data_path: Optional[str] = None):
+    """
+    Experiment EXP-02: Two-Stage Hybrid Filtering & Conviction Barriers.
+    Research Focus: Can selective entry filtering (Meta-Labeling, Conviction Barriers,
+    Volatility Conditioning) elevate the M10 RL Policy above Profit Factor 1.0 under realistic friction?
+    """
+    print("\n" + "=" * 80)
+    print("🔬 RUNNING EXPERIMENT EXP-02: TWO-STAGE HYBRID FILTERING & CONVICTION BARRIERS")
+    print("=" * 80)
+
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+    print(f"[Hardware] PyTorch Device: {device.upper()}")
+
+    # 1. Load Data
+    csv_file = find_dataset_file(data_path)
+    df_train, df_val = load_and_preprocess_data(csv_file)
+    (feat_train, atr_train, close_train, df_train_clean), (feat_val, atr_val, close_val, df_val_clean) = prepare_market_features(df_train, df_val)
+
+    # 2. Counterfactual rollouts for M10 Training
+    print("\n[Counterfactuals] Generating training rollouts (Horizon=60, Step=6)...")
+    X_train, y_act_train, y_sz_train, y_sl_train, y_tp_train = build_augmented_training_dataset(
+        market_features=feat_train,
+        close_prices=close_train.to_numpy(),
+        high_prices=df_train_clean['high'].to_numpy(),
+        low_prices=df_train_clean['low'].to_numpy(),
+        atr_values=atr_train.to_numpy(),
+        horizon=60,
+        subsample_step=6
+    )
+    print(f"[Counterfactuals] Ready with {len(X_train):,} training samples.")
+
+    # 3. Train Base M10 Policy Net
+    print("\n[Step 1/3] Training Base M10 Actor-Critic Policy Net...")
+    set_seed(42)
+    base_net = ActorCriticPolicyNet(state_dim=40, hidden_dim=128).to(device)
+    base_net = train_actor_critic(base_net, X_train, y_act_train, y_sz_train, y_sl_train, y_tp_train, device, epochs=8)
+
+    # 4. Train Secondary Meta-Labeling Model (Strictly on 2020-2024 Train Set)
+    print("\n[Step 2/3] Training Secondary Meta-Labeling Filter on Historical Entries...")
+    mf_train_arr = feat_train.to_numpy(dtype=np.float32)
+    pos_flat_train = np.zeros((len(mf_train_arr), 9), dtype=np.float32)
+    pos_flat_train[:, 8] = 1.0  # flat position
+    X_flat_train = np.hstack([mf_train_arr, pos_flat_train]).astype(np.float32)
+
+    # Subsample training bars (every 3rd bar) for entry signal generation
+    sub_indices = np.arange(0, len(X_flat_train), 3)
+    X_flat_sub = X_flat_train[sub_indices]
+
+    train_preds, train_probs = [], []
+    base_net.eval()
+    with torch.no_grad():
+        for bi in range(0, len(X_flat_sub), 8192):
+            bx = torch.tensor(X_flat_sub[bi:bi+8192], dtype=torch.float32, device=device)
+            logits, _, _, _ = base_net(bx)
+            probs = torch.softmax(logits, dim=-1)
+            max_p, best_a = torch.max(probs, dim=-1)
+            train_preds.append(best_a.cpu().numpy())
+            train_probs.append(max_p.cpu().numpy())
+
+    sub_best_a = np.concatenate(train_preds)
+    sub_max_p = np.concatenate(train_probs)
+
+    # Find candidate entries (Action 1 = OPEN_LONG, Action 2 = OPEN_SHORT with prob >= 0.35)
+    entry_mask = (np.isin(sub_best_a, [ACTION_OPEN_LONG, ACTION_OPEN_SHORT])) & (sub_max_p >= 0.35)
+    entry_sub_indices = np.where(entry_mask)[0]
+    print(f"[Meta-Labeling] Found {len(entry_sub_indices):,} candidate entries in training sample.")
+
+    # Simulate outcomes on historical training data to construct meta-labels
+    close_train_arr = close_train.to_numpy()
+    high_train_arr = df_train_clean['high'].to_numpy()
+    low_train_arr = df_train_clean['low'].to_numpy()
+    atr_train_arr = atr_train.to_numpy()
+    n_train_bars = len(close_train_arr)
+
+    meta_X_list, meta_y_list = [], []
+    friction_per_unit = 0.36  # $36 friction per 1.0 lot ($0.36/oz)
+
+    for idx in entry_sub_indices:
+        orig_idx = sub_indices[idx]
+        if orig_idx + 120 >= n_train_bars:
+            continue
+        act = sub_best_a[idx]
+        c_price = close_train_arr[orig_idx]
+        c_atr = atr_train_arr[orig_idx]
+        if c_atr <= 0:
+            continue
+
+        sl_dist = 2.0 * c_atr
+        tp_dist = 3.5 * c_atr
+
+        win = 0
+        if act == ACTION_OPEN_LONG:
+            sl_price = c_price - sl_dist
+            tp_price = c_price + tp_dist
+            for step in range(1, 121):
+                bar_idx = orig_idx + step
+                if low_train_arr[bar_idx] <= sl_price:
+                    win = 0
+                    break
+                elif high_train_arr[bar_idx] >= tp_price:
+                    win = 1 if (tp_dist - friction_per_unit) > 0 else 0
+                    break
+            else:
+                end_price = close_train_arr[orig_idx + 120]
+                win = 1 if (end_price - c_price - friction_per_unit) > 0 else 0
+        elif act == ACTION_OPEN_SHORT:
+            sl_price = c_price + sl_dist
+            tp_price = c_price - tp_dist
+            for step in range(1, 121):
+                bar_idx = orig_idx + step
+                if high_train_arr[bar_idx] >= sl_price:
+                    win = 0
+                    break
+                elif low_train_arr[bar_idx] <= tp_price:
+                    win = 1 if (tp_dist - friction_per_unit) > 0 else 0
+                    break
+            else:
+                end_price = close_train_arr[orig_idx + 120]
+                win = 1 if (c_price - end_price - friction_per_unit) > 0 else 0
+
+        # Meta features: market features at entry + action + confidence
+        meta_feat = np.append(mf_train_arr[orig_idx], [float(act), sub_max_p[idx]])
+        meta_X_list.append(meta_feat)
+        meta_y_list.append(win)
+
+    meta_X = np.array(meta_X_list, dtype=np.float32)
+    meta_y = np.array(meta_y_list, dtype=np.int32)
+    win_rate_prior = (np.mean(meta_y) * 100.0) if len(meta_y) > 0 else 0.0
+    print(f"[Meta-Labeling] Training samples: {len(meta_y):,} | Historical Win Rate: {win_rate_prior:.1f}%")
+
+    meta_clf = HistGradientBoostingClassifier(max_iter=100, max_depth=4, min_samples_leaf=40, random_state=42)
+    meta_clf.fit(meta_X, meta_y)
+    print("[Meta-Labeling] Secondary filter trained successfully.")
+
+    # 5. Precompute Validation Predictions (2025 Out-of-Sample)
+    print("\n[Step 3/3] Evaluating 5 Selective Filtering Variants on 2025 OOS Data...")
+    mf_val_arr = feat_val.to_numpy(dtype=np.float32)
+    pos_flat_val = np.zeros((len(mf_val_arr), 9), dtype=np.float32)
+    pos_flat_val[:, 8] = 1.0
+    X_flat_val = np.hstack([mf_val_arr, pos_flat_val]).astype(np.float32)
+
+    val_preds, val_probs, val_sz, val_sl, val_tp = [], [], [], [], []
+    with torch.no_grad():
+        for bi in range(0, len(X_flat_val), 8192):
+            bx = torch.tensor(X_flat_val[bi:bi+8192], dtype=torch.float32, device=device)
+            logits, _, sz_t, ord_t = base_net(bx)
+            probs = torch.softmax(logits, dim=-1)
+            max_p, best_a = torch.max(probs, dim=-1)
+            val_preds.append(best_a.cpu().numpy())
+            val_probs.append(max_p.cpu().numpy())
+            val_sz.append(np.clip(sz_t.cpu().numpy()[:, 0], 0.1, 1.0))
+            val_sl.append(np.clip(ord_t.cpu().numpy()[:, 0], 1.0, 4.0))
+            val_tp.append(np.clip(ord_t.cpu().numpy()[:, 1], 1.5, 7.0))
+
+    raw_a = np.concatenate(val_preds)
+    raw_p = np.concatenate(val_probs)
+    flat_sz = np.concatenate(val_sz)
+    flat_sl = np.concatenate(val_sl)
+    flat_tp = np.concatenate(val_tp)
+
+    # Check atr_ratio column index in feat_val
+    atr_ratio_idx = MARKET_FEATURE_NAMES.index('atr_ratio') if 'atr_ratio' in MARKET_FEATURE_NAMES else 7
+    atr_ratio_val = mf_val_arr[:, atr_ratio_idx]
+
+    # Precompute Meta-model probabilities for candidate entries
+    meta_val_X = np.column_stack([mf_val_arr, raw_a.astype(np.float32), raw_p])
+    meta_val_probs = meta_clf.predict_proba(meta_val_X)[:, 1]
+
+    # Define 5 Variants
+    variants = [
+        {"id": "M10_Threshold_035_Control", "desc": "Baseline Conviction (Threshold >= 0.35, Passive SL/TP exits)", "thresh": 0.35, "use_meta": False, "use_vol": False},
+        {"id": "M10_Threshold_045_Moderate", "desc": "Moderate Conviction Barrier (Threshold >= 0.45)", "thresh": 0.45, "use_meta": False, "use_vol": False},
+        {"id": "M10_Threshold_055_HighConviction", "desc": "High Conviction Barrier (Threshold >= 0.55)", "thresh": 0.55, "use_meta": False, "use_vol": False},
+        {"id": "M10_TwoStage_MetaFilter", "desc": "Two-Stage Hybrid: M10 Entry + Secondary Meta-Labeling Filter (P_win >= 0.50)", "thresh": 0.35, "use_meta": True, "use_vol": False},
+        {"id": "M10_Volatility_Regime_Filter", "desc": "Volatility Regime Conditioned: Entry only when ATR Ratio >= 1.0", "thresh": 0.35, "use_meta": False, "use_vol": True}
+    ]
+
+    exp_dir = os.path.join(project_dir, "docs", "experiments")
+    os.makedirs(exp_dir, exist_ok=True)
+    variants_results: Dict[str, Dict[str, Any]] = {}
+    equity_curves: Dict[str, np.ndarray] = {}
+
+    for v in variants:
+        v_id = v["id"]
+        print(f"\n---> Evaluating Variant: {v_id} ({v['desc']})...", flush=True)
+
+        # Filter actions according to variant rules
+        filt_a = raw_a.copy()
+        filt_a[raw_p < v["thresh"]] = ACTION_HOLD
+
+        if v["use_meta"]:
+            filt_a[meta_val_probs < 0.50] = ACTION_HOLD
+
+        if v["use_vol"]:
+            filt_a[atr_ratio_val < 1.0] = ACTION_HOLD
+
+        precomp = (filt_a, flat_sz, flat_sl, flat_tp)
+
+        # Passive in-position predictor (once in position, hold until SL/TP)
+        def passive_predictor(state_1x40: np.ndarray) -> Tuple[int, float, float, float]:
+            return ACTION_HOLD, 0.0, 2.0, 3.5
+
+        res = run_closed_loop_backtest(
+            df=df_val_clean,
+            market_features=feat_val,
+            atr_series=atr_val,
+            policy_predictor=passive_predictor,
+            initial_balance=10000.0,
+            lot_base=0.1,
+            spread_points=2.0,
+            slippage_points=1.0,
+            commission_per_lot=6.0,
+            precomputed_flat=precomp
+        )
+
+        m = compute_comprehensive_metrics(res, initial_balance=10000.0)
+        m["description"] = v["desc"]
+        variants_results[v_id] = m
+        equity_curves[v_id] = res["equity_curve"]
+
+        print(f"[{v_id}] Net Profit: ${m['net_profit']:,.2f} ({m['return_pct']:.1f}%) | PF: {m['profit_factor']:.2f} | WR: {m['win_rate']:.1f}% | DD: {m['max_drawdown_pct']:.1f}% | Trades: {m['total_trades']:,} | Payoff: {m['payoff_ratio']:.2f} | Friction: ${m['total_friction']:,.0f}")
+
+    # Generate Markdown Report
+    report_path = os.path.join(exp_dir, "EXP_02_HYBRID_META_FILTER.md")
+    with open(report_path, "w", encoding="utf-8") as f:
+        f.write("# 🔬 Experiment Report: EXP-02-HYBRID-META-FILTER\n\n")
+        f.write("**Research Focus:** Two-Stage Hybrid Filtering & Conviction Barriers for Positive Expectancy\n")
+        f.write("**Evaluation Period:** 2025 Out-of-Sample (350,807 M1 bars, strictly locked)\n")
+        f.write("**Friction Cost:** $0.20 spread ($20/lot) + $0.10 slippage + $6.00 comm ($36.00 roundturn/lot)\n\n")
+        f.write("## 1. Hypothesis Formulation\n")
+        f.write("In EXP-01, `M10_Passive_Exits` achieved PF 0.91 with a 1.61 Payoff Ratio by eliminating active noise churning. However, net PnL remained slightly negative due to residual fee drag on low-conviction entries. We formulate three hypotheses:\n")
+        f.write("- **H1 (Conviction Threshold Hypothesis):** Elevating softmax confidence threshold (0.35 -> 0.45 -> 0.55) eliminates marginal setups, boosting Win Rate without starving expectancy.\n")
+        f.write("- **H2 (Two-Stage Meta-Labeling Hypothesis):** A secondary GBDT trained specifically on historical entry outcomes can detect false breakouts and elevate Profit Factor above 1.0.\n")
+        f.write("- **H3 (Volatility Regime Conditioning Hypothesis):** Restricting entries to expanding volatility regimes (ATR Ratio >= 1.0) prevents fee churn during choppy consolidation.\n\n")
+
+        f.write("## 2. Experimental Results & Performance Matrix\n\n")
+        f.write("| Variant ID | Description | Net Profit ($) | Return (%) | Profit Factor | Win Rate (%) | Max DD (%) | Trades | Payoff Ratio | Friction Cost ($) | Cost / Gross PnL (%) |\n")
+        f.write("| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |\n")
+        for v_id, m in variants_results.items():
+            f.write(f"| **{v_id}** | {m['description']} | **${m['net_profit']:,.2f}** | {m['return_pct']:.1f}% | **{m['profit_factor']:.2f}** | {m['win_rate']:.1f}% | {m['max_drawdown_pct']:.1f}% | {m['total_trades']:,} | {m['payoff_ratio']:.2f} | ${m['total_friction']:,.0f} | {m['friction_to_gross_pct']:.1f}% |\n")
+
+        f.write("\n\n## 3. Quantitative Diagnostics & Core Discoveries\n\n")
+        best_v = max(variants_results.keys(), key=lambda k: variants_results[k]["profit_factor"])
+        f.write(f"- **Top-Performing Variant:** `{best_v}`\n")
+        f.write(f"- **Best Profit Factor:** **{variants_results[best_v]['profit_factor']:.2f}**\n")
+        f.write(f"- **Net Profit:** **${variants_results[best_v]['net_profit']:,.2f}**\n")
+        f.write(f"- **Drawdown:** **{variants_results[best_v]['max_drawdown_pct']:.1f}%**\n")
+        f.write(f"- **Total Trades:** **{variants_results[best_v]['total_trades']:,}**\n\n")
+
+        f.write("## 4. Next Experiment Directions\n")
+        f.write("- **EXP-03:** Deep Sequence Architecture Enhancement (TCN Feature Extractor + Actor-Critic Policy Net) & Realistic Cost Sensitivity Curves ($0.10 to $0.40 spread).\n")
+
+    print(f"\n[Report] EXP-02 report saved to: {report_path}")
+
+    # Plot Equity Curves
+    plot_path = os.path.join(exp_dir, "EXP_02_HYBRID_META_FILTER.png")
+    plt.figure(figsize=(14, 8))
+    for v_id, eq in equity_curves.items():
+        plt.plot(eq, label=f"{v_id} (PF: {variants_results[v_id]['profit_factor']:.2f}, Net: ${variants_results[v_id]['net_profit']:,.0f})", linewidth=1.3)
+    plt.title("EXP-02: Two-Stage Hybrid Filtering & Conviction Barriers (2025 Out-of-Sample)", fontsize=14, fontweight="bold")
+    plt.xlabel("M1 Timesteps (Bars)", fontsize=12)
+    plt.ylabel("Account Equity ($)", fontsize=12)
+    plt.grid(True, alpha=0.3)
+    plt.legend(loc="upper left")
+    plt.tight_layout()
+    plt.savefig(plot_path, dpi=300)
+    print(f"[Plot] Comparison chart saved to: {plot_path}")
+
+    # Update Registry
+    registry_path = os.path.join(project_dir, "docs", "EXPERIMENT_REGISTRY.md")
+    with open(registry_path, "a", encoding="utf-8") as f:
+        f.write(f"\n### EXP-02-HYBRID-META-FILTER Findings Summary\n")
+        f.write(f"- **Top Variant:** `{best_v}` with PF **{variants_results[best_v]['profit_factor']:.2f}** and Net Profit **${variants_results[best_v]['net_profit']:,.2f}**\n")
+        f.write(f"- **Detailed Report:** [`EXP_02_HYBRID_META_FILTER.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_02_HYBRID_META_FILTER.md)\n")
+        f.write(f"- **Equity Curves:** [`EXP_02_HYBRID_META_FILTER.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_02_HYBRID_META_FILTER.png)\n")
+    print(f"[Registry] Master registry updated at: {registry_path}")
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run Quant ML Research Experiment")
     parser.add_argument("--exp-id", type=str, default="EXP_01_M10_ABLATION", help="Experiment identifier")
@@ -465,5 +744,7 @@ if __name__ == "__main__":
 
     if args.exp_id == "EXP_01_M10_ABLATION":
         run_experiment_01_m10_ablation(args.data_path)
+    elif args.exp_id == "EXP_02_HYBRID_META_FILTER":
+        run_experiment_02_hybrid_meta_filter(args.data_path)
     else:
         print(f"Unknown experiment ID: {args.exp_id}")
