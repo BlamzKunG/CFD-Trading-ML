@@ -1,0 +1,93 @@
+{
+  "M1_LightGBM": {
+    "algorithm": "LightGBM",
+    "net_profit": -92487.4,
+    "return_pct": -924.8,
+    "profit_factor": 0.61,
+    "win_rate": 39.2,
+    "max_drawdown_pct": 930.9,
+    "total_trades": 39277,
+    "avg_trade_pnl": -2.35,
+    "sharpe_ratio": -1.82,
+    "train_time_sec": 90.0,
+    "eval_time_sec": 85.0
+  },
+  "M2_CatBoost": {
+    "algorithm": "CatBoost",
+    "net_profit": -107594.84,
+    "return_pct": -1075.9,
+    "profit_factor": 0.58,
+    "win_rate": 44.9,
+    "max_drawdown_pct": 1077.8,
+    "total_trades": 39727,
+    "avg_trade_pnl": -2.71,
+    "sharpe_ratio": 1.69,
+    "train_time_sec": 120.0,
+    "eval_time_sec": 95.0
+  },
+  "M3_XGBoost": {
+    "algorithm": "XGBoost",
+    "net_profit": -31027.07,
+    "return_pct": -309.9,
+    "profit_factor": 0.84,
+    "win_rate": 35.0,
+    "max_drawdown_pct": 316.7,
+    "total_trades": 10381,
+    "avg_trade_pnl": -2.99,
+    "sharpe_ratio": -1.07,
+    "train_time_sec": 95.0,
+    "eval_time_sec": 35.0
+  },
+  "M4_ResMLP": {
+    "algorithm": "ResMLP",
+    "net_profit": -134452.07,
+    "return_pct": -1344.5,
+    "profit_factor": 0.57,
+    "win_rate": 41.1,
+    "max_drawdown_pct": 1344.3,
+    "total_trades": 54266,
+    "avg_trade_pnl": -2.48,
+    "sharpe_ratio": 1.84,
+    "train_time_sec": 197.5,
+    "eval_time_sec": 90.0
+  },
+  "M5_TCN": {
+    "algorithm": "TCN",
+    "net_profit": -90836.84,
+    "return_pct": -908.3,
+    "profit_factor": 0.63,
+    "win_rate": 42.6,
+    "max_drawdown_pct": 909.8,
+    "total_trades": 44211,
+    "avg_trade_pnl": -2.05,
+    "sharpe_ratio": 1.09,
+    "train_time_sec": 272.7,
+    "eval_time_sec": 85.0
+  },
+  "M6_GRU_Attention": {
+    "algorithm": "GRU_Attention",
+    "net_profit": -176257.04,
+    "return_pct": -1762.6,
+    "profit_factor": 0.55,
+    "win_rate": 39.1,
+    "max_drawdown_pct": 1762.7,
+    "total_trades": 59492,
+    "avg_trade_pnl": -2.96,
+    "sharpe_ratio": 1.09,
+    "train_time_sec": 202.5,
+    "eval_time_sec": 110.0
+  },
+  "M7_PatchTransformer": {
+    "algorithm": "PatchTransformer",
+    "net_profit": -92039.05,
+    "return_pct": -920.3,
+    "profit_factor": 0.6,
+    "win_rate": 43.2,
+    "max_drawdown_pct": 921.0,
+    "total_trades": 42900,
+    "avg_trade_pnl": -2.15,
+    "sharpe_ratio": 0.85,
+    "train_time_sec": 263.5,
+    "eval_time_sec": 85.0
+  }
+}
