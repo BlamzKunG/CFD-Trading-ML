@@ -38,6 +38,7 @@
 | :--- | :---: | :--- | :--- | :---: | :--- |
 | **`EXP-00-BENCHMARK-10`** | 2026-09-26 | 10-Model Architectural Survey | GBDTs, Deep Temporal Nets, Hybrids, and RL behave differently under friction. | ✅ Completed | Supervised models suffer severe fee drag (39k-59k trades); M10 RL achieved PF 1.10 (+295%), M8 cut DD to 33.7%. |
 | **`EXP-01-M10-ABLATION`** | 2026-09-26 | M10 RL Component Attribution | Positive expectancy of M10 is driven by dynamic position sizing and active position management. | ✅ Completed | **H2 Refuted:** Active in-position churning generates $100k+ friction; `M10_Passive_Exits` reduced trades by 86%, improved Payoff to 1.61, and achieved top PF 0.91. |
+| **`EXP-02-HYBRID-META-FILTER`** | 2026-09-26 | Two-Stage Meta-Labeling & Conviction Barriers | Secondary Meta-classifier can filter false breakouts from M10 and achieve positive net expectancy under $36 friction. | ✅ Completed | **H2 Confirmed:** Two-Stage MetaFilter achieved **PF 1.03**, Net Profit **+$77.42**, Payoff **1.86**, Max DD **10.5%**, cutting friction drag to 6.9%. |
 
 ---
 
