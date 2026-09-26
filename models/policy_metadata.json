@@ -1,0 +1,45 @@
+{
+  "version": "1.0.0",
+  "symbol": "XAUUSD",
+  "timeframe": "M1",
+  "architecture": "Deep Multi-Head Policy Network & LightGBM Baseline",
+  "num_features": 40,
+  "market_features_count": 31,
+  "position_features_count": 9,
+  "market_features": [
+    "ret_1", "ret_3", "ret_5", "ret_15", "ret_30", "ret_60",
+    "norm_atr14", "atr_ratio", "realized_vol_30",
+    "move_5_atr", "move_15_atr", "move_60_atr",
+    "body_atr", "range_atr", "upper_wick_ratio", "lower_wick_ratio", "close_loc_in_bar",
+    "z_score_20", "z_score_100", "pct_rank_60",
+    "dist_ema20_atr", "dist_ema50_atr", "dist_ema200_atr", "rsi14_norm",
+    "macro_ema_ratio",
+    "vol_ratio_20", "vol_ratio_100",
+    "hour_sin", "hour_cos", "dow_sin", "dow_cos"
+  ],
+  "position_features": [
+    "pos_dir",
+    "pos_size_frac",
+    "entry_dist_atr",
+    "unrealized_pnl_atr",
+    "time_in_pos_norm",
+    "dist_to_sl_atr",
+    "dist_to_tp_atr",
+    "max_drawdown_atr",
+    "bars_since_action_norm"
+  ],
+  "action_mapping": {
+    "0": "HOLD",
+    "1": "OPEN_LONG",
+    "2": "OPEN_SHORT",
+    "3": "ADD",
+    "4": "REDUCE",
+    "5": "CLOSE",
+    "6": "REVERSE"
+  },
+  "constraints": {
+    "zero_room_to_run": true,
+    "scale_invariant": true,
+    "locked_year": 2026
+  }
+}
