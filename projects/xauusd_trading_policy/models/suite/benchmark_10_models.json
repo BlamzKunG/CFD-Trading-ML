@@ -89,5 +89,31 @@
     "sharpe_ratio": 0.85,
     "train_time_sec": 263.5,
     "eval_time_sec": 85.0
+  },
+  "M9_CostSensitive": {
+    "algorithm": "CostSensitive",
+    "net_profit": -99247.5107111805,
+    "return_pct": -992.4751071118358,
+    "profit_factor": 0.4157971182558986,
+    "win_rate": 37.611061750333185,
+    "max_drawdown_pct": 991.9114190949678,
+    "total_trades": 18008,
+    "avg_trade_pnl": -5.511301127897629,
+    "sharpe_ratio": 1.0379599792832366,
+    "train_time_sec": 355.7,
+    "eval_time_sec": 8.5
+  },
+  "M10_ActorCritic_RL": {
+    "algorithm": "ActorCritic_RL",
+    "net_profit": 29528.53520517683,
+    "return_pct": 295.07585205178293,
+    "profit_factor": 1.096222499752004,
+    "win_rate": 39.12854930304594,
+    "max_drawdown_pct": 103.80805685059711,
+    "total_trades": 48425,
+    "avg_trade_pnl": 0.6097787342318396,
+    "sharpe_ratio": 0.11633117360767752,
+    "train_time_sec": 390.6,
+    "eval_time_sec": 46.6
   }
 }
