@@ -360,13 +360,14 @@ class TwoStageMetaLabelingPolicy:
         self.meta_model.fit(meta_X, meta_y)
         return self
 
-    def predict_step(self, x_1x40: np.ndarray, meta_threshold: float = 0.55) -> Tuple[int, float, float, float]:
+    def predict_step(self, x_1x40: np.ndarray, threshold: float = 0.55, meta_threshold: Optional[float] = None) -> Tuple[int, float, float, float]:
+        eff_threshold = threshold if meta_threshold is None else meta_threshold
         prim_act = int(self.primary_model.predict(x_1x40)[0])
         prim_probs = self.primary_model.predict_proba(x_1x40)
         meta_feat = np.hstack([x_1x40, prim_probs])
         p_success = float(self.meta_model.predict_proba(meta_feat)[0, 1])
         
-        if p_success < meta_threshold and prim_act != 0:
+        if p_success < eff_threshold and prim_act != 0:
             final_act = 0  # Cancel trade if meta-model assesses high friction risk
             size_frac = 0.0
         else:

@@ -75,7 +75,7 @@ def main():
         "-u",
         bench_script,
         "--data-path", data_path,
-        "--models", "M8_MetaLabeling,M9_CostSensitive,M10_ActorCritic_RL",
+        "--models", "M8_MetaLabeling",
         "--subsample-step", "6",
         "--horizon", "60"
     ]
