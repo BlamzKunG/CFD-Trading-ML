@@ -1,178 +1,55 @@
-# 🧠 CFD Quant Trading & Machine Learning Research Hub
+# 📈 CFD Machine Learning Projects Collection
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/BlamzKunG/XAUUSD-Trading-Policy-ML/blob/main/notebooks/Train_XAUUSD_Trading_Policy_Colab.ipynb)
-![License](https://img.shields.io/badge/License-MIT-blue.svg)
-![Market](https://img.shields.io/badge/Market-CFD%20Quant%20Trading-purple.svg)
-![Assets](https://img.shields.io/badge/Assets-Multi--Asset%20(Gold%20%7C%20FX%20%7C%20Indices%20%7C%20Crypto)-gold.svg)
-![Runtime](https://img.shields.io/badge/Engines-PyTorch%20%7C%20LightGBM%20%7C%20ONNX%20%7C%20MT5-green.svg)
+คลังรวมโปรเจกต์ Machine Learning สำหรับการเทรด CFD (Quant Trading) รวบรวมงานทดลอง, สคริปต์ทำฟีเจอร์, ตัวจำลองกลยุทธ์, โมเดลสำเร็จรูป (ONNX) และ Expert Advisor (MetaTrader 5) จัดเก็บแยกเป็นคอลเลกชันตามแต่ละโปรเจกต์
 
 ---
 
-## 🎯 วิสัยทัศน์และเป้าหมายของ Repository (Repository Purpose)
+## 📁 โปรเจกต์ในคลัง (Projects Collection)
 
-Repository นี้เป็น **ศูนย์วิจัยและพัฒนาโมเดล Machine Learning สำหรับ Quantitative Trading ในตลาด CFD (Contracts for Difference)** โดยเฉพาะ 
+### 1. XAUUSD Trading Policy & Position Management (M1)
+โมเดล ML สำหรับตัดสินใจเปิด/ปิด และจัดการ Position ทองคำ (XAUUSD) บนกราฟ M1 แบบ Autonomous Policy
+- **สิ่งที่โมเดลทำ:** ไม่ใช่แค่บอก Buy/Sell ลอยๆ แต่ตัดสินใจเลือกระหว่าง `HOLD`, `OPEN_LONG`, `OPEN_SHORT`, `ADD` (เพิ่มไม้), `REDUCE` (ลดความเสี่ยง 50%), `CLOSE` (ปิดไม้), `REVERSE` (กลับทิศ) พร้อมคำนวณขนาด Lot และระยะ SL/TP ให้ตามความผันผวน
+- **ฟีเจอร์ที่ใช้:** 31 Market Features (ไร้ราคา Close ดิบ แปลงเป็นค่าสัมพัทธ์ เช่น Log Returns, ATR Ratio, Candlestick Wicks, Z-Score) + 9 Position Features (สถานะปัจจุบัน กำไร/ขาดทุนสะสม ระยะเวลาที่ถือ) รวม 40 Features
+- **Data Hygiene:** ใช้ข้อมูล 2020–2024 สำหรับ Train, ปี 2025 สำหรับ Validation และล็อคข้อมูลปี 2026 ไว้ห้ามแตะ
+- **ไฟล์ของโปรเจกต์นี้:**
+  - [notebooks/Train_XAUUSD_Trading_Policy_Colab.ipynb](file:///root/XAUUSD-Trading-Policy-ML/notebooks/Train_XAUUSD_Trading_Policy_Colab.ipynb) - โน้ตบุ๊กสำหรับเปิดเทรนบน Google Colab (GPU T4)
+  - [scripts/run_colab_training.py](file:///root/XAUUSD-Trading-Policy-ML/scripts/run_colab_training.py) - สคริปต์รันเทรนอัตโนมัติผ่าน Colab CLI
+  - [scripts/features_policy.py](file:///root/XAUUSD-Trading-Policy-ML/scripts/features_policy.py) - สคริปต์สกัด 31 Market + 9 Position Features
+  - [scripts/counterfactual_simulator.py](file:///root/XAUUSD-Trading-Policy-ML/scripts/counterfactual_simulator.py) - ระบบจำลองเพื่อสร้าง Target Label แบบหักลบค่าธรรมเนียมและสเปรด
+  - [scripts/train_policy_suite.py](file:///root/XAUUSD-Trading-Policy-ML/scripts/train_policy_suite.py) - โครงสร้างโมเดล PyTorch Multi-Head และตัวแปลง ONNX
+  - [scripts/backtest_policy_evaluator.py](file:///root/XAUUSD-Trading-Policy-ML/scripts/backtest_policy_evaluator.py) - สคริปต์ทำ Closed-Loop Backtest
+  - [models/xauusd_trading_policy.onnx](file:///root/XAUUSD-Trading-Policy-ML/models/xauusd_trading_policy.onnx) - โมเดล ONNX ที่เทรนเสร็จแล้ว
+  - [models/policy_metadata.json](file:///root/XAUUSD-Trading-Policy-ML/models/policy_metadata.json) - ค่าสถิติ Mean/Std สำหรับ Normalize
+  - [mql5/Experts/XAUUSD_Trading_Policy_EA_Standalone.mq5](file:///root/XAUUSD-Trading-Policy-ML/mql5/Experts/XAUUSD_Trading_Policy_EA_Standalone.mq5) - EA บน MT5 สำหรับรันโมเดลจริง (Standalone 100%)
 
-คลังโค้ดนี้ถูกออกแบบให้เป็น **Modular Framework** ที่ **ไม่จำกัดเฉพาะสินทรัพย์ใดสินทรัพย์หนึ่ง และไม่จำกัดประเภทของโจทย์ ML**:
-
-- 🌐 **Multi-Asset CFD Support:** รองรับสินทรัพย์หลากหลาย ไม่ว่าจะเป็น Commodities (**XAUUSD**, XAGUSD, USOIL), Forex (**EURUSD**, GBPUSD, USDJPY), Equity Indices (**US30**, NAS100, SPX500), หรือ Crypto CFDs (**BTCUSD**, ETHUSD)
-- 🧪 **Multi-Task ML Paradigms:** 
-  - **Policy & Decision Networks:** โมเดล Trading Policy สำหรับตัดสินใจเข้าออเดอร์ บริหารพอร์ต และจัดการคำสั่งแบบ Closed-Loop
-  - **Market Regime & Volatility Modeling:** โมเดลจำแนกสภาวะตลาด คาดการณ์ Volatility และตรวจจับการเบรกเอาต์
-  - **Excursion & Probability Estimators:** โมเดลประเมินโอกาสแตะระดับเป้าหมายหรือความเสี่ยง Drawdown
-  - **Dynamic Position & Risk Sizing:** โมเดลปรับขนาด Lot และวางระยะ Stop Loss / Take Profit ตามความผันผวน
-- ⚡ **Production-Grade Execution:** เชื่อมต่อการเทรนบน Cloud GPU (Google Colab / Colab CLI) สู่การรันจริงบน **MetaTrader 5 (MT5)** แบบ Low-Latency ผ่าน **ONNX Runtime**
+*(โปรเจกต์ ML อื่นๆ เกี่ยวกับ CFD เช่น คู่เงิน Forex, ดัชนีหุ้น หรือโมเดล Regime/Volatility จะถูกเพิ่มเข้ามาแยกเป็นงานๆ ในคลังนี้)*
 
 ---
 
-## 🏛️ สถาปัตยกรรมแกนกลางของระบบ (Core Quant Framework)
+## 🗂️ โครงสร้างโฟลเดอร์ใน Repo
 
 ```
-                            Raw CFD Tick / M1 Bar Stream
-                                         │
-                                         ▼
-                     Stationary Feature Engineering (Scale-Free)
-                     - Multi-Horizon Log Returns: ln(Pt / Pt-k)
-                     - Volatility Normalization: ΔP / ATR
-                     - Microstructure: Body, Wicks, Range / ATR
-                     - Local Distribution: Rolling Z-Scores, Pct Rank
-                                         │
-                     ┌───────────────────┴───────────────────┐
-                     ▼                                       ▼
-             Market State Vector                    Position State Vector
-            [31 Scale-Free Feats]                   [9 Relative State Feats]
-                     │                                       │
-                     └───────────────────┬───────────────────┘
-                                         ▼
-                                State Input Tensor (40D)
-                                         │
-                                         ▼
-                   Deep Multi-Head Policy Model / ML Backbone
-                                         │
-                    ┌────────────────────┼────────────────────┐
-                    ▼                    ▼                    ▼
-              ACTION HEAD            SIZE HEAD           ORDER HEAD
-              Discrete Acts       Risk Fraction       Dynamic Distances
-            (HOLD, BUY, SELL,      [0.1 .. 1.0]       (SL & TP in ATR)
-            ADD, REDUCE, CLOSE,
-                  REVERSE)
-                    │                    │                    │
-                    └────────────────────┼────────────────────┘
-                                         ▼
-                        Closed-Loop Simulation / MetaTrader 5 EA
-                                         │
-                                         ▼
-                             Next Bar Position State
-                                         │
-                                         └──────► Feedback Loop
+├── notebooks/   # รวม Jupyter Notebook สำหรับรันเทรน
+├── scripts/     # รวม Python scripts ทั้งหมด (Feature, Trainer, Backtest, CLI Runner)
+├── models/      # เก็บโมเดลที่เทรนเสร็จแล้ว (.onnx, metadata)
+├── mql5/        # เก็บ EA และ Include Files สำหรับรันบน MetaTrader 5
+└── docs/        # เก็บภาพกราฟผลการทดสอบ และเอกสารประกอบ
 ```
 
 ---
 
-## 🚀 โครงการที่กำลังพัฒนาและใช้งานใน Hub (Active Projects)
+## ⚡ โน้ตการใช้งาน (Quick Notes)
 
-### 📌 Project 1 (Flagship): XAUUSD Autonomous Trading Policy & Position Management
-โมเดล Machine Learning แบบ **Autonomous Closed-Loop Trading Policy** สำหรับเทรดทองคำ (XAUUSD) บนไทม์เฟรม M1 โดยโมเดลรับบทบาทเป็นผู้จัดการพอร์ตเต็มรูปแบบ
+### การเทรนโมเดล
+- **เทรนบนเบราว์เซอร์:** กดเปิดไฟล์ในโฟลเดอร์ `notebooks/` บน Google Colab เลือก GPU T4 แล้วกด Run All ได้เลย
+- **เทรนผ่าน Colab CLI:**
+  ```bash
+  colab new -s my-session --gpu T4
+  colab exec -s my-session --timeout 3600 -f scripts/run_colab_training.py
+  colab stop -s my-session
+  ```
 
-- **แก้ปัญหา Price Scale ($1,500 vs $5,000):** ตัดขาดจากการใช้ราคา Close ดิบ ทุกอย่างถูกแปลงเป็น Relative Stationary Space
-- **Closed-Loop State-Action Framework:** นำ Market Features (31 ตัว) มารวมกับ Position Features (9 ตัว) ทำให้โมเดล "รู้ว่าตอนนี้ถือไม้ฝั่งไหน กำไร/ขาดทุนเท่าไร และควรจัดการต่ออย่างไร"
-- **Counterfactual Teacher Simulator:** จำลองการเทรดล่วงหน้า 60 แท่งในทุกสถานะสมมุติ (Flat, Long กำไร/ขาดทุน, Short กำไร/ขาดทุน) หักลบ Spread, Slippage, Commission และลงโทษ Drawdown เพื่อสร้าง Action Targets
-- **7 Discrete Actions:** `HOLD` (0), `OPEN_LONG` (1), `OPEN_SHORT` (2), `ADD` (3), `REDUCE` (4), `CLOSE` (5), `REVERSE` (6)
-- **Data Hygiene:** Train (2020–2024), Validation (2025), **2026 LOCKED** (ห้ามแตะระหว่างเทรน)
-- **MT5 Standalone EA:** มี EA ภาษา MQL5 ตัวเต็มที่คำนวณ 31 Features ในตัว และโหลดโมเดล ONNX มาประมวลผลบนกราฟจริงแบบ Real-time
-
----
-
-## 🛠️ แผนงานขยายผลสู่สินทรัพย์และโมเดลอื่น (Roadmap for Other CFDs)
-
-| Asset Class | สินทรัพย์เป้าหมาย | ประเภทโมเดล (ML Architecture) | วัตถุประสงค์ (Target Objective) |
-|---|---|---|---|
-| **Precious Metals** | XAUUSD, XAGUSD | Deep Multi-Head Policy Network | บริหาร Position แบบไดนามิก (เปิด/สเกลอิน/ลดความเสี่ยง/กลับทิศ) |
-| **Major Forex** | EURUSD, GBPUSD, USDJPY | Temporal Convolutional Network (TCN) | คาดการณ์ทิศทางและ Volatility Regime ข้ามช่วงข่าวสำคัญ |
-| **Stock Indices** | US30, NAS100, SPX500 | Multi-Horizon LightGBM Ensemble | ตรวจจับ Momentum Exhaustion และ Mean Reversion รอบเปิดตลาด US |
-| **Energy** | USOIL, UKOIL | Transformer / Self-Attention Policy | สกัดแนวโน้มระยะสั้นที่ได้รับอิทธิพลจาก Breakout ของช่วงราคา |
-| **Crypto CFDs** | BTCUSD, ETHUSD | Deep Reinforcement Learning (PPO/SAC) | วาง Trailing SL/TP และ Rebalancing อัตโนมัติตลอด 24/7 |
-
----
-
-## 💻 วิธีการเทรนโมเดล (Training Workflows)
-
-### ช่องทางที่ 1: รันบน Google Colab ด้วยปุ่มคลิกเดียว (1-Click Browser)
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/BlamzKunG/XAUUSD-Trading-Policy-ML/blob/main/notebooks/Train_XAUUSD_Trading_Policy_Colab.ipynb)
-
-1. คลิกที่ปุ่ม **"Open In Colab"** ด้านบน
-2. เลือก Runtime เป็น **T4 GPU** (`Runtime` -> `Change runtime type` -> `T4 GPU`)
-3. อัปโหลดไฟล์ CSV ข้อมูล หรือ Mount ผ่าน Google Drive
-4. กด **`Ctrl + F9` (Run all)** เพื่อรันตั้งแต่ต้นจนจบ: สกัดฟีเจอร์ $\to$ สร้าง Labels $\to$ เทรน PyTorch GPU $\to$ ทำ Backtest $\to$ Export เป็น MT5 ONNX
-
-### ช่องทางที่ 2: รันผ่าน Google Colab CLI (Automated Terminal CLI)
-สำหรับผู้ใช้งานสาย Automation ที่ตั้งค่า `colab` CLI ไว้แล้ว:
-```bash
-# 1. สร้าง Session บน Colab พร้อม T4 GPU
-colab new -s quant-train --gpu T4
-
-# 2. อัปโหลดโค้ดและชุดข้อมูล
-colab upload -s quant-train /path/to/data.csv.gz /content/data.csv.gz
-
-# 3. สั่งเทรนผ่าน Background Runner
-colab exec -s quant-train --timeout 3600 -f scripts/run_colab_training.py
-
-# 4. สั่งปิด Session เมื่อเสร็จสิ้นเพื่อประหยัดโควต้า
-colab stop -s quant-train
-```
-
----
-
-## 📈 วิธีการนำโมเดลไปใช้งานบน MetaTrader 5 (MT5 ONNX Deployment)
-
-1. **คัดลอกไฟล์โมเดล ONNX:**
-   นำไฟล์ในโฟลเดอร์ `models/` ไปวางที่โฟลเดอร์ข้อมูลของ MT5:
-   ```
-   [MT5 Data Folder]/MQL5/Files/
-   ├── xauusd_trading_policy.onnx
-   ├── xauusd_trading_policy.onnx.data
-   └── policy_metadata.json
-   ```
-2. **ติดตั้ง Expert Advisor:**
-   นำไฟล์ EA จาก `mql5/Experts/` ไปวางที่:
-   ```
-   [MT5 Data Folder]/MQL5/Experts/
-   └── XAUUSD_Trading_Policy_EA_Standalone.mq5
-   ```
-3. **คอมไพล์ใน MetaEditor:**
-   เปิด MetaEditor 5 ดับเบิ้ลคลิกไฟล์ EA แล้วกด **Compile (F7)** โค้ดเป็น Standalone 100% ปราศจากปัญหา Include ภายนอก
-4. **เปิดการทำงานบนกราฟ:**
-   เปิดกราฟสินทรัพย์ที่ต้องการ (เช่น XAUUSD M1) ลาก EA ลงบนกราฟ และติ๊กเลือก **"Allow Algo Trading"**
-
----
-
-## 📁 โครงสร้างโปรเจกต์ (Repository Directory Layout)
-
-```
-├── README.md                                          <- เอกสารภาพรวมของ Quant Trading ML Hub
-├── requirements.txt                                   <- รายการ Python dependencies (PyTorch, ONNX, LightGBM ฯลฯ)
-├── notebooks/
-│   └── Train_XAUUSD_Trading_Policy_Colab.ipynb        <- Colab Notebook สำหรับเทรนและทดสอบโมเดล
-├── scripts/
-│   ├── features_policy.py                             <- Pipeline สกัดฟีเจอร์ไร้สเกลราคา (31 Market + 9 Position)
-│   ├── counterfactual_simulator.py                    <- Counterfactual Teacher Simulator สำหรับสร้าง Action Labels
-│   ├── train_policy_suite.py                          <- สคริปต์เทรน PyTorch Multi-Head Policy & ONNX Exporter
-│   ├── backtest_policy_evaluator.py                   <- Closed-Loop Event-Driven Backtester
-│   └── run_colab_training.py                          <- End-to-End Runner สำหรับสั่งงานผ่าน Colab CLI
-├── models/
-│   ├── xauusd_trading_policy.onnx                     <- โมเดลโครงข่ายประสาทเทียม ONNX พร้อมใช้งานบน MT5
-│   ├── xauusd_trading_policy.onnx.data                <- พารามิเตอร์ Weights & Biases ของโมเดล
-│   └── policy_metadata.json                           <- สรุปฟีเจอร์ Mean/Std และ Configuration ทั้งหมด
-├── mql5/
-│   ├── Include/
-│   │   └── XAUUSD_Policy_Agent.mqh                    <- คลาส MQL5 สกัดฟีเจอร์และรัน OnnxRun ในตัว
-│   └── Experts/
-│       └── XAUUSD_Trading_Policy_EA_Standalone.mq5    <- Standalone MT5 Expert Advisor พร้อม On-Chart Dashboard
-└── docs/
-    ├── ARCHITECTURE.md                                <- เอกสารการคำนวณทางคณิตศาสตร์และโครงสร้าง State-Action
-    └── equity_curve_2025.png                          <- ภาพกราฟผลการทดสอบ Closed-Loop Backtest ปี 2025
-```
-
----
-
-## ⚖️ License
-MIT License. Developed & Maintained by **BlamzKunG**.
+### การนำโมเดลไปรันใน MetaTrader 5
+1. คัดลอกไฟล์ใน `models/` (`.onnx` และ `.onnx.data`) ไปไว้ที่โฟลเดอร์ `MQL5/Files/` ของ MT5
+2. คัดลอกไฟล์ใน `mql5/Experts/` ไปไว้ที่โฟลเดอร์ `MQL5/Experts/`
+3. เปิด MetaEditor กด **Compile (F7)** แล้วนำ EA ไปลากใส่กราฟ (เช่น XAUUSD M1) เปิด Algo Trading ได้ทันที
