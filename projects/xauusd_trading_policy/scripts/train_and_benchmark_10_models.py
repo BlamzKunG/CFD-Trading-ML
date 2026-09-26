@@ -468,6 +468,13 @@ def main():
     benchmark_results: Dict[str, Dict[str, Any]] = {}
     equity_curves: Dict[str, np.ndarray] = {}
 
+    # Pre-build fixed flat state feature matrix for fast-path 2025 out-of-sample backtesting
+    mf_val_arr = feat_val.to_numpy(dtype=np.float32)
+    pos_flat_block = np.zeros((len(mf_val_arr), 9), dtype=np.float32)
+    pos_flat_block[:, 8] = 1.0  # p_act_norm = 1.0
+    X_flat_val = np.hstack([mf_val_arr, pos_flat_block]).astype(np.float32)
+
+
     # =================================================================
     # TRAINING & EVALUATION LOOP ACROSS MODELS
     # =================================================================
@@ -655,8 +662,55 @@ def main():
             # ---------------------------------------------------------
             # CLOSED-LOOP BACKTEST EVALUATION ON 2025 OUT-OF-SAMPLE DATA
             # ---------------------------------------------------------
-            print(f"\n[{model_id}] Running Closed-Loop Backtest on 2025 Data ({len(df_val_clean):,} bars)...")
+            print(f"\n[{model_id}] Vectorized precomputing flat decisions on 2025 data...", end="", flush=True)
             t_eval_start = time.time()
+
+            if model_id in ["M1_LightGBM", "M2_CatBoost", "M3_XGBoost"]:
+                probs = trained_model.clf.predict_proba(X_flat_val)
+                best_a = np.argmax(probs, axis=1)
+                max_p = np.max(probs, axis=1)
+                best_a[max_p < 0.35] = 0
+                flat_sz = np.clip(trained_model.reg_size.predict(X_flat_val), 0.1, 1.0)
+                flat_sl = np.clip(trained_model.reg_sl.predict(X_flat_val), 1.0, 4.0)
+                flat_tp = np.clip(trained_model.reg_tp.predict(X_flat_val), 1.5, 7.0)
+                precomputed_flat = (best_a, flat_sz, flat_sl, flat_tp)
+            elif model_id == "M8_MetaLabeling":
+                prim_preds = trained_model.primary_model.predict(X_flat_val)
+                prim_probs = trained_model.primary_model.predict_proba(X_flat_val)
+                meta_X = np.hstack([X_flat_val, prim_probs])
+                meta_probs = trained_model.meta_model.predict_proba(meta_X)[:, 1]
+                final_a = prim_preds.copy()
+                final_a[(meta_probs < 0.55) & (final_a != 0)] = 0
+                flat_sz = np.clip(meta_probs, 0.2, 1.0)
+                flat_sl = np.full(len(X_flat_val), 2.0, dtype=np.float32)
+                flat_tp = np.full(len(X_flat_val), 3.5, dtype=np.float32)
+                precomputed_flat = (final_a, flat_sz, flat_sl, flat_tp)
+            else:
+                trained_model.eval()
+                all_a, all_sz, all_sl, all_tp = [], [], [], []
+                is_ac = (model_id == "M10_ActorCritic_RL")
+                with torch.no_grad():
+                    for bi in range(0, len(X_flat_val), 8192):
+                        bx = torch.tensor(X_flat_val[bi:bi+8192], dtype=torch.float32, device=device)
+                        if is_ac:
+                            logits, _, sz_t, ord_t = trained_model(bx)
+                        else:
+                            logits, sz_t, ord_t = trained_model(bx)
+                        probs = torch.softmax(logits, dim=-1)
+                        max_p, best_a = torch.max(probs, dim=-1)
+                        best_a = torch.where(max_p < 0.35, torch.zeros_like(best_a), best_a)
+                        all_a.append(best_a.cpu().numpy())
+                        all_sz.append(np.clip(sz_t.cpu().numpy()[:, 0], 0.1, 1.0))
+                        all_sl.append(np.clip(ord_t.cpu().numpy()[:, 0], 1.0, 4.0))
+                        all_tp.append(np.clip(ord_t.cpu().numpy()[:, 1], 1.5, 7.0))
+                precomputed_flat = (
+                    np.concatenate(all_a),
+                    np.concatenate(all_sz),
+                    np.concatenate(all_sl),
+                    np.concatenate(all_tp)
+                )
+
+            print(f" done! Running Closed-Loop Simulation ({len(df_val_clean):,} bars)...", flush=True)
 
             res = run_closed_loop_backtest(
                 df=df_val_clean,
@@ -667,7 +721,8 @@ def main():
                 lot_base=0.1,
                 spread_points=2.0,
                 slippage_points=1.0,
-                commission_per_lot=6.0
+                commission_per_lot=6.0,
+                precomputed_flat=precomputed_flat
             )
             eval_time = time.time() - t_eval_start
 

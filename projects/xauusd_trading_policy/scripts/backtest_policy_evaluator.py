@@ -30,7 +30,8 @@ def run_closed_loop_backtest(
     lot_base: float = 0.1,
     spread_points: float = 2.0,      # $0.20 spread typical for XAUUSD on prime accounts
     slippage_points: float = 1.0,    # $0.10 slippage
-    commission_per_lot: float = 6.0  # $6.0 per round-turn lot
+    commission_per_lot: float = 6.0, # $6.0 per round-turn lot
+    precomputed_flat: Optional[Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]] = None
 ) -> Dict[str, Any]:
     """
     Executes a high-fidelity closed-loop backtest.
@@ -146,16 +147,19 @@ def run_closed_loop_backtest(
             p_act_norm = 1.0
             p_size_frac = 0.0
 
-        pos_features = np.array([
-            pos_dir, p_size_frac, p_dist_entry, p_unrl,
-            p_time_norm, p_dist_sl, p_dist_tp, max_adv_atr, p_act_norm
-        ], dtype=np.float32)
-
-        # 3. Form full 40-feature state input
-        state_40 = np.concatenate([mf_arr[t], pos_features]).reshape(1, -1)
-
-        # 4. Get ML Model Policy Decision
-        action_id, size_frac, sl_atr, tp_atr = policy_predictor(state_40)
+        # 3. Form state input and get ML Model Policy Decision
+        if pos_dir == 0.0 and precomputed_flat is not None:
+            action_id = int(precomputed_flat[0][t])
+            size_frac = float(precomputed_flat[1][t])
+            sl_atr = float(precomputed_flat[2][t])
+            tp_atr = float(precomputed_flat[3][t])
+        else:
+            pos_features = np.array([
+                pos_dir, p_size_frac, p_dist_entry, p_unrl,
+                p_time_norm, p_dist_sl, p_dist_tp, max_adv_atr, p_act_norm
+            ], dtype=np.float32)
+            state_40 = np.concatenate([mf_arr[t], pos_features]).reshape(1, -1)
+            action_id, size_frac, sl_atr, tp_atr = policy_predictor(state_40)
 
         # 5. Process Decision
         if pos_dir == 0.0:

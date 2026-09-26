@@ -16,8 +16,17 @@ import sys
 import subprocess
 
 def run_cmd(cmd, check=True):
-    print(f"\n[Colab VM] Executing: {' '.join(cmd) if isinstance(cmd, list) else cmd}")
-    return subprocess.run(cmd, check=check, shell=isinstance(cmd, str))
+    print(f"\n[Colab VM] Executing: {' '.join(cmd) if isinstance(cmd, list) else cmd}", flush=True)
+    if isinstance(cmd, list):
+        proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, bufsize=1)
+        for line in proc.stdout:
+            print(line, end="", flush=True)
+        ret = proc.wait()
+        if check and ret != 0:
+            raise subprocess.CalledProcessError(ret, cmd)
+        return ret
+    else:
+        return subprocess.run(cmd, check=check, shell=True)
 
 def main():
     print("=" * 80)
@@ -63,6 +72,7 @@ def main():
     bench_script = os.path.join(repo_dir, "projects", "xauusd_trading_policy", "scripts", "train_and_benchmark_10_models.py")
     train_cmd = [
         sys.executable,
+        "-u",
         bench_script,
         "--data-path", data_path,
         "--models", "all",
