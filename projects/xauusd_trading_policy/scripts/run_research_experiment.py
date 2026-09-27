@@ -4142,12 +4142,16 @@ def run_experiment_13_temporal_attention(data_path: Optional[str] = None):
     # 5. Extract Latent Vectors z_t for Train Candidates & Validation Set
     print("\n[Step 4/5] Extracting Latent Representations and Training Meta-Decision Layer...")
     with torch.no_grad():
-        all_z_tr = []
+        all_z_tr, all_pup_tr, all_pdown_tr = [], [], []
         for bi in range(0, len(X_seq_tr), 2048):
             bx = torch.tensor(X_seq_tr[bi:bi+2048], device=device)
-            z_batch, _, _ = model(bx)
+            z_batch, pup_b, pdown_b = model(bx)
             all_z_tr.append(z_batch.cpu().numpy())
+            all_pup_tr.append(pup_b.cpu().numpy())
+            all_pdown_tr.append(pdown_b.cpu().numpy())
         z_tr = np.concatenate(all_z_tr)
+        pup_tr = np.maximum(0.1, np.concatenate(all_pup_tr)[:, 0])
+        pdown_tr = np.maximum(0.1, np.concatenate(all_pdown_tr)[:, 0])
 
     # Build Validation Sequences
     n_val = len(df_val_clean)
@@ -4177,13 +4181,6 @@ def run_experiment_13_temporal_attention(data_path: Optional[str] = None):
 
     # Train Meta-Classifier on Fused Attention Space
     from sklearn.ensemble import HistGradientBoostingClassifier
-    # Excursion ratios
-    with torch.no_grad():
-        bx_tr = torch.tensor(X_seq_tr, device=device)
-        _, pup_tr, pdown_tr = model(bx_tr)
-        pup_tr = np.maximum(0.1, pup_tr.cpu().numpy()[:, 0])
-        pdown_tr = np.maximum(0.1, pdown_tr.cpu().numpy()[:, 0])
-    
     ratio_tr_l = pup_tr / pdown_tr
     ratio_tr_s = pdown_tr / pup_tr
     atr_sub = atr_tr[sub_idx]
