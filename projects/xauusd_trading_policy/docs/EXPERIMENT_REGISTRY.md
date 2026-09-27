@@ -108,3 +108,8 @@
 - **Top Variant:** `Variant_2_Attention_Direct_Excursion` with PF **0.76** and Net Profit **$-11,175.41**
 - **Detailed Report:** [`EXP_13_TEMPORAL_ATTENTION.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_13_TEMPORAL_ATTENTION.md)
 - **Equity Curves:** [`EXP_13_TEMPORAL_ATTENTION.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_13_TEMPORAL_ATTENTION.png)
+
+### EXP-14-ATTENTION-EXCURSION-HYBRID Findings Summary
+- **Top Variant:** `Variant_1_EXP12_GBDT_Reference` with PF **0.99** and Net Profit **$-28.23**
+- **Detailed Report:** [`EXP_14_ATTENTION_EXCURSION_HYBRID.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_14_ATTENTION_EXCURSION_HYBRID.md)
+- **Equity Curves:** [`EXP_14_ATTENTION_EXCURSION_HYBRID.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_14_ATTENTION_EXCURSION_HYBRID.png)
