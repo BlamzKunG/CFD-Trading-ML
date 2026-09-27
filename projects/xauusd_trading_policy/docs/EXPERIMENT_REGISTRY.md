@@ -93,3 +93,8 @@
 - **Top Variant:** `Variant_1_Baseline_Direction_GBDT` with PF **0.81** and Net Profit **$-3,476.22**
 - **Detailed Report:** [`EXP_10_EXCURSION_QUANTILES.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_10_EXCURSION_QUANTILES.md)
 - **Equity Curves:** [`EXP_10_EXCURSION_QUANTILES.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_10_EXCURSION_QUANTILES.png)
+
+### EXP-11-CALIBRATED-EXCURSION-EDGE Findings Summary
+- **Top Variant:** `Variant_5_Macro_Dynamic_Sizing` with PF **0.91** and Net Profit **$-1,910.88**
+- **Detailed Report:** [`EXP_11_CALIBRATED_EXCURSION_EDGE.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_11_CALIBRATED_EXCURSION_EDGE.md)
+- **Equity Curves:** [`EXP_11_CALIBRATED_EXCURSION_EDGE.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_11_CALIBRATED_EXCURSION_EDGE.png)
