@@ -153,3 +153,8 @@
 - **Top Variant:** `Variant_5_Tight_ECN_DMA_23` with PF **1.47** and Net Profit **$480.97**
 - **Detailed Report:** [`EXP_22_COST_STRESS_AND_HIGH_WATER_LOCKING.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_22_COST_STRESS_AND_HIGH_WATER_LOCKING.md)
 - **Equity Curves:** [`EXP_22_COST_STRESS_AND_HIGH_WATER_LOCKING.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_22_COST_STRESS_AND_HIGH_WATER_LOCKING.png)
+
+### EXP-23-MTF-CONFLUENCE-AND-VOLUME-EXPANSION Findings Summary
+- **Top Variant:** `Variant_2_H1_Macro_Trend_Confluence` with PF **2.05** and Net Profit **$453.68**
+- **Detailed Report:** [`EXP_23_MTF_CONFLUENCE_AND_VOLUME_EXPANSION.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_23_MTF_CONFLUENCE_AND_VOLUME_EXPANSION.md)
+- **Equity Curves:** [`EXP_23_MTF_CONFLUENCE_AND_VOLUME_EXPANSION.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_23_MTF_CONFLUENCE_AND_VOLUME_EXPANSION.png)
