@@ -138,3 +138,8 @@
 - **Top Variant:** `Variant_1_EXP18_Champion_Ref` with PF **1.48** and Net Profit **$110.05**
 - **Detailed Report:** [`EXP_19_ASYMMETRIC_DIRECTIONAL_STACKING.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_19_ASYMMETRIC_DIRECTIONAL_STACKING.md)
 - **Equity Curves:** [`EXP_19_ASYMMETRIC_DIRECTIONAL_STACKING.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_19_ASYMMETRIC_DIRECTIONAL_STACKING.png)
+
+### EXP-20-VOLATILITY-RISK-PARITY-AND-TRUE-STACKING Findings Summary
+- **Top Variant:** `Variant_1_EXP19_Champion_Ref` with PF **1.31** and Net Profit **$348.67**
+- **Detailed Report:** [`EXP_20_VOLATILITY_RISK_PARITY_AND_TRUE_STACKING.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_20_VOLATILITY_RISK_PARITY_AND_TRUE_STACKING.md)
+- **Equity Curves:** [`EXP_20_VOLATILITY_RISK_PARITY_AND_TRUE_STACKING.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_20_VOLATILITY_RISK_PARITY_AND_TRUE_STACKING.png)
