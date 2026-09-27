@@ -98,3 +98,8 @@
 - **Top Variant:** `Variant_5_Macro_Dynamic_Sizing` with PF **0.91** and Net Profit **$-1,910.88**
 - **Detailed Report:** [`EXP_11_CALIBRATED_EXCURSION_EDGE.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_11_CALIBRATED_EXCURSION_EDGE.md)
 - **Equity Curves:** [`EXP_11_CALIBRATED_EXCURSION_EDGE.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_11_CALIBRATED_EXCURSION_EDGE.png)
+
+### EXP-12-META-EXCURSION-FUSION Findings Summary
+- **Top Variant:** `Variant_2_Meta_Thresh_45` with PF **1.09** and Net Profit **$267.01**
+- **Detailed Report:** [`EXP_12_META_EXCURSION_FUSION.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_12_META_EXCURSION_FUSION.md)
+- **Equity Curves:** [`EXP_12_META_EXCURSION_FUSION.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_12_META_EXCURSION_FUSION.png)
