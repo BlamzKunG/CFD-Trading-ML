@@ -1,0 +1,91 @@
+{
+  "model_name": "XAUUSD_DualSleeve_Production",
+  "version": "1.0.0",
+  "onnx_model_file": "xauusd_dual_sleeve_champion.onnx",
+  "input_feature_count": 40,
+  "market_features": [
+    "ret_1",
+    "ret_3",
+    "ret_5",
+    "ret_15",
+    "ret_30",
+    "ret_60",
+    "norm_atr14",
+    "atr_ratio",
+    "realized_vol_30",
+    "move_5_atr",
+    "move_15_atr",
+    "move_60_atr",
+    "body_atr",
+    "range_atr",
+    "upper_wick_ratio",
+    "lower_wick_ratio",
+    "close_loc_in_bar",
+    "z_score_20",
+    "z_score_100",
+    "pct_rank_60",
+    "dist_ema20_atr",
+    "dist_ema50_atr",
+    "dist_ema200_atr",
+    "rsi14_norm",
+    "macro_ema_ratio",
+    "vol_ratio_20",
+    "vol_ratio_100",
+    "hour_sin",
+    "hour_cos",
+    "dow_sin",
+    "dow_cos"
+  ],
+  "position_features": [
+    "pos_dir",
+    "pos_size_frac",
+    "entry_dist_atr",
+    "unrealized_pnl_atr",
+    "time_in_pos_norm",
+    "dist_to_sl_atr",
+    "dist_to_tp_atr",
+    "max_drawdown_atr",
+    "bars_since_action_norm"
+  ],
+  "execution_parameters": {
+    "timeframe": "M1",
+    "base_symbol": "XAUUSD",
+    "stop_loss_atr_multiple": 2.0,
+    "take_profit_atr_multiple": 3.5,
+    "min_raw_probability": 0.35,
+    "min_meta_probability": 0.52,
+    "macro_trend_ema_period": 200,
+    "macro_trend_max_dist_atr": 0.5,
+    "volatility_ratio_min": 0.85
+  },
+  "dual_sleeve_allocation": {
+    "sleeve_a_trend_sniper": {
+      "condition": "Trend Aligned (|dist_ema200| <= 0.5) AND ATR Ratio >= 0.85",
+      "sizing_min_lot": 0.18,
+      "sizing_max_lot": 0.28,
+      "historical_win_rate_pct": 54.3,
+      "historical_profit_factor": 2.25
+    },
+    "sleeve_b_opportunistic": {
+      "condition": "Non-Regime-Confirmed Breakouts with Meta Prob >= 0.52",
+      "sizing_lot": 0.03,
+      "historical_win_rate_pct": 39.7,
+      "historical_profit_factor": 1.07
+    }
+  },
+  "performance_profile_2025_locked_oos": {
+    "net_profit_usd": 5283.33,
+    "net_return_pct": 52.8,
+    "profit_factor": 1.68,
+    "payoff_ratio": 2.39,
+    "max_drawdown_pct": 13.2,
+    "total_trades": 427,
+    "total_friction_usd": 731.0
+  },
+  "latency_profile_cpu": {
+    "mean_latency_us": 30.17,
+    "p95_latency_us": 45.25,
+    "p99_latency_us": 73.29,
+    "throughput_bars_per_sec": 30939.0
+  }
+}

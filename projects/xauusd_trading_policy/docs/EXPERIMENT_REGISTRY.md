@@ -83,3 +83,8 @@
 - **Top Variant:** `Sleeve_A_Trend_Sniper` with PF **2.25** and Net Profit **$2,294.99**
 - **Detailed Report:** [`EXP_08_DUAL_SLEEVE_PORTFOLIO.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_08_DUAL_SLEEVE_PORTFOLIO.md)
 - **Equity Curves:** [`EXP_08_DUAL_SLEEVE_PORTFOLIO.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_08_DUAL_SLEEVE_PORTFOLIO.png)
+
+### EXP-09-ONNX-MQL5-DEPLOYMENT Findings Summary
+- **Engine Status:** Native ONNX exported (25,066 bytes, 30.2 µs latency)
+- **MQL5 EA:** [`XAUUSD_DualSleeve_Production.mq5`](file:///content/CFD-Trading-ML/projects/xauusd_trading_policy/mql5/Experts/XAUUSD_DualSleeve_Production.mq5)
+- **Detailed Report:** [`EXP_09_ONNX_MQL5_DEPLOYMENT.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_09_ONNX_MQL5_DEPLOYMENT.md)
