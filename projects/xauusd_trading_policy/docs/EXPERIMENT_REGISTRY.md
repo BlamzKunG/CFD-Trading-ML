@@ -103,3 +103,8 @@
 - **Top Variant:** `Variant_2_Meta_Thresh_45` with PF **1.09** and Net Profit **$267.01**
 - **Detailed Report:** [`EXP_12_META_EXCURSION_FUSION.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_12_META_EXCURSION_FUSION.md)
 - **Equity Curves:** [`EXP_12_META_EXCURSION_FUSION.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_12_META_EXCURSION_FUSION.png)
+
+### EXP-13-TEMPORAL-ATTENTION Findings Summary
+- **Top Variant:** `Variant_2_Attention_Direct_Excursion` with PF **0.76** and Net Profit **$-11,175.41**
+- **Detailed Report:** [`EXP_13_TEMPORAL_ATTENTION.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_13_TEMPORAL_ATTENTION.md)
+- **Equity Curves:** [`EXP_13_TEMPORAL_ATTENTION.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_13_TEMPORAL_ATTENTION.png)
