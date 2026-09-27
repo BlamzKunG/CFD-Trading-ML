@@ -26,7 +26,7 @@ def run_cmd(cmd, check=True):
 
 def main():
     parser = argparse.ArgumentParser(description="Colab Autonomous Quant ML Experiment Runner")
-    parser.add_argument("--exp-id", type=str, default="EXP_08_DUAL_SLEEVE_PORTFOLIO", help="Experiment ID to execute")
+    parser.add_argument("--exp-id", type=str, default="EXP_09_ONNX_MQL5_DEPLOYMENT", help="Experiment ID to execute")
     args, _ = parser.parse_known_args()
 
     print("=" * 80)
@@ -42,7 +42,7 @@ def main():
         run_cmd(f"cd {repo_dir} && git pull origin main", check=False)
 
     print("\n[Step 2/4] Ensuring dependencies are ready...")
-    run_cmd(["pip", "install", "-q", "lightgbm", "catboost", "xgboost", "onnx", "onnxscript", "matplotlib", "scikit-learn"])
+    run_cmd(["pip", "install", "-q", "lightgbm", "catboost", "xgboost", "onnx", "onnxscript", "onnxruntime", "matplotlib", "scikit-learn"])
 
     data_path = "/content/XAUUSD_M1.csv.gz"
     if not os.path.exists(data_path):
