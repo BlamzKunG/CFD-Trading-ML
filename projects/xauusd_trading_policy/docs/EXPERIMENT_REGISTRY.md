@@ -88,3 +88,8 @@
 - **Engine Status:** Native ONNX exported (25,066 bytes, 30.2 µs latency)
 - **MQL5 EA:** [`XAUUSD_DualSleeve_Production.mq5`](file:///content/CFD-Trading-ML/projects/xauusd_trading_policy/mql5/Experts/XAUUSD_DualSleeve_Production.mq5)
 - **Detailed Report:** [`EXP_09_ONNX_MQL5_DEPLOYMENT.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_09_ONNX_MQL5_DEPLOYMENT.md)
+
+### EXP-10-EXCURSION-QUANTILE-REFORMULATION Findings Summary
+- **Top Variant:** `Variant_1_Baseline_Direction_GBDT` with PF **0.81** and Net Profit **$-3,476.22**
+- **Detailed Report:** [`EXP_10_EXCURSION_QUANTILES.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_10_EXCURSION_QUANTILES.md)
+- **Equity Curves:** [`EXP_10_EXCURSION_QUANTILES.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_10_EXCURSION_QUANTILES.png)
