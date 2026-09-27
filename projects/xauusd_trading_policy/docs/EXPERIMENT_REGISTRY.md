@@ -173,3 +173,8 @@
 - **Top Variant:** `Variant_3_Concentrated_Dual_Open_Window` with PF **2.48** and Net Profit **$522.84**
 - **Detailed Report:** [`EXP_26_MULTI_SCALE_MOMENTUM_AND_TRAILING_HARVEST.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_26_MULTI_SCALE_MOMENTUM_AND_TRAILING_HARVEST.md)
 - **Equity Curves:** [`EXP_26_MULTI_SCALE_MOMENTUM_AND_TRAILING_HARVEST.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_26_MULTI_SCALE_MOMENTUM_AND_TRAILING_HARVEST.png)
+
+### EXP-27-CROSS-SESSION-DUAL-SLEEVE-AND-STRESS Findings Summary
+- **Top Variant:** `Variant_5_Dual_Sleeve_Preservation_Engine` with PF **2.17** and Net Profit **$494.89**
+- **Detailed Report:** [`EXP_27_CROSS_SESSION_DUAL_SLEEVE_AND_STRESS.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_27_CROSS_SESSION_DUAL_SLEEVE_AND_STRESS.md)
+- **Equity Curves:** [`EXP_27_CROSS_SESSION_DUAL_SLEEVE_AND_STRESS.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_27_CROSS_SESSION_DUAL_SLEEVE_AND_STRESS.png)
