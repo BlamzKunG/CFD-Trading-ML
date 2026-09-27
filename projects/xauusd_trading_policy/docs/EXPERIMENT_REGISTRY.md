@@ -68,3 +68,8 @@
 - **Top Variant:** `Meta_Confidence_Sizing` with PF **1.64** and Net Profit **$1,627.57**
 - **Detailed Report:** [`EXP_05_DYNAMIC_BARRIERS.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_05_DYNAMIC_BARRIERS.md)
 - **Equity Curves:** [`EXP_05_DYNAMIC_BARRIERS.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_05_DYNAMIC_BARRIERS.png)
+
+### EXP-06-ENSEMBLE-META-VOTING Findings Summary
+- **Top Variant:** `EXP05_Champion_MLP` with PF **1.54** and Net Profit **$524.50**
+- **Detailed Report:** [`EXP_06_ENSEMBLE_META_VOTING.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_06_ENSEMBLE_META_VOTING.md)
+- **Equity Curves:** [`EXP_06_ENSEMBLE_META_VOTING.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_06_ENSEMBLE_META_VOTING.png)
