@@ -1633,5 +1633,399 @@ if __name__ == "__main__":
         run_experiment_04_tcn_rl_meta(args.data_path)
     elif args.exp_id == "EXP_05_DYNAMIC_BARRIERS":
         run_experiment_05_dynamic_barriers(args.data_path)
+    elif args.exp_id == "EXP_06_ENSEMBLE_META_VOTING":
+        run_experiment_06_ensemble_meta_voting(args.data_path)
     else:
         print(f"Unknown experiment ID: {args.exp_id}")
+
+
+def run_experiment_06_ensemble_meta_voting(data_path: Optional[str] = None):
+    """
+    =============================================================================
+    EXPERIMENT 06: MULTI-MODEL ENSEMBLE VOTING & META-CONFIDENCE SIZING
+    =============================================================================
+    Research Focus:
+    Does combining orthogonal model paradigms (MLP Policy Net + Causal TCN Sequence
+    Net + Gradient Boosted Trees) under a unified Meta-Labeling Layer increase annual
+    trade frequency (from ~60 to 100-180 trades) while maintaining Profit Factor >= 1.50
+    and accelerating capital growth?
+    =============================================================================
+    """
+    print("\n" + "=" * 80)
+    print("🔬 RUNNING EXPERIMENT EXP-06: MULTI-MODEL ENSEMBLE VOTING & META-CONFIDENCE SIZING")
+    print("=" * 80)
+
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+    print(f"[Hardware] PyTorch Device: {device.upper()}")
+
+    # 1. Load Data
+    csv_file = find_dataset_file(data_path)
+    df_train, df_val = load_and_preprocess_data(csv_file)
+    (feat_train, atr_train, close_train, df_train_clean), (feat_val, atr_val, close_val, df_val_clean) = prepare_market_features(df_train, df_val)
+
+    # 2. Build Training Dataset
+    print("\n[Counterfactuals] Generating training rollouts (Horizon=60, Step=6)...")
+    X_train, y_act_train, y_sz_train, y_sl_train, y_tp_train = build_augmented_training_dataset(
+        market_features=feat_train,
+        close_prices=close_train.to_numpy(),
+        high_prices=df_train_clean['high'].to_numpy(),
+        low_prices=df_train_clean['low'].to_numpy(),
+        atr_values=atr_train.to_numpy(),
+        horizon=60,
+        subsample_step=6
+    )
+
+    # 3. Train Model 1: Champion MLP Policy Net
+    print("\n[Step 1/6] Training Champion MLP Policy Net (Seed 42)...")
+    set_seed(42)
+    mlp_net = ActorCriticPolicyNet(state_dim=40, hidden_dim=128).to(device)
+    mlp_net = train_actor_critic(mlp_net, X_train, y_act_train, y_sz_train, y_sl_train, y_tp_train, device, epochs=8)
+
+    # 4. Train Model 2: Causal Dilated TCN Sequence Net
+    print("\n[Step 2/6] Training Causal Dilated TCN Policy Net (Seed 42)...")
+    set_seed(42)
+    tcn_net = TCNActorCriticPolicyNet(num_inputs=40, num_channels=[64, 64, 128], kernel_size=3).to(device)
+    tcn_net = train_actor_critic(tcn_net, X_train, y_act_train, y_sz_train, y_sl_train, y_tp_train, device, epochs=8)
+
+    # 5. Train Model 3: HistGradientBoosting Flat Entry Model
+    print("\n[Step 3/6] Training HistGradientBoosting Entry Model (Orthogonal Tree Backbone)...")
+    # Train on flat state instances from X_train
+    flat_mask = (X_train[:, 39] == 1.0)
+    X_flat_tr = X_train[flat_mask][:, :31]
+    y_flat_tr = y_act_train[flat_mask]
+    # Filter for HOLD (0), OPEN_LONG (1), OPEN_SHORT (2)
+    entry_mask = np.isin(y_flat_tr, [ACTION_HOLD, ACTION_OPEN_LONG, ACTION_OPEN_SHORT])
+    X_tree_tr = X_flat_tr[entry_mask]
+    y_tree_tr = y_flat_tr[entry_mask]
+
+    # Subsample tree training set for speed (up to 150,000 samples)
+    if len(X_tree_tr) > 150000:
+        t_sub = np.random.choice(len(X_tree_tr), 150000, replace=False)
+        X_tree_tr = X_tree_tr[t_sub]
+        y_tree_tr = y_tree_tr[t_sub]
+
+    tree_model = HistGradientBoostingClassifier(max_iter=100, max_depth=5, min_samples_leaf=50, random_state=42)
+    tree_model.fit(X_tree_tr, y_tree_tr)
+    print(f"[Tree Model] Trained HistGBDT on {len(X_tree_tr):,} flat entry instances.")
+
+    # 6. Generate Candidates from all 3 models on Historical Train Set & Train Unified Meta-Filter
+    print("\n[Step 4/6] Generating Historical Candidate Entries & Training Unified Meta-Filter...")
+    mf_train_arr = feat_train.to_numpy(dtype=np.float32)
+    pos_flat_train = np.zeros((len(mf_train_arr), 9), dtype=np.float32)
+    pos_flat_train[:, 8] = 1.0
+    X_flat_train = np.hstack([mf_train_arr, pos_flat_train]).astype(np.float32)
+
+    sub_indices = np.arange(0, len(X_flat_train), 3)
+    X_flat_sub = X_flat_train[sub_indices]
+    mf_sub = mf_train_arr[sub_indices]
+
+    close_train_arr = close_train.to_numpy()
+    high_train_arr = df_train_clean['high'].to_numpy()
+    low_train_arr = df_train_clean['low'].to_numpy()
+    atr_train_arr = atr_train.to_numpy()
+    n_train_bars = len(close_train_arr)
+    friction_per_unit = 0.36
+
+    # Model 1 & 2 inference on sub
+    mlp_net.eval()
+    tcn_net.eval()
+
+    def get_nn_preds(net):
+        preds, probs = [], []
+        with torch.no_grad():
+            for bi in range(0, len(X_flat_sub), 8192):
+                bx = torch.tensor(X_flat_sub[bi:bi+8192], dtype=torch.float32, device=device)
+                logits, _, _, _ = net(bx)
+                p = torch.softmax(logits, dim=-1)
+                mp, ba = torch.max(p, dim=-1)
+                preds.append(ba.cpu().numpy())
+                probs.append(mp.cpu().numpy())
+        return np.concatenate(preds), np.concatenate(probs)
+
+    mlp_a_hist, mlp_p_hist = get_nn_preds(mlp_net)
+    tcn_a_hist, tcn_p_hist = get_nn_preds(tcn_net)
+
+    # Tree inference on sub
+    tree_probs_all = tree_model.predict_proba(mf_sub)
+    tree_classes = tree_model.classes_
+    tree_a_hist = tree_classes[np.argmax(tree_probs_all, axis=1)]
+    tree_p_hist = np.max(tree_probs_all, axis=1)
+
+    # Build Unified Meta Training Data
+    meta_X, meta_y = [], []
+
+    def evaluate_entry(orig_idx, act):
+        if orig_idx + 120 >= n_train_bars:
+            return None
+        c_price = close_train_arr[orig_idx]
+        c_atr = atr_train_arr[orig_idx]
+        if c_atr <= 0:
+            return None
+        sl_price = c_price - 2.0 * c_atr if act == ACTION_OPEN_LONG else c_price + 2.0 * c_atr
+        tp_price = c_price + 3.5 * c_atr if act == ACTION_OPEN_LONG else c_price - 3.5 * c_atr
+
+        if act == ACTION_OPEN_LONG:
+            for step in range(1, 121):
+                b = orig_idx + step
+                if low_train_arr[b] <= sl_price:
+                    return 0
+                elif high_train_arr[b] >= tp_price:
+                    return 1 if (3.5 * c_atr - friction_per_unit) > 0 else 0
+            end_price = close_train_arr[orig_idx + 120]
+            return 1 if (end_price - c_price - friction_per_unit) > 0 else 0
+        else:
+            for step in range(1, 121):
+                b = orig_idx + step
+                if high_train_arr[b] >= sl_price:
+                    return 0
+                elif low_train_arr[b] <= tp_price:
+                    return 1 if (3.5 * c_atr - friction_per_unit) > 0 else 0
+            end_price = close_train_arr[orig_idx + 120]
+            return 1 if (c_price - end_price - friction_per_unit) > 0 else 0
+
+    model_entries = [
+        (mlp_a_hist, mlp_p_hist, 0),
+        (tcn_a_hist, tcn_p_hist, 1),
+        (tree_a_hist, tree_p_hist, 2)
+    ]
+
+    for a_arr, p_arr, m_id in model_entries:
+        cand_indices = np.where((np.isin(a_arr, [ACTION_OPEN_LONG, ACTION_OPEN_SHORT])) & (p_arr >= 0.35))[0]
+        for c_idx in cand_indices:
+            orig_i = sub_indices[c_idx]
+            outcome = evaluate_entry(orig_i, a_arr[c_idx])
+            if outcome is not None:
+                feat_vec = np.append(mf_train_arr[orig_i], [float(a_arr[c_idx]), float(m_id), float(p_arr[c_idx])])
+                meta_X.append(feat_vec)
+                meta_y.append(outcome)
+
+    unified_meta_clf = HistGradientBoostingClassifier(max_iter=100, max_depth=5, min_samples_leaf=40, random_state=42)
+    unified_meta_clf.fit(np.array(meta_X, dtype=np.float32), np.array(meta_y, dtype=np.int32))
+    print(f"[Unified Meta-Filter] Trained on {len(meta_y):,} multi-model entry instances.")
+
+    # 7. Precompute 2025 Out-of-Sample Predictions
+    print("\n[Step 5/6] Precomputing 2025 Out-of-Sample Ensemble Predictions...")
+    mf_val_arr = feat_val.to_numpy(dtype=np.float32)
+    pos_flat_val = np.zeros((len(mf_val_arr), 9), dtype=np.float32)
+    pos_flat_val[:, 8] = 1.0
+    X_flat_val = np.hstack([mf_val_arr, pos_flat_val]).astype(np.float32)
+
+    # MLP 2025
+    mlp_v_a, mlp_v_p = [], []
+    with torch.no_grad():
+        for bi in range(0, len(X_flat_val), 8192):
+            bx = torch.tensor(X_flat_val[bi:bi+8192], dtype=torch.float32, device=device)
+            logits, _, _, _ = mlp_net(bx)
+            p = torch.softmax(logits, dim=-1)
+            mp, ba = torch.max(p, dim=-1)
+            mlp_v_a.append(ba.cpu().numpy())
+            mlp_v_p.append(mp.cpu().numpy())
+    mlp_act_val = np.concatenate(mlp_v_a)
+    mlp_prob_val = np.concatenate(mlp_v_p)
+
+    # TCN 2025
+    tcn_v_a, tcn_v_p = [], []
+    with torch.no_grad():
+        for bi in range(0, len(X_flat_val), 8192):
+            bx = torch.tensor(X_flat_val[bi:bi+8192], dtype=torch.float32, device=device)
+            logits, _, _, _ = tcn_net(bx)
+            p = torch.softmax(logits, dim=-1)
+            mp, ba = torch.max(p, dim=-1)
+            tcn_v_a.append(ba.cpu().numpy())
+            tcn_v_p.append(mp.cpu().numpy())
+    tcn_act_val = np.concatenate(tcn_v_a)
+    tcn_prob_val = np.concatenate(tcn_v_p)
+
+    # Tree 2025
+    tree_val_probs_all = tree_model.predict_proba(mf_val_arr)
+    tree_act_val = tree_classes[np.argmax(tree_val_probs_all, axis=1)]
+    tree_prob_val = np.max(tree_val_probs_all, axis=1)
+
+    # Evaluate Meta Probabilities for each model's candidate
+    meta_mlp_in = np.column_stack([mf_val_arr, mlp_act_val.astype(np.float32), np.full(len(mf_val_arr), 0.0), mlp_prob_val])
+    meta_mlp_probs = unified_meta_clf.predict_proba(meta_mlp_in)[:, 1]
+
+    meta_tcn_in = np.column_stack([mf_val_arr, tcn_act_val.astype(np.float32), np.full(len(mf_val_arr), 1.0), tcn_prob_val])
+    meta_tcn_probs = unified_meta_clf.predict_proba(meta_tcn_in)[:, 1]
+
+    meta_tree_in = np.column_stack([mf_val_arr, tree_act_val.astype(np.float32), np.full(len(mf_val_arr), 2.0), tree_prob_val])
+    meta_tree_probs = unified_meta_clf.predict_proba(meta_tree_in)[:, 1]
+
+    # Precompute Ensemble Voting Signals
+    n_bars = len(df_val_clean)
+
+    # 8. Define 5 Ensemble Variants
+    print("\n[Step 6/6] Backtesting 5 Ensemble & Voting Strategies on 2025 Data...")
+
+    # Variant 1: EXP-05 Champion MLP Baseline
+    v1_act = mlp_act_val.copy()
+    v1_act[mlp_prob_val < 0.35] = ACTION_HOLD
+    v1_act[meta_mlp_probs < 0.52] = ACTION_HOLD
+    v1_sz = np.clip(0.5 + 1.5 * (meta_mlp_probs - 0.52) / 0.10, 0.5, 2.0).astype(np.float32)
+
+    # Variant 2: Ensemble Strict Consensus (At least 2 models agree on exact action)
+    v2_act = np.full(n_bars, ACTION_HOLD, dtype=np.int32)
+    v2_sz = np.ones(n_bars, dtype=np.float32)
+    for b in range(n_bars):
+        votes = {ACTION_OPEN_LONG: 0, ACTION_OPEN_SHORT: 0}
+        confs = []
+        if mlp_prob_val[b] >= 0.35 and mlp_act_val[b] in votes:
+            votes[mlp_act_val[b]] += 1
+            confs.append(meta_mlp_probs[b])
+        if tcn_prob_val[b] >= 0.35 and tcn_act_val[b] in votes:
+            votes[tcn_act_val[b]] += 1
+            confs.append(meta_tcn_probs[b])
+        if tree_prob_val[b] >= 0.35 and tree_act_val[b] in votes:
+            votes[tree_act_val[b]] += 1
+            confs.append(meta_tree_probs[b])
+
+        for act_cand, v_cnt in votes.items():
+            if v_cnt >= 2:
+                avg_meta = float(np.mean(confs))
+                if avg_meta >= 0.50:
+                    v2_act[b] = act_cand
+                    v2_sz[b] = float(np.clip(0.5 + 1.5 * (avg_meta - 0.50) / 0.10, 0.5, 2.0))
+                break
+
+    # Variant 3: Ensemble Union (Trade if ANY model qualifies with Meta Prob >= 0.52)
+    v3_act = np.full(n_bars, ACTION_HOLD, dtype=np.int32)
+    v3_sz = np.ones(n_bars, dtype=np.float32)
+    for b in range(n_bars):
+        candidates = []
+        if mlp_prob_val[b] >= 0.35 and mlp_act_val[b] in [ACTION_OPEN_LONG, ACTION_OPEN_SHORT] and meta_mlp_probs[b] >= 0.52:
+            candidates.append((meta_mlp_probs[b], mlp_act_val[b]))
+        if tcn_prob_val[b] >= 0.35 and tcn_act_val[b] in [ACTION_OPEN_LONG, ACTION_OPEN_SHORT] and meta_tcn_probs[b] >= 0.52:
+            candidates.append((meta_tcn_probs[b], tcn_act_val[b]))
+        if tree_prob_val[b] >= 0.35 and tree_act_val[b] in [ACTION_OPEN_LONG, ACTION_OPEN_SHORT] and meta_tree_probs[b] >= 0.52:
+            candidates.append((meta_tree_probs[b], tree_act_val[b]))
+
+        if candidates:
+            # Pick highest meta confidence candidate
+            candidates.sort(key=lambda x: x[0], reverse=True)
+            best_meta, best_act = candidates[0]
+            v3_act[b] = best_act
+            v3_sz[b] = float(np.clip(0.5 + 1.5 * (best_meta - 0.52) / 0.10, 0.5, 2.0))
+
+    # Variant 4: Ensemble Union with Agreement Bonus Sizing
+    v4_act = v3_act.copy()
+    v4_sz = v3_sz.copy()
+    for b in range(n_bars):
+        if v4_act[b] != ACTION_HOLD:
+            agree_count = 0
+            if mlp_act_val[b] == v4_act[b]:
+                agree_count += 1
+            if tcn_act_val[b] == v4_act[b]:
+                agree_count += 1
+            if tree_act_val[b] == v4_act[b]:
+                agree_count += 1
+            if agree_count >= 2:
+                # 1.4x Consensus multiplier up to 2.5x max (0.25 lot)
+                v4_sz[b] = float(np.clip(v4_sz[b] * 1.4, 0.5, 2.5))
+
+    # Variant 5: Neural Duo Agreement (MLP & TCN agreement only)
+    v5_act = np.full(n_bars, ACTION_HOLD, dtype=np.int32)
+    v5_sz = np.ones(n_bars, dtype=np.float32)
+    for b in range(n_bars):
+        if (mlp_act_val[b] in [ACTION_OPEN_LONG, ACTION_OPEN_SHORT] and
+            mlp_act_val[b] == tcn_act_val[b] and
+            mlp_prob_val[b] >= 0.35 and tcn_prob_val[b] >= 0.35):
+            avg_meta = float((meta_mlp_probs[b] + meta_tcn_probs[b]) / 2.0)
+            if avg_meta >= 0.50:
+                v5_act[b] = mlp_act_val[b]
+                v5_sz[b] = float(np.clip(0.5 + 1.5 * (avg_meta - 0.50) / 0.10, 0.5, 2.0))
+
+    variants = [
+        {"id": "EXP05_Champion_MLP", "desc": "EXP-05 Champion Baseline: Single MLP + Meta Sizing (0.05-0.20 lot)", "act": v1_act, "sz": v1_sz},
+        {"id": "Ensemble_Strict_Consensus", "desc": "Strict Consensus: >= 2 of 3 Models Agree on Direction + Meta Sizing", "act": v2_act, "sz": v2_sz},
+        {"id": "Ensemble_Union_Opportunity", "desc": "Union Expansion: Any Model Qualifies via Unified Meta-Filter", "act": v3_act, "sz": v3_sz},
+        {"id": "Ensemble_Bonus_Consensus", "desc": "Union Expansion + 1.4x Lot Multiplier on Multi-Model Agreement", "act": v4_act, "sz": v4_sz},
+        {"id": "Neural_Duo_Agreement", "desc": "Deep Neural Consensus: MLP + TCN Unanimous Agreement", "act": v5_act, "sz": v5_sz}
+    ]
+
+    exp_dir = os.path.join(project_dir, "docs", "experiments")
+    os.makedirs(exp_dir, exist_ok=True)
+    variants_results = {}
+    equity_curves = {}
+
+    flat_sl = np.full(n_bars, 2.0, dtype=np.float32)
+    flat_tp = np.full(n_bars, 3.5, dtype=np.float32)
+
+    def passive_predictor(state_40: np.ndarray) -> Tuple[int, float, float, float]:
+        return ACTION_HOLD, 0.0, 2.0, 3.5
+
+    for v in variants:
+        v_id = v["id"]
+        precomp = (v["act"], v["sz"], flat_sl, flat_tp)
+        res = run_closed_loop_backtest(
+            df=df_val_clean,
+            market_features=feat_val,
+            atr_series=atr_val,
+            policy_predictor=passive_predictor,
+            initial_balance=10000.0,
+            lot_base=0.1,
+            spread_points=2.0,
+            slippage_points=1.0,
+            commission_per_lot=6.0,
+            precomputed_flat=precomp
+        )
+        m = compute_comprehensive_metrics(res, initial_balance=10000.0)
+        m["description"] = v["desc"]
+        variants_results[v_id] = m
+        equity_curves[v_id] = res["equity_curve"]
+        print(f"[{v_id}] Net Profit: ${m['net_profit']:,.2f} ({m['return_pct']:.1f}%) | PF: {m['profit_factor']:.2f} | WR: {m['win_rate']:.1f}% | DD: {m['max_drawdown_pct']:.1f}% | Trades: {m['total_trades']:,} | Payoff: {m['payoff_ratio']:.2f} | Friction: ${m['total_friction']:,.0f}")
+
+    # Generate Markdown Report
+    report_path = os.path.join(exp_dir, "EXP_06_ENSEMBLE_META_VOTING.md")
+    with open(report_path, "w", encoding="utf-8") as f:
+        f.write("# 🔬 Experiment Report: EXP-06-ENSEMBLE-META-VOTING\n\n")
+        f.write("**Research Focus:** Multi-Model Ensemble Voting & Unified Meta-Labeling Layer\n")
+        f.write("**Models Combined:** (1) Dense MLP Policy Net, (2) Causal Dilated 1D TCN Net, (3) HistGBDT Direction Tree\n")
+        f.write("**Evaluation Period:** 2025 Out-of-Sample (350,807 M1 bars, strictly locked)\n")
+        f.write("**Friction Cost:** $0.20 spread ($20/lot) + $0.10 slippage + $6.00 comm ($36.00 roundturn/lot)\n\n")
+
+        f.write("## 1. Research Objectives & Hypotheses\n")
+        f.write("EXP-05 established that Meta-Confidence Sizing yields high capital efficiency (+16.3% return, PF 1.64, DD 5.7%). However, single-model MLP yields only 60 trades/year.\n")
+        f.write("- **H1 (Trade Capacity Hypothesis):** Combining candidate entries from 3 orthogonal architectures under a unified Meta-Filter doubles trade frequency (100+ trades) while maintaining PF >= 1.50.\n")
+        f.write("- **H2 (Consensus Precision Hypothesis):** Requiring agreement between 2 or more models filters false breakouts and increases Win Rate above 50%.\n")
+        f.write("- **H3 (Consensus Bonus Sizing Hypothesis):** Giving bonus position sizing (up to 0.25 lots) only when models reach consensus elevates annual net profit beyond +20%.\n\n")
+
+        f.write("## 2. Experimental Results & Ensemble Matrix\n\n")
+        f.write("| Variant ID | Description | Net Profit ($) | Return (%) | Profit Factor | Win Rate (%) | Max DD (%) | Trades | Payoff Ratio | Friction Cost ($) | Cost / Gross PnL (%) |\n")
+        f.write("| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |\n")
+        for v_id, m in variants_results.items():
+            f.write(f"| **{v_id}** | {m['description']} | **${m['net_profit']:,.2f}** | {m['return_pct']:.1f}% | **{m['profit_factor']:.2f}** | {m['win_rate']:.1f}% | {m['max_drawdown_pct']:.1f}% | {m['total_trades']:,} | {m['payoff_ratio']:.2f} | ${m['total_friction']:,.0f} | {m['friction_to_gross_pct']:.1f}% |\n")
+
+        f.write("\n\n## 3. Quantitative Diagnostics & Core Discoveries\n\n")
+        best_v = max(variants_results.keys(), key=lambda k: (variants_results[k]["profit_factor"], variants_results[k]["net_profit"]))
+        f.write(f"1. **Champion Model:** `{best_v}` with PF **{variants_results[best_v]['profit_factor']:.2f}**, Net Profit **${variants_results[best_v]['net_profit']:,.2f}**, and Max DD **{variants_results[best_v]['max_drawdown_pct']:.1f}%**.\n")
+        f.write(f"2. **Capacity vs Precision Trade-off:** Analysis of Union Expansion vs Strict Consensus.\n")
+        f.write(f"3. **Capital Growth Acceleration:** Comparison against single-model MLP baseline.\n\n")
+
+        f.write("## 4. Next Experiment Directions\n")
+        f.write("- **EXP-07:** Regime-Conditional Adaptation & Multi-Timeframe Confirmation (Integrating M5/M15 trend direction to filter M1 execution).\n")
+
+    print(f"\n[Report] EXP-06 report saved to: {report_path}")
+
+    # Plot Equity Curves
+    plot_path = os.path.join(exp_dir, "EXP_06_ENSEMBLE_META_VOTING.png")
+    plt.figure(figsize=(14, 8))
+    for v_id, eq in equity_curves.items():
+        plt.plot(eq, label=f"{v_id} (PF: {variants_results[v_id]['profit_factor']:.2f}, Net: ${variants_results[v_id]['net_profit']:,.0f}, DD: {variants_results[v_id]['max_drawdown_pct']:.1f}%)", linewidth=1.3)
+    plt.title("EXP-06: Multi-Model Ensemble Voting & Unified Meta-Labeling (2025 Out-of-Sample)", fontsize=14, fontweight="bold")
+    plt.xlabel("M1 Timesteps (Bars)", fontsize=12)
+    plt.ylabel("Account Equity ($)", fontsize=12)
+    plt.grid(True, alpha=0.3)
+    plt.legend(loc="upper left")
+    plt.tight_layout()
+    plt.savefig(plot_path, dpi=300)
+    print(f"[Plot] Comparison chart saved to: {plot_path}")
+
+    # Update Registry
+    registry_path = os.path.join(project_dir, "docs", "EXPERIMENT_REGISTRY.md")
+    with open(registry_path, "a", encoding="utf-8") as f:
+        f.write(f"\n### EXP-06-ENSEMBLE-META-VOTING Findings Summary\n")
+        f.write(f"- **Top Variant:** `{best_v}` with PF **{variants_results[best_v]['profit_factor']:.2f}** and Net Profit **${variants_results[best_v]['net_profit']:,.2f}**\n")
+        f.write(f"- **Detailed Report:** [`EXP_06_ENSEMBLE_META_VOTING.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_06_ENSEMBLE_META_VOTING.md)\n")
+        f.write(f"- **Equity Curves:** [`EXP_06_ENSEMBLE_META_VOTING.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_06_ENSEMBLE_META_VOTING.png)\n")
+    print(f"[Registry] Master registry updated at: {registry_path}")
+
