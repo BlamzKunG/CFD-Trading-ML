@@ -118,3 +118,8 @@
 - **Top Variant:** `Variant_4_Active_Trailing_Profit_Lock` with PF **0.93** and Net Profit **$-49.60**
 - **Detailed Report:** [`EXP_15_MULTI_HORIZON_ACTIVE_EXITS.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_15_MULTI_HORIZON_ACTIVE_EXITS.md)
 - **Equity Curves:** [`EXP_15_MULTI_HORIZON_ACTIVE_EXITS.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_15_MULTI_HORIZON_ACTIVE_EXITS.png)
+
+### EXP-16-RUNNER-PARTIAL-SCALING Findings Summary
+- **Top Variant:** `Variant_2_EXP15_Ref_Trailing` with PF **0.92** and Net Profit **$-59.32**
+- **Detailed Report:** [`EXP_16_RUNNER_PARTIAL_SCALING.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_16_RUNNER_PARTIAL_SCALING.md)
+- **Equity Curves:** [`EXP_16_RUNNER_PARTIAL_SCALING.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_16_RUNNER_PARTIAL_SCALING.png)
