@@ -6,9 +6,9 @@
 
 ## 1. Engine Specifications & Export Artifacts
 
-- **ONNX Model:** [`xauusd_dual_sleeve_champion.onnx`](file:///content/CFD-Trading-ML/projects/xauusd_trading_policy/models/xauusd_dual_sleeve_champion.onnx) (25,066 bytes, Opset 13)
-- **Production Configuration:** [`xauusd_production_config.json`](file:///content/CFD-Trading-ML/projects/xauusd_trading_policy/models/xauusd_production_config.json)
-- **MetaTrader 5 Expert Advisor:** [`XAUUSD_DualSleeve_Production.mq5`](file:///content/CFD-Trading-ML/projects/xauusd_trading_policy/mql5/Experts/XAUUSD_DualSleeve_Production.mq5)
+- **ONNX Model:** [`xauusd_dual_sleeve_champion.onnx`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/models/xauusd_dual_sleeve_champion.onnx) (25,066 bytes, Opset 13)
+- **Production Configuration:** [`xauusd_production_config.json`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/models/xauusd_production_config.json)
+- **MetaTrader 5 Expert Advisor:** [`XAUUSD_DualSleeve_Production.mq5`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/mql5/Experts/XAUUSD_DualSleeve_Production.mq5)
 
 ## 2. Real-Time Inference Latency Benchmarks
 
