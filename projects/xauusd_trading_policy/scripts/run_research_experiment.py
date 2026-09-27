@@ -3292,18 +3292,19 @@ def run_experiment_10_excursion_quantiles(data_path: Optional[str] = None):
     h_tr = df_train_clean['high'].to_numpy(dtype=np.float64)
     l_tr = df_train_clean['low'].to_numpy(dtype=np.float64)
     c_tr = close_train.to_numpy(dtype=np.float64)
-    atr_tr = np.maximum(atr_train.to_numpy(dtype=np.float64), 0.1)
+    atr_tr = np.nan_to_num(atr_train.to_numpy(dtype=np.float64), nan=0.5)
+    atr_tr = np.maximum(atr_tr, 0.1)
 
     rev_h = pd.Series(h_tr[::-1])
     rev_l = pd.Series(l_tr[::-1])
     fwd_max_h = np.roll(rev_h.rolling(H, min_periods=1).max().to_numpy()[::-1], -1)
     fwd_min_l = np.roll(rev_l.rolling(H, min_periods=1).min().to_numpy()[::-1], -1)
 
-    # MFE / MAE in ATR units
-    mfe_long_tr = (fwd_max_h - c_tr) / atr_tr
-    mae_long_tr = (c_tr - fwd_min_l) / atr_tr
-    mfe_short_tr = (c_tr - fwd_min_l) / atr_tr
-    mae_short_tr = (fwd_max_h - c_tr) / atr_tr
+    # MFE / MAE in ATR units with strict NaN sanitization
+    mfe_long_tr = np.nan_to_num((fwd_max_h - c_tr) / atr_tr, nan=0.0, posinf=10.0, neginf=0.0)
+    mae_long_tr = np.nan_to_num((c_tr - fwd_min_l) / atr_tr, nan=0.0, posinf=10.0, neginf=0.0)
+    mfe_short_tr = np.nan_to_num((c_tr - fwd_min_l) / atr_tr, nan=0.0, posinf=10.0, neginf=0.0)
+    mae_short_tr = np.nan_to_num((fwd_max_h - c_tr) / atr_tr, nan=0.0, posinf=10.0, neginf=0.0)
 
     # Binary direction label for baseline GBDT
     y_dir_tr = np.zeros(len(c_tr), dtype=int)
@@ -3313,7 +3314,7 @@ def run_experiment_10_excursion_quantiles(data_path: Optional[str] = None):
     # Subsample training data (step=6) to prevent auto-correlation
     step = 6
     sub_idx = np.arange(0, len(df_train_clean) - H, step)
-    X_train_sub = feat_train.iloc[sub_idx].to_numpy(dtype=np.float32)
+    X_train_sub = np.nan_to_num(feat_train.iloc[sub_idx].to_numpy(dtype=np.float32), nan=0.0, posinf=0.0, neginf=0.0)
     mfe_l_sub = mfe_long_tr[sub_idx]
     mae_l_sub = mae_long_tr[sub_idx]
     mfe_s_sub = mfe_short_tr[sub_idx]
@@ -3345,7 +3346,7 @@ def run_experiment_10_excursion_quantiles(data_path: Optional[str] = None):
 
     # 4. Generate Predictions on 2025 Out-of-Sample
     print("\n[Step 3/5] Generating inferences across 2025 Out-of-Sample validation set (350,807 bars)...")
-    X_val_np = feat_val.to_numpy(dtype=np.float32)
+    X_val_np = np.nan_to_num(feat_val.to_numpy(dtype=np.float32), nan=0.0, posinf=0.0, neginf=0.0)
 
     pred_dir_prob = baseline_gbdt.predict_proba(X_val_np)[:, 1]
     pred_mae_l = np.maximum(0.2, q_mae_long.predict(X_val_np))
