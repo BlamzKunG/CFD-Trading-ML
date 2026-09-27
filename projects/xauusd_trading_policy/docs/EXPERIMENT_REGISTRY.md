@@ -133,3 +133,8 @@
 - **Top Variant:** `Variant_5_High_Conviction_Sniper_Adaptive` with PF **1.35** and Net Profit **$101.11**
 - **Detailed Report:** [`EXP_18_MULTI_MODEL_STACKING_ENSEMBLE.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_18_MULTI_MODEL_STACKING_ENSEMBLE.md)
 - **Equity Curves:** [`EXP_18_MULTI_MODEL_STACKING_ENSEMBLE.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_18_MULTI_MODEL_STACKING_ENSEMBLE.png)
+
+### EXP-19-ASYMMETRIC-DIRECTIONAL-STACKING Findings Summary
+- **Top Variant:** `Variant_1_EXP18_Champion_Ref` with PF **1.48** and Net Profit **$110.05**
+- **Detailed Report:** [`EXP_19_ASYMMETRIC_DIRECTIONAL_STACKING.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_19_ASYMMETRIC_DIRECTIONAL_STACKING.md)
+- **Equity Curves:** [`EXP_19_ASYMMETRIC_DIRECTIONAL_STACKING.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_19_ASYMMETRIC_DIRECTIONAL_STACKING.png)
