@@ -163,3 +163,8 @@
 - **Top Variant:** `Variant_4_Tick_Volume_Active_Flow_10` with PF **2.74** and Net Profit **$347.45**
 - **Detailed Report:** [`EXP_24_UNIFIED_HIGH_CONFLUENCE_AND_QUARTERLY_STABILITY.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_24_UNIFIED_HIGH_CONFLUENCE_AND_QUARTERLY_STABILITY.md)
 - **Equity Curves:** [`EXP_24_UNIFIED_HIGH_CONFLUENCE_AND_QUARTERLY_STABILITY.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_24_UNIFIED_HIGH_CONFLUENCE_AND_QUARTERLY_STABILITY.png)
+
+### EXP-25-TIERED-INSTITUTIONAL-SIZING-AND-ONNX-PIPELINE Findings Summary
+- **Top Variant:** `Variant_1_EXP24_Surgical_Champion` with PF **2.74** and Net Profit **$347.45**
+- **Detailed Report:** [`EXP_25_TIERED_INSTITUTIONAL_SIZING_AND_ONNX_PIPELINE.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_25_TIERED_INSTITUTIONAL_SIZING_AND_ONNX_PIPELINE.md)
+- **Equity Curves:** [`EXP_25_TIERED_INSTITUTIONAL_SIZING_AND_ONNX_PIPELINE.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_25_TIERED_INSTITUTIONAL_SIZING_AND_ONNX_PIPELINE.png)
