@@ -168,3 +168,8 @@
 - **Top Variant:** `Variant_1_EXP24_Surgical_Champion` with PF **2.74** and Net Profit **$347.45**
 - **Detailed Report:** [`EXP_25_TIERED_INSTITUTIONAL_SIZING_AND_ONNX_PIPELINE.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_25_TIERED_INSTITUTIONAL_SIZING_AND_ONNX_PIPELINE.md)
 - **Equity Curves:** [`EXP_25_TIERED_INSTITUTIONAL_SIZING_AND_ONNX_PIPELINE.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_25_TIERED_INSTITUTIONAL_SIZING_AND_ONNX_PIPELINE.png)
+
+### EXP-26-MULTI-SCALE-MOMENTUM-AND-TRAILING-HARVEST Findings Summary
+- **Top Variant:** `Variant_3_Concentrated_Dual_Open_Window` with PF **2.48** and Net Profit **$522.84**
+- **Detailed Report:** [`EXP_26_MULTI_SCALE_MOMENTUM_AND_TRAILING_HARVEST.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_26_MULTI_SCALE_MOMENTUM_AND_TRAILING_HARVEST.md)
+- **Equity Curves:** [`EXP_26_MULTI_SCALE_MOMENTUM_AND_TRAILING_HARVEST.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_26_MULTI_SCALE_MOMENTUM_AND_TRAILING_HARVEST.png)
