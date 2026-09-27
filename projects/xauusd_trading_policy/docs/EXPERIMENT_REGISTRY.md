@@ -123,3 +123,8 @@
 - **Top Variant:** `Variant_2_EXP15_Ref_Trailing` with PF **0.92** and Net Profit **$-59.32**
 - **Detailed Report:** [`EXP_16_RUNNER_PARTIAL_SCALING.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_16_RUNNER_PARTIAL_SCALING.md)
 - **Equity Curves:** [`EXP_16_RUNNER_PARTIAL_SCALING.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_16_RUNNER_PARTIAL_SCALING.png)
+
+### EXP-17-TWO-TIER-RUNNER-HARVESTING Findings Summary
+- **Top Variant:** `Variant_1_EXP15_Trailing_Ref` with PF **0.92** and Net Profit **$-58.36**
+- **Detailed Report:** [`EXP_17_TWO_TIER_RUNNER_HARVESTING.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_17_TWO_TIER_RUNNER_HARVESTING.md)
+- **Equity Curves:** [`EXP_17_TWO_TIER_RUNNER_HARVESTING.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_17_TWO_TIER_RUNNER_HARVESTING.png)
