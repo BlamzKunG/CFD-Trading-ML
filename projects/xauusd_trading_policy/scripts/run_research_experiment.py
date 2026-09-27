@@ -4028,42 +4028,6 @@ def run_experiment_12_meta_excursion_fusion(data_path: Optional[str] = None):
     print(f"[Registry] Master registry updated at: {registry_path}")
 
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Run Quant ML Research Experiment")
-    parser.add_argument("--exp-id", type=str, default="EXP_01_M10_ABLATION", help="Experiment identifier")
-    parser.add_argument("--data-path", type=str, default=None, help="Dataset path")
-    args = parser.parse_args()
-
-    if args.exp_id == "EXP_01_M10_ABLATION":
-        run_experiment_01_m10_ablation(args.data_path)
-    elif args.exp_id == "EXP_02_HYBRID_META_FILTER":
-        run_experiment_02_hybrid_meta_filter(args.data_path)
-    elif args.exp_id == "EXP_03_META_OPTIMIZATION_COST_CURVE":
-        run_experiment_03_meta_optimization_cost_curve(args.data_path)
-    elif args.exp_id == "EXP_04_TCN_RL_META":
-        run_experiment_04_tcn_rl_meta(args.data_path)
-    elif args.exp_id == "EXP_05_DYNAMIC_BARRIERS":
-        run_experiment_05_dynamic_barriers(args.data_path)
-    elif args.exp_id == "EXP_06_ENSEMBLE_META_VOTING":
-        run_experiment_06_ensemble_meta_voting(args.data_path)
-    elif args.exp_id == "EXP_07_REGIME_FILTERING_MTF":
-        run_experiment_07_regime_filtering_mtf(args.data_path)
-    elif args.exp_id == "EXP_08_DUAL_SLEEVE_PORTFOLIO":
-        run_experiment_08_dual_sleeve_portfolio(args.data_path)
-    elif args.exp_id == "EXP_09_ONNX_MQL5_DEPLOYMENT":
-        run_experiment_09_onnx_mql5_deployment(args.data_path)
-    elif args.exp_id == "EXP_10_EXCURSION_QUANTILES":
-        run_experiment_10_excursion_quantiles(args.data_path)
-    elif args.exp_id == "EXP_11_CALIBRATED_EXCURSION_EDGE":
-        run_experiment_11_calibrated_excursion_edge(args.data_path)
-    elif args.exp_id == "EXP_12_META_EXCURSION_FUSION":
-        run_experiment_12_meta_excursion_fusion(args.data_path)
-    elif args.exp_id == "EXP_13_TEMPORAL_ATTENTION":
-        run_experiment_13_temporal_attention(args.data_path)
-    else:
-        print(f"Unknown experiment ID: {args.exp_id}")
-
-
 if TORCH_AVAILABLE:
     class TemporalAttentionEncoder(nn.Module):
         """
@@ -4395,3 +4359,40 @@ def run_experiment_13_temporal_attention(data_path: Optional[str] = None):
         f.write(f"- **Detailed Report:** [`EXP_13_TEMPORAL_ATTENTION.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_13_TEMPORAL_ATTENTION.md)\n")
         f.write(f"- **Equity Curves:** [`EXP_13_TEMPORAL_ATTENTION.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_13_TEMPORAL_ATTENTION.png)\n")
     print(f"[Registry] Master registry updated at: {registry_path}")
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Run Quant ML Research Experiment")
+    parser.add_argument("--exp-id", type=str, default="EXP_01_M10_ABLATION", help="Experiment identifier")
+    parser.add_argument("--data-path", type=str, default=None, help="Dataset path")
+    args = parser.parse_args()
+
+    if args.exp_id == "EXP_01_M10_ABLATION":
+        run_experiment_01_m10_ablation(args.data_path)
+    elif args.exp_id == "EXP_02_HYBRID_META_FILTER":
+        run_experiment_02_hybrid_meta_filter(args.data_path)
+    elif args.exp_id == "EXP_03_META_OPTIMIZATION_COST_CURVE":
+        run_experiment_03_meta_optimization_cost_curve(args.data_path)
+    elif args.exp_id == "EXP_04_TCN_RL_META":
+        run_experiment_04_tcn_rl_meta(args.data_path)
+    elif args.exp_id == "EXP_05_DYNAMIC_BARRIERS":
+        run_experiment_05_dynamic_barriers(args.data_path)
+    elif args.exp_id == "EXP_06_ENSEMBLE_META_VOTING":
+        run_experiment_06_ensemble_meta_voting(args.data_path)
+    elif args.exp_id == "EXP_07_REGIME_FILTERING_MTF":
+        run_experiment_07_regime_filtering_mtf(args.data_path)
+    elif args.exp_id == "EXP_08_DUAL_SLEEVE_PORTFOLIO":
+        run_experiment_08_dual_sleeve_portfolio(args.data_path)
+    elif args.exp_id == "EXP_09_ONNX_MQL5_DEPLOYMENT":
+        run_experiment_09_onnx_mql5_deployment(args.data_path)
+    elif args.exp_id == "EXP_10_EXCURSION_QUANTILES":
+        run_experiment_10_excursion_quantiles(args.data_path)
+    elif args.exp_id == "EXP_11_CALIBRATED_EXCURSION_EDGE":
+        run_experiment_11_calibrated_excursion_edge(args.data_path)
+    elif args.exp_id == "EXP_12_META_EXCURSION_FUSION":
+        run_experiment_12_meta_excursion_fusion(args.data_path)
+    elif args.exp_id == "EXP_13_TEMPORAL_ATTENTION":
+        run_experiment_13_temporal_attention(args.data_path)
+    else:
+        print(f"Unknown experiment ID: {args.exp_id}")
+
