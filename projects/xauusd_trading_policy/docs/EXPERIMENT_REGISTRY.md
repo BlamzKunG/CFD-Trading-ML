@@ -73,3 +73,8 @@
 - **Top Variant:** `EXP05_Champion_MLP` with PF **1.54** and Net Profit **$524.50**
 - **Detailed Report:** [`EXP_06_ENSEMBLE_META_VOTING.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_06_ENSEMBLE_META_VOTING.md)
 - **Equity Curves:** [`EXP_06_ENSEMBLE_META_VOTING.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_06_ENSEMBLE_META_VOTING.png)
+
+### EXP-07-REGIME-FILTERING-MTF Findings Summary
+- **Top Variant:** `High_Conviction_Regime_Bonus` with PF **2.27** and Net Profit **$1,465.40**
+- **Detailed Report:** [`EXP_07_REGIME_FILTERING_MTF.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_07_REGIME_FILTERING_MTF.md)
+- **Equity Curves:** [`EXP_07_REGIME_FILTERING_MTF.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_07_REGIME_FILTERING_MTF.png)
