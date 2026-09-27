@@ -128,3 +128,8 @@
 - **Top Variant:** `Variant_1_EXP15_Trailing_Ref` with PF **0.92** and Net Profit **$-58.36**
 - **Detailed Report:** [`EXP_17_TWO_TIER_RUNNER_HARVESTING.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_17_TWO_TIER_RUNNER_HARVESTING.md)
 - **Equity Curves:** [`EXP_17_TWO_TIER_RUNNER_HARVESTING.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_17_TWO_TIER_RUNNER_HARVESTING.png)
+
+### EXP-18-MULTI-MODEL-STACKING-ENSEMBLE Findings Summary
+- **Top Variant:** `Variant_5_High_Conviction_Sniper_Adaptive` with PF **1.35** and Net Profit **$101.11**
+- **Detailed Report:** [`EXP_18_MULTI_MODEL_STACKING_ENSEMBLE.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_18_MULTI_MODEL_STACKING_ENSEMBLE.md)
+- **Equity Curves:** [`EXP_18_MULTI_MODEL_STACKING_ENSEMBLE.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_18_MULTI_MODEL_STACKING_ENSEMBLE.png)
