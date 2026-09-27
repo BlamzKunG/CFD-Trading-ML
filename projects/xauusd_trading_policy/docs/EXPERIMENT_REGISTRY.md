@@ -113,3 +113,8 @@
 - **Top Variant:** `Variant_1_EXP12_GBDT_Reference` with PF **0.99** and Net Profit **$-28.23**
 - **Detailed Report:** [`EXP_14_ATTENTION_EXCURSION_HYBRID.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_14_ATTENTION_EXCURSION_HYBRID.md)
 - **Equity Curves:** [`EXP_14_ATTENTION_EXCURSION_HYBRID.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_14_ATTENTION_EXCURSION_HYBRID.png)
+
+### EXP-15-MULTI-HORIZON-ACTIVE-EXITS Findings Summary
+- **Top Variant:** `Variant_4_Active_Trailing_Profit_Lock` with PF **0.93** and Net Profit **$-49.60**
+- **Detailed Report:** [`EXP_15_MULTI_HORIZON_ACTIVE_EXITS.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_15_MULTI_HORIZON_ACTIVE_EXITS.md)
+- **Equity Curves:** [`EXP_15_MULTI_HORIZON_ACTIVE_EXITS.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_15_MULTI_HORIZON_ACTIVE_EXITS.png)
