@@ -63,3 +63,8 @@
 - **Top Variant:** `TCN_Meta_52` with PF **999.00** and Net Profit **$58.02**
 - **Detailed Report:** [`EXP_04_TCN_RL_META.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_04_TCN_RL_META.md)
 - **Equity Curves:** [`EXP_04_TCN_RL_META.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_04_TCN_RL_META.png)
+
+### EXP-05-DYNAMIC-BARRIERS Findings Summary
+- **Top Variant:** `Meta_Confidence_Sizing` with PF **1.64** and Net Profit **$1,627.57**
+- **Detailed Report:** [`EXP_05_DYNAMIC_BARRIERS.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_05_DYNAMIC_BARRIERS.md)
+- **Equity Curves:** [`EXP_05_DYNAMIC_BARRIERS.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_05_DYNAMIC_BARRIERS.png)
