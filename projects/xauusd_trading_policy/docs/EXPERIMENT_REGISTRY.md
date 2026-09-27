@@ -78,3 +78,8 @@
 - **Top Variant:** `High_Conviction_Regime_Bonus` with PF **2.27** and Net Profit **$1,465.40**
 - **Detailed Report:** [`EXP_07_REGIME_FILTERING_MTF.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_07_REGIME_FILTERING_MTF.md)
 - **Equity Curves:** [`EXP_07_REGIME_FILTERING_MTF.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_07_REGIME_FILTERING_MTF.png)
+
+### EXP-08-DUAL-SLEEVE-PORTFOLIO Findings Summary
+- **Top Variant:** `Sleeve_A_Trend_Sniper` with PF **2.25** and Net Profit **$2,294.99**
+- **Detailed Report:** [`EXP_08_DUAL_SLEEVE_PORTFOLIO.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_08_DUAL_SLEEVE_PORTFOLIO.md)
+- **Equity Curves:** [`EXP_08_DUAL_SLEEVE_PORTFOLIO.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_08_DUAL_SLEEVE_PORTFOLIO.png)
