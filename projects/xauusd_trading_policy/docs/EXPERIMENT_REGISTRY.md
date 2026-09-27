@@ -158,3 +158,8 @@
 - **Top Variant:** `Variant_2_H1_Macro_Trend_Confluence` with PF **2.05** and Net Profit **$453.68**
 - **Detailed Report:** [`EXP_23_MTF_CONFLUENCE_AND_VOLUME_EXPANSION.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_23_MTF_CONFLUENCE_AND_VOLUME_EXPANSION.md)
 - **Equity Curves:** [`EXP_23_MTF_CONFLUENCE_AND_VOLUME_EXPANSION.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_23_MTF_CONFLUENCE_AND_VOLUME_EXPANSION.png)
+
+### EXP-24-UNIFIED-HIGH-CONFLUENCE-AND-QUARTERLY-STABILITY Findings Summary
+- **Top Variant:** `Variant_4_Tick_Volume_Active_Flow_10` with PF **2.74** and Net Profit **$347.45**
+- **Detailed Report:** [`EXP_24_UNIFIED_HIGH_CONFLUENCE_AND_QUARTERLY_STABILITY.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_24_UNIFIED_HIGH_CONFLUENCE_AND_QUARTERLY_STABILITY.md)
+- **Equity Curves:** [`EXP_24_UNIFIED_HIGH_CONFLUENCE_AND_QUARTERLY_STABILITY.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_24_UNIFIED_HIGH_CONFLUENCE_AND_QUARTERLY_STABILITY.png)
