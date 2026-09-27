@@ -148,3 +148,8 @@
 - **Top Variant:** `Variant_2_Champion_With_Friday_Shield` with PF **1.42** and Net Profit **$438.59**
 - **Detailed Report:** [`EXP_21_HYBRID_ENSEMBLE_FRIDAY_SHIELD_VOL_DAMPENER.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_21_HYBRID_ENSEMBLE_FRIDAY_SHIELD_VOL_DAMPENER.md)
 - **Equity Curves:** [`EXP_21_HYBRID_ENSEMBLE_FRIDAY_SHIELD_VOL_DAMPENER.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_21_HYBRID_ENSEMBLE_FRIDAY_SHIELD_VOL_DAMPENER.png)
+
+### EXP-22-COST-STRESS-AND-HIGH-WATER-LOCKING Findings Summary
+- **Top Variant:** `Variant_5_Tight_ECN_DMA_23` with PF **1.47** and Net Profit **$480.97**
+- **Detailed Report:** [`EXP_22_COST_STRESS_AND_HIGH_WATER_LOCKING.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_22_COST_STRESS_AND_HIGH_WATER_LOCKING.md)
+- **Equity Curves:** [`EXP_22_COST_STRESS_AND_HIGH_WATER_LOCKING.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_22_COST_STRESS_AND_HIGH_WATER_LOCKING.png)
