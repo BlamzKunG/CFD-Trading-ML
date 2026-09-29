@@ -41,19 +41,19 @@ $$\mathrm{Rank}_{60}(t) = \frac{P_t - \min_{60}(P)}{\max_{60}(P) - \min_{60}(P) 
 
 The agent receives its current position context as part of the state vector:
 
-$$\mathbf{S}_t = \left[ \mathbf{S}_{\mathrm{market}, t} \in \mathbb{R}^{31} \;\parallel\; \mathbf{S}_{\mathrm{pos}, t} \in \mathbb{R}^{9} \right] \in \mathbb{R}^{40}$$
+$$\mathbf{S}_t = \left[ \mathbf{S}_{\mathrm{market}, t} \in \mathbb{R}^{31} \parallel \mathbf{S}_{\mathrm{pos}, t} \in \mathbb{R}^{9} \right] \in \mathbb{R}^{40}$$
 
 Where $\mathbf{S}_{\mathrm{pos}, t}$ consists of:
 
 1. `pos_dir`: $\{-1.0, 0.0, +1.0\}$
 2. `pos_size_frac`: Lot fraction relative to maximum allowable exposure $[0, 1]$
 3. `entry_dist_atr`: $\frac{P_t - P_{\mathrm{entry}}}{\mathrm{ATR}_{14}(t)}$
-4. `unrealized_pnl_atr`: $\text{pos\textunderscore dir} \times \frac{P_t - P_{\mathrm{entry}}}{\mathrm{ATR}_{14}(t)}$
-5. `time_in_pos_norm`: $\min\left(1.0, \frac{\text{bars\textunderscore in\textunderscore pos}}{120}\right)$
+4. `unrealized_pnl_atr`: $\text{pos}\textunderscore\text{dir} \times \frac{P_t - P_{\mathrm{entry}}}{\mathrm{ATR}_{14}(t)}$
+5. `time_in_pos_norm`: $\min\left(1.0, \frac{\text{bars}\textunderscore\text{in}\textunderscore\text{pos}}{120}\right)$
 6. `dist_to_sl_atr`: $\frac{\vert{}P_t - P_{\mathrm{SL}}\vert{}}{\mathrm{ATR}_{14}(t)}$
 7. `dist_to_tp_atr`: $\frac{\vert{}P_t - P_{\mathrm{TP}}\vert{}}{\mathrm{ATR}_{14}(t)}$
 8. `max_drawdown_atr`: Maximum adverse excursion observed during the trade
-9. `bars_since_action_norm`: $\min\left(1.0, \frac{\text{bars\textunderscore since\textunderscore action}}{60}\right)$
+9. `bars_since_action_norm`: $\min\left(1.0, \frac{\text{bars}\textunderscore\text{since}\textunderscore\text{action}}{60}\right)$
 
 ---
 
@@ -61,11 +61,11 @@ Where $\mathbf{S}_{\mathrm{pos}, t}$ consists of:
 
 For each timestamp $t$ and horizon $H=60$, the teacher evaluates prospective rollouts:
 
-$$U(a) = \text{Terminal PnL}(a) - \lambda \cdot \text{Max Adverse Excursion}(a) - \text{Friction}$$
+$$U(a) = \mathrm{Terminal\ PnL}(a) - \lambda \cdot \mathrm{Max\ Adverse\ Excursion}(a) - \mathrm{Friction}$$
 
 Where:
 - $\lambda = 0.7$ (risk-aversion coefficient)
-- $\text{Friction} = 0.15 \ \mathrm{ATR}$ (spread, slippage, commission)
+- $\mathrm{Friction} = 0.15 \ \mathrm{ATR}$ (spread, slippage, commission)
 
 The optimal decision is selected via:
 
