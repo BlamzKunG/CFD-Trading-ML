@@ -184,3 +184,5 @@
 - **Master Portfolio:** Net **+$589.93** | Max DD **1.66%** | Sharpe **1.96**
 - **Report:** [`EXP_32_REGIME_ADAPTIVE_EURUSD.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_32_REGIME_ADAPTIVE_EURUSD.md)
 - **Plot:** [`EXP_32_REGIME_ADAPTIVE_EURUSD.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_32_REGIME_ADAPTIVE_EURUSD.png)
+
+| EXP-33 | Cross-Asset Macro Confluence & Correlation Gating | 2020-2024 (Train) / 2025 (Val) | Net +$572.36 | Max DD 1.93% | Sharpe 2.10 | Calmar 2.97 | Cross-asset USD confluence gating between Gold and EUR | `exp33_macro_confluence_champion.joblib` |

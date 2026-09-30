@@ -130,6 +130,22 @@
         "master_portfolio_dd": 1.66,
         "finding": "EURUSD mean-reversion in chop is penalized heavily by friction ($10/lot). Peak session momentum breakout remains the robust positive-EV edge."
       }
+    },
+    "EXP-33": {
+      "name": "Cross-Asset Macro Confluence & Correlation Gating",
+      "symbol": "XAUUSD+EURUSD",
+      "file": "exp33_macro_confluence_champion.joblib",
+      "best_variant": "Variant_2_Hard_EUR_Return_Gating",
+      "metrics": {
+        "net_profit": 601.44,
+        "return_pct": 6.01,
+        "profit_factor": 2.10,
+        "win_rate": 56.2,
+        "max_drawdown_pct": 1.00,
+        "sharpe_ratio": 2.40,
+        "total_trades": 64,
+        "finding": "EURUSD 15m return directional gating purges 10 false breakout traps on Gold, boosting PF to 2.10, WR to 56.2%, and lowering Max DD to 1.00%."
+      }
     }
   }
 }
