@@ -29,12 +29,12 @@ from scripts.train_and_benchmark_10_models import (
     load_and_preprocess_data,
     prepare_market_features,
     run_closed_loop_backtest,
-    compute_comprehensive_metrics,
     find_dataset_file,
     ACTION_HOLD,
     ACTION_OPEN_LONG,
     ACTION_OPEN_SHORT
 )
+from scripts.run_research_experiment import compute_comprehensive_metrics
 
 from sklearn.ensemble import HistGradientBoostingRegressor, HistGradientBoostingClassifier
 import lightgbm as lgb
