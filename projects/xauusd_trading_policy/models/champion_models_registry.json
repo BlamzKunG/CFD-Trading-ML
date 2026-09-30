@@ -71,6 +71,21 @@
         "exposure_pct": 1.482011476395853,
         "sharpe_ratio": 2.171290937093455
       }
+    },
+    "EXP-29": {
+      "name": "EURUSD Active Flow Peak Overlap",
+      "symbol": "EURUSD",
+      "file": "exp29_eurusd_champion.joblib",
+      "metrics": {
+        "net_profit": 26.20,
+        "return_pct": 0.26,
+        "profit_factor": 1.05,
+        "win_rate": 40.54,
+        "max_drawdown_pct": 1.30,
+        "total_trades": 74,
+        "total_friction": 74.0,
+        "payoff_ratio": 1.54
+      }
     }
   }
 }
