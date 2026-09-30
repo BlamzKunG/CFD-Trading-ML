@@ -178,3 +178,9 @@
 - **Top Variant:** `Variant_5_Dual_Sleeve_Preservation_Engine` with PF **2.17** and Net Profit **$494.89**
 - **Detailed Report:** [`EXP_27_CROSS_SESSION_DUAL_SLEEVE_AND_STRESS.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_27_CROSS_SESSION_DUAL_SLEEVE_AND_STRESS.md)
 - **Equity Curves:** [`EXP_27_CROSS_SESSION_DUAL_SLEEVE_AND_STRESS.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_27_CROSS_SESSION_DUAL_SLEEVE_AND_STRESS.png)
+
+### EXP-32-REGIME-ADAPTIVE-EURUSD Summary
+- **Top EURUSD Variant:** `Variant_1_Momentum_Baseline` with PF **1.01** and Profit **$4.14**
+- **Master Portfolio:** Net **+$589.93** | Max DD **1.66%** | Sharpe **1.96**
+- **Report:** [`EXP_32_REGIME_ADAPTIVE_EURUSD.md`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_32_REGIME_ADAPTIVE_EURUSD.md)
+- **Plot:** [`EXP_32_REGIME_ADAPTIVE_EURUSD.png`](file:///root/CFD-Trading-ML/projects/xauusd_trading_policy/docs/experiments/EXP_32_REGIME_ADAPTIVE_EURUSD.png)

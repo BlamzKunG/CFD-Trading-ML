@@ -101,6 +101,35 @@
         "sharpe_ratio": -0.92,
         "finding": "Pooled data training dilutes asset-specific microstructure. Independent specialized models strictly dominate pooled models."
       }
+    },
+    "EXP-31": {
+      "name": "Specialized Multi-Asset Portfolio",
+      "symbol": "XAUUSD+EURUSD",
+      "architecture": "Ensemble of EXP-27 (XAUUSD) + EXP-29 (EURUSD)",
+      "metrics": {
+        "net_profit": 589.93,
+        "return_pct": 5.90,
+        "max_drawdown_pct": 1.66,
+        "sharpe_ratio": 1.96,
+        "calmar_ratio": 3.55,
+        "finding": "Combining independent specialized asset champions delivers superior risk-adjusted return and smoother equity curve."
+      }
+    },
+    "EXP-32": {
+      "name": "Regime-Adaptive Volatility EURUSD",
+      "symbol": "EURUSD",
+      "file": "exp32_eurusd_adaptive_champion.joblib",
+      "metrics": {
+        "net_profit": 4.14,
+        "return_pct": 0.04,
+        "profit_factor": 1.01,
+        "win_rate": 39.7,
+        "max_drawdown_pct": 1.31,
+        "total_trades": 73,
+        "master_portfolio_net": 589.93,
+        "master_portfolio_dd": 1.66,
+        "finding": "EURUSD mean-reversion in chop is penalized heavily by friction ($10/lot). Peak session momentum breakout remains the robust positive-EV edge."
+      }
     }
   }
 }
