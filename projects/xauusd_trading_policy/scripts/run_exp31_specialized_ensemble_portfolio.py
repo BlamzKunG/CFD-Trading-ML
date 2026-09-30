@@ -207,11 +207,11 @@ def run_experiment_31(xauusd_path: Optional[str] = None, eurusd_path: Optional[s
     eur_bundle = joblib.load(eur_model_path)
 
     # Load 2025 Out-of-Sample Data
-    _, df_xau_val = load_and_preprocess_data(xauusd_path)
-    _, (f_xau_v, atr_xau_v, c_xau_v, df_xau_v_c) = prepare_market_features(pd.DataFrame(), df_xau_val)
+    df_xau_tr, df_xau_val = load_and_preprocess_data(xauusd_path)
+    (f_xau_tr, atr_xau_tr, c_xau_tr, df_xau_tr_c), (f_xau_v, atr_xau_v, c_xau_v, df_xau_v_c) = prepare_market_features(df_xau_tr, df_xau_val)
 
-    _, df_eur_val = load_and_preprocess_data(eurusd_path)
-    _, (f_eur_v, atr_eur_v, c_eur_v, df_eur_v_c) = prepare_market_features(pd.DataFrame(), df_eur_val)
+    df_eur_tr, df_eur_val = load_and_preprocess_data(eurusd_path)
+    (f_eur_tr, atr_eur_tr, c_eur_tr, df_eur_tr_c), (f_eur_v, atr_eur_v, c_eur_v, df_eur_v_c) = prepare_market_features(df_eur_tr, df_eur_val)
 
     # Signals for XAUUSD
     dt_x = df_xau_v_c['dt'] if 'dt' in df_xau_v_c.columns else pd.to_datetime(df_xau_v_c.index)
