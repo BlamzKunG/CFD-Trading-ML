@@ -148,14 +148,23 @@ def run_closed_loop_backtest_forex(
 
         equity_curve.append(balance)
 
+    eq_arr = np.array(equity_curve)
+    peaks = np.maximum.accumulate(eq_arr)
+    drawdowns = (peaks - eq_arr) / peaks * 100.0
+    max_dd = float(np.max(drawdowns)) if len(drawdowns) > 0 else 0.0
+
+    trade_cols = ["entry_bar", "exit_bar", "direction", "lot", "entry_price", "exit_price", "net_pnl", "reason", "bars_held"]
+    trade_df = pd.DataFrame(trades, columns=trade_cols) if trades else pd.DataFrame(columns=trade_cols)
+
     return {
         "initial_balance": initial_balance,
         "final_balance": balance,
         "net_profit": balance - initial_balance,
         "return_pct": (balance - initial_balance) / initial_balance * 100.0,
-        "trades": trades,
+        "trades": trade_df,
         "total_trades": len(trades),
-        "equity_curve": equity_curve
+        "equity_curve": eq_arr,
+        "max_drawdown_pct": max_dd
     }
 
 
@@ -460,6 +469,9 @@ def run_experiment_29(eurusd_path: Optional[str] = None, xauusd_model_path: Opti
         )
 
         m = compute_comprehensive_metrics(res)
+        total_lots = float(res["trades"]["lot"].sum()) if len(res["trades"]) > 0 else 0.0
+        m["total_friction"] = total_lots * ((sp + sl) * 10.0 + cm)
+        m["friction_to_gross_pct"] = (m["total_friction"] / m["gross_profit"] * 100.0) if m["gross_profit"] > 0 else 0.0
         m["description"] = v["desc"]
         variants_results[v_id] = m
         equity_curves[v_id] = res["equity_curve"]
