@@ -86,6 +86,21 @@
         "total_friction": 74.0,
         "payoff_ratio": 1.54
       }
+    },
+    "EXP-30": {
+      "name": "Multi-Asset Joint Foundation Model",
+      "symbol": "XAUUSD+EURUSD",
+      "file": "exp30_multi_asset_champion.joblib",
+      "metrics": {
+        "net_profit": -135.73,
+        "return_pct": -1.36,
+        "profit_factor": 0.79,
+        "win_rate": 33.67,
+        "max_drawdown_pct": 1.83,
+        "total_trades": 98,
+        "sharpe_ratio": -0.92,
+        "finding": "Pooled data training dilutes asset-specific microstructure. Independent specialized models strictly dominate pooled models."
+      }
     }
   }
 }
