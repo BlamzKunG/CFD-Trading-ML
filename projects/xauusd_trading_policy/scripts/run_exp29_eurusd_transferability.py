@@ -46,6 +46,119 @@ from sklearn.ensemble import HistGradientBoostingRegressor, HistGradientBoosting
 import lightgbm as lgb
 
 
+def run_closed_loop_backtest_forex(
+    df: pd.DataFrame,
+    atr_series: pd.Series,
+    initial_balance: float = 10000.0,
+    lot_base: float = 0.10,
+    spread_pips: float = 0.3,
+    slippage_pips: float = 0.1,
+    commission_per_lot: float = 6.0,
+    precomputed_flat: Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray] = None
+) -> Dict[str, Any]:
+    n_bars = len(df)
+    c_arr = df['close'].to_numpy(dtype=np.float64)
+    h_arr = df['high'].to_numpy(dtype=np.float64)
+    l_arr = df['low'].to_numpy(dtype=np.float64)
+    atr_arr = atr_series.to_numpy(dtype=np.float64)
+
+    all_actions, all_sizes, all_sl, all_tp = precomputed_flat
+
+    balance = initial_balance
+    equity_curve = [balance]
+    trades = []
+
+    pos_dir = 0.0
+    pos_lot = 0.0
+    entry_price = 0.0
+    entry_bar = 0
+    sl_price = 0.0
+    tp_price = 0.0
+
+    pip_size = 0.0001
+    contract_size = 100000.0  # 1 lot EURUSD = 100,000 EUR
+    cost_per_trade_price = (spread_pips + slippage_pips) * pip_size
+
+    for t in range(n_bars):
+        close_t = c_arr[t]
+        high_t = h_arr[t]
+        low_t = l_arr[t]
+        atr_t = max(atr_arr[t], 0.00005)
+
+        # 1. Check open position SL / TP
+        if pos_dir != 0.0:
+            hit_sl = False
+            hit_tp = False
+            exit_price = 0.0
+
+            if pos_dir > 0:  # Long
+                if low_t <= sl_price:
+                    hit_sl = True
+                    exit_price = sl_price
+                elif high_t >= tp_price:
+                    hit_tp = True
+                    exit_price = tp_price
+            else:  # Short
+                if high_t >= sl_price:
+                    hit_sl = True
+                    exit_price = sl_price
+                elif low_t <= tp_price:
+                    hit_tp = True
+                    exit_price = tp_price
+
+            if hit_sl or hit_tp:
+                pnl_dollars = pos_dir * (exit_price - entry_price) * pos_lot * contract_size
+                fee = commission_per_lot * pos_lot + (cost_per_trade_price * pos_lot * contract_size)
+                net_pnl = pnl_dollars - fee
+                balance += net_pnl
+                trades.append({
+                    "entry_bar": entry_bar,
+                    "exit_bar": t,
+                    "direction": "LONG" if pos_dir > 0 else "SHORT",
+                    "lot": pos_lot,
+                    "entry_price": entry_price,
+                    "exit_price": exit_price,
+                    "net_pnl": net_pnl,
+                    "reason": "SL_HIT" if hit_sl else "TP_HIT",
+                    "bars_held": t - entry_bar
+                })
+                pos_dir, pos_lot = 0.0, 0.0
+
+        # 2. Check entries if flat
+        if pos_dir == 0.0:
+            act = all_actions[t]
+            if act == ACTION_OPEN_LONG:
+                pos_dir = 1.0
+                pos_lot = float(all_sizes[t])
+                entry_price = close_t + cost_per_trade_price * 0.5
+                entry_bar = t
+                sl_atr = float(all_sl[t])
+                tp_atr = float(all_tp[t])
+                sl_price = entry_price - (sl_atr * atr_t)
+                tp_price = entry_price + (tp_atr * atr_t)
+            elif act == ACTION_OPEN_SHORT:
+                pos_dir = -1.0
+                pos_lot = float(all_sizes[t])
+                entry_price = close_t - cost_per_trade_price * 0.5
+                entry_bar = t
+                sl_atr = float(all_sl[t])
+                tp_atr = float(all_tp[t])
+                sl_price = entry_price + (sl_atr * atr_t)
+                tp_price = entry_price - (tp_atr * atr_t)
+
+        equity_curve.append(balance)
+
+    return {
+        "initial_balance": initial_balance,
+        "final_balance": balance,
+        "net_profit": balance - initial_balance,
+        "return_pct": (balance - initial_balance) / initial_balance * 100.0,
+        "trades": trades,
+        "total_trades": len(trades),
+        "equity_curve": equity_curve
+    }
+
+
 def compute_excursions(df_clean, c_ser, atr_ser, H_bars=30):
     h = df_clean['high'].to_numpy(dtype=np.float64)
     l = df_clean['low'].to_numpy(dtype=np.float64)
@@ -177,7 +290,7 @@ def run_experiment_29(eurusd_path: Optional[str] = None, xauusd_model_path: Opti
     ratio_tr_l = p_up_50_tr / p_down_50_tr
     ratio_tr_s = p_down_50_tr / p_up_50_tr
 
-    dist_ema200_tr = feat_train['dist_ema200'].iloc[sub_idx].to_numpy() if 'dist_ema200' in feat_train.columns else np.zeros(len(sub_idx))
+    dist_ema200_tr = feat_train['dist_ema200_atr'].iloc[sub_idx].to_numpy() if 'dist_ema200_atr' in feat_train.columns else np.zeros(len(sub_idx))
     atr_ratio_tr = feat_train['atr_ratio'].iloc[sub_idx].to_numpy() if 'atr_ratio' in feat_train.columns else np.ones(len(sub_idx))
 
     # Note: On EURUSD, minimum move threshold is relative to EURUSD ATR
@@ -231,7 +344,7 @@ def run_experiment_29(eurusd_path: Optional[str] = None, xauusd_model_path: Opti
     ratio_v_l = p_up_50_v / p_down_50_v
     ratio_v_s = p_down_50_v / p_up_50_v
 
-    dist_ema200_v = feat_val['dist_ema200'].to_numpy() if 'dist_ema200' in feat_val.columns else np.zeros(len(X_val_all))
+    dist_ema200_v = feat_val['dist_ema200_atr'].to_numpy() if 'dist_ema200_atr' in feat_val.columns else np.zeros(len(X_val_all))
     atr_ratio_v = feat_val['atr_ratio'].to_numpy() if 'atr_ratio' in feat_val.columns else np.ones(len(X_val_all))
 
     cand_v_l = (ratio_v_l >= 1.15) & (ratio_v_l > ratio_v_s) & (dist_ema200_v >= -0.5) & (atr_ratio_v >= 0.85)
@@ -339,10 +452,10 @@ def run_experiment_29(eurusd_path: Optional[str] = None, xauusd_model_path: Opti
         all_sl[act_s] = np.where(is_tr_s, np.clip(p_up_80_v[act_s] * 1.30, 1.8, 3.5), np.clip(p_up_80_v[act_s] * 1.10, 1.4, 2.5))
 
         sp, sl, cm = v["friction"]
-        res = run_closed_loop_backtest(
-            df=df_val_clean, market_features=feat_val, atr_series=atr_val,
-            policy_predictor=passive_predictor, initial_balance=10000.0,
-            lot_base=0.1, spread_points=sp, slippage_points=sl, commission_per_lot=cm,
+        res = run_closed_loop_backtest_forex(
+            df=df_val_clean, atr_series=atr_val,
+            initial_balance=10000.0,
+            lot_base=0.1, spread_pips=sp, slippage_pips=sl, commission_per_lot=cm,
             precomputed_flat=(all_actions, all_sizes, all_sl, all_tp)
         )
 
