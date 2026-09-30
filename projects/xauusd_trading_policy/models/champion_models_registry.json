@@ -1,0 +1,76 @@
+{
+  "export_timestamp": "2026-09-30 19:36:11 UTC",
+  "dataset_train": "2020-2024",
+  "dataset_val": "2025 Out-of-Sample",
+  "models": {
+    "EXP-24": {
+      "name": "Surgical Ultra-Precision",
+      "file": "exp24_surgical_precision.joblib",
+      "metrics": {
+        "net_profit": 282.526406402421,
+        "return_pct": 2.8252640640242315,
+        "profit_factor": 2.2648969336393168,
+        "win_rate": 52.72727272727272,
+        "max_drawdown_pct": 0.5007801254997801,
+        "total_trades": 55,
+        "gross_profit": 505.8856374107104,
+        "gross_loss": 223.35923100828938,
+        "total_friction": 19.8,
+        "friction_to_gross_pct": 3.9139280769746563,
+        "avg_trade_pnl": 5.136843752771291,
+        "avg_win": 17.444332324507254,
+        "avg_loss": 8.590739654164976,
+        "payoff_ratio": 2.0305972508490426,
+        "avg_bars_held": 70.69090909090909,
+        "exposure_pct": 1.1083017157582375,
+        "sharpe_ratio": 2.4471664400732687
+      }
+    },
+    "EXP-26": {
+      "name": "Concentrated Dual-Open",
+      "file": "exp26_dual_open_breakout.joblib",
+      "metrics": {
+        "net_profit": 502.58091449856624,
+        "return_pct": 5.025809144985833,
+        "profit_factor": 1.797731084529509,
+        "win_rate": 51.515151515151516,
+        "max_drawdown_pct": 1.1120506115738547,
+        "total_trades": 66,
+        "gross_profit": 1132.593865285086,
+        "gross_loss": 630.0129507865196,
+        "total_friction": 46.800000000000004,
+        "friction_to_gross_pct": 4.13210784858171,
+        "avg_trade_pnl": 7.614862340887368,
+        "avg_win": 33.311584273090766,
+        "avg_loss": 19.687904712078737,
+        "payoff_ratio": 1.6919821972042437,
+        "avg_bars_held": 67.57575757575758,
+        "exposure_pct": 1.2713543344346037,
+        "sharpe_ratio": 1.9550203902198016
+      }
+    },
+    "EXP-27": {
+      "name": "Cross-Session Dual-Sleeve",
+      "file": "exp27_cross_session_dual_sleeve.joblib",
+      "metrics": {
+        "net_profit": 563.9333560725606,
+        "return_pct": 5.639333560725791,
+        "profit_factor": 1.868849007071238,
+        "win_rate": 54.166666666666664,
+        "max_drawdown_pct": 1.105584840224007,
+        "total_trades": 72,
+        "gross_profit": 1212.9913068590804,
+        "gross_loss": 649.05795078652,
+        "total_friction": 49.31999999999999,
+        "friction_to_gross_pct": 4.065981324112635,
+        "avg_trade_pnl": 7.832407723230009,
+        "avg_win": 31.102341201514882,
+        "avg_loss": 19.668422751106668,
+        "payoff_ratio": 1.5813337752141243,
+        "avg_bars_held": 72.20833333333333,
+        "exposure_pct": 1.482011476395853,
+        "sharpe_ratio": 2.171290937093455
+      }
+    }
+  }
+}
