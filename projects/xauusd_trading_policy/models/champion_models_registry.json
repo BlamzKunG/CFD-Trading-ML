@@ -146,6 +146,22 @@
         "total_trades": 64,
         "finding": "EURUSD 15m return directional gating purges 10 false breakout traps on Gold, boosting PF to 2.10, WR to 56.2%, and lowering Max DD to 1.00%."
       }
+    },
+    "EXP-34": {
+      "name": "Dynamic Volatility-Targeted Risk & Model Confidence Sizing",
+      "symbol": "XAUUSD",
+      "file": "exp34_volatility_targeted_champion.joblib",
+      "best_variant": "Variant_5_EXP34_Master_Policy",
+      "metrics": {
+        "net_profit": 1186.67,
+        "return_pct": 11.87,
+        "profit_factor": 1.89,
+        "win_rate": 72.3,
+        "max_drawdown_pct": 2.20,
+        "sharpe_ratio": 2.04,
+        "total_trades": 65,
+        "finding": "Breakeven Excursion Ratchet after 50% TP progress surged win rate to 72.3%. Volatility-targeted 0.65% equity risk targeting yielded +11.87% net return at 2.20% Max DD."
+      }
     }
   }
 }
