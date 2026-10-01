@@ -569,5 +569,31 @@
       "sharpe_ratio": 1.8351233629593686
     },
     "date": "2026-10-01 04:55:27 UTC"
+  },
+  "EXP-56": {
+    "name": "Multi-Asset Synergistic Risk-Parity Alpha Engine",
+    "code": "MASR-PAE",
+    "model_file": "exp56_masr_alpha_champion.joblib",
+    "onnx_file": "exp56_masr_alpha_engine.onnx",
+    "metrics": {
+      "net_profit": -10151.185924638332,
+      "return_pct": -101.5118592463834,
+      "profit_factor": 0.7039882130340577,
+      "win_rate": 51.445555255336394,
+      "max_drawdown_pct": 101.4942072811763,
+      "total_trades": 3701,
+      "gross_profit": 24141.99553507928,
+      "gross_loss": 34293.18145971761,
+      "total_friction": 13780.48205091779,
+      "friction_to_gross_pct": 57.080956836787585,
+      "avg_trade_pnl": -2.7428224600481848,
+      "avg_win": 12.67961950371811,
+      "avg_loss": 19.083573433343133,
+      "payoff_ratio": 0.6644258502217446,
+      "avg_bars_held": 10.986219940556607,
+      "exposure_pct": 11.590418663253583,
+      "sharpe_ratio": 0.9008318277986569
+    },
+    "date": "2026-10-01 05:03:00 UTC"
   }
 }
