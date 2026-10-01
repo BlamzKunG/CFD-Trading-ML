@@ -491,5 +491,31 @@
       "sharpe_ratio": 2.573079413649855
     },
     "date": "2026-10-01 04:43:56 UTC"
+  },
+  "EXP-53": {
+    "name": "Multi-Session Volatility Regimes & Dynamic Liquidity Vacuum Alpha",
+    "code": "MSVR-DLVA",
+    "model_file": "exp53_msvr_alpha_champion.joblib",
+    "onnx_file": "exp53_msvr_alpha_engine.onnx",
+    "metrics": {
+      "net_profit": 634.6437906474207,
+      "return_pct": 6.346437906474202,
+      "profit_factor": 999.0,
+      "win_rate": 100.0,
+      "max_drawdown_pct": 0.0,
+      "total_trades": 13,
+      "gross_profit": 634.6437906474207,
+      "gross_loss": 0.0,
+      "total_friction": 88.12958682746745,
+      "friction_to_gross_pct": 13.886464836843926,
+      "avg_trade_pnl": 48.81875312672467,
+      "avg_win": 48.81875312672467,
+      "avg_loss": 0.0,
+      "payoff_ratio": 0.0,
+      "avg_bars_held": 23.76923076923077,
+      "exposure_pct": 0.08808262092831672,
+      "sharpe_ratio": 2.5821184875027114
+    },
+    "date": "2026-10-01 04:47:19 UTC"
   }
 }
