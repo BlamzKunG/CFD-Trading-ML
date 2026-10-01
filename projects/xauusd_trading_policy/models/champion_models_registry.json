@@ -362,6 +362,25 @@
         "mean_latency_us": 19.54,
         "finding": "Best variant Variant_2_MTF_Trend_Breakout achieved Net Profit $715.87 with 78.6% Win Rate and PF 3.66. Native ONNX inference clocked at 19.54 \u00b5s."
       }
+    },
+    "EXP-47": {
+      "name": "Cross-Asset Lead-Lag Impulse & Dynamic Micro-Regime Policy Engine (CAL-DMRG)",
+      "symbol": "XAUUSD+EURUSD",
+      "file_joblib": "exp47_cal_alpha_champion.joblib",
+      "file_onnx": "exp47_cal_alpha_engine.onnx",
+      "best_variant": "Variant_2_LeadLag_Impulse",
+      "metrics": {
+        "net_profit": 573.38,
+        "return_pct": 5.73,
+        "profit_factor": 4.23,
+        "win_rate": 77.78,
+        "max_drawdown_pct": 0.86,
+        "sharpe_ratio": 1.71,
+        "total_trades": 9,
+        "onnx_size_bytes": 8833,
+        "mean_latency_us": 19.74,
+        "finding": "Best variant Variant_2_LeadLag_Impulse achieved Net Profit $573.38 with 77.8% Win Rate and PF 4.23. Native ONNX inference clocked at 19.74 \u00b5s."
+      }
     }
   }
 }

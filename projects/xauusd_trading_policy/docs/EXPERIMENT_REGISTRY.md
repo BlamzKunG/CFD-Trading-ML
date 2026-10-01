@@ -207,3 +207,4 @@
 | EXP-44 | Order Flow Imbalance & Volume Delta Microstructure Filter | **+$847.54** | **2.84** | **73.7%** | **1.69%** | 1.95 | 19 | Volume Delta Proxy + 15-Bar CVD Institutional Flow Alignment + Volume Force Surge Gating. |
 | EXP-45 | Multi-Horizon Liquidity Sweep & Swept-Level Retest Engine | **+$847.54** | **2.84** | **73.7%** | **1.69%** | 1.95 | 19 | Asia Session & Rolling H4 Liquidity Sweeps + Retest Reversals + OFI Volume Delta Gating. |
 | EXP-46 | Multi-Timeframe Momentum Fusion & High-Frequency ONNX Policy Engine | **+$715.87** | **3.66** | **78.6%** | **1.69%** | 1.91 | 14 | Multi-Timeframe Microstructure Momentum Fusion + 31KB Native ONNX Policy (19.54 µs). |
+| EXP-47 | Cross-Asset Lead-Lag Impulse & Dynamic Micro-Regime Policy | **+$573.38** | **4.23** | **77.8%** | **0.86%** | 1.71 | 9 | EURUSD Lead-Lag Impulse Gating + US Dollar Shock Shield + 31KB Native ONNX (19.74 µs). |
