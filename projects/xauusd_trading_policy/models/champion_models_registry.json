@@ -977,5 +977,21 @@
       "sharpe_ratio": -0.9098744521338231
     },
     "date": "2026-10-01 17:58:59 UTC"
+  },
+  "EXP-79": {
+    "name": "Tiered Macro-Micro Confluence & Dual-Regime Scaling Engine",
+    "code": "TMMC-DSE",
+    "model_file": "exp79_tmmc_alpha_champion.joblib",
+    "onnx_file": "exp79_tmmc_alpha_engine.onnx",
+    "metrics": {
+      "net_profit": 2411.179142856965,
+      "return_pct": 24.111791428569653,
+      "total_trades": 66,
+      "win_rate": 46.96969696969697,
+      "profit_factor": 1.3806410559244928,
+      "max_drawdown_pct": 12.724111371684325,
+      "sharpe_ratio": 1.0620742302290052
+    },
+    "date": "2026-10-01 18:04:12 UTC"
   }
 }
