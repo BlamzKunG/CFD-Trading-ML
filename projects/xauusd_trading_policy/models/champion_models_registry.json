@@ -929,5 +929,21 @@
       "sharpe_ratio": -3.946968313649038
     },
     "date": "2026-10-01 17:43:43 UTC"
+  },
+  "EXP-76": {
+    "name": "Expectancy-Frequency Frontier & Precision ML Gating",
+    "code": "EFF-PMLG",
+    "model_file": "exp76_eff_alpha_champion.joblib",
+    "onnx_file": "exp76_eff_alpha_engine.onnx",
+    "metrics": {
+      "net_profit": -38.31978571433683,
+      "return_pct": -0.3831978571433683,
+      "total_trades": 39,
+      "win_rate": 41.02564102564102,
+      "profit_factor": 0.9863085136750198,
+      "max_drawdown_pct": 17.362351779872007,
+      "sharpe_ratio": 0.013913398865148285
+    },
+    "date": "2026-10-01 17:48:26 UTC"
   }
 }
