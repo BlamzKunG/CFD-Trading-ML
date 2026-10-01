@@ -737,5 +737,21 @@
       "sharpe_ratio": 1.3103011487737635
     },
     "date": "2026-10-01 15:47:17 UTC"
+  },
+  "EXP-64": {
+    "name": "Cross-Asset Lead-Lag Impulse Transmission & Mispricing",
+    "code": "CALI-MASE",
+    "model_file": "exp64_cali_alpha_champion.joblib",
+    "onnx_file": "exp64_cali_alpha_engine.onnx",
+    "metrics": {
+      "net_profit": 1378.3887808551062,
+      "return_pct": 13.783887808551063,
+      "total_trades": 28,
+      "win_rate": 75.0,
+      "profit_factor": 2.130926748646497,
+      "max_drawdown_pct": 5.469282501633487,
+      "sharpe_ratio": 1.3103011487737635
+    },
+    "date": "2026-10-01 15:52:15 UTC"
   }
 }
