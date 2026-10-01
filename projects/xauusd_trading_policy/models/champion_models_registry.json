@@ -419,6 +419,25 @@
         "mean_latency_us": 13.26,
         "finding": "Best variant Variant_3_Accelerated_BE_Ratchet achieved Net Profit $4.03 with 60.9% Win Rate and PF 1.01. Native ONNX inference clocked at 13.26 \u00b5s."
       }
+    },
+    "EXP-50": {
+      "name": "The Grand Quant ML Sovereign Alpha Engine (SOVEREIGN-ALPHA)",
+      "symbol": "XAUUSD+EURUSD",
+      "file_joblib": "exp50_sovereign_alpha_champion.joblib",
+      "file_onnx": "exp50_sovereign_alpha_engine.onnx",
+      "best_variant": "Variant_2_Sovereign_Breakout_Core",
+      "metrics": {
+        "net_profit": 220.13,
+        "return_pct": 2.2,
+        "profit_factor": 6.34,
+        "win_rate": 87.5,
+        "max_drawdown_pct": 0.41,
+        "sharpe_ratio": 1.89,
+        "total_trades": 8,
+        "onnx_size_bytes": 8886,
+        "mean_latency_us": 13.46,
+        "finding": "Milestone 50 Sovereign Engine: Best variant Variant_2_Sovereign_Breakout_Core achieved Net Profit $220.13 with 87.5% Win Rate and PF 6.34. Native ONNX inference clocked at 13.46 \u00b5s."
+      }
     }
   }
 }

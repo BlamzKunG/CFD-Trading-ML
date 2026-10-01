@@ -210,3 +210,4 @@
 | EXP-47 | Cross-Asset Lead-Lag Impulse & Dynamic Micro-Regime Policy | **+$573.38** | **4.23** | **77.8%** | **0.86%** | 1.71 | 9 | EURUSD Lead-Lag Impulse Gating + US Dollar Shock Shield + 31KB Native ONNX (19.74 µs). |
 | EXP-48 | Adaptive Spread-Volatility & Dynamic Kelly Sizing Engine | **$-82.27** | **0.89** | **56.5%** | **4.27%** | -0.33 | 46 | Dynamic Kelly Confidence Sizing + Spread Friction Penalty + Volatility Velocity Scaling (21.02 µs). |
 | EXP-49 | Temporal Volatility Cones & Adaptive Trailing Excursions | **+$4.03** | **1.01** | **60.9%** | **4.27%** | 0.03 | 46 | Parabolic Volatility Cone Trailing + Accelerated BE Ratchet + 31KB Native ONNX (13.26 µs). |
+| EXP-50 | The Grand Quant ML Sovereign Alpha Engine (SOVEREIGN-ALPHA) | **+$220.13** | **6.34** | **87.5%** | **0.41%** | 1.89 | 8 | The Sovereign Milestone: Full 10-Layer Institutional Alpha Synthesis + Native ONNX (13.46 µs). |
