@@ -505,61 +505,81 @@ def run_experiment_71(eurusd_path: Optional[str] = None, xauusd_path: Optional[s
     prob_l_xau = 0.60 * bundle["clf_l_lgb"].predict_proba(X_meta_l)[:, 1] + 0.40 * bundle["clf_l_hist"].predict_proba(X_meta_l)[:, 1]
     prob_s_xau = 0.60 * bundle["clf_s_lgb"].predict_proba(X_meta_s)[:, 1] + 0.40 * bundle["clf_s_hist"].predict_proba(X_meta_s)[:, 1]
 
-    # Confluence Score Matrix
-    score_l = (
-        asia_sweep_l.astype(int) +
-        pd_sweep_l.astype(int) +
-        h1_sweep_l.astype(int) +
-        m15_sweep_l.astype(int) +
-        fvg_retest_l.astype(int) +
-        bull_pinbar_1b.astype(int)
+    # MTF Trend & OFI Absorption Gating
+    mtf_bull = (c_xau > ema60_xau) & (ema20_xau > ema60_xau)
+    mtf_bear = (c_xau < ema60_xau) & (ema20_xau < ema60_xau)
+    ofi_l = (vdp_xau > 0) & (vfs_xau >= 1.06)
+    ofi_s = (vdp_xau < 0) & (vfs_xau >= 1.06)
+
+    # Sleeve 1: Asia Session High/Low Sweeps
+    s1_long = asia_sweep_l & mtf_bull & ofi_l & is_active_trade_session & cavr_ok & (~is_friday_block)
+    s1_short = asia_sweep_s & mtf_bear & ofi_s & is_active_trade_session & cavr_ok & (~is_friday_block)
+
+    # Sleeve 2: Prior Day & H1 60-bar Swing Sweeps
+    s2_long = (pd_sweep_l | h1_sweep_l) & mtf_bull & ofi_l & (lower_wick_xau >= 0.25 * rng_xau) & is_active_trade_session & cavr_ok & (~is_friday_block)
+    s2_short = (pd_sweep_s | h1_sweep_s) & mtf_bear & ofi_s & (upper_wick_xau >= 0.25 * rng_xau) & is_active_trade_session & cavr_ok & (~is_friday_block)
+
+    # Sleeve 3: FVG Retests (20-bar Imbalance Memory)
+    s3_long = fvg_retest_l & mtf_bull & ofi_l & is_active_trade_session & cavr_ok & (~is_friday_block)
+    s3_short = fvg_retest_s & mtf_bear & ofi_s & is_active_trade_session & cavr_ok & (~is_friday_block)
+
+    # Sleeve 4: M15 Intraday Swing Sweeps
+    s4_long = m15_sweep_l & mtf_bull & ofi_l & is_active_trade_session & cavr_ok & (~is_friday_block)
+    s4_short = m15_sweep_s & mtf_bear & ofi_s & is_active_trade_session & cavr_ok & (~is_friday_block)
+
+    # Sleeve 5: Institutional Pinbar Absorption (TALP)
+    s5_long = bull_pinbar_1b & mtf_bull & ofi_l & (vfs_xau >= 1.10) & is_active_trade_session & cavr_ok & (~is_friday_block)
+    s5_short = bear_pinbar_1b & mtf_bear & ofi_s & (vfs_xau >= 1.10) & is_active_trade_session & cavr_ok & (~is_friday_block)
+
+    # Sleeve Confluence Matrix
+    sleeve_count_l = (
+        s1_long.astype(int) +
+        s2_long.astype(int) +
+        s3_long.astype(int) +
+        s4_long.astype(int) +
+        s5_long.astype(int)
     )
-    score_s = (
-        asia_sweep_s.astype(int) +
-        pd_sweep_s.astype(int) +
-        h1_sweep_s.astype(int) +
-        m15_sweep_s.astype(int) +
-        fvg_retest_s.astype(int) +
-        bear_pinbar_1b.astype(int)
+    sleeve_count_s = (
+        s1_short.astype(int) +
+        s2_short.astype(int) +
+        s3_short.astype(int) +
+        s4_short.astype(int) +
+        s5_short.astype(int)
     )
 
     # 6. Build the 5 Experimental Variants
     print("\n[Step 4/6] Backtesting 5 Structural Liquidity & Realistic Trade Frequency Variants...")
 
-    # Variant 1: EXP-70 Baseline Control (Hyper-filtered, 29 trades)
-    h4_low_xau = l_s.rolling(240, min_periods=30).min().shift(1).bfill().to_numpy()
-    h4_high_xau = h_s.rolling(240, min_periods=30).max().shift(1).bfill().to_numpy()
-    h4_sweep_l = is_active_trade_session & (l_xau < h4_low_xau) & (c_xau > h4_low_xau) & (vfs_xau >= 1.08) & (vdp_xau > 0)
-    h4_sweep_s = is_active_trade_session & (h_xau > h4_high_xau) & (c_xau < h4_high_xau) & (vfs_xau >= 1.10) & (vdp_xau < 0)
+    # Variant 1: Pure EXP-68/70 Control Baseline (~29 trades)
     v1_broad_l = (prob_l_xau >= 0.52) & (ratio_v_l >= 1.12) & (p_up_50_v * atr_arr_xau >= 0.55) & (trend_l_xau == 1.0) & (~is_friday_block)
     v1_broad_s = (prob_s_xau >= 0.52) & (ratio_v_s >= 1.20) & (p_down_50_v * atr_arr_xau >= 0.60) & (trend_s_xau == 1.0) & (~is_friday_block)
-    v1_long = (v1_broad_l & (time_float >= 7.0) & (time_float <= 11.0) & h4_sweep_l & bull_pinbar_1b & (vfs_xau >= 1.12) & cavr_ok)
-    v1_short = (v1_broad_s & (time_float >= 7.0) & (time_float <= 11.0) & h4_sweep_s & bear_pinbar_1b & (vfs_xau >= 1.15) & cavr_ok)
+    v1_long = (v1_broad_l & (time_float >= 7.0) & (time_float <= 11.0) & bull_pinbar_1b & (vfs_xau >= 1.12) & cavr_ok)
+    v1_short = (v1_broad_s & (time_float >= 7.0) & (time_float <= 11.0) & bear_pinbar_1b & (vfs_xau >= 1.15) & cavr_ok)
     act_v1 = np.where(v1_long, ACTION_OPEN_LONG, np.where(v1_short, ACTION_OPEN_SHORT, ACTION_HOLD))
     risk_v1 = np.full(n_val, 1.5)
 
-    # Variant 2: MLSL Conservative (Asia + PDH/PDL Sweeps, Threshold 0.62)
-    v2_long = (prob_l_xau >= 0.62) & (score_l >= 1) & (trend_l_xau == 1.0) & cavr_ok & (~is_friday_block)
-    v2_short = (prob_s_xau >= 0.62) & (score_s >= 1) & (trend_s_xau == 1.0) & cavr_ok & (~is_friday_block)
+    # Variant 2: MLSL Conservative Edge (Sleeve Confluence >= 1, Prob >= 0.60, Target 80-120 trades)
+    v2_long = (sleeve_count_l >= 1) & (prob_l_xau >= 0.60)
+    v2_short = (sleeve_count_s >= 1) & (prob_s_xau >= 0.60)
     act_v2 = np.where(v2_long, ACTION_OPEN_LONG, np.where(v2_short, ACTION_OPEN_SHORT, ACTION_HOLD))
     risk_v2 = np.full(n_val, 1.5)
 
-    # Variant 3: MLSL Realistic Production (Full Multi-Level Sweeps, Threshold 0.58)
-    v3_long = (prob_l_xau >= 0.58) & (score_l >= 1) & is_active_trade_session & cavr_ok & (~is_friday_block)
-    v3_short = (prob_s_xau >= 0.58) & (score_s >= 1) & is_active_trade_session & cavr_ok & (~is_friday_block)
+    # Variant 3: MLSL Realistic Production (Sleeve Confluence >= 1, Prob >= 0.54, Target 150-250 trades)
+    v3_long = (sleeve_count_l >= 1) & (prob_l_xau >= 0.54)
+    v3_short = (sleeve_count_s >= 1) & (prob_s_xau >= 0.54)
     act_v3 = np.where(v3_long, ACTION_OPEN_LONG, np.where(v3_short, ACTION_OPEN_SHORT, ACTION_HOLD))
     risk_v3 = np.full(n_val, 1.5)
 
-    # Variant 4: MLSL Active Intraday (Full Multi-Level Sweeps, Threshold 0.54)
-    v4_long = (prob_l_xau >= 0.54) & (score_l >= 1) & is_active_trade_session & cavr_ok & (~is_friday_block)
-    v4_short = (prob_s_xau >= 0.54) & (score_s >= 1) & is_active_trade_session & cavr_ok & (~is_friday_block)
+    # Variant 4: MLSL Dual-Confluence Engine ((Sleeve >= 2 & Prob >= 0.50) | (Sleeve >= 1 & Prob >= 0.56))
+    v4_long = ((sleeve_count_l >= 2) & (prob_l_xau >= 0.50)) | ((sleeve_count_l >= 1) & (prob_l_xau >= 0.56))
+    v4_short = ((sleeve_count_s >= 2) & (prob_s_xau >= 0.50)) | ((sleeve_count_s >= 1) & (prob_s_xau >= 0.56))
     act_v4 = np.where(v4_long, ACTION_OPEN_LONG, np.where(v4_short, ACTION_OPEN_SHORT, ACTION_HOLD))
-    risk_v4 = np.full(n_val, 1.2)
+    risk_v4 = np.full(n_val, 1.4)
 
-    # Variant 5: Production MLSL-RTFE Flagship (Variant 3 + Confluence Score Dynamic Sizing)
-    # 1 confirmation = 1.0% risk, 2 confirmations = 1.6% risk, 3+ confirmations = 2.4% risk
-    max_score = np.maximum(score_l, score_s)
-    risk_v5 = np.where(max_score >= 3, 2.4, np.where(max_score == 2, 1.6, 1.0))
+    # Variant 5: Production MLSL-RTFE Flagship (Variant 3 setups + Confluence Score Dynamic Sizing)
+    # Single sleeve = 1.0% risk, Dual sleeve = 1.8% risk, Triple+ sleeve = 2.4% risk
+    max_sleeve = np.maximum(sleeve_count_l, sleeve_count_s)
+    risk_v5 = np.where(max_sleeve >= 3, 2.4, np.where(max_sleeve == 2, 1.8, 1.0))
     act_v5 = act_v3.copy()
 
     # Execute Backtests
@@ -622,15 +642,27 @@ def run_experiment_71(eurusd_path: Optional[str] = None, xauusd_path: Optional[s
     onnx_model.eval()
 
     onnx_path = os.path.join(models_dir, "exp71_mlsl_alpha_engine.onnx")
-    torch.onnx.export(
-        onnx_model,
-        torch.from_numpy(dummy_input),
-        onnx_path,
-        input_names=["market_features"],
-        output_names=["action_logits"],
-        dynamic_axes={"market_features": {0: "batch_size"}, "action_logits": {0: "batch_size"}},
-        opset_version=14
-    )
+    try:
+        torch.onnx.export(
+            onnx_model,
+            torch.from_numpy(dummy_input),
+            onnx_path,
+            input_names=["market_features"],
+            output_names=["action_logits"],
+            dynamic_axes={"market_features": {0: "batch_size"}, "action_logits": {0: "batch_size"}},
+            opset_version=14,
+            dynamo=False
+        )
+    except TypeError:
+        torch.onnx.export(
+            onnx_model,
+            torch.from_numpy(dummy_input),
+            onnx_path,
+            input_names=["market_features"],
+            output_names=["action_logits"],
+            dynamic_axes={"market_features": {0: "batch_size"}, "action_logits": {0: "batch_size"}},
+            opset_version=14
+        )
 
     import onnxruntime as ort
     ort_session = ort.InferenceSession(onnx_path, providers=["CPUExecutionProvider"])
