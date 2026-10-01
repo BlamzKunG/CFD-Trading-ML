@@ -514,9 +514,17 @@ def run_experiment_57(eurusd_path: Optional[str] = None, xauusd_path: Optional[s
 
     # 7. Export Distilled ONNX Policy
     print("\n[Step 5/6] Exporting End-to-End Distilled ONNX Policy...")
+    import subprocess
+    try:
+        import onnx
+        import onnxruntime as ort
+    except ImportError:
+        print("[*] Installing onnx and onnxruntime...")
+        subprocess.run([sys.executable, "-m", "pip", "install", "-q", "onnx", "onnxruntime"], check=True)
+        import onnx
+        import onnxruntime as ort
     import torch
     import torch.nn as nn
-    import onnxruntime as ort
 
     class DAPAPolicyNet(nn.Module):
         def __init__(self, input_dim=12):
