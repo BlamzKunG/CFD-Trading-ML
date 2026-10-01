@@ -162,6 +162,23 @@
         "total_trades": 65,
         "finding": "Breakeven Excursion Ratchet after 50% TP progress surged win rate to 72.3%. Volatility-targeted 0.65% equity risk targeting yielded +11.87% net return at 2.20% Max DD."
       }
+    },
+    "EXP-35": {
+      "name": "Synthetic Dollar Index (USDi) Multi-Timeframe Gating",
+      "symbol": "XAUUSD+EURUSD",
+      "file": "exp35_synthetic_usdi_champion.joblib",
+      "best_variant": "Variant_4_Optimized_0.75pct_Target",
+      "metrics": {
+        "net_profit": 1424.60,
+        "return_pct": 14.25,
+        "profit_factor": 2.01,
+        "win_rate": 76.7,
+        "max_drawdown_pct": 1.62,
+        "sharpe_ratio": 2.30,
+        "calmar_ratio": 8.79,
+        "total_trades": 73,
+        "finding": "Synthetic USDi 15m gating paired with 0.75% volatility targeting and 50% TP Breakeven Excursion Ratchet delivered an exceptional 76.7% Win Rate, +14.25% Net Profit, and a Calmar Ratio of 8.79 with only 1.62% Max Drawdown."
+      }
     }
   }
 }
