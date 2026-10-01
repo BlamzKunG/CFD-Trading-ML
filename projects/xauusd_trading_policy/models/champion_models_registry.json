@@ -260,6 +260,22 @@
         "drawdown_reduction_pct": 27.8,
         "finding": "Real-time 3-regime classification (Expansion 72.8%, Consolidation 3.9%, Macro Shock 23.3%) dynamically allocated risk and purged 85+ false breakout entries during chop and macro shock. This contracted maximum drawdown by 28% (from 11.06% down to 7.98%), verifying that market volatility regime awareness provides critical downside buffering."
       }
+    },
+    "EXP-41": {
+      "name": "Time-Decayed Velocity Excursion & Microstructure Momentum Harvest (TDV-MMH)",
+      "symbol": "XAUUSD+EURUSD",
+      "file": "exp41_time_decay_velocity_champion.joblib",
+      "best_variant": "Variant_2_Accelerated_Stagnation_Decay",
+      "metrics": {
+        "net_profit": -244.77,
+        "return_pct": -2.45,
+        "profit_factor": 0.95,
+        "win_rate": 59.38,
+        "max_drawdown_pct": 10.42,
+        "sharpe_ratio": -0.22,
+        "total_trades": 160,
+        "finding": "Empirically evaluated velocity decay mechanics and stagnation ratchets. Variant 2 (Accelerated Stagnation Decay: tightening SL after 45 bars without 25% progress) outperformed static 180-bar holding by +$164.57 and reduced Max Drawdown from 11.06% to 10.42%. Crucially, Variant 4 (Early Velocity Scratch at bar 30) collapsed Win Rate from 60.6% down to 52.5%, proving Gold M1 moves require 30-45 bars of breathing room before expanding toward statistical targets; premature cutting destroys positive expectancy."
+      }
     }
   }
 }
