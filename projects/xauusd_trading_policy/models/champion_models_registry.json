@@ -913,5 +913,21 @@
       "sharpe_ratio": 0.6659860492502329
     },
     "date": "2026-10-01 17:38:10 UTC"
+  },
+  "EXP-75": {
+    "name": "Cross-Regime Adaptive Confluence & Microstructure Flow Engine",
+    "code": "CRAC-MFE",
+    "model_file": "exp75_crac_alpha_champion.joblib",
+    "onnx_file": "exp75_crac_alpha_engine.onnx",
+    "metrics": {
+      "net_profit": -9452.519214285832,
+      "return_pct": -94.52519214285833,
+      "total_trades": 1808,
+      "win_rate": 37.22345132743363,
+      "profit_factor": 0.742649932892508,
+      "max_drawdown_pct": 95.7907380148045,
+      "sharpe_ratio": -3.946968313649038
+    },
+    "date": "2026-10-01 17:43:43 UTC"
   }
 }
