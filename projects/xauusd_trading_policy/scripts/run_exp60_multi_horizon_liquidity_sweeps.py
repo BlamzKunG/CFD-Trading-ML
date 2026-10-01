@@ -288,6 +288,7 @@ def run_experiment_60(eurusd_path: Optional[str] = None, xauusd_path: Optional[s
 
     is_london = (time_float >= 7.0) & (time_float < 11.0)
     is_ny_overlap = (time_float >= 12.5) & (time_float < 16.5)
+    is_trade_session = (hour_val >= 7) & (hour_val < 19)
     is_friday_block = (day_val == 4) & (hour_val >= 17)
     cavr_ok = np.where(is_london, cavr_series >= 0.88, np.where(is_ny_overlap, cavr_series >= 0.95, cavr_series >= 0.92))
 
