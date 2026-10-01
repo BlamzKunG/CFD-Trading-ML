@@ -439,5 +439,31 @@
         "finding": "Milestone 50 Sovereign Engine: Best variant Variant_2_Sovereign_Breakout_Core achieved Net Profit $220.13 with 87.5% Win Rate and PF 6.34. Native ONNX inference clocked at 13.46 \u00b5s."
       }
     }
+  },
+  "EXP-51": {
+    "name": "Trend-Aligned Liquidity Pullback & Asymmetric Impulse Engine",
+    "code": "TALP-AIE",
+    "model_file": "exp51_talp_alpha_champion.joblib",
+    "onnx_file": "exp51_talp_alpha_engine.onnx",
+    "metrics": {
+      "net_profit": 333.8262582636624,
+      "return_pct": 3.3382625826365984,
+      "profit_factor": 4.557378807732935,
+      "win_rate": 88.23529411764706,
+      "max_drawdown_pct": 0.45452830188682486,
+      "total_trades": 17,
+      "gross_profit": 427.66677295329833,
+      "gross_loss": 93.84051468963602,
+      "total_friction": 60.254583900942386,
+      "friction_to_gross_pct": 14.089143162759163,
+      "avg_trade_pnl": 19.636838721391907,
+      "avg_win": 28.511118196886557,
+      "avg_loss": 46.92025734481801,
+      "payoff_ratio": 0.6076505076977246,
+      "avg_bars_held": 24.0,
+      "exposure_pct": 0.11630326646845703,
+      "sharpe_ratio": 2.103900092583437
+    },
+    "date": "2026-10-01 04:40:13 UTC"
   }
 }
