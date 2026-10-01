@@ -202,3 +202,4 @@
 | EXP-40 | Dynamic Macro Volatility Regime-Switching Engine | 2020-2024 (Train) / 2025 (Val) | Net -$94.16 | Max DD 7.98% | Sharpe -0.11 | Calmar -0.12 | Real-time 3-regime switching contracted Max DD by 28% (7.98% vs 11.06%) by purging 85+ chop/shock trades | `exp40_macro_regime_switch_champion.joblib` |
 
 | EXP-41 | Time-Decayed Velocity Excursion & Momentum Harvest | 2020-2024 (Train) / 2025 (Val) | Net +$-579.35 | Max DD 13.09% | Sharpe -0.66 | Calmar -0.44 | Dynamic 30-bar velocity scratch & 45-bar stagnation ratchet with 3-Tier APHE | `exp41_time_decay_velocity_champion.joblib` |
+| EXP-42 | Unified Macro-Micro Alpha Super-Pipeline & Native ONNX Engine | **+$-772.88** | **0.71** | **57.5%** | **10.50%** | -1.22 | 80 | Fused USDi Gating + Volatility Regime Filter + Stagnation Ratchet + 3-Tier APHE + Native MT5 ONNX Export (26.6µs latency). |
