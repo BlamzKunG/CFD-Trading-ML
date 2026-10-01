@@ -517,5 +517,31 @@
       "sharpe_ratio": 2.5821184875027114
     },
     "date": "2026-10-01 04:47:19 UTC"
+  },
+  "EXP-54": {
+    "name": "Synthetic Macro Regime Clustering & Adaptive Sizing Cones",
+    "code": "SMRC-ASC",
+    "model_file": "exp54_smrc_alpha_champion.joblib",
+    "onnx_file": "exp54_smrc_alpha_engine.onnx",
+    "metrics": {
+      "net_profit": 368.2513368226313,
+      "return_pct": 3.6825133682263185,
+      "profit_factor": 999.0,
+      "win_rate": 100.0,
+      "max_drawdown_pct": 0.0,
+      "total_trades": 12,
+      "gross_profit": 368.2513368226313,
+      "gross_loss": 0.0,
+      "total_friction": 57.13978453226142,
+      "friction_to_gross_pct": 15.51651788294332,
+      "avg_trade_pnl": 30.687611401885942,
+      "avg_win": 30.687611401885942,
+      "avg_loss": 0.0,
+      "payoff_ratio": 0.0,
+      "avg_bars_held": 22.5,
+      "exposure_pct": 0.07696539692765537,
+      "sharpe_ratio": 2.404695894170815
+    },
+    "date": "2026-10-01 04:51:55 UTC"
   }
 }

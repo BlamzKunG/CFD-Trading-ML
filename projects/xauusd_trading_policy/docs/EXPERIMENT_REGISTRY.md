@@ -214,3 +214,4 @@
 | EXP-51 | TALP-AIE Asymmetric Engine | $333.83 | 4.56 | 88.2% | 0.45% | 2.10 | 17 | `exp51_talp_alpha_champion.joblib` |
 | EXP-52 | DFTC-CAVR Engine | $632.32 | 999.00 | 100.0% | 0.00% | 2.57 | 12 | `exp52_cavr_alpha_champion.joblib` |
 | EXP-53 | MSVR-DLVA Engine | $634.64 | 999.00 | 100.0% | 0.00% | 2.58 | 13 | `exp53_msvr_alpha_champion.joblib` |
+| EXP-54 | SMRC-ASC Engine | $368.25 | 999.00 | 100.0% | 0.00% | 2.40 | 12 | `exp54_smrc_alpha_champion.joblib` |
