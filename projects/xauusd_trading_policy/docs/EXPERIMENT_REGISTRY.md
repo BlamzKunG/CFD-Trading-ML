@@ -231,3 +231,4 @@
 | EXP-68 | VRG-ASCE Volatility Gating & Scale-Out | $1,942.54 | 2.37 | 48.3% | 7.63% | 1.59 | 29 | `exp68_vrg_alpha_champion.joblib` |
 | EXP-69 | MAD-SPAE Multi-Asset Portfolio | $1,653.83 | 1.98 | 41.4% | 7.64% | 1.36 | 29 | `exp69_mad_alpha_champion.joblib` |
 | EXP-70 | MHLV-RCWE Void Retest & Confluence | $1,653.83 | 1.98 | 41.4% | 7.64% | 1.36 | 29 | `exp70_mhlv_alpha_champion.joblib` |
+| EXP-71 | MLSL-RTFE Realistic Frequency Engine | $0.00 | 0.00 | 0.0% | 0.00% | 0.00 | 0 | `exp71_mlsl_alpha_champion.joblib` |
