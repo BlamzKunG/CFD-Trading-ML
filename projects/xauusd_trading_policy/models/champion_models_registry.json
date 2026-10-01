@@ -465,5 +465,31 @@
       "sharpe_ratio": 2.103900092583437
     },
     "date": "2026-10-01 04:40:13 UTC"
+  },
+  "EXP-52": {
+    "name": "Deep Volatility-Filtered Trend Continuation & Cross-Asset Volatility Ratio",
+    "code": "DFTC-CAVR",
+    "model_file": "exp52_cavr_alpha_champion.joblib",
+    "onnx_file": "exp52_cavr_alpha_engine.onnx",
+    "metrics": {
+      "net_profit": 632.3156411146596,
+      "return_pct": 6.323156411146575,
+      "profit_factor": 999.0,
+      "win_rate": 100.0,
+      "max_drawdown_pct": 0.0,
+      "total_trades": 12,
+      "gross_profit": 632.3156411146596,
+      "gross_loss": 0.0,
+      "total_friction": 83.54878790738469,
+      "friction_to_gross_pct": 13.213145852299826,
+      "avg_trade_pnl": 52.692970092888295,
+      "avg_win": 52.692970092888295,
+      "avg_loss": 0.0,
+      "payoff_ratio": 0.0,
+      "avg_bars_held": 24.583333333333332,
+      "exposure_pct": 0.08409182256910494,
+      "sharpe_ratio": 2.573079413649855
+    },
+    "date": "2026-10-01 04:43:56 UTC"
   }
 }

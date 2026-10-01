@@ -212,3 +212,4 @@
 | EXP-49 | Temporal Volatility Cones & Adaptive Trailing Excursions | **+$4.03** | **1.01** | **60.9%** | **4.27%** | 0.03 | 46 | Parabolic Volatility Cone Trailing + Accelerated BE Ratchet + 31KB Native ONNX (13.26 µs). |
 | EXP-50 | The Grand Quant ML Sovereign Alpha Engine (SOVEREIGN-ALPHA) | **+$220.13** | **6.34** | **87.5%** | **0.41%** | 1.89 | 8 | The Sovereign Milestone: Full 10-Layer Institutional Alpha Synthesis + Native ONNX (13.46 µs). |
 | EXP-51 | TALP-AIE Asymmetric Engine | $333.83 | 4.56 | 88.2% | 0.45% | 2.10 | 17 | `exp51_talp_alpha_champion.joblib` |
+| EXP-52 | DFTC-CAVR Engine | $632.32 | 999.00 | 100.0% | 0.00% | 2.57 | 12 | `exp52_cavr_alpha_champion.joblib` |
