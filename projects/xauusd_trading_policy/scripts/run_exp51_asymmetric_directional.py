@@ -98,7 +98,6 @@ def run_talp_backtest(df: pd.DataFrame,
     c_arr = df['close'].to_numpy()
     h_arr = df['high'].to_numpy()
     l_arr = df['low'].to_numpy()
-    dt_arr = df['dt'].to_numpy() if 'dt' in df.columns else df.index.to_numpy()
     n = len(c_arr)
 
     for i in range(1, n):
@@ -219,77 +218,79 @@ def run_talp_backtest(df: pd.DataFrame,
     }
 
 
-def main():
+def run_experiment_51(eurusd_path: Optional[str] = None, xauusd_path: Optional[str] = None):
     print("=" * 80)
     print("🚀 STARTING EXP-51: TREND-ALIGNED LIQUIDITY PULLBACK & ASYMMETRIC IMPULSE ENGINE (TALP-AIE)")
     print("=" * 80)
 
-    # 1. Parse Data Paths
-    import argparse
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--eurusd-path", type=str, default=None)
-    parser.add_argument("--xauusd-path", type=str, default=None)
-    args = parser.parse_args()
+    # 1. Load Data
+    eur_file = find_dataset_file(eurusd_path) if eurusd_path else find_dataset_file("EURUSD")
+    xau_file = find_dataset_file(xauusd_path) if xauusd_path else find_dataset_file("XAUUSD")
 
-    eur_path = args.eurusd_path or find_dataset_file("EURUSD")
-    xau_path = args.xauusd_path or find_dataset_file("XAUUSD")
+    print(f"\n[DataLoader] EURUSD: {eur_file}")
+    print(f"[DataLoader] XAUUSD: {xau_file}")
 
-    print(f"[*] EURUSD Dataset: {eur_path}")
-    print(f"[*] XAUUSD Dataset: {xau_path}")
+    df_eur_tr, df_eur_val = load_and_preprocess_data(eur_file)
+    df_xau_tr, df_xau_val = load_and_preprocess_data(xau_file)
 
-    # 2. Load & Preprocess Data
-    print("\n[Step 1/6] Loading & Synchronizing Multi-Asset Time Series...")
-    df_xau_train, df_xau_val, feat_xau_train, feat_xau_val, atr_xau_train, atr_xau_val = (
-        load_and_preprocess_data(xau_path, is_gold=True)
-    )
-    df_eur_train, df_eur_val, feat_eur_train, feat_eur_val, atr_eur_train, atr_eur_val = (
-        load_and_preprocess_data(eur_path, is_gold=False)
-    )
+    (feat_eur_val, atr_eur_val, close_eur_val, df_eur_val_c) = prepare_market_features(df_eur_tr, df_eur_val)[1]
+    (feat_xau_val, atr_xau_val, close_xau_val, df_xau_val_c) = prepare_market_features(df_xau_tr, df_xau_val)[1]
 
-    common_val_idx = df_xau_val.index.intersection(df_eur_val.index)
-    df_xau_val_c = df_xau_val.loc[common_val_idx].copy()
-    df_eur_val_c = df_eur_val.loc[common_val_idx].copy()
-    feat_xau_val = feat_xau_val.loc[common_val_idx].copy()
-    atr_xau_val = atr_xau_val.loc[common_val_idx]
-    atr_eur_val = atr_eur_val.loc[common_val_idx]
+    # Align Timestamps
+    df_eur_val_c['dt_key'] = pd.to_datetime(df_eur_val_c['dt'] if 'dt' in df_eur_val_c.columns else df_eur_val_c.index)
+    df_xau_val_c['dt_key'] = pd.to_datetime(df_xau_val_c['dt'] if 'dt' in df_xau_val_c.columns else df_xau_val_c.index)
 
-    c_arr = df_xau_val_c['close'].to_numpy()
-    h_arr = df_xau_val_c['high'].to_numpy()
-    l_arr = df_xau_val_c['low'].to_numpy()
-    o_arr = df_xau_val_c['open'].to_numpy()
-    v_arr = df_xau_val_c['volume'].to_numpy()
-    atr_val_arr = atr_xau_val.to_numpy()
-    spread_ratio = 0.25 / np.maximum(0.50, atr_val_arr)
+    df_eur_idx = df_eur_val_c.set_index('dt_key')
+    df_xau_idx = df_xau_val_c.set_index('dt_key')
+    common_idx = df_xau_idx.index.intersection(df_eur_idx.index)
 
-    # 3. Compute Alpha Microstructure Indicators
-    print("\n[Step 2/6] Computing Order Flow, MTF Trend Confluence, and Lead-Lag Impulses...")
-    # Order Flow
-    bar_range = np.maximum(0.01, h_arr - l_arr)
-    vdp = np.clip((c_arr - o_arr) / bar_range, -1.0, 1.0)
-    signed_vol = vdp * v_arr
-    cvd_15 = pd.Series(signed_vol).rolling(15, min_periods=1).sum().to_numpy()
-    vol_ma15 = pd.Series(v_arr).rolling(15, min_periods=1).mean().to_numpy()
-    vfs = v_arr / np.maximum(1.0, vol_ma15)
+    eur_c = df_eur_idx.loc[common_idx, 'close'].to_numpy(dtype=np.float64)
+    xau_c = df_xau_idx.loc[common_idx, 'close'].to_numpy(dtype=np.float64)
 
-    # MTF Synthetic Confluence
-    ema_m5_fast = pd.Series(c_arr).ewm(span=60, adjust=False).mean().to_numpy()
-    ema_m5_slow = pd.Series(c_arr).ewm(span=150, adjust=False).mean().to_numpy()
-    ema_m15_fast = pd.Series(c_arr).ewm(span=180, adjust=False).mean().to_numpy()
-    ema_m15_slow = pd.Series(c_arr).ewm(span=450, adjust=False).mean().to_numpy()
+    eur_ret3 = pd.Series(eur_c).pct_change(3).fillna(0.0).to_numpy()
+    eur_ret15 = pd.Series(eur_c).pct_change(15).fillna(0.0).to_numpy()
+    xau_ret3 = pd.Series(xau_c).pct_change(3).fillna(0.0).to_numpy()
+    xau_ret15 = pd.Series(xau_c).pct_change(15).fillna(0.0).to_numpy()
 
-    mtf_bull = (ema_m5_fast > ema_m5_slow) & (ema_m15_fast > ema_m15_slow)
-    mtf_bear = (ema_m5_fast < ema_m5_slow) & (ema_m15_fast < ema_m15_slow)
+    usdi_ret3 = -0.60 * eur_ret3 - 0.40 * xau_ret3
+    usdi_ret15 = -0.60 * eur_ret15 - 0.40 * xau_ret15
 
-    # Synthetic US Dollar & EUR Impulse
-    c_eur = df_eur_val_c['close'].to_numpy()
-    ret_eur_3m = pd.Series(c_eur).pct_change(3).fillna(0.0).to_numpy()
-    ret_eur_15m = pd.Series(c_eur).pct_change(15).fillna(0.0).to_numpy()
-    usdi_3m_series = -ret_eur_3m
-    usdi_15m_series = -ret_eur_15m
+    eur_vol30 = pd.Series(eur_ret3).rolling(30, min_periods=5).std().bfill().to_numpy()
+    eur_impulse_z = eur_ret3 / np.maximum(eur_vol30, 1e-6)
 
-    eur_impulse_mean = pd.Series(ret_eur_3m).rolling(60, min_periods=5).mean().fillna(0.0).to_numpy()
-    eur_impulse_std = pd.Series(ret_eur_3m).rolling(60, min_periods=5).std().replace(0.0, np.nan).fillna(0.0001).to_numpy()
-    eur_impulse_series = (ret_eur_3m - eur_impulse_mean) / eur_impulse_std
+    usdi_3m_series = pd.Series(usdi_ret3, index=common_idx).reindex(df_xau_idx.index).fillna(0.0).to_numpy()
+    usdi_15m_series = pd.Series(usdi_ret15, index=common_idx).reindex(df_xau_idx.index).fillna(0.0).to_numpy()
+    eur_impulse_series = pd.Series(eur_impulse_z, index=common_idx).reindex(df_xau_idx.index).fillna(0.0).to_numpy()
+
+    # 2. Microstructure & Order Flow Features
+    vol_col = 'tick_volume' if 'tick_volume' in df_xau_val_c.columns else 'volume'
+    vol_arr = df_xau_val_c[vol_col].to_numpy(dtype=np.float64) if vol_col in df_xau_val_c.columns else np.ones(len(xau_c))
+    c_arr = df_xau_val_c['close'].to_numpy(dtype=np.float64)
+    o_arr = df_xau_val_c['open'].to_numpy(dtype=np.float64)
+    h_arr = df_xau_val_c['high'].to_numpy(dtype=np.float64)
+    l_arr = df_xau_val_c['low'].to_numpy(dtype=np.float64)
+    atr_val_arr = np.maximum(atr_xau_val.to_numpy(dtype=np.float64), 0.1)
+
+    rng = np.maximum(h_arr - l_arr, 1e-4)
+    vdp = vol_arr * ((c_arr - l_arr) - (h_arr - c_arr)) / rng
+    cvd_15 = pd.Series(vdp).rolling(15, min_periods=3).sum().fillna(0.0).to_numpy()
+    vol_ma20 = pd.Series(vol_arr).rolling(20, min_periods=5).mean().bfill().to_numpy()
+    rel_vol = vol_arr / np.maximum(vol_ma20, 1.0)
+    norm_body = np.abs(c_arr - o_arr) / atr_val_arr
+    vfs = rel_vol * norm_body
+
+    spread_val = df_xau_val_c['spread'].to_numpy(dtype=np.float64) if 'spread' in df_xau_val_c.columns else np.full(len(c_arr), 2.0)
+    spread_ratio = (spread_val * 0.10) / atr_val_arr
+
+    atr_ma20 = pd.Series(atr_val_arr).rolling(20, min_periods=5).mean().bfill().to_numpy()
+    vol_vel = (atr_val_arr - atr_ma20) / np.maximum(atr_ma20, 0.1)
+
+    # 3. Multi-Timeframe Synthetic Indicators
+    ema_m5 = pd.Series(c_arr).ewm(span=100, adjust=False).mean().to_numpy()
+    ema_m15 = pd.Series(c_arr).ewm(span=300, adjust=False).mean().to_numpy()
+
+    mtf_bull = (c_arr > ema_m5) & (ema_m5 > ema_m15)
+    mtf_bear = (c_arr < ema_m5) & (ema_m5 < ema_m15)
 
     # Liquidity Sweeps
     dt_val = df_xau_val_c['dt'] if 'dt' in df_xau_val_c.columns else pd.to_datetime(df_xau_val_c.index)
@@ -354,11 +355,11 @@ def main():
     prob_s = 0.60 * bundle["clf_s_lgb"].predict_proba(X_meta_s)[:, 1] + 0.40 * bundle["clf_s_hist"].predict_proba(X_meta_s)[:, 1]
 
     th = bundle.get("threshold", 0.52)
-    broad_l = (prob_l >= th) & (ratio_v_l >= 1.15) & (p_up_50_v * atr_val_arr >= 0.60) & (ratio_v_l > ratio_v_s) & (trend_l_val == 1.0) & (~is_friday_block)
-    broad_s = (prob_s >= th) & (ratio_v_s >= 1.15) & (p_down_50_v * atr_val_arr >= 0.60) & (ratio_v_s > ratio_v_l) & (trend_s_val == 1.0) & (~is_friday_block)
+    broad_l = (prob_l >= th) & (ratio_v_l >= 1.12) & (p_up_50_v * atr_val_arr >= 0.55) & (ratio_v_l > ratio_v_s) & (trend_l_val == 1.0) & (~is_friday_block)
+    broad_s = (prob_s >= th) & (ratio_v_s >= 1.25) & (p_down_50_v * atr_val_arr >= 0.65) & (ratio_v_s > ratio_v_l) & (trend_s_val == 1.0) & (~is_friday_block)
 
-    act_l_base = (broad_l & (is_sleeve_a == 1.0)) | (broad_l & (is_sleeve_b == 1.0) & (ratio_v_l >= 1.35))
-    act_s_base = (broad_s & (is_sleeve_a == 1.0)) | (broad_s & (is_sleeve_b == 1.0) & (ratio_v_s >= 1.35))
+    act_l_base = (broad_l & (is_sleeve_a == 1.0)) | (broad_l & (is_sleeve_b == 1.0) & (ratio_v_l >= 1.30))
+    act_s_base = (broad_s & (is_sleeve_a == 1.0)) | (broad_s & (is_sleeve_b == 1.0) & (ratio_v_s >= 1.40))
 
     is_hi_slope = np.abs(slope_val) >= 0.20
     tp_arr = np.where(is_hi_slope, np.clip(p_up_50_v * 2.10, 3.0, 7.5), np.clip(p_up_50_v * 1.40, 2.0, 4.5))
@@ -368,20 +369,20 @@ def main():
 
     # 5. EXP-51 Asymmetric Directional Innovations
     print("\n[Step 3/6] Formulating Trend-Aligned Liquidity Pullbacks & Asymmetric Sizing...")
-    # Order Flow Signals
+    # Order Flow Signals (Asymmetric)
     ofi_l = (vdp > 0) & (cvd_15 > 0) & (vfs >= 1.08)
-    ofi_s = (vdp < 0) & (cvd_15 < 0) & (vfs >= 1.15)  # Asymmetric: Shorts require stronger volume confirmation
+    ofi_s = (vdp < 0) & (cvd_15 < 0) & (vfs >= 1.15)
 
     # US Dollar Gates
     usdi_gate_l = (usdi_15m_series <= 0.0005)
     usdi_gate_s = (usdi_15m_series >= -0.0003)
     no_dollar_shock = np.abs(usdi_3m_series) <= 0.0008
 
-    # EUR Impulse
-    eur_lead_l = (eur_impulse_series >= 0.15)  # Asymmetric: Longs capture earlier momentum
-    eur_lead_s = (eur_impulse_series <= -0.30) # Asymmetric: Shorts require distinct negative impulse
+    # EUR Impulse (Asymmetric)
+    eur_lead_l = (eur_impulse_series >= 0.15)
+    eur_lead_s = (eur_impulse_series <= -0.30)
 
-    # 3-Bar Confluence Memory Window for Breakouts
+    # 3-Bar Confluence Memory Window
     eur_lead_l_win = pd.Series(eur_lead_l).rolling(3, min_periods=1).max().to_numpy() > 0
     eur_lead_s_win = pd.Series(eur_lead_s).rolling(3, min_periods=1).max().to_numpy() > 0
     ofi_l_win = pd.Series(ofi_l).rolling(3, min_periods=1).max().to_numpy() > 0
@@ -434,7 +435,7 @@ def main():
 
     print("\n[Step 4/6] Benchmarking EXP-51 Variants on 2025 Out-of-Sample...")
     for v_id, acts, r_arr in configs:
-        res = run_talp_backtest(df_xau_val_c, atr_xau_val, acts, sl_arr, tp_arr, r_arr)
+        res = run_talp_backtest(df_xau_val_c, atr_val_arr, acts, sl_arr, tp_arr, r_arr)
         m = compute_comprehensive_metrics(res)
         variants[v_id] = m
         equity_curves[v_id] = res["equity_curve"]
@@ -605,7 +606,14 @@ EXP-51 solves the Regime-Incongruent Alpha Drag discovered in EXP-50. By strictl
     print("\n" + "=" * 80)
     print("✅ EXP-51 PIPELINE EXECUTION SUCCESSFULLY COMPLETED!")
     print("=" * 80)
+    return variants
 
 
 if __name__ == "__main__":
-    main()
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--eurusd-path", type=str, default=None)
+    parser.add_argument("--xauusd-path", type=str, default=None)
+    args = parser.parse_args()
+
+    run_experiment_51(eurusd_path=args.eurusd_path, xauusd_path=args.xauusd_path)
