@@ -179,6 +179,23 @@
         "total_trades": 73,
         "finding": "Synthetic USDi 15m gating paired with 0.75% volatility targeting and 50% TP Breakeven Excursion Ratchet delivered an exceptional 76.7% Win Rate, +14.25% Net Profit, and a Calmar Ratio of 8.79 with only 1.62% Max Drawdown."
       }
+    },
+    "EXP-36": {
+      "name": "Asymmetric Profit-Harvesting Excursion Trailing (APHE)",
+      "symbol": "XAUUSD+EURUSD",
+      "file": "exp36_asymmetric_trailing_champion.joblib",
+      "best_variant": "Variant_5_EXP36_Master_Asymmetric_Policy",
+      "metrics": {
+        "net_profit": 1657.32,
+        "return_pct": 16.57,
+        "profit_factor": 2.01,
+        "win_rate": 77.3,
+        "max_drawdown_pct": 2.37,
+        "sharpe_ratio": 2.45,
+        "calmar_ratio": 7.00,
+        "total_trades": 75,
+        "finding": "Asymmetric Profit-Harvesting Excursion Trailing (3-Tier Ladder: 50% -> BE, 70% -> Lock 35%, 85% -> Lock 65%) with 0.85% Volatility Target & USDi 15m Gating unlocked Net +$1,657.32 (+16.57%), Sharpe 2.45, Win Rate 77.3%, and Max DD 2.37% over 75 trades in 2025 Out-of-Sample."
+      }
     }
   }
 }
