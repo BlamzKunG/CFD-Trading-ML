@@ -297,6 +297,7 @@ def run_synchronous_dual_asset_backtest(
     drawdowns = (peaks - eq_arr) / peaks * 100.0
     max_dd = float(np.max(drawdowns)) if len(drawdowns) > 0 else 0.0
 
+    all_trades = xau_trades + eur_trades
     trade_cols = ["entry_bar", "exit_bar", "symbol", "direction", "lot", "entry_price", "exit_price", "net_pnl", "reason", "bars_held"]
     trade_df = pd.DataFrame(all_trades, columns=trade_cols) if all_trades else pd.DataFrame(columns=trade_cols)
 
