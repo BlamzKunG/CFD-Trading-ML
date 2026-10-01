@@ -560,11 +560,14 @@ def run_experiment_60(eurusd_path: Optional[str] = None, xauusd_path: Optional[s
 
     # Register in champion_models_registry.json
     reg_path = os.path.join(models_dir, "champion_models_registry.json")
+    registry = {}
     if os.path.exists(reg_path):
-        with open(reg_path, "r") as f:
-            registry = json.load(f)
-    else:
-        registry = {}
+        try:
+            with open(reg_path, "r") as f:
+                registry = json.load(f)
+        except Exception as e:
+            print(f"[!] Warning reading registry ({e}), initializing fresh entry")
+            registry = {}
 
     registry["EXP-60"] = {
         "name": "Multi-Horizon Liquidity Sweeps & Imbalance Retest Engine",
