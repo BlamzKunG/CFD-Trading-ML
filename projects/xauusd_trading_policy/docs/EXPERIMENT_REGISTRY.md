@@ -237,3 +237,4 @@
 | EXP-74 | PEMC Precision Multi-Sleeve Confluence | $502.95 | 1.58 | 47.4% | 5.61% | 0.67 | 19 | `exp74_pemc_alpha_champion.joblib` |
 | EXP-75 | CRAC-MFE Cross-Regime Adaptive Confluence | $-9,452.52 | 0.74 | 37.2% | 95.79% | -3.95 | 1808 | `exp75_crac_alpha_champion.joblib` |
 | EXP-76 | EFF-PMLG Expectancy-Frequency Frontier | $-38.32 | 0.99 | 41.0% | 17.36% | 0.01 | 39 | `exp76_eff_alpha_champion.joblib` |
+| EXP-77 | MSPD-PSE Multi-Sleeve Phase Decomposition | $1,399.89 | 1.30 | 48.4% | 8.40% | 0.99 | 64 | `exp77_mspd_alpha_champion.joblib` |

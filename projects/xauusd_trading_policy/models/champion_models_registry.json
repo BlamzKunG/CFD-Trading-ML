@@ -945,5 +945,21 @@
       "sharpe_ratio": 0.013913398865148285
     },
     "date": "2026-10-01 17:48:26 UTC"
+  },
+  "EXP-77": {
+    "name": "Multi-Sleeve Phase Decomposition & Portfolio Scaling Engine",
+    "code": "MSPD-PSE",
+    "model_file": "exp77_mspd_alpha_champion.joblib",
+    "onnx_file": "exp77_mspd_alpha_engine.onnx",
+    "metrics": {
+      "net_profit": 1399.8887857141453,
+      "return_pct": 13.998887857141455,
+      "total_trades": 64,
+      "win_rate": 48.4375,
+      "profit_factor": 1.3041359159792814,
+      "max_drawdown_pct": 8.395731034518928,
+      "sharpe_ratio": 0.9899650685379461
+    },
+    "date": "2026-10-01 17:53:40 UTC"
   }
 }
