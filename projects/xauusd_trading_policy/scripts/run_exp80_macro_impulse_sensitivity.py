@@ -620,7 +620,7 @@ def run_experiment_80(eurusd_path: Optional[str] = None, xauusd_path: Optional[s
 - **Mean ONNX Latency:** {mean_lat:.2f} µs (Institutional Threshold < 50 µs)
 
 ## 1. Executive Summary
-EXP-80 maps the **Macro-Impulse Sensitivity Spectrum** for cross-asset Gold trading. Building upon EXP-79's discovery that exogenous EURUSD dollar-weakness impulses ($Z_{EUR} \ge 0.15$) represent the core profit engine, EXP-80 systematically sweeps lead sensitivity thresholds from Z=0.06 to Z=0.18 while introducing volatility-targeted inverse ATR risk budgeting.
+EXP-80 maps the **Macro-Impulse Sensitivity Spectrum** for cross-asset Gold trading. Building upon EXP-79's discovery that exogenous EURUSD dollar-weakness impulses ($Z_{{EUR}} \ge 0.15$) represent the core profit engine, EXP-80 systematically sweeps lead sensitivity thresholds from Z=0.06 to Z=0.18 while introducing volatility-targeted inverse ATR risk budgeting.
 
 ## 2. Quantitative Performance Comparison
 
