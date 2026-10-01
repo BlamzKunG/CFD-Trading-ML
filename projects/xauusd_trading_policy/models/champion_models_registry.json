@@ -1043,5 +1043,23 @@
       "sharpe_ratio": 0.9587799340899906
     },
     "date": "2026-10-01 18:30:35 UTC"
+  },
+  "EXP-83": {
+    "name": "True Dual-Engine Institutional Portfolio",
+    "code": "DEIP",
+    "model_file": "exp83_deip_policy_champion.joblib",
+    "onnx_file": "exp83_deip_policy_engine.onnx",
+    "metrics": {
+      "net_profit": 1990.63528571421,
+      "return_pct": 19.9063528571421,
+      "total_trades": 53,
+      "xau_trades": 53,
+      "eur_trades": 0,
+      "win_rate": 49.056603773584904,
+      "profit_factor": 1.4867641615784852,
+      "max_drawdown_pct": 9.747421607478717,
+      "sharpe_ratio": 1.1985472904755214
+    },
+    "date": "2026-10-01 18:41:08 UTC"
   }
 }
