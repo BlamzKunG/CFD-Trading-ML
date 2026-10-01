@@ -1109,5 +1109,21 @@
       "sharpe_ratio": 0.20557492145636508
     },
     "date": "2026-10-01 18:55:47 UTC"
+  },
+  "EXP-87": {
+    "name": "Multi-Horizon Institutional Liquidity Sweep & Session Diversification",
+    "code": "MHLS-SD",
+    "model_file": "exp87_mhls_sd_champion.joblib",
+    "onnx_file": "exp87_mhls_sd_engine.onnx",
+    "metrics": {
+      "net_profit": 2603.709107142613,
+      "return_pct": 26.037091071426126,
+      "total_trades": 71,
+      "win_rate": 50.70422535211267,
+      "profit_factor": 1.425115053579372,
+      "max_drawdown_pct": 13.270540872638872,
+      "sharpe_ratio": 1.2800550550542193
+    },
+    "date": "2026-10-01 18:59:14 UTC"
   }
 }
