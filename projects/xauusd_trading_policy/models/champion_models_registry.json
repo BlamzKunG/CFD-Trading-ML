@@ -1077,5 +1077,21 @@
       "sharpe_ratio": 1.2359285377386502
     },
     "date": "2026-10-01 18:46:06 UTC"
+  },
+  "EXP-85": {
+    "name": "Regime-Adaptive Volatility Multiplier & Asymmetric Profit Ladders",
+    "code": "RAVM-APL",
+    "model_file": "exp85_ravm_apl_champion.joblib",
+    "onnx_file": "exp85_ravm_apl_engine.onnx",
+    "metrics": {
+      "net_profit": 3301.4337857139126,
+      "return_pct": 33.014337857139125,
+      "total_trades": 65,
+      "win_rate": 52.307692307692314,
+      "profit_factor": 1.5846818517613248,
+      "max_drawdown_pct": 13.32805528152073,
+      "sharpe_ratio": 1.5976014700240528
+    },
+    "date": "2026-10-01 18:49:39 UTC"
   }
 }
