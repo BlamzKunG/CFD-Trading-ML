@@ -753,5 +753,21 @@
       "sharpe_ratio": 1.3103011487737635
     },
     "date": "2026-10-01 15:52:15 UTC"
+  },
+  "EXP-65": {
+    "name": "Symmetric Multi-Horizon Liquidity Sweeps & Dynamic Runner Trailing Engine",
+    "code": "SMLS-DRTE",
+    "model_file": "exp65_smls_alpha_champion.joblib",
+    "onnx_file": "exp65_smls_alpha_engine.onnx",
+    "metrics": {
+      "net_profit": 1549.0147857141656,
+      "return_pct": 15.490147857141656,
+      "total_trades": 28,
+      "win_rate": 46.42857142857143,
+      "profit_factor": 2.117396344006247,
+      "max_drawdown_pct": 7.673508669849509,
+      "sharpe_ratio": 1.2831916592164636
+    },
+    "date": "2026-10-01 15:58:58 UTC"
   }
 }
