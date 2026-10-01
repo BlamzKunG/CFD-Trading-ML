@@ -220,3 +220,4 @@
 | EXP-57 | DAPA-VRAE Dual Pinbar Engine | $462.08 | 3.85 | 84.6% | 1.01% | 1.28 | 13 | `exp57_dapa_alpha_champion.joblib` |
 | EXP-58 | MADE Dual-Regime Alpha Engine | $462.08 | 3.85 | 84.6% | 1.01% | 1.28 | 13 | `exp58_made_alpha_champion.joblib` |
 | EXP-59 | CALT-MSE Tri-Sleeve Engine | $462.08 | 3.85 | 84.6% | 1.01% | 1.28 | 13 | `exp59_calt_alpha_champion.joblib` |
+| EXP-60 | MHLS-IRE Multi-Horizon Sweeps | $615.59 | 1.91 | 77.3% | 4.30% | 1.02 | 22 | `exp60_mhls_alpha_champion.joblib` |

@@ -673,5 +673,21 @@
       "sharpe_ratio": 1.2775641623739198
     },
     "date": "2026-10-01 13:59:26 UTC"
+  },
+  "EXP-60": {
+    "name": "Multi-Horizon Liquidity Sweeps & Imbalance Retest Engine",
+    "code": "MHLS-IRE",
+    "model_file": "exp60_mhls_alpha_champion.joblib",
+    "onnx_file": "exp60_mhls_alpha_engine.onnx",
+    "metrics": {
+      "net_profit": 615.5935909179516,
+      "return_pct": 6.155935909179515,
+      "total_trades": 22,
+      "win_rate": 77.27272727272727,
+      "profit_factor": 1.908390356096901,
+      "max_drawdown_pct": 4.296485465280916,
+      "sharpe_ratio": 1.0191097655448595
+    },
+    "date": "2026-10-01 15:36:33 UTC"
   }
 }
