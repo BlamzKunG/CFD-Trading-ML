@@ -381,6 +381,25 @@
         "mean_latency_us": 19.74,
         "finding": "Best variant Variant_2_LeadLag_Impulse achieved Net Profit $573.38 with 77.8% Win Rate and PF 4.23. Native ONNX inference clocked at 19.74 \u00b5s."
       }
+    },
+    "EXP-48": {
+      "name": "Adaptive Spread-Volatility & Dynamic Kelly Sizing Engine (ASV-DKPS)",
+      "symbol": "XAUUSD+EURUSD",
+      "file_joblib": "exp48_asv_alpha_champion.joblib",
+      "file_onnx": "exp48_asv_alpha_engine.onnx",
+      "best_variant": "Variant_5_Master_ASVDKPS_Fused",
+      "metrics": {
+        "net_profit": -82.27,
+        "return_pct": -0.82,
+        "profit_factor": 0.89,
+        "win_rate": 56.52,
+        "max_drawdown_pct": 4.27,
+        "sharpe_ratio": -0.33,
+        "total_trades": 46,
+        "onnx_size_bytes": 8838,
+        "mean_latency_us": 21.02,
+        "finding": "Best variant Variant_5_Master_ASVDKPS_Fused achieved Net Profit $-82.27 with 56.5% Win Rate and PF 0.89. Native ONNX inference clocked at 21.02 \u00b5s."
+      }
     }
   }
 }

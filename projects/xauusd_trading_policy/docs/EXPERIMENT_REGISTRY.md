@@ -208,3 +208,4 @@
 | EXP-45 | Multi-Horizon Liquidity Sweep & Swept-Level Retest Engine | **+$847.54** | **2.84** | **73.7%** | **1.69%** | 1.95 | 19 | Asia Session & Rolling H4 Liquidity Sweeps + Retest Reversals + OFI Volume Delta Gating. |
 | EXP-46 | Multi-Timeframe Momentum Fusion & High-Frequency ONNX Policy Engine | **+$715.87** | **3.66** | **78.6%** | **1.69%** | 1.91 | 14 | Multi-Timeframe Microstructure Momentum Fusion + 31KB Native ONNX Policy (19.54 µs). |
 | EXP-47 | Cross-Asset Lead-Lag Impulse & Dynamic Micro-Regime Policy | **+$573.38** | **4.23** | **77.8%** | **0.86%** | 1.71 | 9 | EURUSD Lead-Lag Impulse Gating + US Dollar Shock Shield + 31KB Native ONNX (19.74 µs). |
+| EXP-48 | Adaptive Spread-Volatility & Dynamic Kelly Sizing Engine | **$-82.27** | **0.89** | **56.5%** | **4.27%** | -0.33 | 46 | Dynamic Kelly Confidence Sizing + Spread Friction Penalty + Volatility Velocity Scaling (21.02 µs). |
