@@ -164,9 +164,9 @@ def run_realistic_dual_engine_backtest(
                 if not exit_xau:
                     if (entry_xau_price - l_xau[t]) >= 1.4 * atr_t_xau:
                         new_sl = entry_xau_price - 0.10 * atr_t_xau
-                        if sl_price > new_sl:
+                        if sl_xau_price > new_sl:
                             sl_xau_price = new_sl
-                    if (entry_price - l_xau[t]) >= 2.4 * atr_t_xau:
+                    if (entry_xau_price - l_xau[t]) >= 2.4 * atr_t_xau:
                         new_sl = entry_xau_price - 1.10 * atr_t_xau
                         if sl_xau_price > new_sl:
                             sl_xau_price = new_sl
