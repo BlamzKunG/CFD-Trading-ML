@@ -253,15 +253,16 @@ def run_experiment_42(eurusd_path: Optional[str] = None, xauusd_path: Optional[s
     atr_val_arr = np.maximum(atr_xau_val.to_numpy(dtype=np.float64), 0.1)
     c_val = close_xau_val
 
-    # Regime Analysis: 100-bar rolling ATR percentile
+    # Regime Analysis: 100-bar rolling ATR percentile (Vectorized in C)
     atr_s = pd.Series(atr_val_arr)
-    roll_rank = atr_s.rolling(100, min_periods=20).apply(lambda s: pd.Series(s).rank(pct=True).iloc[-1]).fillna(0.50).to_numpy()
+    atr_q20 = atr_s.rolling(100, min_periods=20).quantile(0.20).bfill().to_numpy()
+    atr_q85 = atr_s.rolling(100, min_periods=20).quantile(0.85).bfill().to_numpy()
 
     # Dynamic Volatility Regimes:
-    # Regime 0: Low-volatility compression chop (roll_rank < 0.20)
-    # Regime 1: Expansion regime (0.20 <= roll_rank <= 0.85) -> Highest EV
-    # Regime 2: Macro shock / extreme spike (roll_rank > 0.85) -> Extreme risk
-    regime_expansion = (roll_rank >= 0.20) & (roll_rank <= 0.85)
+    # Regime 0: Low-volatility compression chop (atr < atr_q20)
+    # Regime 1: Expansion regime (atr_q20 <= atr <= atr_q85) -> Highest EV
+    # Regime 2: Macro shock / extreme spike (atr > atr_q85) -> Extreme risk
+    regime_expansion = (atr_val_arr >= atr_q20) & (atr_val_arr <= atr_q85)
 
     ema20_val = c_val.ewm(span=20, adjust=False).mean()
     ema60_val = c_val.ewm(span=60, adjust=False).mean()
