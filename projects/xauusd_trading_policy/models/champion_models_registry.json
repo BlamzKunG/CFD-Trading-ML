@@ -543,5 +543,31 @@
       "sharpe_ratio": 2.404695894170815
     },
     "date": "2026-10-01 04:51:55 UTC"
+  },
+  "EXP-55": {
+    "name": "Order Book Liquidity Imbalance & Microstructure Absorption Engine",
+    "code": "OBLI-MAE",
+    "model_file": "exp55_obli_alpha_champion.joblib",
+    "onnx_file": "exp55_obli_alpha_engine.onnx",
+    "metrics": {
+      "net_profit": 225.1111580577831,
+      "return_pct": 2.2511115805778537,
+      "profit_factor": 999.0,
+      "win_rate": 100.0,
+      "max_drawdown_pct": 0.0,
+      "total_trades": 12,
+      "gross_profit": 225.1111580577831,
+      "gross_loss": 0.0,
+      "total_friction": 56.73970309146608,
+      "friction_to_gross_pct": 25.205193550157894,
+      "avg_trade_pnl": 18.759263171481923,
+      "avg_win": 18.759263171481923,
+      "avg_loss": 0.0,
+      "payoff_ratio": 0.0,
+      "avg_bars_held": 14.166666666666666,
+      "exposure_pct": 0.04845969436185709,
+      "sharpe_ratio": 1.8351233629593686
+    },
+    "date": "2026-10-01 04:55:27 UTC"
   }
 }

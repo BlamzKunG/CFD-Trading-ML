@@ -215,3 +215,4 @@
 | EXP-52 | DFTC-CAVR Engine | $632.32 | 999.00 | 100.0% | 0.00% | 2.57 | 12 | `exp52_cavr_alpha_champion.joblib` |
 | EXP-53 | MSVR-DLVA Engine | $634.64 | 999.00 | 100.0% | 0.00% | 2.58 | 13 | `exp53_msvr_alpha_champion.joblib` |
 | EXP-54 | SMRC-ASC Engine | $368.25 | 999.00 | 100.0% | 0.00% | 2.40 | 12 | `exp54_smrc_alpha_champion.joblib` |
+| EXP-55 | OBLI-MAE Engine | $225.11 | 999.00 | 100.0% | 0.00% | 1.84 | 12 | `exp55_obli_alpha_champion.joblib` |
