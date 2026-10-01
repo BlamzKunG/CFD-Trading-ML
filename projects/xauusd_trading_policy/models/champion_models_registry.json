@@ -705,5 +705,21 @@
       "sharpe_ratio": 1.10803917903897
     },
     "date": "2026-10-01 15:40:18 UTC"
+  },
+  "EXP-62": {
+    "name": "Dynamic Microstructure Order Flow Exits & Volatility Trailing Cones",
+    "code": "MOFE-VATC",
+    "model_file": "exp62_mofe_alpha_champion.joblib",
+    "onnx_file": "exp62_mofe_alpha_engine.onnx",
+    "metrics": {
+      "net_profit": 802.6321323693846,
+      "return_pct": 8.026321323693846,
+      "total_trades": 28,
+      "win_rate": 75.0,
+      "profit_factor": 1.8040801059350065,
+      "max_drawdown_pct": 4.454870410955189,
+      "sharpe_ratio": 1.10803917903897
+    },
+    "date": "2026-10-01 15:43:52 UTC"
   }
 }
