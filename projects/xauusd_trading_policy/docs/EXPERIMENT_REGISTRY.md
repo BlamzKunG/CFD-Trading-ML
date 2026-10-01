@@ -244,3 +244,4 @@
 | EXP-81 | DAMC-SE Dual-Asset Multi-Sleeve Confluence Engine | $1,745.06 | 1.48 | 49.1% | 8.74% | 1.19 | 53 | `exp81_damc_policy_champion.joblib` |
 | EXP-82 | DSEM-PQF Dual-Sleeve Pullback Quality Frontier | $1,651.59 | 1.32 | 46.0% | 10.99% | 0.96 | 63 | `exp82_dsem_alpha_champion.joblib` |
 | EXP-83 | DEIP True Dual-Engine Institutional Portfolio | $1,990.64 | 1.49 | 49.1% | 9.75% | 1.20 | 53 | `exp83_deip_policy_champion.joblib` |
+| EXP-84 | MHLE-STS Multi-Horizon Liquidity Expansion | $2,380.21 | 1.42 | 49.2% | 15.05% | 1.24 | 65 | `exp84_mhle_alpha_champion.joblib` |

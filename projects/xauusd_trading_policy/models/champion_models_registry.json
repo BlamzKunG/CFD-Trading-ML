@@ -1061,5 +1061,21 @@
       "sharpe_ratio": 1.1985472904755214
     },
     "date": "2026-10-01 18:41:08 UTC"
+  },
+  "EXP-84": {
+    "name": "Multi-Horizon Liquidity Expansion & Session-Targeted Scaling",
+    "code": "MHLE-STS",
+    "model_file": "exp84_mhle_alpha_champion.joblib",
+    "onnx_file": "exp84_mhle_alpha_engine.onnx",
+    "metrics": {
+      "net_profit": 2380.2101428568476,
+      "return_pct": 23.802101428568477,
+      "total_trades": 65,
+      "win_rate": 49.23076923076923,
+      "profit_factor": 1.4237267721398184,
+      "max_drawdown_pct": 15.050829884164463,
+      "sharpe_ratio": 1.2359285377386502
+    },
+    "date": "2026-10-01 18:46:06 UTC"
   }
 }
