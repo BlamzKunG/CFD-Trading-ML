@@ -242,3 +242,4 @@
 | EXP-79 | TMMC-DSE Tiered Macro-Micro Confluence | $2,411.18 | 1.38 | 47.0% | 12.72% | 1.06 | 66 | `exp79_tmmc_alpha_champion.joblib` |
 | EXP-80 | MISS-VTSE Macro-Impulse Sensitivity Scaling | $1,631.94 | 1.48 | 49.1% | 8.25% | 1.19 | 53 | `exp80_miss_alpha_champion.joblib` |
 | EXP-81 | DAMC-SE Dual-Asset Multi-Sleeve Confluence Engine | $1,745.06 | 1.48 | 49.1% | 8.74% | 1.19 | 53 | `exp81_damc_policy_champion.joblib` |
+| EXP-82 | DSEM-PQF Dual-Sleeve Pullback Quality Frontier | $1,651.59 | 1.32 | 46.0% | 10.99% | 0.96 | 63 | `exp82_dsem_alpha_champion.joblib` |

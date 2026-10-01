@@ -1027,5 +1027,21 @@
       "sharpe_ratio": 1.1909590649075859
     },
     "date": "2026-10-01 18:27:03 UTC"
+  },
+  "EXP-82": {
+    "name": "Dual-Sleeve Expectancy Maximization & Pullback Quality Frontier",
+    "code": "DSEM-PQF",
+    "model_file": "exp82_dsem_alpha_champion.joblib",
+    "onnx_file": "exp82_dsem_alpha_engine.onnx",
+    "metrics": {
+      "net_profit": 1651.5897857141117,
+      "return_pct": 16.51589785714112,
+      "total_trades": 63,
+      "win_rate": 46.03174603174603,
+      "profit_factor": 1.3247603518001945,
+      "max_drawdown_pct": 10.990673439757545,
+      "sharpe_ratio": 0.9587799340899906
+    },
+    "date": "2026-10-01 18:30:35 UTC"
   }
 }
