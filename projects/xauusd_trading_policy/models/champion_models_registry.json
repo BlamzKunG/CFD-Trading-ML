@@ -993,5 +993,21 @@
       "sharpe_ratio": 1.0620742302290052
     },
     "date": "2026-10-01 18:04:12 UTC"
+  },
+  "EXP-80": {
+    "name": "Macro-Impulse Sensitivity & Volatility-Targeted Scaling Engine",
+    "code": "MISS-VTSE",
+    "model_file": "exp80_miss_alpha_champion.joblib",
+    "onnx_file": "exp80_miss_alpha_engine.onnx",
+    "metrics": {
+      "net_profit": 1631.9427142856548,
+      "return_pct": 16.31942714285655,
+      "total_trades": 53,
+      "win_rate": 49.056603773584904,
+      "profit_factor": 1.483502337242758,
+      "max_drawdown_pct": 8.251896307565506,
+      "sharpe_ratio": 1.185480634579439
+    },
+    "date": "2026-10-01 18:22:58 UTC"
   }
 }

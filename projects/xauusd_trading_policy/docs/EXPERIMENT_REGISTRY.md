@@ -240,3 +240,4 @@
 | EXP-77 | MSPD-PSE Multi-Sleeve Phase Decomposition | $1,399.89 | 1.30 | 48.4% | 8.40% | 0.99 | 64 | `exp77_mspd_alpha_champion.joblib` |
 | EXP-78 | DHTC-MPE Dual-Horizon Trend Continuation | $-1,523.59 | 0.83 | 36.8% | 30.68% | -0.91 | 133 | `exp78_dhtc_alpha_champion.joblib` |
 | EXP-79 | TMMC-DSE Tiered Macro-Micro Confluence | $2,411.18 | 1.38 | 47.0% | 12.72% | 1.06 | 66 | `exp79_tmmc_alpha_champion.joblib` |
+| EXP-80 | MISS-VTSE Macro-Impulse Sensitivity Scaling | $1,631.94 | 1.48 | 49.1% | 8.25% | 1.19 | 53 | `exp80_miss_alpha_champion.joblib` |
