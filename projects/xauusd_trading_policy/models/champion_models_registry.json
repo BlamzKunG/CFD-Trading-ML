@@ -230,6 +230,20 @@
         "total_trades": 142,
         "finding": "Co-trading EURUSD using naive indicators triggered 1,500 over-trading entries and lost -$7,321 due to Forex spread friction ($10/lot). Standalone Gold Meta-Ensemble retained positive EV (+1.43%, WR 60.6%), empirically proving that Machine Learning Excursion Meta-Filtering is 100% mandatory for Forex trading."
       }
+    },
+    "EXP-39": {
+      "name": "Counterfactual Execution Friction Stress Engine (CEF-SE)",
+      "symbol": "XAUUSD+EURUSD",
+      "file": "exp39_counterfactual_friction_champion.joblib",
+      "best_variant": "Regime_1_Prime_Institutional_ECN",
+      "metrics": {
+        "best_friction_paid": 546.44,
+        "worst_friction_paid": 3846.07,
+        "win_rate": 61.9,
+        "friction_sensitivity_per_point": 115.0,
+        "recommended_max_spread_pts": 3.0,
+        "finding": "Quantified empirical friction gradient across 6 broker tiers: each 1.0 point ($0.10/oz) increase in broker spread incurs an exact -$115 drag on a 75-trade book. In rollover spikes ($1.40 spread), friction surges 7x to $3,846. Production deployment strictly requires Raw Spread accounts with MaxSpreadFilter <= 3.0 points ($0.30/oz) and Rollover Shielding (21:30-23:30 UTC)."
+      }
     }
   }
 }

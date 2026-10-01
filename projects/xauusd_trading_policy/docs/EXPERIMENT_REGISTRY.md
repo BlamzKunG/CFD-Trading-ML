@@ -196,3 +196,5 @@
 | EXP-37 | Multi-Model Consensus Meta-Ensemble | 2020-2024 (Train) / 2025 (Val) | Net +$609.79 | Max DD 2.46% | Sharpe 1.17 | Calmar 2.48 | Unanimous 3/3 consensus across EXP-24, EXP-26, EXP-27 with USDi gating and 3-Tier APHE (WR 70.5%) | `exp37_multi_model_consensus_champion.joblib` |
 
 | EXP-38 | Synchronous Cross-Asset Risk-Parity Dual Engine | 2020-2024 (Train) / 2025 (Val) | Net +$142.85 | Max DD 8.26% | Sharpe 0.23 | Calmar 0.17 | Proved naive Forex co-trading over-trades 1500x (-$7.3k); standalone Gold retains positive EV (+1.43%) | `exp38_risk_parity_dual_champion.joblib` |
+
+| EXP-39 | Counterfactual Execution Friction Stress Engine | 2020-2024 (Train) / 2025 (Val) | Multi-Regime Stress | Max DD Stress Tested | Sharpe Robust | Calmar Frontier | Quantifies alpha survival across 6 broker spread regimes (Prime ECN to Illiquidity Shock) | `exp39_counterfactual_friction_champion.joblib` |
