@@ -61,8 +61,8 @@ ACTION_OPEN_SHORT = 2
 
 def run_portfolio_backtest(df_xau: pd.DataFrame,
                            df_eur: pd.DataFrame,
-                           atr_xau: pd.Series,
-                           atr_eur: pd.Series,
+                           atr_arr_xau: np.ndarray,
+                           atr_arr_eur: np.ndarray,
                            act_xau: np.ndarray,
                            act_eur: np.ndarray,
                            sl_mult_xau: np.ndarray,
@@ -76,12 +76,10 @@ def run_portfolio_backtest(df_xau: pd.DataFrame,
     c_xau = df_xau['close'].to_numpy(dtype=np.float64)
     h_xau = df_xau['high'].to_numpy(dtype=np.float64)
     l_xau = df_xau['low'].to_numpy(dtype=np.float64)
-    atr_arr_xau = np.maximum(atr_xau.to_numpy(dtype=np.float64), 0.1)
 
     c_eur = df_eur['close'].to_numpy(dtype=np.float64)
     h_eur = df_eur['high'].to_numpy(dtype=np.float64)
     l_eur = df_eur['low'].to_numpy(dtype=np.float64)
-    atr_arr_eur = np.maximum(atr_eur.to_numpy(dtype=np.float64), 0.0001)
 
     balance = initial_balance
     equity_curve = [balance]
@@ -252,6 +250,9 @@ def run_experiment_56(eurusd_path: Optional[str] = None, xauusd_path: Optional[s
     print("🚀 STARTING EXP-56: MULTI-ASSET SYNERGISTIC RISK-PARITY ALPHA ENGINE (MASR-PAE)")
     print("=" * 80)
 
+    models_dir = os.path.join(project_dir, "models")
+    os.makedirs(models_dir, exist_ok=True)
+
     # 1. Load Data
     eur_file = find_dataset_file(eurusd_path) if eurusd_path else find_dataset_file("EURUSD")
     xau_file = find_dataset_file(xauusd_path) if xauusd_path else find_dataset_file("XAUUSD")
@@ -269,28 +270,30 @@ def run_experiment_56(eurusd_path: Optional[str] = None, xauusd_path: Optional[s
     df_eur_val_c['dt_key'] = pd.to_datetime(df_eur_val_c['dt'] if 'dt' in df_eur_val_c.columns else df_eur_val_c.index)
     df_xau_val_c['dt_key'] = pd.to_datetime(df_xau_val_c['dt'] if 'dt' in df_xau_val_c.columns else df_xau_val_c.index)
 
-    df_eur_idx = df_eur_val_c.set_index('dt_key')
-    df_xau_idx = df_xau_val_c.set_index('dt_key')
-    common_idx = df_xau_idx.index.intersection(df_eur_idx.index)
+    df_eur_val_c['atr_val'] = atr_eur_val.to_numpy(dtype=np.float64)
+    df_xau_val_c['atr_val'] = atr_xau_val.to_numpy(dtype=np.float64)
+
+    df_eur_idx = df_eur_val_c.drop_duplicates(subset=['dt_key']).set_index('dt_key')
+    df_xau_idx = df_xau_val_c.drop_duplicates(subset=['dt_key']).set_index('dt_key')
+    common_idx = df_xau_idx.index.intersection(df_eur_idx.index).sort_values()
 
     df_xau_c = df_xau_idx.loc[common_idx].copy()
     df_eur_c = df_eur_idx.loc[common_idx].copy()
-    atr_xau_c = atr_xau_val.loc[common_idx]
-    atr_eur_c = atr_eur_val.loc[common_idx]
+
+    atr_arr_xau = np.maximum(df_xau_c['atr_val'].to_numpy(dtype=np.float64), 0.1)
+    atr_arr_eur = np.maximum(df_eur_c['atr_val'].to_numpy(dtype=np.float64), 0.0001)
 
     c_xau = df_xau_c['close'].to_numpy(dtype=np.float64)
     h_xau = df_xau_c['high'].to_numpy(dtype=np.float64)
     l_xau = df_xau_c['low'].to_numpy(dtype=np.float64)
     o_xau = df_xau_c['open'].to_numpy(dtype=np.float64)
     vol_xau = df_xau_c['volume'].to_numpy(dtype=np.float64) if 'volume' in df_xau_c.columns else df_xau_c['tick_volume'].to_numpy(dtype=np.float64)
-    atr_val_xau = np.maximum(atr_xau_c.to_numpy(dtype=np.float64), 0.1)
 
     c_eur = df_eur_c['close'].to_numpy(dtype=np.float64)
     h_eur = df_eur_c['high'].to_numpy(dtype=np.float64)
     l_eur = df_eur_c['low'].to_numpy(dtype=np.float64)
     o_eur = df_eur_c['open'].to_numpy(dtype=np.float64)
     vol_eur = df_eur_c['volume'].to_numpy(dtype=np.float64) if 'volume' in df_eur_c.columns else df_eur_c['tick_volume'].to_numpy(dtype=np.float64)
-    atr_val_eur = np.maximum(atr_eur_c.to_numpy(dtype=np.float64), 0.0001)
 
     n_val = len(df_xau_c)
 
@@ -306,10 +309,10 @@ def run_experiment_56(eurusd_path: Optional[str] = None, xauusd_path: Optional[s
     cavr_series = vol_ratio / np.maximum(vol_ratio_mean, 1e-6)
 
     # Time Filters
-    dt_val = df_xau_c['dt'] if 'dt' in df_xau_c.columns else pd.to_datetime(df_xau_c.index)
-    hour_val = dt_val.dt.hour.to_numpy()
-    min_val = dt_val.dt.minute.to_numpy()
-    day_val = dt_val.dt.dayofweek.to_numpy()
+    dt_val = pd.to_datetime(df_xau_c['dt'] if 'dt' in df_xau_c.columns else df_xau_c.index)
+    hour_val = dt_val.dt.hour.to_numpy() if hasattr(dt_val, 'dt') else dt_val.hour.to_numpy()
+    min_val = dt_val.dt.minute.to_numpy() if hasattr(dt_val, 'dt') else dt_val.minute.to_numpy()
+    day_val = dt_val.dt.dayofweek.to_numpy() if hasattr(dt_val, 'dt') else dt_val.dayofweek.to_numpy()
     time_float = hour_val + min_val / 60.0
 
     is_london = (time_float >= 7.0) & (time_float < 11.0)
@@ -324,20 +327,18 @@ def run_experiment_56(eurusd_path: Optional[str] = None, xauusd_path: Optional[s
     vdp_xau = vol_xau * ((c_xau - l_xau) - (h_xau - c_xau)) / rng_xau
     cvd15_xau = pd.Series(vdp_xau).rolling(15, min_periods=3).sum().fillna(0.0).to_numpy()
     vol_ma20_xau = pd.Series(vol_xau).rolling(20, min_periods=5).mean().bfill().to_numpy()
-    vfs_xau = (vol_xau / np.maximum(vol_ma20_xau, 1.0)) * (np.abs(c_xau - o_xau) / atr_val_xau)
+    vfs_xau = (vol_xau / np.maximum(vol_ma20_xau, 1.0)) * (np.abs(c_xau - o_xau) / atr_arr_xau)
 
     ema_m5_xau = pd.Series(c_xau).ewm(span=100, adjust=False).mean().to_numpy()
     ema_m15_xau = pd.Series(c_xau).ewm(span=300, adjust=False).mean().to_numpy()
     ema60_xau = pd.Series(c_xau).ewm(span=60, adjust=False).mean().to_numpy()
     mtf_bull_xau = (c_xau > ema_m5_xau) & (ema_m5_xau > ema_m15_xau)
-    mtf_bear_xau = (c_xau < ema_m5_xau) & (ema_m5_xau < ema_m15_xau)
 
     # EUR Order Flow & MTF
     ema_m5_eur = pd.Series(c_eur).ewm(span=100, adjust=False).mean().to_numpy()
     ema_m15_eur = pd.Series(c_eur).ewm(span=300, adjust=False).mean().to_numpy()
     ema60_eur = pd.Series(c_eur).ewm(span=60, adjust=False).mean().to_numpy()
     mtf_bull_eur = (c_eur > ema_m5_eur) & (ema_m5_eur > ema_m15_eur)
-    mtf_bear_eur = (c_eur < ema_m5_eur) & (ema_m5_eur < ema_m15_eur)
 
     # 3. Actions Generation
     # Gold Actions (EXP-53/55 Champion)
@@ -373,7 +374,7 @@ def run_experiment_56(eurusd_path: Optional[str] = None, xauusd_path: Optional[s
 
     print("\n[Step 4/6] Benchmarking Dual-Asset Portfolio Variants on 2025 Out-of-Sample...")
     for v_id, w_xau, w_eur in configs:
-        res = run_portfolio_backtest(df_xau_c, df_eur_c, atr_xau_c, atr_eur_c,
+        res = run_portfolio_backtest(df_xau_c, df_eur_c, atr_arr_xau, atr_arr_eur,
                                      act_xau, act_eur,
                                      sl_mult_xau, tp_mult_xau,
                                      sl_mult_eur, tp_mult_eur,
