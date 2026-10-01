@@ -179,9 +179,16 @@ def run_synchronous_dual_asset_backtest(
                 net = gross - comm
                 balance += net
                 xau_trades.append({
-                    "symbol": "XAUUSD", "entry_bar": xau_entry_bar, "exit_bar": t,
-                    "direction": xau_pos, "lot": xau_lot, "entry_p": xau_entry, "exit_p": xau_exit_p,
-                    "net_pnl": net, "reason": xau_reason
+                    "entry_bar": xau_entry_bar,
+                    "exit_bar": t,
+                    "symbol": "XAUUSD",
+                    "direction": xau_pos,
+                    "lot": xau_lot,
+                    "entry_price": xau_entry,
+                    "exit_price": xau_exit_p,
+                    "net_pnl": net,
+                    "reason": xau_reason,
+                    "bars_held": t - xau_entry_bar
                 })
                 xau_pos = 0.0; xau_trail_tier = 0; xau_max_excursion = 0.0
 
@@ -214,9 +221,16 @@ def run_synchronous_dual_asset_backtest(
                 net = gross - comm
                 balance += net
                 eur_trades.append({
-                    "symbol": "EURUSD", "entry_bar": eur_entry_bar, "exit_bar": t,
-                    "direction": eur_pos, "lot": eur_lot, "entry_p": eur_entry, "exit_p": eur_exit_p,
-                    "net_pnl": net, "reason": eur_reason
+                    "entry_bar": eur_entry_bar,
+                    "exit_bar": t,
+                    "symbol": "EURUSD",
+                    "direction": eur_pos,
+                    "lot": eur_lot,
+                    "entry_price": eur_entry,
+                    "exit_price": eur_exit_p,
+                    "net_pnl": net,
+                    "reason": eur_reason,
+                    "bars_held": t - eur_entry_bar
                 })
                 eur_pos = 0.0
 
@@ -283,8 +297,8 @@ def run_synchronous_dual_asset_backtest(
     drawdowns = (peaks - eq_arr) / peaks * 100.0
     max_dd = float(np.max(drawdowns)) if len(drawdowns) > 0 else 0.0
 
-    all_trades = xau_trades + eur_trades
-    trade_df = pd.DataFrame(all_trades) if all_trades else pd.DataFrame()
+    trade_cols = ["entry_bar", "exit_bar", "symbol", "direction", "lot", "entry_price", "exit_price", "net_pnl", "reason", "bars_held"]
+    trade_df = pd.DataFrame(all_trades, columns=trade_cols) if all_trades else pd.DataFrame(columns=trade_cols)
 
     return {
         "initial_balance": initial_balance,
