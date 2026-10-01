@@ -246,3 +246,4 @@
 | EXP-83 | DEIP True Dual-Engine Institutional Portfolio | $1,990.64 | 1.49 | 49.1% | 9.75% | 1.20 | 53 | `exp83_deip_policy_champion.joblib` |
 | EXP-84 | MHLE-STS Multi-Horizon Liquidity Expansion | $2,380.21 | 1.42 | 49.2% | 15.05% | 1.24 | 65 | `exp84_mhle_alpha_champion.joblib` |
 | EXP-85 | RAVM-APL Regime-Adaptive Volatility Multiplier | $3,301.43 | 1.58 | 52.3% | 13.33% | 1.60 | 65 | `exp85_ravm_apl_champion.joblib` |
+| EXP-86 | MRDT-FDF Multi-Regime Dynamic Threshold & Flow Dominance | $325.55 | 1.06 | 44.8% | 12.54% | 0.21 | 58 | `exp86_mrdt_fdf_champion.joblib` |

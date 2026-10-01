@@ -1093,5 +1093,21 @@
       "sharpe_ratio": 1.5976014700240528
     },
     "date": "2026-10-01 18:49:39 UTC"
+  },
+  "EXP-86": {
+    "name": "Multi-Regime Dynamic Threshold & Flow Dominance Filter",
+    "code": "MRDT-FDF",
+    "model_file": "exp86_mrdt_fdf_champion.joblib",
+    "onnx_file": "exp86_mrdt_fdf_engine.onnx",
+    "metrics": {
+      "net_profit": 325.54674999979215,
+      "return_pct": 3.2554674999979216,
+      "total_trades": 58,
+      "win_rate": 44.827586206896555,
+      "profit_factor": 1.0612163130040266,
+      "max_drawdown_pct": 12.543624499187311,
+      "sharpe_ratio": 0.20557492145636508
+    },
+    "date": "2026-10-01 18:55:47 UTC"
   }
 }
