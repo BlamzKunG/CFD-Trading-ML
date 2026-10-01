@@ -801,5 +801,21 @@
       "sharpe_ratio": 1.5935547894745374
     },
     "date": "2026-10-01 16:05:41 UTC"
+  },
+  "EXP-68": {
+    "name": "Volatility Regime Gating & Asymmetric Scale-Out Engine",
+    "code": "VRG-ASCE",
+    "model_file": "exp68_vrg_alpha_champion.joblib",
+    "onnx_file": "exp68_vrg_alpha_engine.onnx",
+    "metrics": {
+      "net_profit": 1942.5395714284205,
+      "return_pct": 19.425395714284203,
+      "total_trades": 29,
+      "win_rate": 48.275862068965516,
+      "profit_factor": 2.374490729843825,
+      "max_drawdown_pct": 7.632701067543605,
+      "sharpe_ratio": 1.5941516927058812
+    },
+    "date": "2026-10-01 16:08:44 UTC"
   }
 }
