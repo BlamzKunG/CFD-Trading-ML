@@ -595,5 +595,31 @@
       "sharpe_ratio": 0.9008318277986569
     },
     "date": "2026-10-01 05:03:00 UTC"
+  },
+  "EXP-57": {
+    "name": "Dual-Asset Pinbar Absorption & Volatility Regime Alpha Engine",
+    "code": "DAPA-VRAE",
+    "model_file": "exp57_dapa_alpha_champion.joblib",
+    "onnx_file": "exp57_dapa_alpha_engine.onnx",
+    "metrics": {
+      "net_profit": 462.08007041085983,
+      "return_pct": 4.620800704108551,
+      "profit_factor": 3.84759975156319,
+      "win_rate": 84.61538461538461,
+      "max_drawdown_pct": 1.012210012209971,
+      "total_trades": 13,
+      "gross_profit": 624.3500910333862,
+      "gross_loss": 162.27002062252637,
+      "total_friction": 192.35836434466324,
+      "friction_to_gross_pct": 30.80937555823583,
+      "avg_trade_pnl": 35.544620800835375,
+      "avg_win": 56.75909918485329,
+      "avg_loss": 81.13501031126319,
+      "payoff_ratio": 0.6995635911933072,
+      "avg_bars_held": 8.76923076923077,
+      "exposure_pct": 0.03249650092501005,
+      "sharpe_ratio": 1.2775641623739198
+    },
+    "date": "2026-10-01 13:00:04 UTC"
   }
 }
