@@ -15,7 +15,7 @@ EXP-51 Innovations:
    - Bull Trend (MTF Bull): Only take LONG liquidity sweeps (buying the discount/dip at swept swing lows).
    - Bear Trend (MTF Bear): Only take SHORT liquidity sweeps (selling the premium/rally at swept swing highs).
 2. Asymmetric Directional Parameterization (Gold Bull/Bear Asymmetry):
-   - Long triggers: Optimized for upward drift (ratio >= 1.12, EUR impulse >= 0.15, OFI surge >= 1.05).
+   - Long triggers: Optimized for upward drift (ratio >= 1.12, EUR impulse >= 0.15, OFI surge >= 1.08).
    - Short triggers: Defensive against sharp squeezes (ratio >= 1.25, EUR impulse <= -0.30, OFI surge >= 1.15).
 3. 3-Bar Confluence Memory Window: Multi-layer signals are fused within a 3-bar rolling window,
    expanding trade count from 8 to institutional statistical significance (~40-60 trades).
@@ -69,152 +69,176 @@ def make_directional_meta_features(X_base, p_fwd_50, p_rev_50, p_fwd_80, p_rev_8
 
 
 def run_talp_backtest(df: pd.DataFrame,
-                      atr_arr: np.ndarray,
+                      atr_series: pd.Series,
                       actions: np.ndarray,
-                      sl_mult_arr: np.ndarray,
-                      tp_mult_arr: np.ndarray,
-                      risk_pct_arr: np.ndarray,
-                      spread_usd: float = 0.25,
-                      initial_capital: float = 10000.0) -> Dict[str, Any]:
-    """
-    Simulation engine featuring Non-Linear Temporal Volatility Cones:
-    - Bar 30: Accelerated Breakeven at 35% excursion
-    - Bar 60: Micro-Profit Lock at +0.20 ATR
-    - Parabolic SL compression between bars 40-100
-    - Multi-Horizon Time Expiry at 120 bars
-    """
-    capital = initial_capital
-    position = 0  # 1 for Long, -1 for Short, 0 for Flat
+                      sl_mults: np.ndarray,
+                      tp_mults: np.ndarray,
+                      risk_pct_array: np.ndarray,
+                      initial_balance: float = 10000.0,
+                      spread_points: float = 2.0,
+                      slippage_points: float = 0.5,
+                      point_value: float = 100.0,
+                      commission_per_lot: float = 4.0) -> Dict[str, Any]:
+    n_bars = len(df)
+    c_arr = df['close'].to_numpy(dtype=np.float64)
+    h_arr = df['high'].to_numpy(dtype=np.float64)
+    l_arr = df['low'].to_numpy(dtype=np.float64)
+    atr_arr = np.maximum(atr_series.to_numpy(dtype=np.float64), 0.1)
+
+    balance = initial_balance
+    equity_curve = [balance]
+    trades = []
+
+    pos_dir = 0.0
+    pos_lot = 0.0
     entry_price = 0.0
-    entry_idx = 0
+    entry_bar = 0
     sl_price = 0.0
     tp_price = 0.0
-    lot_size = 0.0
-    be_active = False
-    lock_active = False
+    max_excursion = 0.0
+    trail_tier = 0
 
-    trades = []
-    equity_curve = [capital]
-    c_arr = df['close'].to_numpy()
-    h_arr = df['high'].to_numpy()
-    l_arr = df['low'].to_numpy()
-    n = len(c_arr)
+    cost_per_trade_price = (spread_points + slippage_points) * 0.10
 
-    for i in range(1, n):
-        # 1. Manage Active Position
-        if position != 0:
-            bars_held = i - entry_idx
-            curr_atr = atr_arr[i]
+    for t in range(n_bars):
+        close_t = c_arr[t]
+        high_t = h_arr[t]
+        low_t = l_arr[t]
+        atr_t = atr_arr[t]
 
-            # Parabolic Trailing Cone
-            if position == 1:
-                runup = h_arr[i] - entry_price
-                risk_dist = entry_price - sl_price if sl_price > 0 else curr_atr * 1.5
+        if pos_dir != 0.0:
+            exit_trade = False
+            exit_price = 0.0
+            reason = ""
+            bars_held = t - entry_bar
 
-                if not be_active and runup >= 0.35 * risk_dist and bars_held >= 30:
-                    sl_price = max(sl_price, entry_price + 0.05 * curr_atr)
-                    be_active = True
+            if pos_dir == 1.0:
+                current_excursion = (high_t - entry_price) / max(tp_price - entry_price, 0.01)
+                max_excursion = max(max_excursion, current_excursion)
 
-                if not lock_active and runup >= 0.80 * risk_dist and bars_held >= 60:
-                    sl_price = max(sl_price, entry_price + 0.20 * curr_atr)
-                    lock_active = True
+                # Accelerated Breakeven Ratchet (35% at bar 30)
+                be_thresh = 0.35 if bars_held >= 30 else 0.50
+                if trail_tier == 0 and max_excursion >= be_thresh:
+                    sl_price = max(sl_price, entry_price + 0.10 * atr_t)
+                    trail_tier = 1
+                elif trail_tier == 1 and max_excursion >= 0.65:
+                    sl_price = max(sl_price, entry_price + 0.40 * (tp_price - entry_price))
+                    trail_tier = 2
+                elif trail_tier == 2 and max_excursion >= 0.80:
+                    sl_price = max(sl_price, entry_price + 0.70 * (tp_price - entry_price))
+                    trail_tier = 3
 
-                if bars_held > 40:
-                    decay = min(0.40, (bars_held - 40) / 100.0)
-                    dyn_sl = entry_price - risk_dist * (1.0 - decay)
-                    if dyn_sl > sl_price:
-                        sl_price = dyn_sl
+                # Micro-Profit Harvest Ratchet (+0.20 ATR after 60 bars)
+                if bars_held >= 60 and max_excursion >= 0.20 and sl_price < entry_price + 0.20 * atr_t:
+                    sl_price = entry_price + 0.20 * atr_t
+                elif bars_held >= 45 and max_excursion < 0.25:
+                    sl_price = max(sl_price, entry_price - 0.75 * atr_t)
 
-                # Check SL/TP hit
-                if l_arr[i] <= sl_price:
-                    exit_p = sl_price
-                    pnl = (exit_p - entry_price) * lot_size - spread_usd * lot_size
-                    capital += pnl
-                    trades.append({'entry_idx': entry_idx, 'exit_idx': i, 'dir': 1, 'pnl': pnl, 'capital': capital, 'reason': 'SL_CONE'})
-                    position = 0
-                elif h_arr[i] >= tp_price:
-                    exit_p = tp_price
-                    pnl = (exit_p - entry_price) * lot_size - spread_usd * lot_size
-                    capital += pnl
-                    trades.append({'entry_idx': entry_idx, 'exit_idx': i, 'dir': 1, 'pnl': pnl, 'capital': capital, 'reason': 'TP'})
-                    position = 0
-                elif bars_held >= 120:
-                    exit_p = c_arr[i]
-                    pnl = (exit_p - entry_price) * lot_size - spread_usd * lot_size
-                    capital += pnl
-                    trades.append({'entry_idx': entry_idx, 'exit_idx': i, 'dir': 1, 'pnl': pnl, 'capital': capital, 'reason': 'EXPIRY'})
-                    position = 0
+                if low_t <= sl_price:
+                    exit_trade = True
+                    exit_price = sl_price
+                    reason = "SL/TRAIL"
+                elif high_t >= tp_price:
+                    exit_trade = True
+                    exit_price = tp_price
+                    reason = "TP"
+                elif bars_held >= 180:
+                    exit_trade = True
+                    exit_price = close_t
+                    reason = "TIME"
 
-            elif position == -1:
-                rundown = entry_price - l_arr[i]
-                risk_dist = sl_price - entry_price if sl_price > 0 else curr_atr * 1.5
+            elif pos_dir == -1.0:
+                current_excursion = (entry_price - low_t) / max(entry_price - tp_price, 0.01)
+                max_excursion = max(max_excursion, current_excursion)
 
-                if not be_active and rundown >= 0.35 * risk_dist and bars_held >= 30:
-                    sl_price = min(sl_price, entry_price - 0.05 * curr_atr)
-                    be_active = True
+                be_thresh = 0.35 if bars_held >= 30 else 0.50
+                if trail_tier == 0 and max_excursion >= be_thresh:
+                    sl_price = min(sl_price, entry_price - 0.10 * atr_t)
+                    trail_tier = 1
+                elif trail_tier == 1 and max_excursion >= 0.65:
+                    sl_price = min(sl_price, entry_price - 0.40 * (entry_price - tp_price))
+                    trail_tier = 2
+                elif trail_tier == 2 and max_excursion >= 0.80:
+                    sl_price = min(sl_price, entry_price - 0.70 * (entry_price - tp_price))
+                    trail_tier = 3
 
-                if not lock_active and rundown >= 0.80 * risk_dist and bars_held >= 60:
-                    sl_price = min(sl_price, entry_price - 0.20 * curr_atr)
-                    lock_active = True
+                if bars_held >= 60 and max_excursion >= 0.20 and sl_price > entry_price - 0.20 * atr_t:
+                    sl_price = entry_price - 0.20 * atr_t
+                elif bars_held >= 45 and max_excursion < 0.25:
+                    sl_price = min(sl_price, entry_price + 0.75 * atr_t)
 
-                if bars_held > 40:
-                    decay = min(0.40, (bars_held - 40) / 100.0)
-                    dyn_sl = entry_price + risk_dist * (1.0 - decay)
-                    if dyn_sl < sl_price:
-                        sl_price = dyn_sl
+                if high_t >= sl_price:
+                    exit_trade = True
+                    exit_price = sl_price
+                    reason = "SL/TRAIL"
+                elif low_t <= tp_price:
+                    exit_trade = True
+                    exit_price = tp_price
+                    reason = "TP"
+                elif bars_held >= 180:
+                    exit_trade = True
+                    exit_price = close_t
+                    reason = "TIME"
 
-                if h_arr[i] >= sl_price:
-                    exit_p = sl_price
-                    pnl = (entry_price - exit_p) * lot_size - spread_usd * lot_size
-                    capital += pnl
-                    trades.append({'entry_idx': entry_idx, 'exit_idx': i, 'dir': -1, 'pnl': pnl, 'capital': capital, 'reason': 'SL_CONE'})
-                    position = 0
-                elif l_arr[i] <= tp_price:
-                    exit_p = tp_price
-                    pnl = (entry_price - exit_p) * lot_size - spread_usd * lot_size
-                    capital += pnl
-                    trades.append({'entry_idx': entry_idx, 'exit_idx': i, 'dir': -1, 'pnl': pnl, 'capital': capital, 'reason': 'TP'})
-                    position = 0
-                elif bars_held >= 120:
-                    exit_p = c_arr[i]
-                    pnl = (entry_price - exit_p) * lot_size - spread_usd * lot_size
-                    capital += pnl
-                    trades.append({'entry_idx': entry_idx, 'exit_idx': i, 'dir': -1, 'pnl': pnl, 'capital': capital, 'reason': 'EXPIRY'})
-                    position = 0
+            if exit_trade:
+                gross_pnl = (exit_price - entry_price) * pos_dir * point_value * pos_lot
+                total_comm = commission_per_lot * pos_lot
+                net_pnl = gross_pnl - total_comm
+                balance += net_pnl
+                trades.append({
+                    "entry_bar": entry_bar, "exit_bar": t, "direction": pos_dir,
+                    "lot": pos_lot, "entry_price": entry_price, "exit_price": exit_price,
+                    "net_pnl": net_pnl, "reason": reason, "bars_held": bars_held
+                })
+                pos_dir = 0.0
+                trail_tier = 0
+                max_excursion = 0.0
 
-        # 2. Check New Position Entry
-        if position == 0:
-            act = actions[i]
-            if act in [ACTION_OPEN_LONG, ACTION_OPEN_SHORT]:
-                entry_price = c_arr[i]
-                entry_idx = i
-                curr_atr = atr_arr[i]
-                sl_dist = sl_mult_arr[i] * curr_atr
-                tp_dist = tp_mult_arr[i] * curr_atr
-                risk_pct = risk_pct_arr[i]
+        if pos_dir == 0.0 and actions[t] != ACTION_HOLD:
+            act = actions[t]
+            sl_mult = float(sl_mults[t])
+            tp_mult = float(tp_mults[t])
+            risk_pct = float(risk_pct_array[t])
 
-                # Position sizing based on dynamic risk capital
-                risk_cash = capital * risk_pct
-                lot_size = max(0.1, round(risk_cash / max(0.50, sl_dist), 2))
-                be_active = False
-                lock_active = False
+            dollar_risk_budget = balance * risk_pct
+            dollar_per_lot_risk = sl_mult * atr_t * point_value
+            calc_lot = dollar_risk_budget / max(dollar_per_lot_risk, 10.0)
+            pos_lot = float(np.clip(calc_lot, 0.02, 0.60))
 
-                if act == ACTION_OPEN_LONG:
-                    position = 1
-                    sl_price = entry_price - sl_dist
-                    tp_price = entry_price + tp_dist
-                else:
-                    position = -1
-                    sl_price = entry_price + sl_dist
-                    tp_price = entry_price - tp_dist
+            if act == ACTION_OPEN_LONG:
+                pos_dir = 1.0
+                entry_price = close_t + cost_per_trade_price * 0.5
+                entry_bar = t
+                sl_price = entry_price - (sl_mult * atr_t)
+                tp_price = entry_price + (tp_mult * atr_t)
+            elif act == ACTION_OPEN_SHORT:
+                pos_dir = -1.0
+                entry_price = close_t - cost_per_trade_price * 0.5
+                entry_bar = t
+                sl_price = entry_price + (sl_mult * atr_t)
+                tp_price = entry_price - (tp_mult * atr_t)
+            trail_tier = 0
+            max_excursion = 0.0
 
-        equity_curve.append(capital)
+        equity_curve.append(balance)
 
-    trades_df = pd.DataFrame(trades)
+    eq_arr = np.array(equity_curve)
+    peaks = np.maximum.accumulate(eq_arr)
+    drawdowns = (peaks - eq_arr) / peaks * 100.0
+    max_dd = float(np.max(drawdowns)) if len(drawdowns) > 0 else 0.0
+
+    trade_cols = ["entry_bar", "exit_bar", "direction", "lot", "entry_price", "exit_price", "net_pnl", "reason", "bars_held"]
+    trade_df = pd.DataFrame(trades, columns=trade_cols) if trades else pd.DataFrame(columns=trade_cols)
+
     return {
-        'capital': capital,
-        'trades': trades_df,
-        'equity_curve': np.array(equity_curve)
+        "initial_balance": initial_balance,
+        "final_balance": balance,
+        "net_profit": balance - initial_balance,
+        "return_pct": (balance - initial_balance) / initial_balance * 100.0,
+        "trades": trade_df,
+        "total_trades": len(trades),
+        "equity_curve": eq_arr,
+        "max_drawdown_pct": max_dd
     }
 
 
@@ -435,7 +459,7 @@ def run_experiment_51(eurusd_path: Optional[str] = None, xauusd_path: Optional[s
 
     print("\n[Step 4/6] Benchmarking EXP-51 Variants on 2025 Out-of-Sample...")
     for v_id, acts, r_arr in configs:
-        res = run_talp_backtest(df_xau_val_c, atr_val_arr, acts, sl_arr, tp_arr, r_arr)
+        res = run_talp_backtest(df_xau_val_c, atr_xau_val, acts, sl_arr, tp_arr, r_arr)
         m = compute_comprehensive_metrics(res)
         variants[v_id] = m
         equity_curves[v_id] = res["equity_curve"]
