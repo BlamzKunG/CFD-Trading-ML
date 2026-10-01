@@ -311,6 +311,22 @@
         "total_trades": 155,
         "finding": "Discovered that adapting profit excursion targets (expanding to 5.5x ATR during high ATR velocity and contracting to 2.5x ATR during compression) outperformed fixed target baselines by +$50.66 (net $-209.15 vs $-259.81). Crucially, widening trailing tiers during high expansion degraded performance ($-600.25), proving that Gold requires disciplined early profit locking (50% -> BE) due to violent mean-reverting retracements after spikes."
       }
+    },
+    "EXP-44": {
+      "name": "Order Flow Imbalance & Volume Delta Microstructure Filter (OFI-VDMF)",
+      "symbol": "XAUUSD+EURUSD",
+      "file": "exp44_order_flow_champion.joblib",
+      "best_variant": "Variant_5_Master_OFIVDMF_Fused",
+      "metrics": {
+        "net_profit": 847.54,
+        "return_pct": 8.48,
+        "profit_factor": 2.84,
+        "win_rate": 73.68,
+        "max_drawdown_pct": 1.69,
+        "sharpe_ratio": 1.95,
+        "total_trades": 19,
+        "finding": "Breakthrough discovery: Filtering price breakouts with Volume Force Surge (VFS >= 1.10), Volume Delta Proxy (VDP), and 15-bar Cumulative Volume Delta (CVD-15) catapulted Profit Factor to 2.84, Win Rate to 73.7%, and compressed Max Drawdown to an elite 1.69% (Net +$847.54). Microstructure order flow validation successfully purged 88% of false retail breakout traps."
+      }
     }
   }
 }
