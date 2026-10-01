@@ -203,3 +203,4 @@
 
 | EXP-41 | Time-Decayed Velocity Excursion & Momentum Harvest | 2020-2024 (Train) / 2025 (Val) | Net +$-579.35 | Max DD 13.09% | Sharpe -0.66 | Calmar -0.44 | Dynamic 30-bar velocity scratch & 45-bar stagnation ratchet with 3-Tier APHE | `exp41_time_decay_velocity_champion.joblib` |
 | EXP-42 | Unified Macro-Micro Alpha Super-Pipeline & Native ONNX Engine | **+$-772.88** | **0.71** | **57.5%** | **10.50%** | -1.22 | 80 | Fused USDi Gating + Volatility Regime Filter + Stagnation Ratchet + 3-Tier APHE + Native MT5 ONNX Export (26.6µs latency). |
+| EXP-43 | Asymmetric Volatility Surface & Adaptive Excursion Targets | **+$-209.15** | **0.96** | **58.1%** | **12.18%** | -0.18 | 155 | Dynamic Excursion Tiers + Volatility Velocity Expansion + Adaptive Targets + Asymmetric Long Monetary Drift Bias. |

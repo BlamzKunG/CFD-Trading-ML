@@ -295,6 +295,22 @@
         "mean_latency_us": 26.65,
         "finding": "Successfully distilled the macro-micro alpha pipeline into a 31KB native ONNX model with 26.65 µs inference latency (institutional target < 50 µs PASS). Fused 3-tier APHE excursion trailing with accelerated 45-bar stagnation ratchets, confirming ultra-low latency execution and strict risk control for MQL5 MT5 production."
       }
+    },
+    "EXP-43": {
+      "name": "Asymmetric Volatility Surface & Adaptive Dynamic Excursion Targets (AVS-ADET)",
+      "symbol": "XAUUSD+EURUSD",
+      "file": "exp43_adaptive_volatility_champion.joblib",
+      "best_variant": "Variant_3_Dynamic_Excursion_Targets",
+      "metrics": {
+        "net_profit": -209.15,
+        "return_pct": -2.09,
+        "profit_factor": 0.96,
+        "win_rate": 58.06,
+        "max_drawdown_pct": 12.18,
+        "sharpe_ratio": -0.18,
+        "total_trades": 155,
+        "finding": "Discovered that adapting profit excursion targets (expanding to 5.5x ATR during high ATR velocity and contracting to 2.5x ATR during compression) outperformed fixed target baselines by +$50.66 (net $-209.15 vs $-259.81). Crucially, widening trailing tiers during high expansion degraded performance ($-600.25), proving that Gold requires disciplined early profit locking (50% -> BE) due to violent mean-reverting retracements after spikes."
+      }
     }
   }
 }
