@@ -223,3 +223,4 @@
 | EXP-60 | MHLS-IRE Multi-Horizon Sweeps | $615.59 | 1.91 | 77.3% | 4.30% | 1.02 | 22 | `exp60_mhls_alpha_champion.joblib` |
 | EXP-61 | BMLS-VMR Bidirectional Sweeps | $802.63 | 1.80 | 75.0% | 4.45% | 1.11 | 28 | `exp61_bmls_alpha_champion.joblib` |
 | EXP-62 | MOFE-VATC Dynamic Exits | $802.63 | 1.80 | 75.0% | 4.45% | 1.11 | 28 | `exp62_mofe_alpha_champion.joblib` |
+| EXP-63 | VRDS-KAA Dynamic Kelly Sizing | $1,378.39 | 2.13 | 75.0% | 5.47% | 1.31 | 28 | `exp63_vrds_alpha_champion.joblib` |
