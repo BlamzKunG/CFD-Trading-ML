@@ -218,3 +218,4 @@
 | EXP-55 | OBLI-MAE Engine | $225.11 | 999.00 | 100.0% | 0.00% | 1.84 | 12 | `exp55_obli_alpha_champion.joblib` |
 | EXP-56 | MASR-PAE Dual-Asset Engine | $-10,151.19 | 0.70 | 51.4% | 101.49% | 0.90 | 3701 | `exp56_masr_alpha_champion.joblib` |
 | EXP-57 | DAPA-VRAE Dual Pinbar Engine | $462.08 | 3.85 | 84.6% | 1.01% | 1.28 | 13 | `exp57_dapa_alpha_champion.joblib` |
+| EXP-58 | MADE Dual-Regime Alpha Engine | $462.08 | 3.85 | 84.6% | 1.01% | 1.28 | 13 | `exp58_made_alpha_champion.joblib` |
