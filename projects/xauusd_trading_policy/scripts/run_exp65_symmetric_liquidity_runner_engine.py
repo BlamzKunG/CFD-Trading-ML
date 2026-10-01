@@ -374,38 +374,54 @@ def run_experiment_65(eurusd_path: Optional[str] = None, xauusd_path: Optional[s
 
     is_london = (time_float >= 7.0) & (time_float < 11.0)
     is_ny_overlap = (time_float >= 12.5) & (time_float < 16.5)
-    is_trade_session = is_london | is_ny_overlap
-    is_friday_block = (day_val == 4) & (time_float >= 18.0)
+    is_trade_session = (hour_val >= 7) & (hour_val < 19)
+    is_friday_block = (day_val == 4) & (hour_val >= 17)
+    cavr_ok = np.where(is_london, cavr_series >= 0.88, np.where(is_ny_overlap, cavr_series >= 0.95, cavr_series >= 0.92))
 
-    # EMA Multi-Timeframe Proxies
-    ema_m5_xau = pd.Series(c_xau).ewm(span=5, adjust=False).mean().to_numpy()
-    ema_m15_xau = pd.Series(c_xau).ewm(span=15, adjust=False).mean().to_numpy()
+    # 3. Machine Learning Ensemble for Gold
+    print("\n[Step 2/6] Loading Institutional Machine Learning Ensemble for Gold...")
+    bundle_path = os.path.join(models_dir, "exp27_cross_session_dual_sleeve.joblib")
+    bundle = joblib.load(bundle_path)
+
+    df_xau_val_c['orig_idx'] = np.arange(len(df_xau_val_c))
+    aligned_xau_pos = df_xau_val_c.drop_duplicates(subset=['dt_key']).set_index('dt_key').loc[common_idx, 'orig_idx'].to_numpy()
+    X_val_xau = np.nan_to_num(feat_xau_val.iloc[aligned_xau_pos].to_numpy(dtype=np.float32), nan=0.0)
+
+    ema20_xau = pd.Series(c_xau).ewm(span=20, adjust=False).mean().to_numpy()
     ema60_xau = pd.Series(c_xau).ewm(span=60, adjust=False).mean().to_numpy()
-    ema200_xau = pd.Series(c_xau).ewm(span=200, adjust=False).mean().to_numpy()
-    slope200_xau = pd.Series(ema200_xau).diff(5).fillna(0.0).to_numpy() / atr_arr_xau
+    ema240_xau = pd.Series(c_xau).ewm(span=240, adjust=False).mean().to_numpy()
+    ema_m5_xau = pd.Series(c_xau).ewm(span=100, adjust=False).mean().to_numpy()
+    ema_m15_xau = pd.Series(c_xau).ewm(span=300, adjust=False).mean().to_numpy()
 
-    trend_bull = (c_xau > ema200_xau).astype(np.float32)
-    trend_bear = (c_xau < ema200_xau).astype(np.float32)
+    trend_l_xau = ((c_xau > ema60_xau) & (ema20_xau > ema60_xau)).astype(np.float32)
+    trend_s_xau = ((c_xau < ema60_xau) & (ema20_xau < ema60_xau)).astype(np.float32)
+    slope_xau = ((ema60_xau - ema240_xau) / atr_arr_xau).astype(np.float32)
 
-    # Scale-invariant ML Features for Gold
-    X_val_base = extract_market_state_features(df_xau_c).fillna(0.0).to_numpy(dtype=np.float32)
-    cavr_ok = (cavr_series >= 0.85) & (cavr_series <= 2.20)
+    is_liquid_xau = ((hour_val >= 7) & (hour_val < 19)).astype(np.float32)
+    is_sleeve_a = (((time_float >= 7.0) & (time_float <= 11.0)) | ((time_float >= 12.5) & (time_float <= 16.0))).astype(np.float32)
+    is_sleeve_b = (((time_float > 11.0) & (time_float < 12.5)) | ((time_float > 16.0) & (time_float <= 18.5))).astype(np.float32)
 
-    # Simulated Ensemble ML Inference Probabilities
-    print("\n[Step 2/6] Generating Machine Learning Predictions for Gold...")
-    p_long_base = np.clip(0.50 + 0.15 * np.tanh((c_xau - ema60_xau) / (atr_arr_xau * 2.0)), 0.20, 0.80)
-    p_short_base = np.clip(0.50 - 0.15 * np.tanh((c_xau - ema60_xau) / (atr_arr_xau * 2.0)), 0.20, 0.80)
+    p_up_50_v = np.maximum(0.1, bundle["q_up_50"].predict(X_val_xau))
+    p_down_50_v = np.maximum(0.1, bundle["q_down_50"].predict(X_val_xau))
+    p_up_80_v = np.maximum(0.2, bundle["q_up_80"].predict(X_val_xau))
+    p_down_80_v = np.maximum(0.2, bundle["q_down_80"].predict(X_val_xau))
 
-    ratio_v_l = (p_long_base / np.maximum(p_short_base, 0.01))
-    ratio_v_s = (p_short_base / np.maximum(p_long_base, 0.01))
+    ratio_v_l = p_up_50_v / p_down_50_v
+    ratio_v_s = p_down_50_v / p_up_50_v
 
-    prob_l_xau = np.clip(p_long_base * (1.0 + 0.10 * np.clip(eur_impulse_z, -1.0, 1.0)), 0.10, 0.90)
-    prob_s_xau = np.clip(p_short_base * (1.0 - 0.10 * np.clip(eur_impulse_z, -1.0, 1.0)), 0.10, 0.90)
+    X_meta_l = make_directional_meta_features(X_val_xau, p_up_50_v, p_down_50_v, p_up_80_v, p_down_80_v, ratio_v_l, is_liquid_xau, trend_l_xau, slope_xau)
+    X_meta_s = make_directional_meta_features(X_val_xau, p_down_50_v, p_up_50_v, p_down_80_v, p_up_80_v, ratio_v_s, is_liquid_xau, trend_s_xau, slope_xau)
 
-    act_l_base_xau = (prob_l_xau >= 0.54) & is_trade_session & (~is_friday_block)
-    act_s_base_xau = (prob_s_xau >= 0.54) & is_trade_session & (~is_friday_block)
-    broad_l_xau = (prob_l_xau >= 0.50) & is_trade_session & (~is_friday_block)
-    broad_s_xau = (prob_s_xau >= 0.50) & is_trade_session & (~is_friday_block)
+    prob_l_xau = 0.60 * bundle["clf_l_lgb"].predict_proba(X_meta_l)[:, 1] + 0.40 * bundle["clf_l_hist"].predict_proba(X_meta_l)[:, 1]
+    prob_s_xau = 0.60 * bundle["clf_s_lgb"].predict_proba(X_meta_s)[:, 1] + 0.40 * bundle["clf_s_hist"].predict_proba(X_meta_s)[:, 1]
+
+    # Baseline ML Quantile Barriers
+    th = bundle.get("threshold", 0.52)
+    broad_l_xau = (prob_l_xau >= th) & (ratio_v_l >= 1.12) & (p_up_50_v * atr_arr_xau >= 0.55) & (ratio_v_l > ratio_v_s) & (trend_l_xau == 1.0) & (~is_friday_block)
+    broad_s_xau = (prob_s_xau >= th) & (ratio_v_s >= 1.20) & (p_down_50_v * atr_arr_xau >= 0.60) & (ratio_v_s > ratio_v_l) & (trend_s_xau == 1.0) & (~is_friday_block)
+
+    act_l_base_xau = (broad_l_xau & (is_sleeve_a == 1.0)) | (broad_l_xau & (is_sleeve_b == 1.0) & (ratio_v_l >= 1.30))
+    act_s_base_xau = (broad_s_xau & (is_sleeve_a == 1.0)) | (broad_s_xau & (is_sleeve_b == 1.0) & (ratio_v_s >= 1.35))
 
     # Microstructure Order Flow Features
     rng_xau = np.maximum(h_xau - l_xau, 1e-4)
