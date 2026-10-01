@@ -897,5 +897,21 @@
       "sharpe_ratio": -1.1077355321238804
     },
     "date": "2026-10-01 17:32:27 UTC"
+  },
+  "EXP-74": {
+    "name": "Precision Execution & Multi-Sleeve Confluence Engine",
+    "code": "PEMC-Engine",
+    "model_file": "exp74_pemc_alpha_champion.joblib",
+    "onnx_file": "exp74_pemc_alpha_engine.onnx",
+    "metrics": {
+      "net_profit": 502.9484999999531,
+      "return_pct": 5.029484999999531,
+      "total_trades": 19,
+      "win_rate": 47.368421052631575,
+      "profit_factor": 1.5778711450110396,
+      "max_drawdown_pct": 5.606069422086034,
+      "sharpe_ratio": 0.6659860492502329
+    },
+    "date": "2026-10-01 17:38:10 UTC"
   }
 }
