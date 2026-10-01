@@ -343,6 +343,25 @@
         "total_trades": 19,
         "finding": "Best variant Variant_1_EXP44_Baseline achieved Net Profit $847.54 with 73.7% Win Rate and PF 2.84 combining multi-horizon liquidity sweeps, swept-level retests, and OFI volume delta gating."
       }
+    },
+    "EXP-46": {
+      "name": "Multi-Timeframe Microstructure Momentum Fusion & High-Frequency ONNX Policy Engine (MTM-HFPE)",
+      "symbol": "XAUUSD+EURUSD",
+      "file_joblib": "exp46_mtm_alpha_champion.joblib",
+      "file_onnx": "exp46_mtm_alpha_engine.onnx",
+      "best_variant": "Variant_2_MTF_Trend_Breakout",
+      "metrics": {
+        "net_profit": 715.87,
+        "return_pct": 7.16,
+        "profit_factor": 3.66,
+        "win_rate": 78.57,
+        "max_drawdown_pct": 1.69,
+        "sharpe_ratio": 1.91,
+        "total_trades": 14,
+        "onnx_size_bytes": 8828,
+        "mean_latency_us": 19.54,
+        "finding": "Best variant Variant_2_MTF_Trend_Breakout achieved Net Profit $715.87 with 78.6% Win Rate and PF 3.66. Native ONNX inference clocked at 19.54 \u00b5s."
+      }
     }
   }
 }

@@ -206,3 +206,4 @@
 | EXP-43 | Asymmetric Volatility Surface & Adaptive Excursion Targets | **+$-209.15** | **0.96** | **58.1%** | **12.18%** | -0.18 | 155 | Dynamic Excursion Tiers + Volatility Velocity Expansion + Adaptive Targets + Asymmetric Long Monetary Drift Bias. |
 | EXP-44 | Order Flow Imbalance & Volume Delta Microstructure Filter | **+$847.54** | **2.84** | **73.7%** | **1.69%** | 1.95 | 19 | Volume Delta Proxy + 15-Bar CVD Institutional Flow Alignment + Volume Force Surge Gating. |
 | EXP-45 | Multi-Horizon Liquidity Sweep & Swept-Level Retest Engine | **+$847.54** | **2.84** | **73.7%** | **1.69%** | 1.95 | 19 | Asia Session & Rolling H4 Liquidity Sweeps + Retest Reversals + OFI Volume Delta Gating. |
+| EXP-46 | Multi-Timeframe Momentum Fusion & High-Frequency ONNX Policy Engine | **+$715.87** | **3.66** | **78.6%** | **1.69%** | 1.91 | 14 | Multi-Timeframe Microstructure Momentum Fusion + 31KB Native ONNX Policy (19.54 µs). |
