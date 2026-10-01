@@ -961,5 +961,21 @@
       "sharpe_ratio": 0.9899650685379461
     },
     "date": "2026-10-01 17:53:40 UTC"
+  },
+  "EXP-78": {
+    "name": "Dual-Horizon Trend Continuation & Pullback Engine",
+    "code": "DHTC-MPE",
+    "model_file": "exp78_dhtc_alpha_champion.joblib",
+    "onnx_file": "exp78_dhtc_alpha_engine.onnx",
+    "metrics": {
+      "net_profit": -1523.591500000388,
+      "return_pct": -15.23591500000388,
+      "total_trades": 133,
+      "win_rate": 36.84210526315789,
+      "profit_factor": 0.8325091749487502,
+      "max_drawdown_pct": 30.68138139407418,
+      "sharpe_ratio": -0.9098744521338231
+    },
+    "date": "2026-10-01 17:58:59 UTC"
   }
 }
