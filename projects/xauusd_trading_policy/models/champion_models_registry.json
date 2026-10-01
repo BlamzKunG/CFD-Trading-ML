@@ -833,5 +833,21 @@
       "sharpe_ratio": 1.3605614342191974
     },
     "date": "2026-10-01 16:12:22 UTC"
+  },
+  "EXP-70": {
+    "name": "Multi-Horizon Liquidity Void Retest & Confluence Weighting Engine",
+    "code": "MHLV-RCWE",
+    "model_file": "exp70_mhlv_alpha_champion.joblib",
+    "onnx_file": "exp70_mhlv_alpha_engine.onnx",
+    "metrics": {
+      "net_profit": 1653.8292142856135,
+      "return_pct": 16.538292142856132,
+      "total_trades": 29,
+      "win_rate": 41.37931034482759,
+      "profit_factor": 1.9818472652563695,
+      "max_drawdown_pct": 7.637410040919888,
+      "sharpe_ratio": 1.3605614342191974
+    },
+    "date": "2026-10-01 16:16:08 UTC"
   }
 }
