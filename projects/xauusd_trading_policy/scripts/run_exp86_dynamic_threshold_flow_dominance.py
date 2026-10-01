@@ -506,8 +506,8 @@ def run_experiment_86(eurusd_path: Optional[str] = None, xauusd_path: Optional[s
 
     # Variant 5: Production Flagship MRDT-FDF with Volatility Escalation
     # Incorporates high-conviction overlap drives and dynamic sizing
-    overlap_drive_l = is_ny_overlap & (prob_l_xau >= 0.48) & (ratio_v_l >= 1.05) & fdf_l & macro_shock_free & trend_l_xau & mtf_bull_xau
-    overlap_drive_s = is_ny_overlap & (prob_s_xau >= 0.48) & (ratio_v_s >= 1.05) & fdf_s & macro_shock_free & trend_s_xau & mtf_bear_xau
+    overlap_drive_l = is_ny_overlap & (prob_l_xau >= 0.48) & (ratio_v_l >= 1.05) & fdf_l & macro_shock_free & (trend_l_xau == 1.0) & mtf_bull_xau
+    overlap_drive_s = is_ny_overlap & (prob_s_xau >= 0.48) & (ratio_v_s >= 1.05) & fdf_s & macro_shock_free & (trend_s_xau == 1.0) & mtf_bear_xau
     entry_l_v5 = entry_l_v4 | overlap_drive_l
     entry_s_v5 = entry_s_v4 | overlap_drive_s
     act_v5 = np.where(entry_l_v5, ACTION_OPEN_LONG, np.where(entry_s_v5, ACTION_OPEN_SHORT, ACTION_HOLD))
