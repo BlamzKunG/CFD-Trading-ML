@@ -400,6 +400,25 @@
         "mean_latency_us": 21.02,
         "finding": "Best variant Variant_5_Master_ASVDKPS_Fused achieved Net Profit $-82.27 with 56.5% Win Rate and PF 0.89. Native ONNX inference clocked at 21.02 \u00b5s."
       }
+    },
+    "EXP-49": {
+      "name": "Temporal Volatility Cones & Adaptive Trailing Excursions Engine (TVC-AITE)",
+      "symbol": "XAUUSD+EURUSD",
+      "file_joblib": "exp49_tvc_alpha_champion.joblib",
+      "file_onnx": "exp49_tvc_alpha_engine.onnx",
+      "best_variant": "Variant_3_Accelerated_BE_Ratchet",
+      "metrics": {
+        "net_profit": 4.03,
+        "return_pct": 0.04,
+        "profit_factor": 1.01,
+        "win_rate": 60.87,
+        "max_drawdown_pct": 4.27,
+        "sharpe_ratio": 0.03,
+        "total_trades": 46,
+        "onnx_size_bytes": 8853,
+        "mean_latency_us": 13.26,
+        "finding": "Best variant Variant_3_Accelerated_BE_Ratchet achieved Net Profit $4.03 with 60.9% Win Rate and PF 1.01. Native ONNX inference clocked at 13.26 \u00b5s."
+      }
     }
   }
 }
