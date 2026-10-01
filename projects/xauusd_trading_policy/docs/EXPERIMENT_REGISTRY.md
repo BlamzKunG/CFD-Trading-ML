@@ -233,3 +233,4 @@
 | EXP-70 | MHLV-RCWE Void Retest & Confluence | $1,653.83 | 1.98 | 41.4% | 7.64% | 1.36 | 29 | `exp70_mhlv_alpha_champion.joblib` |
 | EXP-71 | MLSL-RTFE Realistic Frequency Engine | $0.00 | 0.00 | 0.0% | 0.00% | 0.00 | 0 | `exp71_mlsl_alpha_champion.joblib` |
 | EXP-72 | MHTC-HFIE Trend Continuation Engine | $375.04 | 1.07 | 43.5% | 11.03% | 0.22 | 69 | `exp72_mhtc_alpha_champion.joblib` |
+| EXP-73 | HEMS-CSE Multi-Sleeve Confluence Scaling | $-1,421.65 | 0.70 | 33.8% | 19.05% | -1.11 | 77 | `exp73_hems_alpha_champion.joblib` |

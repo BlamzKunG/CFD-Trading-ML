@@ -881,5 +881,21 @@
       "sharpe_ratio": 0.21952171645670904
     },
     "date": "2026-10-01 17:28:55 UTC"
+  },
+  "EXP-73": {
+    "name": "High-Expectancy Multi-Sleeve Confluence Scaling Engine",
+    "code": "HEMS-CSE",
+    "model_file": "exp73_hems_alpha_champion.joblib",
+    "onnx_file": "exp73_hems_alpha_engine.onnx",
+    "metrics": {
+      "net_profit": -1421.6543571429102,
+      "return_pct": -14.216543571429103,
+      "total_trades": 77,
+      "win_rate": 33.76623376623377,
+      "profit_factor": 0.6997768776335752,
+      "max_drawdown_pct": 19.045605339470836,
+      "sharpe_ratio": -1.1077355321238804
+    },
+    "date": "2026-10-01 17:32:27 UTC"
   }
 }
