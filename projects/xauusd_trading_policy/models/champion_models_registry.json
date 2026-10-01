@@ -865,5 +865,21 @@
       "sharpe_ratio": 0.0
     },
     "date": "2026-10-01 17:24:24 UTC"
+  },
+  "EXP-72": {
+    "name": "Multi-Horizon Trend Continuation & High-Frequency Momentum Engine",
+    "code": "MHTC-HFIE",
+    "model_file": "exp72_mhtc_alpha_champion.joblib",
+    "onnx_file": "exp72_mhtc_alpha_engine.onnx",
+    "metrics": {
+      "net_profit": 375.03985714240116,
+      "return_pct": 3.7503985714240113,
+      "total_trades": 69,
+      "win_rate": 43.47826086956522,
+      "profit_factor": 1.071965383970359,
+      "max_drawdown_pct": 11.026841186974783,
+      "sharpe_ratio": 0.21952171645670904
+    },
+    "date": "2026-10-01 17:28:55 UTC"
   }
 }
