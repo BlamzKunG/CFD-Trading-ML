@@ -226,3 +226,4 @@
 | EXP-63 | VRDS-KAA Dynamic Kelly Sizing | $1,378.39 | 2.13 | 75.0% | 5.47% | 1.31 | 28 | `exp63_vrds_alpha_champion.joblib` |
 | EXP-64 | CALI-MASE Lead-Lag Mispricing | $1,378.39 | 2.13 | 75.0% | 5.47% | 1.31 | 28 | `exp64_cali_alpha_champion.joblib` |
 | EXP-65 | SMLS-DRTE Symmetric Sweeps & Runner | $1,549.01 | 2.12 | 46.4% | 7.67% | 1.28 | 28 | `exp65_smls_alpha_champion.joblib` |
+| EXP-66 | RATO-SVAE Regime-Adaptive Targets | $1,653.14 | 1.98 | 41.4% | 7.64% | 1.36 | 29 | `exp66_rato_alpha_champion.joblib` |

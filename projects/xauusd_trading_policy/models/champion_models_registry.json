@@ -769,5 +769,21 @@
       "sharpe_ratio": 1.2831916592164636
     },
     "date": "2026-10-01 15:58:58 UTC"
+  },
+  "EXP-66": {
+    "name": "Regime-Adaptive Target Optimization & Session Volatility Anchoring Engine",
+    "code": "RATO-SVAE",
+    "model_file": "exp66_rato_alpha_champion.joblib",
+    "onnx_file": "exp66_rato_alpha_engine.onnx",
+    "metrics": {
+      "net_profit": 1653.1447857141884,
+      "return_pct": 16.531447857141885,
+      "total_trades": 29,
+      "win_rate": 41.37931034482759,
+      "profit_factor": 1.9810423036697156,
+      "max_drawdown_pct": 7.644040098716581,
+      "sharpe_ratio": 1.3599769660800922
+    },
+    "date": "2026-10-01 16:02:15 UTC"
   }
 }
