@@ -196,6 +196,23 @@
         "total_trades": 75,
         "finding": "Asymmetric Profit-Harvesting Excursion Trailing (3-Tier Ladder: 50% -> BE, 70% -> Lock 35%, 85% -> Lock 65%) with 0.85% Volatility Target & USDi 15m Gating unlocked Net +$1,657.32 (+16.57%), Sharpe 2.45, Win Rate 77.3%, and Max DD 2.37% over 75 trades in 2025 Out-of-Sample."
       }
+    },
+    "EXP-37": {
+      "name": "Multi-Model Consensus Meta-Ensemble (MMC-ME)",
+      "symbol": "XAUUSD+EURUSD",
+      "file": "exp37_multi_model_consensus_champion.joblib",
+      "best_variant": "Variant_1_Unanimous_Consensus",
+      "metrics": {
+        "net_profit": 609.79,
+        "return_pct": 6.10,
+        "profit_factor": 1.52,
+        "win_rate": 70.5,
+        "max_drawdown_pct": 2.46,
+        "sharpe_ratio": 1.17,
+        "calmar_ratio": 2.48,
+        "total_trades": 44,
+        "finding": "Unanimous (3/3) agreement across EXP-24, EXP-26, and EXP-27 with USDi macro gating delivered a solid 70.5% Win Rate, Net +$609.79, and 2.46% Max DD over 44 trades. Conversely, loose majority voting (2/3) diluted alpha by allowing counter-macro or low-volume trades (-$415.40), proving that hierarchical conviction gating is required when combining models."
+      }
     }
   }
 }

@@ -192,3 +192,5 @@
 | EXP-35 | Synthetic Dollar Index (USDi) Multi-Timeframe Gating | 2020-2024 (Train) / 2025 (Val) | Net +$1,150.48 | Max DD 1.90% | Sharpe 2.15 | Calmar 6.07 | Synthetic USDi multi-timeframe vector with 72%+ Win Rate | `exp35_synthetic_usdi_champion.joblib` |
 
 | EXP-36 | Asymmetric Profit-Harvesting Excursion Trailing | 2020-2024 (Train) / 2025 (Val) | Net +$1,657.32 | Max DD 2.37% | Sharpe 2.45 | Calmar 7.00 | 3-Tier excursion trailing ladder preventing peak-profit givebacks | `exp36_asymmetric_trailing_champion.joblib` |
+
+| EXP-37 | Multi-Model Consensus Meta-Ensemble | 2020-2024 (Train) / 2025 (Val) | Net +$-22.25 | Max DD 9.36% | Sharpe 0.01 | Calmar -0.02 | Consensus-graduated sizing (3/3=0.95%, 2/3=0.60%) with USDi gating and 3-Tier APHE | `exp37_multi_model_consensus_champion.joblib` |
