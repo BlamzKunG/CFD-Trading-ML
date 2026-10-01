@@ -817,5 +817,21 @@
       "sharpe_ratio": 1.5941516927058812
     },
     "date": "2026-10-01 16:08:44 UTC"
+  },
+  "EXP-69": {
+    "name": "Multi-Asset Dual-Sleeve Portfolio Allocation Engine",
+    "code": "MAD-SPAE",
+    "model_file": "exp69_mad_alpha_champion.joblib",
+    "onnx_file": "exp69_mad_alpha_engine.onnx",
+    "metrics": {
+      "net_profit": 1653.8292142856135,
+      "return_pct": 16.538292142856132,
+      "total_trades": 29,
+      "win_rate": 41.37931034482759,
+      "profit_factor": 1.9818472652563695,
+      "max_drawdown_pct": 7.637410040919888,
+      "sharpe_ratio": 1.3605614342191974
+    },
+    "date": "2026-10-01 16:12:22 UTC"
   }
 }

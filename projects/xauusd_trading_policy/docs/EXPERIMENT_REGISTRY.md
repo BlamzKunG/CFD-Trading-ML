@@ -229,3 +229,4 @@
 | EXP-66 | RATO-SVAE Regime-Adaptive Targets | $1,653.14 | 1.98 | 41.4% | 7.64% | 1.36 | 29 | `exp66_rato_alpha_champion.joblib` |
 | EXP-67 | DARB-MSLE Dynamic Risk & Micro-Ladder | $1,941.86 | 2.37 | 48.3% | 7.64% | 1.59 | 29 | `exp67_darb_alpha_champion.joblib` |
 | EXP-68 | VRG-ASCE Volatility Gating & Scale-Out | $1,942.54 | 2.37 | 48.3% | 7.63% | 1.59 | 29 | `exp68_vrg_alpha_champion.joblib` |
+| EXP-69 | MAD-SPAE Multi-Asset Portfolio | $1,653.83 | 1.98 | 41.4% | 7.64% | 1.36 | 29 | `exp69_mad_alpha_champion.joblib` |
