@@ -354,11 +354,18 @@ def main():
 
     print(f"[*] Loading M1 data from {args.data}...")
     t0 = time.time()
-    df_raw = pd.read_csv(args.data)
-    time_col = 'time' if 'time' in df_raw.columns else ('datetime' if 'datetime' in df_raw.columns else df_raw.columns[0])
-    df_raw[time_col] = pd.to_datetime(df_raw[time_col])
-    df_raw.set_index(time_col, inplace=True)
+    df_raw = pd.read_csv(
+        args.data,
+        usecols=["datetime", "open", "high", "low", "close", "tick_volume"],
+        dtype={
+            "open": np.float32, "high": np.float32, "low": np.float32,
+            "close": np.float32, "tick_volume": np.int32
+        }
+    )
+    df_raw["datetime"] = pd.to_datetime(df_raw["datetime"])
+    df_raw.set_index("datetime", inplace=True)
     df_raw.sort_index(inplace=True)
+    print(f"[+] Loaded {len(df_raw):,} M1 bars in {time.time() - t0:.2f}s.")
 
     print(f"[*] Resampling to M15 timeframe...")
     df_m15 = df_raw.resample('15min').agg({
@@ -408,8 +415,8 @@ def main():
     t_start = time.time()
 
     spread = 0.25 # $0.25 spread ($25/lot)
-    commission = 0.06 # $6 per 100 oz unit
-    unit_size = 100.0 # 1 standard lot = 100 oz
+    commission = 0.06 # $6 per 100 oz unit ($0.60 per 0.10 lot)
+    unit_size = 10.0 # 0.10 standard lot = 10 oz
     warmup = 100
 
     for a_cfg in asian_configs:

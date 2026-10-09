@@ -1,0 +1,19 @@
+{
+  "total_trades": 627,
+  "net_profit": 2978.25,
+  "profit_factor": 1.135,
+  "win_rate": 37.96,
+  "max_drawdown": 1355.97,
+  "romad": 2.2,
+  "sharpe": 0.722,
+  "avg_holding_bars": 13.0,
+  "pnl_mean": 4.75,
+  "pnl_std": 104.04,
+  "asian_session": "Asian_00_07",
+  "window": "NY_12_16",
+  "min_sweep_atr": 0.8,
+  "confirmation": "CloseInside",
+  "tp_mode": "3R",
+  "sl_buffer_atr": 0.2,
+  "max_daily_trades": 2
+}
