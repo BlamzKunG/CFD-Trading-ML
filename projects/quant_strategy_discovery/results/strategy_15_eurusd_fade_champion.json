@@ -1,0 +1,14 @@
+{
+  "total_trades": 251,
+  "net_profit": 53.4,
+  "pf": 1.016,
+  "win_rate": 38.65,
+  "max_dd": 405.2,
+  "mcr": 49.21,
+  "total_months": 63,
+  "pos_months": 31,
+  "neg_months": 32,
+  "min_sweep_pips": 8.0,
+  "tp_mode": "2.0R",
+  "sl_buffer_pips": 6.0
+}
