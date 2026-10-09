@@ -1,0 +1,63 @@
+{
+  "entry_lookback": 90,
+  "exit_lookback": 20,
+  "sl_atr_mult": 3.0,
+  "tp_atr_mult": 3.0,
+  "ema_filter": 200,
+  "session_mode": "London_NY",
+  "total_trades": 2095,
+  "net_profit": -1662.3226143963802,
+  "gross_profit": 88689.37607421915,
+  "gross_loss": 90351.6986886159,
+  "profit_factor": 0.9816016451431012,
+  "win_rate": 45.63245823389021,
+  "max_drawdown": 5587.33236955806,
+  "romad": -0.29751632880359047,
+  "sharpe": -0.1533858024955722,
+  "avg_holding_bars": 16.785202863961814,
+  "composite_score": 0.24295696816662454,
+  "yearly_breakdown": {
+    "2020": {
+      "trades": 335,
+      "net_profit": -597.0723876951388,
+      "profit_factor": 0.9579965380274906,
+      "win_rate": 45.97014925373134,
+      "max_drawdown": 1980.4208670479074
+    },
+    "2021": {
+      "trades": 338,
+      "net_profit": -1855.7840959819623,
+      "profit_factor": 0.8423456548486558,
+      "win_rate": 42.603550295857985,
+      "max_drawdown": 2817.749710518785
+    },
+    "2022": {
+      "trades": 362,
+      "net_profit": -193.9760358535773,
+      "profit_factor": 0.9850789927201979,
+      "win_rate": 45.027624309392266,
+      "max_drawdown": 1298.1939627510546
+    },
+    "2023": {
+      "trades": 357,
+      "net_profit": 560.959912109563,
+      "profit_factor": 1.0528412985648274,
+      "win_rate": 47.338935574229694,
+      "max_drawdown": 1660.349330357014
+    },
+    "2024": {
+      "trades": 354,
+      "net_profit": 172.71893136177368,
+      "profit_factor": 1.0114572844505436,
+      "win_rate": 46.89265536723164,
+      "max_drawdown": 1845.0011718748265
+    },
+    "2025": {
+      "trades": 338,
+      "net_profit": -67.82668108257894,
+      "profit_factor": 0.9973428897097177,
+      "win_rate": 44.97041420118343,
+      "max_drawdown": 2926.478906250082
+    }
+  }
+}
