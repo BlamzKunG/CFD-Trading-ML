@@ -1,0 +1,17 @@
+{
+  "total_trades": 624,
+  "net_profit": 5343.86,
+  "pf": 1.183,
+  "win_rate": 28.21,
+  "max_dd": 1859.59,
+  "mcr": 59.72,
+  "total_months": 72,
+  "pos_months": 43,
+  "neg_months": 29,
+  "box_lookback": 12,
+  "vcr_thresh": 0.75,
+  "skew_mult": 1.25,
+  "use_ema_filter": true,
+  "sl_buffer_atr": 0.5,
+  "tp_rr_mult": 3.0
+}
