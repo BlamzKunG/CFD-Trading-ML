@@ -107,17 +107,18 @@ All complete sweep CSV databases, JSON champions, Python backtesting engines, an
 
 * **Master Leaderboard CSV:** [`projects/quant_strategy_discovery/results/master_leaderboard_all_10_strategies.csv`](file:///root/CFD-Trading-ML/projects/quant_strategy_discovery/results/master_leaderboard_all_10_strategies.csv)
 * **Strategy Scripts (01–32):** [`projects/quant_strategy_discovery/scripts/`](file:///root/CFD-Trading-ML/projects/quant_strategy_discovery/scripts/)
-* **Strategy Logic Blueprints & Reports (01–33):** [`projects/quant_strategy_discovery/docs/`](file:///root/CFD-Trading-ML/projects/quant_strategy_discovery/docs/)
+* **Strategy Logic Blueprints & Reports (01–34):** [`projects/quant_strategy_discovery/docs/`](file:///root/CFD-Trading-ML/projects/quant_strategy_discovery/docs/)
 * **Production MQL5 Expert Advisors:** [`projects/quant_strategy_discovery/ea/`](file:///root/CFD-Trading-ML/projects/quant_strategy_discovery/ea/)
 * **Local Phone Backup:** `/mnt/sdcard/Download/EA/quant_strategy_discovery/`
 * **GitHub Repository:** [`https://github.com/BlamzKunG/CFD-Trading-ML.git`](https://github.com/BlamzKunG/CFD-Trading-ML.git)
 
 ---
 
-## 6. Frontier Strategy Discovery: "กำไรทุกเดือน" (Consistent Monthly Benchmark) (Strategies 11 – 33)
+## 6. Frontier Strategy Discovery: "กำไรทุกเดือน" (Consistent Monthly Benchmark) (Strategies 11 – 34)
 
 | Strategy ID & Architecture | Primary Asset & TF | Profit Factor (PF) | Net Profit (0.10 Lot) | Max Drawdown | MCR (Profitable Months / 72) | Production Status |
 | :--- | :--- | :---: | :---: | :---: | :---: | :--- |
+| **S34: Tri-Engine Risk-Isolated Composite (TE-ARIC)** | Gold H1 + M15 + EUR H1 | **1.586** 🏆 | **+$19,375.41** 🏆 | **$1,889.08** | **69.44% (50/72)** 🏆 | 🏆 **Master Portfolio Suite** |
 | **S33: Gold H1 Macro Structural Momentum (MSM-FHE)** | Gold H1 | **2.232** 🏆 | **+$12,575.02** | **$1,222.54** | 44.44% (32/72) | 🏆 **PF Champion EA** (`Gold_H1_MSM_FHE_Master_EA.mq5`) |
 | **S30: Multi-Timeframe Fractal Expansion (MFE-SVE)** | Gold M15 | **1.352 – 1.834** | **+$4,841.46 – +$6,880.49** | **$685.35 – $1,341.45** | **62.50% (45/72)** | 🏆 **Gold M15 Champion EA** (`Gold_MFE_SVE_Master_EA.mq5`) |
 | **S31: Macro Structural Momentum (MSM-DEC)** | EURUSD H1 | **1.214 – 1.270** | **+$1,958.93 – +$2,082.04** | **$462.74 – $542.54** | **54.17% (39/72)** | 🏆 **FX Champion EA** (`EURUSD_H1_MSM_DEC_Master_EA.mq5`) |
@@ -126,9 +127,9 @@ All complete sweep CSV databases, JSON champions, Python backtesting engines, an
 | **S29: Fractal Dimension & Entropy**| Gold M15 | **1.368** | +$4,602.75 | $1,095.46 | 52.78% (38/72) | Validated Fractal Gating |
 | **S24: ASAR Dual-Regime Master** | Gold M15 | **1.249** | +$4,890.81 | $1,515.28 | 58.33% (42/72) | Foundation Architecture |
 
-### Key Institutional Rules Discovered (Strategies 01 – 33)
+### Key Institutional Rules Discovered (Strategies 01 – 34)
 1. **The Law of Timeframe Friction Compression (The PF 2.2+ Engine):** Fixed CFD trading costs on Gold ($0.25 spread + $6.00 comm) absorb significant edge on M15, but drop to < 2.0% of ATR on H1. Combining H1 Macro Structural Channel with a 24-hour Katz Fractal Gate ($D \le 1.35$) unlocks unprecedented efficiency: **Profit Factor 2.232** with **+$12,575.02 net profit**!
-2. **The Law of Premature Break-Even:** Never move Stop Loss to BE at +1.5R on Gold. Gold expands after retesting breakout levels; premature BE suffocates trades and crashes PF from 1.30 to < 0.95.
-3. **The Spread/Commission Friction Trap on Intraday FX & Asian Gold:** Scalping tight ranges on EURUSD M15 or Asian Gold is mathematically negative (PF 0.62–0.85). EURUSD requires H1 macro trends, and Gold requires London/NY expansion or H1 macro continuation.
-4. **The Law of Asynchronous Risk Isolation:** Never pool circuit breakers across heterogeneous assets. Decoupled calendar risk budgets on Gold M15 + EURUSD H1 boost portfolio monthly profitability to **66.67% (48/72 months)** and slash drawdown to **$817.37**!
+2. **Tri-Engine Asynchronous Risk Isolation (The 50-Month Win Engine):** Combining Gold H1 Macro + Gold M15 Intraday + EURUSD H1 Macro under decoupled calendar risk budgets drives total net profit to **+$19,375.41** with **PF 1.586** and **69.44% MCR (50 out of 72 calendar months profitable)**!
+3. **The Law of Premature Break-Even:** Never move Stop Loss to BE at +1.5R on Gold. Gold expands after retesting breakout levels; premature BE suffocates trades and crashes PF from 1.30 to < 0.95.
+4. **The Spread/Commission Friction Trap on Intraday FX & Asian Gold:** Scalping tight ranges on EURUSD M15 or Asian Gold is mathematically negative (PF 0.62–0.85). EURUSD requires H1 macro trends, and Gold requires London/NY expansion or H1 macro continuation.
 
