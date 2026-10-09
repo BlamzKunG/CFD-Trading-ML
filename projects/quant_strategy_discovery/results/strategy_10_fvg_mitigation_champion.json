@@ -1,0 +1,18 @@
+{
+  "total_trades": 1909,
+  "net_profit": 11330.74,
+  "profit_factor": 1.115,
+  "win_rate": 27.03,
+  "max_drawdown": 5817.74,
+  "romad": 1.95,
+  "sharpe": 0.572,
+  "avg_holding_bars": 44.9,
+  "pnl_mean": 5.94,
+  "pnl_std": 164.04,
+  "trend_filter": "EMA200",
+  "min_gap_atr": 0.4,
+  "entry_depth": "BoundaryTouch",
+  "session": "24h",
+  "sl_buffer_atr": 0.5,
+  "tp_rr_mult": 3.0
+}
