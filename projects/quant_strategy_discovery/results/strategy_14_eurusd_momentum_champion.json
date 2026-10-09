@@ -1,0 +1,14 @@
+{
+  "total_trades": 1423,
+  "net_profit": -1555.71,
+  "pf": 0.905,
+  "win_rate": 30.15,
+  "max_dd": 1898.87,
+  "mcr": 40.28,
+  "total_months": 72,
+  "pos_months": 29,
+  "neg_months": 43,
+  "sl_mode": "AsianMidline",
+  "tp_rr_mult": 3.0,
+  "use_ema_filter": false
+}
