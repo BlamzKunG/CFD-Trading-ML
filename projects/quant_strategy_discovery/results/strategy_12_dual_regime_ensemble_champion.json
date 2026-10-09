@@ -1,0 +1,15 @@
+{
+  "total_trades": 1863.0,
+  "net_profit": 13490.84,
+  "pf": 1.12,
+  "win_rate": 29.68,
+  "max_dd": 6636.04,
+  "mcr": 61.11,
+  "total_months": 72.0,
+  "pos_months": 44.0,
+  "neg_months": 28.0,
+  "trend_tp_mult": 4.0,
+  "trend_sl_mult": 2.5,
+  "rev_std_mult": 2.8,
+  "rev_sl_atr": 2.0
+}
