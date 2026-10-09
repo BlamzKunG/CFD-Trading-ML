@@ -1,0 +1,13 @@
+{
+  "total_trades": 1140.0,
+  "net_profit": 4492.46,
+  "pf": 1.072,
+  "win_rate": 29.21,
+  "max_dd": 3516.71,
+  "mcr": 66.67,
+  "total_months": 72.0,
+  "pos_months": 48.0,
+  "neg_months": 24.0,
+  "monthly_profit_lock": 300.0,
+  "monthly_loss_breaker": 0.0
+}
