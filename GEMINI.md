@@ -1,6 +1,6 @@
-# CFD Trading ML & Quantitative Discovery: Project Constitution & Execution Rules (V2.0)
+# CFD Trading ML & Quantitative Discovery: Project Constitution & Execution Rules (V3.0)
 
-> **Mandate:** Advanced Rule-Based CFD Quantitative Research, Deterministic Strategy Logic Template Discovery, and Automated Backtesting Engine (Target: Consistent Monthly Profitability).
+> **Mandate:** Advanced Rule-Based CFD Quantitative Research, Deterministic Strategy Logic Template Discovery, and Continuous Non-Stop Autonomous Execution Engine (Target: Consistent Monthly Profitability).
 
 ---
 
@@ -25,11 +25,12 @@
 
 ---
 
-## 3. Autonomous Execution & Communication Rules
-1. **Continuous Autonomy:** Work steadily through the research backlog without stopping.
-2. **Token Efficiency:** No repetitive polling loops. Run sweeps asynchronously in the background.
-3. **Reporting Cadence:** Report every 30 minutes OR upon finishing each strategy/major milestone.
-4. **Task Management Lifecycle:** Check tasks after reporting — kill finished tasks (`DONE`/`EXITED`), let running tasks proceed undisturbed.
+## 3. Mandatory Continuous Non-Stop Execution Loop (กฎเหล็ก: ทำงานเรื่อยๆ ห้ามหยุดพักเด็ดขาด)
+1. **Continuous Non-Stop Execution:** The agent must NEVER pause or sit idle waiting for user prompts to continue.
+2. **Immediate Pipeline Progression:** Immediately after delivering a strategy report and syncing backups, proceed directly to code and launch the next research strategy.
+3. **Token Efficiency:** No repetitive polling loops. Run sweeps asynchronously in the background.
+4. **Reporting Cadence:** Report every 30 minutes OR upon finishing each strategy/major milestone.
+5. **Task Management Lifecycle:** Check tasks after reporting — kill finished tasks (`DONE`/`EXITED`), let running tasks proceed undisturbed.
 
 ---
 

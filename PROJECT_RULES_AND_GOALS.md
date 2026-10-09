@@ -1,8 +1,9 @@
-# Project Constitution: Rule-Based CFD Quantitative Research & Logic Template Discovery (V2.0)
+# Project Constitution: Rule-Based CFD Quantitative Research & Logic Template Discovery (V3.0)
 
 **Repository:** `CFD-Trading-ML`  
 **Scope:** Advanced Rule-Based CFD Trading Strategy Discovery & Parameter Sweeping Engine  
 **Core Target:** Deterministic Strategy Logic Templates with Consistent Monthly Profitability ("กำไรทุกเดือน")  
+**Execution Mode:** Continuous Non-Stop Autonomous Execution Loop (ทำงานเรื่อยๆ ห้ามหยุดพักเด็ดขาด)  
 **Last Updated:** 2026-10-09  
 
 ---
@@ -44,10 +45,11 @@
 
 ---
 
-## 3. ระเบียบปฏิบัติการทำงานอัตโนมัติและการบริหาร Task (Autonomous Workflow)
+## 3. ระเบียบปฏิบัติการทำงานแบบไม่หยุดพัก (Mandatory Continuous Non-Stop Execution Loop)
 
-1. **ทำงานต่อเนื่องแบบไม่หยุดพัก (Continuous Autonomous Execution):**
-   * AI จะเดินหน้าทดลองและคิดค้นกลยุทธ์ตามคลังแนวคิดอย่างต่อเนื่องโดยอัตโนมัติ
+1. **กฎเหล็ก: ทำงานเรื่อยๆ ห้ามหยุดพักเด็ดขาด (Non-Stop Autonomy):**
+   * AI จะต้อง **ไม่หยุดรอคำสั่งให้ทำงานต่ออย่างเด็ดขาด**
+   * เมื่อส่งรายงานผลของกลยุทธ์ใดกลยุทธ์หนึ่งเสร็จสิ้น พร้อมสำรองข้อมูลเรียบร้อยแล้ว **ต้องเริ่มคิดค้น เขียนโค้ด และสั่งรันกลยุทธ์ถัดไปในคิวทันทีโดยไม่ต้องรอให้ผู้ใช้สั่ง**
 2. **การประหยัด Token สูงสุด (Maximum Token Efficiency):**
    * รันการคำนวณขนาดใหญ่แบบ Background Process ไม่วนลูปตรวจสอบคำสั่งซ้ำๆ
 3. **จังหวะเวลาการรายงาน:**
