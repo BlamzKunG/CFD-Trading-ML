@@ -125,60 +125,73 @@ def main():
         hma=hma24, cmo=cmo10,
         h_lookback=h_lb12, l_lookback=l_lb12,
         months=g_h1_months, dates=g_h1_dates,
-        use_kfd=False, kfd_thresh=1.40,
-        monthly_profit_lock=250.0, monthly_loss_breaker=250.0,
+        use_channel=True, cmo_threshold=25.0,
+        use_kfd=True, kfd_thresh=1.40,
+        monthly_profit_lock=200.0, monthly_loss_breaker=250.0,
         defensive_thresh=120.0, defensive_lot_mult=0.25,
-        trend_tp_mult=4.5, trend_sl_mult=2.0
+        trend_tp_mult=4.5, trend_sl_mult=2.5
     )
     for t in trades_e2: t["engine"] = "E2_GOLD_H1_HMA_CMO"
 
     # --- ENGINE 3: Gold H1 Vortex Velocity (PF 2.232) ---
     print("[*] Simulating Engine 3: Gold H1 Vortex Velocity...")
-    vi_plus, vi_minus = compute_vortex_indicator(g_h1_highs, g_h1_lows, g_h1_closes, period=14)
+    vi_p14, vi_m14, d_vi14 = compute_vortex_indicator(g_h1_highs, g_h1_lows, g_h1_closes, 14)
+    h_lb16 = pd.Series(g_h1_highs).rolling(16).max().shift(1).fillna(999999.0).values
+    l_lb16 = pd.Series(g_h1_lows).rolling(16).min().shift(1).fillna(0.0).values
     trades_e3 = simulate_vortex_strategy(
         opens=g_h1_opens, highs=g_h1_highs, lows=g_h1_lows, closes=g_h1_closes,
-        atr14=atr14_gh1, ema200=ema200_gh1, kfd=kfd24_gh1,
-        vi_plus=vi_plus, vi_minus=vi_minus,
+        atr14=atr14_gh1, ema50=ema50_gh1, ema200=ema200_gh1,
+        h_lookback=h_lb16, l_lookback=l_lb16,
+        kfd=kfd24_gh1, vi_plus=vi_p14, vi_minus=vi_m14, delta_vi=d_vi14,
         months=g_h1_months, dates=g_h1_dates,
-        diff_threshold=0.25, use_kfd=True, kfd_thresh=1.35,
-        monthly_profit_lock=250.0, monthly_loss_breaker=250.0,
+        use_kfd=True, kfd_thresh=1.35, delta_vi_thresh=0.05,
+        entry_mode="breakout_vortex",
+        monthly_profit_lock=200.0, monthly_loss_breaker=250.0,
         defensive_thresh=120.0, defensive_lot_mult=0.25,
         trend_tp_mult=4.0, trend_sl_mult=2.0
     )
     for t in trades_e3: t["engine"] = "E3_GOLD_H1_VORTEX"
 
-    # --- ENGINE 4: Gold M15 Asian Breakout (PF 1.817) ---
-    print("[*] Simulating Engine 4: Gold M15 Asian Breakout...")
+    # --- Gold M15 Setup ---
     g_m15_opens = df_gold_m15["open"].values.astype(np.float64)
     g_m15_highs = df_gold_m15["high"].values.astype(np.float64)
     g_m15_lows = df_gold_m15["low"].values.astype(np.float64)
     g_m15_closes = df_gold_m15["close"].values.astype(np.float64)
     g_m15_dates = df_gold_m15.index
     g_m15_months = (g_m15_dates.year.values * 100 + g_m15_dates.month.values).astype(np.int32)
-    g_m15_hours = g_m15_dates.hour.values
-    atr14_gm15 = atr_kama(g_m15_highs, g_m15_lows, g_m15_closes, 14)
-    ema200_gm15 = ema_kama(g_m15_closes, 200)
+    g_m15_hours = g_m15_dates.hour.values.astype(np.int32)
+    g_m15_days = (g_m15_dates.year.values * 10000 + g_m15_dates.month.values * 100 + g_m15_dates.day.values).astype(np.int32)
 
+    atr14_gm15 = atr_kama(g_m15_highs, g_m15_lows, g_m15_closes, 14)
+    ema50_gm15 = ema_kama(g_m15_closes, 50)
+    ema200_gm15 = ema_kama(g_m15_closes, 200)
+    kfd32_gm15 = kfd_kama(g_m15_closes, atr14_gm15, 32)
+
+    # --- ENGINE 4: Gold M15 Asian Breakout (S42) ---
+    print("[*] Simulating Engine 4: Gold M15 Asian Breakout...")
     trades_e4 = simulate_asian_breakout_expansion(
         opens=g_m15_opens, highs=g_m15_highs, lows=g_m15_lows, closes=g_m15_closes,
-        atr14=atr14_gm15, ema200=ema200_gm15,
-        months=g_m15_months, hours=g_m15_hours, dates=g_m15_dates,
-        asian_start=0, asian_end=7,
-        trade_start=8, trade_end=15,
-        buffer_atr_mult=0.20,
-        tp_mult=4.0, sl_mult=1.5,
-        monthly_profit_lock=250.0, monthly_loss_breaker=250.0,
-        defensive_thresh=120.0, defensive_lot_mult=0.25
+        atr14=atr14_gm15, ema50=ema50_gm15, ema200=ema200_gm15, kfd=kfd32_gm15,
+        hours=g_m15_hours, days=g_m15_days, months=g_m15_months, dates=g_m15_dates,
+        asian_end_hour=7, exec_start_hour=8, exec_end_hour=16,
+        breakout_atr_buffer=0.4,
+        use_kfd=True, kfd_thresh=1.40,
+        monthly_profit_lock=200.0, monthly_loss_breaker=250.0,
+        defensive_thresh=120.0, defensive_lot_mult=0.25,
+        trend_tp_mult=4.5, trend_sl_mult=2.2
     )
-    for t in trades_e4: t["engine"] = "E4_GOLD_M15_ASIAN"
+    for t in trades_e4: t["engine"] = "E4_GOLD_M15_ARBE"
 
-    # --- ENGINE 5: Gold M15 SVE Fractal (PF 1.589) ---
-    print("[*] Simulating Engine 5: Gold M15 SVE Fractal...")
-    kfd32_gm15 = kfd_kama(g_m15_closes, atr14_gm15, 32)
-    vr14_gm15 = atr14_gm15 / (atr_kama(g_m15_highs, g_m15_lows, g_m15_closes, 48) + 1e-6)
+    # --- ENGINE 5: Gold M15 Fractal Expansion SVE (S30) ---
+    print("[*] Simulating Engine 5: Gold M15 Fractal Expansion SVE...")
+    h_lb16_m15 = pd.Series(g_m15_highs).rolling(16).max().shift(1).fillna(999999.0).values
+    l_lb16_m15 = pd.Series(g_m15_lows).rolling(16).min().shift(1).fillna(0.0).values
+    vr14_gm15 = pd.Series(atr14_gm15).rolling(14).mean().values
+    vr14_gm15 = np.where(vr14_gm15 <= 0, 1e-4, atr14_gm15 / vr14_gm15)
     trades_e5 = simulate_mfe_sve(
         opens=g_m15_opens, highs=g_m15_highs, lows=g_m15_lows, closes=g_m15_closes,
-        atr14=atr14_gm15, ema50=ema_kama(g_m15_closes, 50),
+        atr14=atr14_gm15, ema50=ema50_gm15, ema200=ema200_gm15,
+        h_lookback=h_lb16_m15, l_lookback=l_lb16_m15,
         kfd=kfd32_gm15, vr_ratio=vr14_gm15,
         months=g_m15_months, hours=g_m15_hours, dates=g_m15_dates,
         use_kfd=True, kfd_thresh=1.40,
@@ -271,7 +284,7 @@ def main():
 
     # --- ENGINE 9: Gold H1 Relative Volatility Index (S53) ---
     print("[*] Simulating Engine 9: Gold H1 RVI Volatility...")
-    rvi14_gh1 = compute_rvi(g_h1_closes, period=14)
+    rvi14_gh1 = compute_rvi(g_h1_closes, std_period=10, ema_period=14)
     trades_e9 = []
     pos = 0; entry_p = 0.0; sl_p = 0.0; tp_p = 0.0
     curr_unit_size = 10.0; curr_month = None; month_cum_pnl = 0.0; month_locked = False
