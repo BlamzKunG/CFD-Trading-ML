@@ -1,0 +1,40 @@
+{
+  "strategy_id": "STRATEGY_51",
+  "strategy_name": "Gold H1 Commodity Channel Index & Fractal Expansion (CCI-KFD)",
+  "asset": "XAUUSD",
+  "timeframe": "H1",
+  "audit_horizon": "2020-01-01 to 2025-12-30 (72 Calendar Months)",
+  "benchmark_metrics": {
+    "profit_factor": 1.494,
+    "net_profit": 5013.70,
+    "max_drawdown": 899.69,
+    "win_rate_pct": 32.41,
+    "total_trades": 253,
+    "annual_trade_frequency": 42.17,
+    "monthly_consistency_ratio_pct": 51.39,
+    "profitable_months": 37,
+    "total_months": 72,
+    "romad": 5.57
+  },
+  "champion_parameters": {
+    "cci_period": 20,
+    "cci_threshold": 80.0,
+    "macro_ema_period": 200,
+    "kfd_period": 24,
+    "kfd_enabled": true,
+    "kfd_threshold": 1.40,
+    "tp_atr_multiplier": 4.5,
+    "sl_atr_multiplier": 1.5,
+    "base_lot": 0.10,
+    "monthly_profit_lock": 200.0,
+    "monthly_loss_breaker": -250.0,
+    "defensive_drawdown_threshold": 120.0,
+    "defensive_lot_multiplier": 0.25
+  },
+  "frictional_costs": {
+    "spread_usd": 0.25,
+    "commission_per_lot_usd": 6.00,
+    "slippage_model": "Next-bar open fill causality"
+  },
+  "role_in_portfolio": "H1 Commodity Statistical Momentum Engine with Ultra-Low Drawdown ($899.69)"
+}

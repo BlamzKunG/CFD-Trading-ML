@@ -1,0 +1,35 @@
+{
+  "strategy_id": "STRATEGY_52",
+  "strategy_name": "Oct-Engine Supreme Institutional Composite (OE-OSIC)",
+  "engines": [
+    "E1: Gold H1 KAMA Efficiency (S36, PF 2.715)",
+    "E2: Gold H1 HMA-CMO Velocity (S38, PF 2.375, DD $866)",
+    "E3: Gold H1 Vortex Velocity (S35, PF 2.232)",
+    "E4: Gold M15 Asian Breakout (S42, PF 1.817)",
+    "E5: Gold M15 SVE Fractal (S30, PF 1.589)",
+    "E6: EURUSD H1 DEC Momentum (S31, PF 1.315)",
+    "E7: Gold H1 Supertrend Trailing (S45, PF 1.444)",
+    "E8: Gold H1 CCI Momentum (S51, PF 1.461)"
+  ],
+  "portfolio_metrics": {
+    "total_trades": 1724,
+    "net_profit": 59922.93,
+    "profit_factor": 1.857,
+    "win_rate_pct": 40.78,
+    "max_drawdown": 3488.81,
+    "romad": 17.18,
+    "monthly_consistency_ratio_pct": 73.61,
+    "profitable_months": 53,
+    "losing_months": 19,
+    "total_months": 72,
+    "annual_win_rate_pct": 100.0
+  },
+  "frictional_costs": {
+    "gold_spread_usd": 0.25,
+    "gold_comm_usd": 6.00,
+    "eur_spread_pip": 0.6,
+    "eur_comm_usd": 6.00,
+    "slippage_model": "Next-bar open fill causality"
+  },
+  "milestone": "All-time record net profit ($59,922.93) and all-time record Monthly Consistency Ratio (73.61% - 53/72 profitable months)"
+}
