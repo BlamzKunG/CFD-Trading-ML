@@ -1,0 +1,25 @@
+{
+  "strategy_id": "STRATEGY_77",
+  "strategy_name": "Gold H1 Chaikin Money Flow Volume Accumulation (CMF-VAB-KFD)",
+  "champion": {
+    "period": 28,
+    "trigger_mode": "threshold_10",
+    "trend_filter": "ema200",
+    "use_kfd": true,
+    "kfd_thresh": 1.35,
+    "tp_mult": 4.5,
+    "sl_mult": 2.0,
+    "profit_lock": 200.0,
+    "total_trades": 155,
+    "net_profit": 11002.93,
+    "pf": 2.27,
+    "win_rate": 49.03,
+    "max_dd": 978.41,
+    "romad": 11.25,
+    "mcr": 73.61,
+    "pos_months": 53,
+    "total_months": 72,
+    "score": 587.77
+  },
+  "runtime_seconds": 715.32
+}
