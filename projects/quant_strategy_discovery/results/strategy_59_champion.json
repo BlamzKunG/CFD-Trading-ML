@@ -1,0 +1,26 @@
+{
+  "strategy_id": "STRATEGY_59",
+  "strategy_name": "Gold H1 Williams %R Momentum & Volatility Pullback (WPR-KFD)",
+  "champion_metrics": {
+    "wpr_period": 28,
+    "os_thresh": -80.0,
+    "ob_thresh": -20.0,
+    "tp_mult": 4.0,
+    "sl_mult": 2.0,
+    "kfd_thresh": 1.4,
+    "monthly_profit_lock": 200.0,
+    "monthly_loss_breaker": 250.0,
+    "use_kfd": true,
+    "total_trades": 123,
+    "trades_per_year": 20.5,
+    "net_profit": 3849.11,
+    "pf": 1.496,
+    "win_rate": 39.84,
+    "max_dd": 1145.18,
+    "romad": 3.36,
+    "mcr": 54.17,
+    "pos_months": 39,
+    "total_months": 72
+  },
+  "runtime_seconds": 158.67
+}
