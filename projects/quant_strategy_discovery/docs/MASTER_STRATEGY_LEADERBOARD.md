@@ -130,6 +130,7 @@ All complete sweep CSV databases, JSON champions, Python backtesting engines, an
 | **S42: Asian Breakout Expansion (ARBE-Trend)** | Gold M15 | **1.817** 🏆 | **+$6,065.16** | **$1,041.50** | 48.61% (35/72) | 🏆 **Session Breakout Champion EA** (`Gold_M15_Asian_Breakout_Master_EA.mq5`) |
 | **S30: Multi-Timeframe Fractal Expansion (MFE-SVE)** | Gold M15 | **1.352 – 1.834** | **+$4,841.46 – +$6,880.49** | **$685.35 – $1,341.45** | **62.50% (45/72)** | 🏆 **Gold M15 Champion EA** (`Gold_MFE_SVE_Master_EA.mq5`) |
 | **S31: Macro Structural Momentum (MSM-DEC)** | EURUSD H1 | **1.214 – 1.270** | **+$1,958.93 – +$2,082.04** | **$462.74 – $542.54** | **54.17% (39/72)** | 🏆 **FX Champion EA** (`EURUSD_H1_MSM_DEC_Master_EA.mq5`) |
+| **S45: Supertrend Dynamic Trailing (MST-KFD)** | Gold H1 | **1.444** | **+$5,356.74** | **$2,005.45** | 48.61% (35/72) | 🏆 **Supertrend Trailing EA** (`Gold_H1_Supertrend_Trailing_Master_EA.mq5`) |
 | **S44: EURUSD H1 KAMA Efficiency (EUR-KAMA)** | EURUSD H1 | **1.470** | +$519.08 | **$468.18** | 16.67% (12/72) | Low-Frequency FX Hedge |
 | **S32: Dual-Asset Risk-Isolated Composite (DA-ARIC)** | Gold M15 + EUR H1 | **1.297 – 1.452** | **+$6,800.39 – +$6,691.11** | **$817.37 – $1,253.08** | **66.67% (48/72)** | 🏆 **Portfolio Multi-Asset Suite** |
 | **S27: ASAR Precision Calibration**| Gold M15 | **1.300 – 1.359** | +$4,480.83 | $1,383.08 | 62.50% (45/72) | Production EA (`Gold_ASAR_DualRegime_Master_EA.mq5`) |

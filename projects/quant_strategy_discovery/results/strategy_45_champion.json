@@ -1,0 +1,38 @@
+{
+  "strategy_id": "STRATEGY_45",
+  "strategy_name": "Gold H1 Supertrend Dynamic Trailing & Katz Fractal Gating (MST-KFD)",
+  "asset": "XAUUSD",
+  "timeframe": "H1",
+  "audit_horizon": "2020-01-01 to 2025-12-30 (72 Calendar Months)",
+  "benchmark_metrics": {
+    "profit_factor": 1.444,
+    "net_profit": 5356.74,
+    "max_drawdown": 2005.45,
+    "win_rate_pct": 38.81,
+    "total_trades": 201,
+    "annual_trade_frequency": 33.5,
+    "monthly_consistency_ratio_pct": 48.61,
+    "profitable_months": 35,
+    "total_months": 72,
+    "romad": 2.67
+  },
+  "champion_parameters": {
+    "supertrend_period": 10,
+    "supertrend_multiplier": 4.0,
+    "macro_ema_period": 200,
+    "kfd_period": 24,
+    "kfd_enabled": false,
+    "kfd_threshold": 1.40,
+    "base_lot": 0.10,
+    "monthly_profit_lock": 250.0,
+    "monthly_loss_breaker": -250.0,
+    "defensive_drawdown_threshold": 120.0,
+    "defensive_lot_multiplier": 0.25
+  },
+  "frictional_costs": {
+    "spread_usd": 0.25,
+    "commission_per_lot_usd": 6.00,
+    "slippage_model": "Next-bar open fill causality"
+  },
+  "role_in_portfolio": "H1 Macro Supertrend Trend Follower with dynamic ratcheting trail stop"
+}
