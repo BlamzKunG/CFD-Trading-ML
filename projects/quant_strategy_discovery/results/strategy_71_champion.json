@@ -1,0 +1,26 @@
+{
+  "strategy_id": "STRATEGY_71",
+  "strategy_name": "Gold H1 Awesome Oscillator Twin Peaks & Saucer (AO-TPS-KFD)",
+  "champion": {
+    "fast_len": 3,
+    "slow_len": 21,
+    "trigger_mode": "saucer_or_zero",
+    "trend_filter": "none",
+    "use_kfd": false,
+    "kfd_thresh": 1.5,
+    "tp_mult": 4.5,
+    "sl_mult": 2.0,
+    "profit_lock": 200.0,
+    "total_trades": 249,
+    "net_profit": 6797.63,
+    "pf": 1.414,
+    "win_rate": 39.36,
+    "max_dd": 981.64,
+    "romad": 6.92,
+    "mcr": 62.5,
+    "pos_months": 45,
+    "total_months": 72,
+    "score": 191.74
+  },
+  "runtime_seconds": 1102.61
+}
