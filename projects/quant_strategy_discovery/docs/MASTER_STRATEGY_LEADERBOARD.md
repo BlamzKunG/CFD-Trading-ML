@@ -140,6 +140,7 @@ All complete sweep CSV databases, JSON champions, Python backtesting engines, an
 | **S45: Supertrend Dynamic Trailing (MST-KFD)** | Gold H1 | **1.444** | **+$5,356.74** | **$2,005.45** | 48.61% (35/72) | 🏆 **Supertrend Trailing EA** (`Gold_H1_Supertrend_Trailing_Master_EA.mq5`) |
 | **S46: Choppiness Index Dynamic Expansion (CHOP-CMO)**| Gold H1 | **1.173** | **+$3,360.30** | **$1,623.53** | 44.44% (32/72) | 🏆 **CHOP-CMO EA (92 trades/yr)** (`Gold_H1_Choppiness_Momentum_Master_EA.mq5`) |
 | **S50: Fisher Transform Swing (EFT-SE)** | Gold H1 | **1.067** | **+$1,425.39** | **$1,257.45** | 40.28% (29/72) | Zero-Lag Gaussian Swing Engine |
+| **S57: EURUSD Market Structure BOS (FX-BOS)** | EURUSD H1 | **1.062 – 1.069** | +$408.95 – +$711.17 | **$677.91 – $861.97** | 44.44 – 55.56% (40/72) | Marginal Edge (Forex Mean-Reversion Trap) |
 | **S44: EURUSD H1 KAMA Efficiency (EUR-KAMA)** | EURUSD H1 | **1.470** | +$519.08 | **$468.18** | 16.67% (12/72) | Low-Frequency FX Hedge |
 | **S32: Dual-Asset Risk-Isolated Composite (DA-ARIC)** | Gold M15 + EUR H1 | **1.297 – 1.452** | **+$6,800.39 – +$6,691.11** | **$817.37 – $1,253.08** | **66.67% (48/72)** | 🏆 **Portfolio Multi-Asset Suite** |
 | **S27: ASAR Precision Calibration**| Gold M15 | **1.300 – 1.359** | +$4,480.83 | $1,383.08 | 62.50% (45/72) | Production EA (`Gold_ASAR_DualRegime_Master_EA.mq5`) |

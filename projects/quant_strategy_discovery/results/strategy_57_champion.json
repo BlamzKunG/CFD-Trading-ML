@@ -1,0 +1,24 @@
+{
+  "strategy_id": "STRATEGY_57",
+  "strategy_name": "EURUSD H1 Market Structure Break of Structure (FX-BOS)",
+  "champion_metrics": {
+    "swing_k": 5,
+    "tp_mult": 4.5,
+    "sl_mult": 2.5,
+    "kfd_thresh": 1.4,
+    "monthly_profit_lock": 120.0,
+    "monthly_loss_breaker": 150.0,
+    "use_kfd": true,
+    "total_trades": 262,
+    "trades_per_year": 43.7,
+    "net_profit": 408.95,
+    "pf": 1.069,
+    "win_rate": 37.4,
+    "max_dd": 861.97,
+    "romad": 0.47,
+    "mcr": 44.44,
+    "pos_months": 32,
+    "total_months": 72
+  },
+  "runtime_seconds": 379.83
+}
