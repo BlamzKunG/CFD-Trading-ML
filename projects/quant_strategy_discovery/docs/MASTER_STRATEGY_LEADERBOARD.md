@@ -118,6 +118,7 @@ All complete sweep CSV databases, JSON champions, Python backtesting engines, an
 
 | Strategy ID & Architecture | Primary Asset & TF | Profit Factor (PF) | Net Profit (0.10 Lot) | Max Drawdown | MCR (Profitable Months / 72) | Production Status |
 | :--- | :--- | :---: | :---: | :---: | :---: | :--- |
+| **S70: Octodec-Engine Supreme Suite (OE-STIC)** | Gold H1+M15, EUR H1 | **1.624** 🏆 | **+$112,410.56** 🏆 | **$5,419.85** | **70.83% (51/72)** 🏆 | 🏆 **Supreme 18-Engine Master Suite (Historic $112k+ Milestone, 3,476 Trades, RoMaD 20.7x)** |
 | **S68: Septendec-Engine Supreme Suite (SE-STIC)** | Gold H1+M15, EUR H1 | **1.640** 🏆 | **+$105,361.47** 🏆 | **$5,382.19** | **72.22% (52/72)** 🏆 | 🏆 **Supreme 17-Engine Master Suite (Historic $105k+ Milestone, 3,234 Trades)** |
 | **S66: Sedec-Engine Supreme Suite (SE-SIC)** | Gold H1+M15, EUR H1 | **1.616** 🏆 | **+$96,318.59** 🏆 | **$5,121.19** | **72.22% (52/72)** 🏆 | 🏆 **Supreme 16-Engine Master Suite (Record $96.3k Net, 72.2% MCR)** |
 | **S63: Quattuordec-Engine Supreme Suite (QE-QUASIC)** | Gold H1+M15, EUR H1 | **1.648** 🏆 | **+$89,358.44** 🏆 | **$4,329.93** | **70.83% (51/72)** 🏆 | 🏆 **Supreme 14-Engine Master Suite** |

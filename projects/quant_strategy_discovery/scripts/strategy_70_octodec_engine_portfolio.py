@@ -200,140 +200,148 @@ def main():
         opens=g_m15_opens, highs=g_m15_highs, lows=g_m15_lows, closes=g_m15_closes,
         atr14=atr14_gm15, ema50=ema50_gm15, ema200=ema200_gm15,
         h_lookback=h_lb16_m15, l_lookback=l_lb16_m15,
-        kfd=kfd32_gm15, vr=vr14_gm15,
-        months=g_m15_months, dates=g_m15_dates,
-        kfd_thresh=1.35, vr_thresh=1.2,
+        kfd=kfd32_gm15, vr_ratio=vr14_gm15,
+        months=g_m15_months, hours=g_m15_hours, dates=g_m15_dates,
+        use_kfd=True, kfd_thresh=1.40,
+        use_vr=False, vr_thresh=1.20,
+        use_ema50_filter=True,
+        start_hour=8, end_hour=18,
         monthly_profit_lock=200.0, monthly_loss_breaker=250.0,
-        defensive_thresh=120.0, defensive_lot_mult=0.25,
-        trend_tp_mult=4.5, trend_sl_mult=2.0
+        defensive_thresh=120.0, defensive_lot_mult=0.30
     )
     for t in trades_e5: t["engine"] = "E5_GOLD_M15_SVE"
 
-    # --- EURUSD H1 Setup ---
-    e_h1_opens = df_eur_h1["open"].values.astype(np.float64)
-    e_h1_highs = df_eur_h1["high"].values.astype(np.float64)
-    e_h1_lows = df_eur_h1["low"].values.astype(np.float64)
-    e_h1_closes = df_eur_h1["close"].values.astype(np.float64)
-    e_h1_dates = df_eur_h1.index
-    e_h1_months = (e_h1_dates.year.values * 100 + e_h1_dates.month.values).astype(np.int32)
-
-    atr14_eh1 = atr_eur(e_h1_highs, e_h1_lows, e_h1_closes, 14)
-    ema20_eh1 = ema_eur(e_h1_closes, 20)
-    ema50_eh1 = ema_eur(e_h1_closes, 50)
-    ema200_eh1 = ema_eur(e_h1_closes, 200)
-    kfd24_eh1 = kfd_kama(e_h1_closes, atr14_eh1, 24)
-
-    # --- ENGINE 6: EURUSD H1 DEC (PF 1.315) ---
+    # --- ENGINE 6: EURUSD H1 DEC (S31) ---
     print("[*] Simulating Engine 6: EURUSD H1 DEC...")
+    eur_opens = df_eur_h1["open"].values.astype(np.float64)
+    eur_highs = df_eur_h1["high"].values.astype(np.float64)
+    eur_lows = df_eur_h1["low"].values.astype(np.float64)
+    eur_closes = df_eur_h1["close"].values.astype(np.float64)
+    eur_dates = df_eur_h1.index
+    eur_months = (eur_dates.year.values * 100 + eur_dates.month.values).astype(np.int32)
+    atr14_eur = atr_eur(eur_highs, eur_lows, eur_closes, 14)
+    ema50_eur = ema_eur(eur_closes, 50)
+    ema200_eur = ema_eur(eur_closes, 200)
+    h_lb12_eur = pd.Series(eur_highs).rolling(12).max().shift(1).fillna(999999.0).values
+    l_lb12_eur = pd.Series(eur_lows).rolling(12).min().shift(1).fillna(0.0).values
     trades_e6 = simulate_eur_h1(
-        opens=e_h1_opens, highs=e_h1_highs, lows=e_h1_lows, closes=e_h1_closes,
-        atr14=atr14_eh1, ema20=ema20_eh1, ema50=ema50_eh1, ema200=ema200_eh1, kfd=kfd24_eh1,
-        months=e_h1_months, dates=e_h1_dates,
-        kfd_thresh=1.35, tp_mult=4.0, sl_mult=2.0,
-        monthly_profit_lock=150.0, monthly_loss_breaker=150.0,
-        defensive_thresh=80.0, defensive_lot_mult=0.25
+        opens=eur_opens, highs=eur_highs, lows=eur_lows, closes=eur_closes,
+        atr14=atr14_eur, ema50=ema50_eur, ema200=ema200_eur,
+        h_lookback=h_lb12_eur, l_lookback=l_lb12_eur,
+        months=eur_months, dates=eur_dates,
+        monthly_profit_lock=120.0, monthly_loss_breaker=150.0,
+        defensive_thresh=80.0, defensive_lot_mult=0.30,
+        trend_tp_mult=4.0, trend_sl_mult=2.5
     )
-    for t in trades_e6: t["engine"] = "E6_EUR_H1_DEC"
+    for t in trades_e6: t["engine"] = "E6_EURUSD_H1_DEC"
 
-    # --- ENGINE 7: Gold H1 Supertrend Trailing (PF 1.444) ---
+    # --- ENGINE 7: Gold H1 Supertrend Trailing (S45) ---
     print("[*] Simulating Engine 7: Gold H1 Supertrend Trailing...")
-    st_dir, st_val = compute_supertrend(g_h1_highs, g_h1_lows, g_h1_closes, period=10, multiplier=3.0)
+    st_val, trend_val, fub, flb = compute_supertrend(g_h1_highs, g_h1_lows, g_h1_closes, atr10_gh1, multiplier=4.0)
     trades_e7 = simulate_supertrend_trailing(
         opens=g_h1_opens, highs=g_h1_highs, lows=g_h1_lows, closes=g_h1_closes,
         atr14=atr14_gh1, ema200=ema200_gh1, kfd=kfd24_gh1,
-        st_direction=st_dir, st_value=st_val,
+        st=st_val, trend=trend_val, final_ub=fub, final_lb=flb,
         months=g_h1_months, dates=g_h1_dates,
-        use_kfd=True, kfd_thresh=1.40,
+        use_kfd=False, kfd_thresh=1.40,
         monthly_profit_lock=250.0, monthly_loss_breaker=250.0,
-        defensive_thresh=120.0, defensive_lot_mult=0.25,
-        tp_mult=4.5, sl_mult=2.5, trailing_activation_r=2.0
+        defensive_thresh=120.0, defensive_lot_mult=0.25
     )
-    for t in trades_e7: t["engine"] = "E7_GOLD_H1_MST"
+    for t in trades_e7: t["engine"] = "E7_GOLD_H1_SUPERTREND"
 
-    # --- ENGINE 8: Gold H1 CCI Momentum & Fractal (PF 1.151) ---
+    # --- ENGINE 8: Gold H1 CCI Momentum & Fractal (S51) ---
     print("[*] Simulating Engine 8: Gold H1 CCI Momentum...")
-    cci20 = compute_cci(g_h1_highs, g_h1_lows, g_h1_closes, period=20)
+    cci20_gh1 = compute_cci(g_h1_highs, g_h1_lows, g_h1_closes, period=20)
+    n = len(g_h1_closes)
     trades_e8 = []
-    pos8 = 0; ent_p8 = 0.0; sl_p8 = 0.0; tp_p8 = 0.0; ent_i8 = 0
-    cur_m8 = g_h1_months[0]; m_pnl8 = 0.0; lock8 = False
-    for i in range(50, len(g_h1_closes) - 1):
-        if g_h1_months[i] != cur_m8:
-            cur_m8 = g_h1_months[i]; m_pnl8 = 0.0; lock8 = False
-        if pos8 != 0:
-            h = g_h1_highs[i]; l = g_h1_lows[i]; hit_tp = False; hit_sl = False
-            if pos8 == 1:
-                if l <= sl_p8: hit_sl = True
-                elif h >= tp_p8: hit_tp = True
-            elif pos8 == -1:
-                if h >= sl_p8: hit_sl = True
-                elif l <= tp_p8: hit_tp = True
-            if hit_sl and hit_tp: hit_tp = False; hit_sl = True
-            if hit_sl or hit_tp:
-                exit_p = tp_p8 if hit_tp else sl_p8
-                pnl = ((exit_p - ent_p8) if pos8 == 1 else (ent_p8 - exit_p)) * 10.0 - 3.10
-                m_pnl8 += pnl
-                trades_e8.append({"pnl": round(pnl, 2), "date": g_h1_dates[i], "engine": "E8_GOLD_H1_CCI", "month": cur_m8})
-                pos8 = 0
-                if m_pnl8 >= 200.0 or m_pnl8 <= -250.0: lock8 = True
-        if pos8 == 0 and not lock8:
-            atr = atr14_gh1[i]
-            if atr < 0.5: continue
-            if kfd24_gh1[i] <= 1.40:
-                if cci20[i] > 100.0 and cci20[i-1] <= 100.0 and g_h1_closes[i] > ema200_gh1[i]:
-                    pos8 = 1; ent_i8 = i + 1; ent_p8 = g_h1_opens[i+1]
-                    sl_p8 = ent_p8 - 2.0 * atr; tp_p8 = ent_p8 + 4.5 * atr
-                elif cci20[i] < -100.0 and cci20[i-1] >= -100.0 and g_h1_closes[i] < ema200_gh1[i]:
-                    pos8 = -1; ent_i8 = i + 1; ent_p8 = g_h1_opens[i+1]
-                    sl_p8 = ent_p8 + 2.0 * atr; tp_p8 = ent_p8 - 4.5 * atr
+    pos = 0; entry_p = 0.0; sl_p = 0.0; tp_p = 0.0
+    curr_unit_size = 10.0; curr_month = None; month_cum_pnl = 0.0; month_locked = False
+    for i in range(250, n - 1):
+        m_key = g_h1_months[i]
+        c_atr = atr14_gh1[i]
+        if m_key != curr_month:
+            curr_month = m_key; month_cum_pnl = 0.0; month_locked = False; curr_unit_size = 10.0
+        if pos == 1:
+            exit_trig = False; exit_p = 0.0
+            if g_h1_lows[i] <= sl_p: exit_p = sl_p if g_h1_opens[i] >= sl_p else g_h1_opens[i]; exit_trig = True
+            elif g_h1_highs[i] >= tp_p: exit_p = tp_p if g_h1_opens[i] <= tp_p else g_h1_opens[i]; exit_trig = True
+            if exit_trig:
+                pnl = (exit_p - entry_p) * curr_unit_size - 0.31 * curr_unit_size
+                trades_e8.append({"pnl": pnl, "date": g_h1_dates[i], "engine": "E8_GOLD_H1_CCI", "month": m_key})
+                month_cum_pnl += pnl; pos = 0
+                if month_cum_pnl >= 200.0 or month_cum_pnl <= -250.0: month_locked = True
+                elif month_cum_pnl <= -120.0: curr_unit_size = 2.5
+        elif pos == -1:
+            exit_trig = False; exit_p = 0.0
+            if g_h1_highs[i] >= sl_p: exit_p = sl_p if g_h1_opens[i] <= sl_p else g_h1_opens[i]; exit_trig = True
+            elif g_h1_lows[i] <= tp_p: exit_p = tp_p if g_h1_opens[i] >= tp_p else g_h1_opens[i]; exit_trig = True
+            if exit_trig:
+                pnl = (entry_p - exit_p) * curr_unit_size - 0.31 * curr_unit_size
+                trades_e8.append({"pnl": pnl, "date": g_h1_dates[i], "engine": "E8_GOLD_H1_CCI", "month": m_key})
+                month_cum_pnl += pnl; pos = 0
+                if month_cum_pnl >= 200.0 or month_cum_pnl <= -250.0: month_locked = True
+                elif month_cum_pnl <= -120.0: curr_unit_size = 2.5
+        if pos == 0 and not month_locked:
+            kfd_ok = (kfd24_gh1[i] <= 1.40)
+            bull_cross = (cci20_gh1[i] >= 80.0) and (cci20_gh1[i - 1] < 80.0) and (g_h1_closes[i] > ema200_gh1[i]) and kfd_ok
+            bear_cross = (cci20_gh1[i] <= -80.0) and (cci20_gh1[i - 1] > -80.0) and (g_h1_closes[i] < ema200_gh1[i]) and kfd_ok
+            if bull_cross:
+                pos = 1; entry_p = g_h1_opens[i + 1]; sl_p = entry_p - 2.0 * c_atr; tp_p = entry_p + 4.5 * c_atr
+            elif bear_cross:
+                pos = -1; entry_p = g_h1_opens[i + 1]; sl_p = entry_p + 2.0 * c_atr; tp_p = entry_p - 4.5 * c_atr
 
-    # --- ENGINE 9: Gold H1 RVI Volatility (PF 1.568) ---
+    # --- ENGINE 9: Gold H1 Relative Volatility Index (S53) ---
     print("[*] Simulating Engine 9: Gold H1 RVI Volatility...")
-    rvi14, sig14 = compute_rvi(g_h1_opens, g_h1_highs, g_h1_lows, g_h1_closes, period=14)
+    rvi14_gh1 = compute_rvi(g_h1_closes, std_period=10, ema_period=14)
     trades_e9 = []
-    pos9 = 0; ent_p9 = 0.0; sl_p9 = 0.0; tp_p9 = 0.0; ent_i9 = 0
-    cur_m9 = g_h1_months[0]; m_pnl9 = 0.0; lock9 = False
-    for i in range(50, len(g_h1_closes) - 1):
-        if g_h1_months[i] != cur_m9:
-            cur_m9 = g_h1_months[i]; m_pnl9 = 0.0; lock9 = False
-        if pos9 != 0:
-            h = g_h1_highs[i]; l = g_h1_lows[i]; hit_tp = False; hit_sl = False
-            if pos9 == 1:
-                if l <= sl_p9: hit_sl = True
-                elif h >= tp_p9: hit_tp = True
-            elif pos9 == -1:
-                if h >= sl_p9: hit_sl = True
-                elif l <= tp_p9: hit_tp = True
-            if hit_sl and hit_tp: hit_tp = False; hit_sl = True
-            if hit_sl or hit_tp:
-                exit_p = tp_p9 if hit_tp else sl_p9
-                pnl = ((exit_p - ent_p9) if pos9 == 1 else (ent_p9 - exit_p)) * 10.0 - 3.10
-                m_pnl9 += pnl
-                trades_e9.append({"pnl": round(pnl, 2), "date": g_h1_dates[i], "engine": "E9_GOLD_H1_RVI", "month": cur_m9})
-                pos9 = 0
-                if m_pnl9 >= 200.0 or m_pnl9 <= -250.0: lock9 = True
-        if pos9 == 0 and not lock9:
-            atr = atr14_gh1[i]
-            if atr < 0.5: continue
-            if kfd24_gh1[i] <= 1.40:
-                if rvi14[i] > sig14[i] and rvi14[i-1] <= sig14[i-1] and g_h1_closes[i] > ema200_gh1[i]:
-                    pos9 = 1; ent_i9 = i + 1; ent_p9 = g_h1_opens[i+1]
-                    sl_p8 = ent_p9 - 2.0 * atr; tp_p9 = ent_p9 + 4.5 * atr
-                elif rvi14[i] < sig14[i] and rvi14[i-1] >= sig14[i-1] and g_h1_closes[i] < ema200_gh1[i]:
-                    pos9 = -1; ent_i9 = i + 1; ent_p9 = g_h1_opens[i+1]
-                    sl_p9 = ent_p9 + 2.0 * atr; tp_p9 = ent_p9 - 4.5 * atr
+    pos = 0; entry_p = 0.0; sl_p = 0.0; tp_p = 0.0
+    curr_unit_size = 10.0; curr_month = None; month_cum_pnl = 0.0; month_locked = False
+    for i in range(250, n - 1):
+        m_key = g_h1_months[i]
+        c_atr = atr14_gh1[i]
+        if m_key != curr_month:
+            curr_month = m_key; month_cum_pnl = 0.0; month_locked = False; curr_unit_size = 10.0
+        if pos == 1:
+            exit_trig = False; exit_p = 0.0
+            if g_h1_lows[i] <= sl_p: exit_p = sl_p if g_h1_opens[i] >= sl_p else g_h1_opens[i]; exit_trig = True
+            elif g_h1_highs[i] >= tp_p: exit_p = tp_p if g_h1_opens[i] <= tp_p else g_h1_opens[i]; exit_trig = True
+            if exit_trig:
+                pnl = (exit_p - entry_p) * curr_unit_size - 0.31 * curr_unit_size
+                trades_e9.append({"pnl": pnl, "date": g_h1_dates[i], "engine": "E9_GOLD_H1_RVI", "month": m_key})
+                month_cum_pnl += pnl; pos = 0
+                if month_cum_pnl >= 200.0 or month_cum_pnl <= -250.0: month_locked = True
+                elif month_cum_pnl <= -120.0: curr_unit_size = 2.5
+        elif pos == -1:
+            exit_trig = False; exit_p = 0.0
+            if g_h1_highs[i] >= sl_p: exit_p = sl_p if g_h1_opens[i] <= sl_p else g_h1_opens[i]; exit_trig = True
+            elif g_h1_lows[i] <= tp_p: exit_p = tp_p if g_h1_opens[i] >= tp_p else g_h1_opens[i]; exit_trig = True
+            if exit_trig:
+                pnl = (entry_p - exit_p) * curr_unit_size - 0.31 * curr_unit_size
+                trades_e9.append({"pnl": pnl, "date": g_h1_dates[i], "engine": "E9_GOLD_H1_RVI", "month": m_key})
+                month_cum_pnl += pnl; pos = 0
+                if month_cum_pnl >= 200.0 or month_cum_pnl <= -250.0: month_locked = True
+                elif month_cum_pnl <= -120.0: curr_unit_size = 2.5
+        if pos == 0 and not month_locked:
+            kfd_ok = (kfd24_gh1[i] <= 1.40)
+            bull_cross = (rvi14_gh1[i] >= 60.0) and (rvi14_gh1[i - 1] < 60.0) and (g_h1_closes[i] > ema200_gh1[i]) and kfd_ok
+            bear_cross = (rvi14_gh1[i] <= 40.0) and (rvi14_gh1[i - 1] > 40.0) and (g_h1_closes[i] < ema200_gh1[i]) and kfd_ok
+            if bull_cross:
+                pos = 1; entry_p = g_h1_opens[i + 1]; sl_p = entry_p - 2.0 * c_atr; tp_p = entry_p + 4.5 * c_atr
+            elif bear_cross:
+                pos = -1; entry_p = g_h1_opens[i + 1]; sl_p = entry_p + 2.0 * c_atr; tp_p = entry_p - 4.5 * c_atr
 
-    # --- ENGINE 10: Gold H1 Market Structure BOS (PF 1.560) ---
+    # --- ENGINE 10: Gold H1 Market Structure Break of Structure (S55) ---
     print("[*] Simulating Engine 10: Gold H1 Market Structure BOS...")
-    swing_highs, swing_lows = compute_confirmed_swing_levels(g_h1_highs, g_h1_lows, swing_left=5, swing_right=2)
+    sh4, sl4 = compute_confirmed_swing_levels(g_h1_highs, g_h1_lows, k=4)
     raw_trades_e10 = simulate_bos_strategy(
         opens=g_h1_opens, highs=g_h1_highs, lows=g_h1_lows, closes=g_h1_closes,
         atr14=atr14_gh1, ema200=ema200_gh1, kfd=kfd24_std,
-        swing_highs=swing_highs, swing_lows=swing_lows,
+        recent_sh=sh4, recent_sl=sl4,
         months=g_h1_months, dates=g_h1_dates,
-        use_kfd=True, kfd_thresh=1.40,
-        monthly_profit_lock=250.0, monthly_loss_breaker=250.0,
-        defensive_thresh=120.0, defensive_lot_mult=0.25,
-        tp_mult=4.5, sl_mult=2.0
+        use_kfd=True, kfd_thresh=1.45,
+        use_ema200=True,
+        tp_mult=4.5, sl_mult=1.5,
+        monthly_profit_lock=250.0, monthly_loss_breaker=250.0
     )
     trades_e10 = []
     for t in raw_trades_e10:
@@ -344,17 +352,17 @@ def main():
             "month": t["month"]
         })
 
-    # --- ENGINE 11: Gold H1 Elder's Force Index (PF 1.476) ---
+    # --- ENGINE 11: Gold H1 Elder Force Index (S58) ---
     print("[*] Simulating Engine 11: Gold H1 Elder Force Index...")
-    efi13 = compute_elder_force_index(g_h1_closes, g_h1_vols, period=13)
+    efi13_gh1 = compute_elder_force_index(g_h1_closes, g_h1_vols, efi_period=13)
     raw_trades_e11 = simulate_efi_strategy(
         opens=g_h1_opens, highs=g_h1_highs, lows=g_h1_lows, closes=g_h1_closes,
-        atr14=atr14_gh1, ema200=ema200_gh1, kfd=kfd24_std,
-        efi=efi13, months=g_h1_months, dates=g_h1_dates,
-        use_kfd=True, kfd_thresh=1.40,
-        monthly_profit_lock=200.0, monthly_loss_breaker=250.0,
-        defensive_thresh=120.0, defensive_lot_mult=0.25,
-        tp_mult=4.0, sl_mult=2.0
+        atr14=atr14_gh1, ema200=ema200_gh1, kfd=kfd24_std, efi=efi13_gh1,
+        months=g_h1_months, dates=g_h1_dates,
+        use_kfd=True, kfd_thresh=1.45,
+        use_ema200=True,
+        tp_mult=4.5, sl_mult=2.0,
+        monthly_profit_lock=200.0, monthly_loss_breaker=250.0
     )
     trades_e11 = []
     for t in raw_trades_e11:
@@ -365,16 +373,16 @@ def main():
             "month": t["month"]
         })
 
-    # --- ENGINE 12: Gold H1 Williams %R Pullback (PF 1.496) ---
+    # --- ENGINE 12: Gold H1 Williams %R Pullback (S59) ---
     print("[*] Simulating Engine 12: Gold H1 Williams %R Pullback...")
-    wpr14 = compute_williams_r(g_h1_highs, g_h1_lows, g_h1_closes, period=14)
+    wpr28_gh1 = compute_williams_r(g_h1_highs, g_h1_lows, g_h1_closes, period=28)
     raw_trades_e12 = simulate_wpr_strategy(
         opens=g_h1_opens, highs=g_h1_highs, lows=g_h1_lows, closes=g_h1_closes,
-        atr14=atr14_gh1, ema50=ema50_gh1, ema200=ema200_gh1, kfd=kfd24_std,
-        wpr=wpr14, months=g_h1_months, dates=g_h1_dates,
-        use_kfd=True, kfd_thresh=1.35,
-        trend_filter="ema50",
-        ob_level=-20.0, os_level=-80.0,
+        atr14=atr14_gh1, ema200=ema200_gh1, kfd=kfd24_std, wpr=wpr28_gh1,
+        months=g_h1_months, dates=g_h1_dates,
+        os_thresh=-80.0, ob_thresh=-20.0,
+        use_kfd=True, kfd_thresh=1.40,
+        use_ema200=True,
         tp_mult=4.0, sl_mult=2.0,
         monthly_profit_lock=200.0, monthly_loss_breaker=250.0
     )
@@ -387,16 +395,17 @@ def main():
             "month": t["month"]
         })
 
-    # --- ENGINE 13: Gold H1 McGinley Dynamic Adaptive Trend (PF 1.641) ---
+    # --- ENGINE 13: Gold H1 McGinley Dynamic Adaptive Trend (S61) ---
     print("[*] Simulating Engine 13: Gold H1 McGinley Dynamic...")
-    mgd14 = compute_mcginley_dynamic(g_h1_closes, period=14, k=0.6)
+    mgd20_gh1 = compute_mcginley_dynamic(g_h1_closes, period=20)
     raw_trades_e13 = simulate_mgd_strategy(
         opens=g_h1_opens, highs=g_h1_highs, lows=g_h1_lows, closes=g_h1_closes,
-        atr14=atr14_gh1, ema200=ema200_gh1, kfd=kfd24_std,
-        mgd=mgd14, months=g_h1_months, dates=g_h1_dates,
-        use_kfd=True, kfd_thresh=1.40,
-        tp_mult=4.5, sl_mult=2.5,
-        monthly_profit_lock=250.0, monthly_loss_breaker=250.0
+        atr14=atr14_gh1, ema200=ema200_gh1, kfd=kfd24_std, md=mgd20_gh1,
+        months=g_h1_months, dates=g_h1_dates,
+        use_kfd=True, kfd_thresh=1.45,
+        use_ema200=True,
+        tp_mult=3.5, sl_mult=2.0,
+        monthly_profit_lock=200.0, monthly_loss_breaker=250.0
     )
     trades_e13 = []
     for t in raw_trades_e13:
@@ -407,16 +416,18 @@ def main():
             "month": t["month"]
         })
 
-    # --- ENGINE 14: Gold H1 Schaff Trend Cycle Momentum (PF 1.573) ---
+    # --- ENGINE 14: Gold H1 Schaff Trend Cycle Momentum (S62) ---
     print("[*] Simulating Engine 14: Gold H1 Schaff Trend Cycle...")
-    stc_line = compute_schaff_trend_cycle(g_h1_closes, fast_len=23, slow_len=50, cycle_len=10, smooth=3)
+    stc_gh1 = compute_schaff_trend_cycle(g_h1_closes, fast_period=23, slow_period=50, cycle_period=10)
     raw_trades_e14 = simulate_stc_strategy(
         opens=g_h1_opens, highs=g_h1_highs, lows=g_h1_lows, closes=g_h1_closes,
-        atr14=atr14_gh1, ema200=ema200_gh1, kfd=kfd24_std,
-        stc=stc_line, months=g_h1_months, dates=g_h1_dates,
+        atr14=atr14_gh1, ema200=ema200_gh1, kfd=kfd24_std, stc=stc_gh1,
+        months=g_h1_months, dates=g_h1_dates,
+        stc_lower=30.0, stc_upper=70.0,
         use_kfd=True, kfd_thresh=1.40,
-        tp_mult=4.0, sl_mult=2.5,
-        monthly_profit_lock=250.0, monthly_loss_breaker=250.0
+        use_ema200=True,
+        tp_mult=4.5, sl_mult=2.5,
+        monthly_profit_lock=200.0, monthly_loss_breaker=250.0
     )
     trades_e14 = []
     for t in raw_trades_e14:
@@ -427,17 +438,17 @@ def main():
             "month": t["month"]
         })
 
-    # --- ENGINE 15: Gold H1 DeMarker Dynamic Exhaustion (PF 1.451) ---
+    # --- ENGINE 15: Gold H1 DeMarker Dynamic Exhaustion (S64) ---
     print("[*] Simulating Engine 15: Gold H1 DeMarker Exhaustion...")
-    dem14 = compute_demarker(g_h1_highs, g_h1_lows, period=14)
+    dem21_gh1 = compute_demarker(g_h1_highs, g_h1_lows, period=21)
     raw_trades_e15 = simulate_demarker_strategy(
         opens=g_h1_opens, highs=g_h1_highs, lows=g_h1_lows, closes=g_h1_closes,
-        atr14=atr14_gh1, ema50=ema50_gh1, ema200=ema200_gh1, kfd=kfd24_std,
-        demarker=dem14, months=g_h1_months, dates=g_h1_dates,
-        trend_filter="none",
-        use_kfd=True, kfd_thresh=1.40,
-        ob_thresh=0.70, os_thresh=0.30,
-        tp_mult=4.5, sl_mult=2.0,
+        atr14=atr14_gh1, ema200=ema200_gh1, kfd=kfd24_std, dem=dem21_gh1,
+        months=g_h1_months, dates=g_h1_dates,
+        oversold=0.35, overbought=0.65,
+        use_kfd=True, kfd_thresh=1.35,
+        use_ema200=True,
+        tp_mult=3.5, sl_mult=2.5,
         monthly_profit_lock=0.0, monthly_loss_breaker=0.0
     )
     trades_e15 = []
@@ -495,7 +506,7 @@ def main():
         })
 
     # --- ENGINE 18: Gold H1 Coppock Curve Momentum Inflection (S69) ---
-    print("[*] Simulating Engine 18: Gold H1 Coppock Curve Momentum Inflection...")
+    print("[*] Simulating Engine 18: Gold H1 Coppock Curve...")
     c_curve69, s_curve69 = compute_coppock_curve(g_h1_closes, r1=6, r2=12, w_len=8, sig_len=5)
     raw_trades_e18 = simulate_ccmi_strategy(
         opens=g_h1_opens, highs=g_h1_highs, lows=g_h1_lows, closes=g_h1_closes,
