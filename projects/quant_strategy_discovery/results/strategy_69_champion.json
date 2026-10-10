@@ -1,0 +1,27 @@
+{
+  "strategy_id": "STRATEGY_69",
+  "strategy_name": "Gold H1 Coppock Curve Momentum Inflection (CCMI-KFD)",
+  "champion": {
+    "r1": 6,
+    "r2": 12,
+    "w_len": 8,
+    "trigger_mode": "inflection",
+    "trend_filter": "none",
+    "use_kfd": true,
+    "kfd_thresh": 1.4,
+    "tp_mult": 3.5,
+    "sl_mult": 2.5,
+    "profit_lock": 200.0,
+    "total_trades": 242,
+    "net_profit": 7049.09,
+    "pf": 1.45,
+    "win_rate": 50.0,
+    "max_dd": 1153.26,
+    "romad": 6.11,
+    "mcr": 66.67,
+    "pos_months": 48,
+    "total_months": 72,
+    "score": 200.66
+  },
+  "runtime_seconds": 1001.62
+}
