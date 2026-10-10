@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
 ===============================================================================
-STRATEGY 60: DUODEC-ENGINE SUPREME INSTITUTIONAL COMPOSITE (DE-USIC)
+STRATEGY 63: QUATTUORDEC-ENGINE SUPREME INSTITUTIONAL COMPOSITE (QE-QUASIC)
 ===============================================================================
-Assets & Engines:
+Assets & Engines (14 Asynchronous Strategy Units):
   - Engine 1:  Gold H1 KAMA Dynamic Efficiency (S36, Single PF 2.715)
   - Engine 2:  Gold H1 HMA-CMO Velocity (S38, Single PF 2.375, DD $866)
   - Engine 3:  Gold H1 Vortex Velocity Breakout (S35, Single PF 2.232)
@@ -11,15 +11,17 @@ Assets & Engines:
   - Engine 5:  Gold M15 Fractal Expansion SVE (S30, Single PF 1.589)
   - Engine 6:  EURUSD H1 Macro Momentum DEC (S31, Single PF 1.315)
   - Engine 7:  Gold H1 Supertrend Dynamic Trailing (S45, Single PF 1.444)
-  - Engine 8:  Gold H1 CCI Momentum & Fractal Expansion (S51, Single PF 1.461, DD $836)
+  - Engine 8:  Gold H1 CCI Momentum & Fractal Expansion (S51, Single PF 1.151, DD $1,330)
   - Engine 9:  Gold H1 Relative Volatility Index Expansion (S53, Single PF 1.568, DD $996)
-  - Engine 10: Gold H1 Market Structure Break of Structure (S55, Single PF 1.560)
+  - Engine 10: Gold H1 Market Structure Break of Structure (S55, Single PF 1.560, DD $1,259)
   - Engine 11: Gold H1 Elder's Force Index Dynamic Volume Breakout (S58, Single PF 1.476, MCR 62.5%)
   - Engine 12: Gold H1 Williams %R Momentum & Volatility Pullback (S59, Single PF 1.496)
+  - Engine 13: Gold H1 McGinley Dynamic Adaptive Trend (S61, Single PF 1.641, DD $920, MCR 68.1%)
+  - Engine 14: Gold H1 Schaff Trend Cycle Momentum & Fractal (S62, Single PF 1.573, DD $1,277)
 
 Horizon: 2020-01-01 to 2025-12-30 (72 Calendar Months)
-Objective: Historic 12-Engine Grand Milestone: Cross $78k+ Net Profit, Maintain Portfolio PF >= 1.70+,
-           Drive Monthly Consistency Ratio (MCR) to record institutional heights.
+Objective: Historic 14-Engine Grand Milestone: Shatter $90k+ Net Profit, Maintain Portfolio PF >= 1.70+,
+           Drive Monthly Consistency Ratio (MCR) to unprecedented institutional heights.
 ===============================================================================
 """
 
@@ -45,9 +47,11 @@ from strategy_53_gold_h1_rvi_volatility_sweep import compute_rvi
 from strategy_55_gold_h1_bos_structure_sweep import simulate_bos_strategy, compute_confirmed_swing_levels
 from strategy_58_gold_h1_elder_force_index_sweep import simulate_efi_strategy, compute_elder_force_index, compute_katz_fractal_dimension as kfd_standard
 from strategy_59_gold_h1_williams_r_pullback_sweep import simulate_wpr_strategy, compute_williams_r
+from strategy_61_gold_h1_mcginley_dynamic_sweep import simulate_mgd_strategy, compute_mcginley_dynamic
+from strategy_62_gold_h1_schaff_trend_cycle_sweep import simulate_stc_strategy, compute_schaff_trend_cycle
 
 def main():
-    parser = argparse.ArgumentParser(description="Evaluate Strategy 60: Duodec-Engine Portfolio")
+    parser = argparse.ArgumentParser(description="Evaluate Strategy 63: Quattuordec-Engine Portfolio")
     parser.add_argument("--gold_data", type=str, default="/mnt/sdcard/Download/EA/XAUUSD_M1.csv.gz")
     parser.add_argument("--eur_data", type=str, default="/mnt/sdcard/Download/EA/EURUSD_M1.csv.gz")
     parser.add_argument("--out_dir", type=str, default="projects/quant_strategy_discovery/results")
@@ -121,73 +125,60 @@ def main():
         hma=hma24, cmo=cmo10,
         h_lookback=h_lb12, l_lookback=l_lb12,
         months=g_h1_months, dates=g_h1_dates,
-        use_channel=True, cmo_threshold=25.0,
-        use_kfd=True, kfd_thresh=1.40,
-        monthly_profit_lock=200.0, monthly_loss_breaker=250.0,
+        use_kfd=False, kfd_thresh=1.40,
+        monthly_profit_lock=250.0, monthly_loss_breaker=250.0,
         defensive_thresh=120.0, defensive_lot_mult=0.25,
-        trend_tp_mult=4.5, trend_sl_mult=2.5
+        trend_tp_mult=4.5, trend_sl_mult=2.0
     )
     for t in trades_e2: t["engine"] = "E2_GOLD_H1_HMA_CMO"
 
     # --- ENGINE 3: Gold H1 Vortex Velocity (PF 2.232) ---
     print("[*] Simulating Engine 3: Gold H1 Vortex Velocity...")
-    vi_p14, vi_m14, d_vi14 = compute_vortex_indicator(g_h1_highs, g_h1_lows, g_h1_closes, 14)
-    h_lb16 = pd.Series(g_h1_highs).rolling(16).max().shift(1).fillna(999999.0).values
-    l_lb16 = pd.Series(g_h1_lows).rolling(16).min().shift(1).fillna(0.0).values
+    vi_plus, vi_minus = compute_vortex_indicator(g_h1_highs, g_h1_lows, g_h1_closes, period=14)
     trades_e3 = simulate_vortex_strategy(
         opens=g_h1_opens, highs=g_h1_highs, lows=g_h1_lows, closes=g_h1_closes,
-        atr14=atr14_gh1, ema50=ema50_gh1, ema200=ema200_gh1,
-        h_lookback=h_lb16, l_lookback=l_lb16,
-        kfd=kfd24_gh1, vi_plus=vi_p14, vi_minus=vi_m14, delta_vi=d_vi14,
+        atr14=atr14_gh1, ema200=ema200_gh1, kfd=kfd24_gh1,
+        vi_plus=vi_plus, vi_minus=vi_minus,
         months=g_h1_months, dates=g_h1_dates,
-        use_kfd=True, kfd_thresh=1.35, delta_vi_thresh=0.05,
-        entry_mode="breakout_vortex",
-        monthly_profit_lock=200.0, monthly_loss_breaker=250.0,
+        diff_threshold=0.25, use_kfd=True, kfd_thresh=1.35,
+        monthly_profit_lock=250.0, monthly_loss_breaker=250.0,
         defensive_thresh=120.0, defensive_lot_mult=0.25,
-        trend_tp_mult=4.0, trend_sl_mult=2.5
+        trend_tp_mult=4.0, trend_sl_mult=2.0
     )
     for t in trades_e3: t["engine"] = "E3_GOLD_H1_VORTEX"
 
-    # --- Gold M15 Setup ---
+    # --- ENGINE 4: Gold M15 Asian Breakout (PF 1.817) ---
+    print("[*] Simulating Engine 4: Gold M15 Asian Breakout...")
     g_m15_opens = df_gold_m15["open"].values.astype(np.float64)
     g_m15_highs = df_gold_m15["high"].values.astype(np.float64)
     g_m15_lows = df_gold_m15["low"].values.astype(np.float64)
     g_m15_closes = df_gold_m15["close"].values.astype(np.float64)
     g_m15_dates = df_gold_m15.index
     g_m15_months = (g_m15_dates.year.values * 100 + g_m15_dates.month.values).astype(np.int32)
-    g_m15_hours = g_m15_dates.hour.values.astype(np.int32)
-    g_m15_days = (g_m15_dates.year.values * 10000 + g_m15_dates.month.values * 100 + g_m15_dates.day.values).astype(np.int32)
-
+    g_m15_hours = g_m15_dates.hour.values
     atr14_gm15 = atr_kama(g_m15_highs, g_m15_lows, g_m15_closes, 14)
-    ema50_gm15 = ema_kama(g_m15_closes, 50)
     ema200_gm15 = ema_kama(g_m15_closes, 200)
-    kfd32_gm15 = kfd_kama(g_m15_closes, atr14_gm15, 32)
 
-    # --- ENGINE 4: Gold M15 Asian Breakout (S42) ---
-    print("[*] Simulating Engine 4: Gold M15 Asian Breakout...")
     trades_e4 = simulate_asian_breakout_expansion(
         opens=g_m15_opens, highs=g_m15_highs, lows=g_m15_lows, closes=g_m15_closes,
-        atr14=atr14_gm15, ema50=ema50_gm15, ema200=ema200_gm15, kfd=kfd32_gm15,
-        hours=g_m15_hours, days=g_m15_days, months=g_m15_months, dates=g_m15_dates,
-        asian_end_hour=7, exec_start_hour=8, exec_end_hour=16,
-        breakout_atr_buffer=0.4,
-        use_kfd=True, kfd_thresh=1.40,
-        monthly_profit_lock=200.0, monthly_loss_breaker=250.0,
-        defensive_thresh=120.0, defensive_lot_mult=0.25,
-        trend_tp_mult=4.5, trend_sl_mult=2.2
+        atr14=atr14_gm15, ema200=ema200_gm15,
+        months=g_m15_months, hours=g_m15_hours, dates=g_m15_dates,
+        asian_start=0, asian_end=7,
+        trade_start=8, trade_end=15,
+        buffer_atr_mult=0.20,
+        tp_mult=4.0, sl_mult=1.5,
+        monthly_profit_lock=250.0, monthly_loss_breaker=250.0,
+        defensive_thresh=120.0, defensive_lot_mult=0.25
     )
-    for t in trades_e4: t["engine"] = "E4_GOLD_M15_ARBE"
+    for t in trades_e4: t["engine"] = "E4_GOLD_M15_ASIAN"
 
-    # --- ENGINE 5: Gold M15 Fractal Expansion SVE (S30) ---
-    print("[*] Simulating Engine 5: Gold M15 Fractal Expansion SVE...")
-    h_lb16_m15 = pd.Series(g_m15_highs).rolling(16).max().shift(1).fillna(999999.0).values
-    l_lb16_m15 = pd.Series(g_m15_lows).rolling(16).min().shift(1).fillna(0.0).values
-    vr14_gm15 = pd.Series(atr14_gm15).rolling(14).mean().values
-    vr14_gm15 = np.where(vr14_gm15 <= 0, 1e-4, atr14_gm15 / vr14_gm15)
+    # --- ENGINE 5: Gold M15 SVE Fractal (PF 1.589) ---
+    print("[*] Simulating Engine 5: Gold M15 SVE Fractal...")
+    kfd32_gm15 = kfd_kama(g_m15_closes, atr14_gm15, 32)
+    vr14_gm15 = atr14_gm15 / (atr_kama(g_m15_highs, g_m15_lows, g_m15_closes, 48) + 1e-6)
     trades_e5 = simulate_mfe_sve(
         opens=g_m15_opens, highs=g_m15_highs, lows=g_m15_lows, closes=g_m15_closes,
-        atr14=atr14_gm15, ema50=ema50_gm15, ema200=ema200_gm15,
-        h_lookback=h_lb16_m15, l_lookback=l_lb16_m15,
+        atr14=atr14_gm15, ema50=ema_kama(g_m15_closes, 50),
         kfd=kfd32_gm15, vr_ratio=vr14_gm15,
         months=g_m15_months, hours=g_m15_hours, dates=g_m15_dates,
         use_kfd=True, kfd_thresh=1.40,
@@ -280,7 +271,7 @@ def main():
 
     # --- ENGINE 9: Gold H1 Relative Volatility Index (S53) ---
     print("[*] Simulating Engine 9: Gold H1 RVI Volatility...")
-    rvi14_gh1 = compute_rvi(g_h1_closes, std_period=10, ema_period=14)
+    rvi14_gh1 = compute_rvi(g_h1_closes, period=14)
     trades_e9 = []
     pos = 0; entry_p = 0.0; sl_p = 0.0; tp_p = 0.0
     curr_unit_size = 10.0; curr_month = None; month_cum_pnl = 0.0; month_locked = False
@@ -383,13 +374,57 @@ def main():
             "month": t["month"]
         })
 
+    # --- ENGINE 13: Gold H1 McGinley Dynamic Adaptive Trend (S61) ---
+    print("[*] Simulating Engine 13: Gold H1 McGinley Dynamic...")
+    mgd20_gh1 = compute_mcginley_dynamic(g_h1_closes, period=20)
+    raw_trades_e13 = simulate_mgd_strategy(
+        opens=g_h1_opens, highs=g_h1_highs, lows=g_h1_lows, closes=g_h1_closes,
+        atr14=atr14_gh1, ema200=ema200_gh1, kfd=kfd24_std, md=mgd20_gh1,
+        months=g_h1_months, dates=g_h1_dates,
+        use_kfd=True, kfd_thresh=1.45,
+        use_ema200=True,
+        tp_mult=3.5, sl_mult=2.0,
+        monthly_profit_lock=200.0, monthly_loss_breaker=250.0
+    )
+    trades_e13 = []
+    for t in raw_trades_e13:
+        trades_e13.append({
+            "pnl": t["pnl"],
+            "date": pd.to_datetime(t["exit_date"]),
+            "engine": "E13_GOLD_H1_MGD",
+            "month": t["month"]
+        })
+
+    # --- ENGINE 14: Gold H1 Schaff Trend Cycle Momentum (S62) ---
+    print("[*] Simulating Engine 14: Gold H1 Schaff Trend Cycle...")
+    stc_gh1 = compute_schaff_trend_cycle(g_h1_closes, fast_period=23, slow_period=50, cycle_period=10)
+    raw_trades_e14 = simulate_stc_strategy(
+        opens=g_h1_opens, highs=g_h1_highs, lows=g_h1_lows, closes=g_h1_closes,
+        atr14=atr14_gh1, ema200=ema200_gh1, kfd=kfd24_std, stc=stc_gh1,
+        months=g_h1_months, dates=g_h1_dates,
+        stc_lower=30.0, stc_upper=70.0,
+        use_kfd=True, kfd_thresh=1.40,
+        use_ema200=True,
+        tp_mult=4.5, sl_mult=2.5,
+        monthly_profit_lock=200.0, monthly_loss_breaker=250.0
+    )
+    trades_e14 = []
+    for t in raw_trades_e14:
+        trades_e14.append({
+            "pnl": t["pnl"],
+            "date": pd.to_datetime(t["exit_date"]),
+            "engine": "E14_GOLD_H1_STC",
+            "month": t["month"]
+        })
+
     all_trades = sorted(
         trades_e1 + trades_e2 + trades_e3 + trades_e4 + trades_e5 + trades_e6 +
-        trades_e7 + trades_e8 + trades_e9 + trades_e10 + trades_e11 + trades_e12,
+        trades_e7 + trades_e8 + trades_e9 + trades_e10 + trades_e11 + trades_e12 +
+        trades_e13 + trades_e14,
         key=lambda x: x["date"]
     )
 
-    def evaluate_composite(trades, label="DUODEC-ENGINE COMPOSITE"):
+    def evaluate_composite(trades, label="QUATTUORDEC-ENGINE COMPOSITE"):
         df_tr = pd.DataFrame(trades)
         pnls = df_tr["pnl"].values
         net_profit = float(np.sum(pnls))
@@ -403,20 +438,13 @@ def main():
         equity = np.cumsum(pnls)
         peak = np.maximum.accumulate(equity)
         dd = peak - equity
-        max_dd = float(np.max(dd)) if len(dd) > 0 else 0.0
-        romad = float(net_profit / max_dd) if max_dd > 0 else 0.0
+        max_dd = float(np.max(dd)) if len(dd) > 0 else 1e-4
+        romad = float(net_profit / max_dd)
 
-        df_tr["month"] = df_tr["month"].astype(int)
-        monthly = df_tr.groupby("month")["pnl"].sum().to_dict()
-
-        all_months = []
-        for y in range(2020, 2026):
-            for m in range(1, 13):
-                all_months.append(y * 100 + m)
-
-        m_series = {m: round(monthly.get(m, 0.0), 2) for m in all_months}
-        pos_m = sum(1 for m in all_months if m_series[m] > 0.0)
-        mcr = float(round(pos_m / len(all_months) * 100.0, 2))
+        m_pnl = df_tr.groupby("month")["pnl"].sum()
+        pos_m = int((m_pnl > 0).sum())
+        total_m = 72
+        mcr = float(pos_m / total_m * 100.0)
 
         return {
             "label": label,
@@ -426,12 +454,11 @@ def main():
             "win_rate": round(win_rate, 2),
             "max_dd": round(max_dd, 2),
             "romad": round(romad, 2),
-            "mcr": mcr,
+            "mcr": round(mcr, 2),
             "pos_months": pos_m,
-            "total_months": len(all_months)
+            "total_months": total_m
         }
 
-    m_all = evaluate_composite(all_trades, "DUODEC-ENGINE SUPREME INSTITUTIONAL COMPOSITE (DE-USIC)")
     m_e1 = evaluate_composite(trades_e1, "E1: Gold H1 KAMA Efficiency")
     m_e2 = evaluate_composite(trades_e2, "E2: Gold H1 HMA-CMO Velocity")
     m_e3 = evaluate_composite(trades_e3, "E3: Gold H1 Vortex Velocity")
@@ -444,30 +471,31 @@ def main():
     m_e10 = evaluate_composite(trades_e10, "E10: Gold H1 Market Structure BOS")
     m_e11 = evaluate_composite(trades_e11, "E11: Gold H1 Elder Force Index")
     m_e12 = evaluate_composite(trades_e12, "E12: Gold H1 Williams %R Pullback")
+    m_e13 = evaluate_composite(trades_e13, "E13: Gold H1 McGinley Dynamic Adaptive Trend")
+    m_e14 = evaluate_composite(trades_e14, "E14: Gold H1 Schaff Trend Cycle Momentum")
+    m_portfolio = evaluate_composite(all_trades, "QUATTUORDEC-ENGINE SUPREME INSTITUTIONAL COMPOSITE (QE-QUASIC)")
 
-    print("\n" + "=" * 90)
-    print("STRATEGY 60: DUODEC-ENGINE SUPREME INSTITUTIONAL COMPOSITE (DE-USIC) AUDIT")
-    print("=" * 90)
-    print(f"{'Engine / Ensemble':<45} | {'Trades':<7} | {'Net Profit':<12} | {'PF':<6} | {'Max DD':<9} | {'RoMaD':<6} | {'MCR'}")
-    print("-" * 90)
-    for m in [m_e1, m_e2, m_e3, m_e4, m_e5, m_e6, m_e7, m_e8, m_e9, m_e10, m_e11, m_e12]:
-        print(f"{m['label']:<45} | {m['total_trades']:<7} | ${m['net_profit']:<11,.2f} | {m['pf']:<6.3f} | ${m['max_dd']:<8,.2f} | {m['romad']:<6.2f} | {m['mcr']:.1f}% ({m['pos_months']}/72)")
-    print("=" * 90)
-    print(f"{m_all['label']:<45} | {m_all['total_trades']:<7} | ${m_all['net_profit']:<11,.2f} | {m_all['pf']:<6.3f} | ${m_all['max_dd']:<8,.2f} | {m_all['romad']:<6.2f} | {m_all['mcr']:.1f}% ({m_all['pos_months']}/72)")
-    print("=" * 90)
+    print("\n" + "=" * 95)
+    print("STRATEGY 63: QUATTUORDEC-ENGINE SUPREME INSTITUTIONAL COMPOSITE (QE-QUASIC) AUDIT")
+    print("=" * 95)
+    print(f"{'Engine / Ensemble':<46} | {'Trades':<7} | {'Net Profit':<12} | {'PF':<6} | {'Max DD':<9} | {'RoMaD':<6} | MCR")
+    print("-" * 95)
+    for m in [m_e1, m_e2, m_e3, m_e4, m_e5, m_e6, m_e7, m_e8, m_e9, m_e10, m_e11, m_e12, m_e13, m_e14]:
+        print(f"{m['label']:<46} | {m['total_trades']:<7} | ${m['net_profit']:<11.2f} | {m['pf']:<6.3f} | ${m['max_dd']:<8.2f} | {m['romad']:<6.2f} | {m['mcr']:.1f}% ({m['pos_months']}/{m['total_months']})")
+    print("=" * 95)
+    print(f"{m_portfolio['label']:<46} | {m_portfolio['total_trades']:<7} | ${m_portfolio['net_profit']:<11.2f} | {m_portfolio['pf']:<6.3f} | ${m_portfolio['max_dd']:<8.2f} | {m_portfolio['romad']:<6.2f} | {m_portfolio['mcr']:.1f}% ({m_portfolio['pos_months']}/{m_portfolio['total_months']})")
+    print("=" * 95)
 
-    champ = {
-        "strategy_id": "STRATEGY_60",
-        "strategy_name": "Duodec-Engine Supreme Institutional Composite (DE-USIC)",
-        "engines": [m_e1, m_e2, m_e3, m_e4, m_e5, m_e6, m_e7, m_e8, m_e9, m_e10, m_e11, m_e12],
-        "portfolio_metrics": m_all,
-        "runtime_seconds": round(time.time() - t_start, 2)
-    }
-
-    out_json = os.path.join(args.out_dir, "strategy_60_champion.json")
+    out_json = os.path.join(args.out_dir, "strategy_63_champion.json")
     with open(out_json, "w") as f:
-        json.dump(champ, f, indent=2)
-    print(f"[+] Saved Strategy 60 results to {out_json}")
+        json.dump({
+            "strategy_id": "STRATEGY_63",
+            "strategy_name": "Quattuordec-Engine Supreme Institutional Composite (QE-QUASIC)",
+            "engines": [m_e1, m_e2, m_e3, m_e4, m_e5, m_e6, m_e7, m_e8, m_e9, m_e10, m_e11, m_e12, m_e13, m_e14],
+            "portfolio_metrics": m_portfolio,
+            "runtime_seconds": round(time.time() - t_start, 2)
+        }, f, indent=2)
+    print(f"[+] Saved Strategy 63 results to {out_json}")
 
 if __name__ == "__main__":
     main()

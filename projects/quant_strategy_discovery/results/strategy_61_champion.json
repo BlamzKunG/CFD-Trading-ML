@@ -1,0 +1,24 @@
+{
+  "strategy_id": "STRATEGY_61",
+  "strategy_name": "Gold H1 McGinley Dynamic Adaptive Trend (MGD-KFD)",
+  "champion_metrics": {
+    "md_period": 20,
+    "tp_mult": 3.5,
+    "sl_mult": 2.0,
+    "kfd_thresh": 1.45,
+    "monthly_profit_lock": 200.0,
+    "monthly_loss_breaker": 250.0,
+    "use_kfd": true,
+    "total_trades": 206,
+    "trades_per_year": 34.3,
+    "net_profit": 7208.95,
+    "pf": 1.641,
+    "win_rate": 49.03,
+    "max_dd": 920.35,
+    "romad": 7.83,
+    "mcr": 68.06,
+    "pos_months": 49,
+    "total_months": 72
+  },
+  "runtime_seconds": 184.5
+}

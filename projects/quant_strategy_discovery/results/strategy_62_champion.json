@@ -1,0 +1,28 @@
+{
+  "strategy_id": "STRATEGY_62",
+  "strategy_name": "Gold H1 Schaff Trend Cycle Momentum & Dynamic Fractal Expansion (STC-KFD)",
+  "champion_metrics": {
+    "fast_period": 23,
+    "slow_period": 50,
+    "cycle_period": 10,
+    "stc_lower": 30.0,
+    "stc_upper": 70.0,
+    "tp_mult": 4.5,
+    "sl_mult": 2.5,
+    "kfd_thresh": 1.4,
+    "monthly_profit_lock": 200.0,
+    "monthly_loss_breaker": 250.0,
+    "use_kfd": true,
+    "total_trades": 160,
+    "trades_per_year": 26.7,
+    "net_profit": 6388.5,
+    "pf": 1.573,
+    "win_rate": 46.25,
+    "max_dd": 1277.12,
+    "romad": 5.0,
+    "mcr": 59.72,
+    "pos_months": 43,
+    "total_months": 72
+  },
+  "runtime_seconds": 498.24
+}
