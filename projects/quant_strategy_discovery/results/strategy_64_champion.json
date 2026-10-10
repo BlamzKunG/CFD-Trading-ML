@@ -1,0 +1,26 @@
+{
+  "strategy_id": "STRATEGY_64",
+  "strategy_name": "Gold H1 DeMarker Dynamic Exhaustion & Fractal Continuation (DEM-KFD)",
+  "champion_metrics": {
+    "dem_period": 21,
+    "oversold": 0.35,
+    "overbought": 0.65,
+    "tp_mult": 3.5,
+    "sl_mult": 2.5,
+    "kfd_thresh": 1.35,
+    "monthly_profit_lock": 0.0,
+    "monthly_loss_breaker": 0.0,
+    "use_kfd": true,
+    "total_trades": 88,
+    "trades_per_year": 14.7,
+    "net_profit": 2897.09,
+    "pf": 1.451,
+    "win_rate": 51.14,
+    "max_dd": 1196.28,
+    "romad": 2.42,
+    "mcr": 38.89,
+    "pos_months": 28,
+    "total_months": 72
+  },
+  "runtime_seconds": 362.86
+}
