@@ -118,6 +118,7 @@ All complete sweep CSV databases, JSON champions, Python backtesting engines, an
 
 | Strategy ID & Architecture | Primary Asset & TF | Profit Factor (PF) | Net Profit (0.10 Lot) | Max Drawdown | MCR (Profitable Months / 72) | Production Status |
 | :--- | :--- | :---: | :---: | :---: | :---: | :--- |
+| **S47: Sept-Engine Supreme Suite (SE-SSIC)** | Gold H1+M15, EUR H1 | **1.902** 🏆 | **+$56,680.11** 🏆 | **$3,143.18** | **70.83% (51/72)** 🏆 | 🏆 **Supreme 7-Engine Master Suite (Breaks 70% MCR)** |
 | **S43: Sex-Engine Supreme Suite (SE-SIC)** | Gold H1+M15, EUR H1 | **2.010** 🏆 | **+$51,323.37** 🏆 | **$2,570.30** | **69.44% (50/72)** 🏆 | 🏆 **Supreme 6-Engine Master Suite** |
 | **S40: Hierarchical ASAR Governance (H-ASAR)** | Gold H1+M15, EUR H1 | **1.514 – 2.043** 🏆 | **+$18,655 – +$45,258** 🏆 | **$2,471.04** | **68.06% (49/72)** 🏆 | 🏆 **Governance Law Validated** |
 | **S39: Quin-Engine Grand Institutional Suite (QE-GIAC)**| Gold H1+M15, EUR H1 | **2.043** 🏆 | **+$45,258.21** 🏆 | **$2,471.04** | **66.67% (48/72)** 🏆 | 🏆 **Supreme 5-Engine Portfolio Suite** |
@@ -131,6 +132,7 @@ All complete sweep CSV databases, JSON champions, Python backtesting engines, an
 | **S30: Multi-Timeframe Fractal Expansion (MFE-SVE)** | Gold M15 | **1.352 – 1.834** | **+$4,841.46 – +$6,880.49** | **$685.35 – $1,341.45** | **62.50% (45/72)** | 🏆 **Gold M15 Champion EA** (`Gold_MFE_SVE_Master_EA.mq5`) |
 | **S31: Macro Structural Momentum (MSM-DEC)** | EURUSD H1 | **1.214 – 1.270** | **+$1,958.93 – +$2,082.04** | **$462.74 – $542.54** | **54.17% (39/72)** | 🏆 **FX Champion EA** (`EURUSD_H1_MSM_DEC_Master_EA.mq5`) |
 | **S45: Supertrend Dynamic Trailing (MST-KFD)** | Gold H1 | **1.444** | **+$5,356.74** | **$2,005.45** | 48.61% (35/72) | 🏆 **Supertrend Trailing EA** (`Gold_H1_Supertrend_Trailing_Master_EA.mq5`) |
+| **S46: Choppiness Index Dynamic Expansion (CHOP-CMO)**| Gold H1 | **1.173** | **+$3,360.30** | **$1,623.53** | 44.44% (32/72) | 🏆 **CHOP-CMO EA (92 trades/yr)** (`Gold_H1_Choppiness_Momentum_Master_EA.mq5`) |
 | **S44: EURUSD H1 KAMA Efficiency (EUR-KAMA)** | EURUSD H1 | **1.470** | +$519.08 | **$468.18** | 16.67% (12/72) | Low-Frequency FX Hedge |
 | **S32: Dual-Asset Risk-Isolated Composite (DA-ARIC)** | Gold M15 + EUR H1 | **1.297 – 1.452** | **+$6,800.39 – +$6,691.11** | **$817.37 – $1,253.08** | **66.67% (48/72)** | 🏆 **Portfolio Multi-Asset Suite** |
 | **S27: ASAR Precision Calibration**| Gold M15 | **1.300 – 1.359** | +$4,480.83 | $1,383.08 | 62.50% (45/72) | Production EA (`Gold_ASAR_DualRegime_Master_EA.mq5`) |

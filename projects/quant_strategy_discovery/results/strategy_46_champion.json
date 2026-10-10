@@ -1,0 +1,40 @@
+{
+  "strategy_id": "STRATEGY_46",
+  "strategy_name": "Gold H1 Choppiness Index & Chande Momentum Dynamic Expansion (CHOP-CMO)",
+  "asset": "XAUUSD",
+  "timeframe": "H1",
+  "audit_horizon": "2020-01-01 to 2025-12-30 (72 Calendar Months)",
+  "benchmark_metrics": {
+    "profit_factor": 1.173,
+    "net_profit": 3360.30,
+    "max_drawdown": 1623.53,
+    "win_rate_pct": 39.64,
+    "total_trades": 555,
+    "annual_trade_frequency": 92.5,
+    "monthly_consistency_ratio_pct": 44.44,
+    "profitable_months": 32,
+    "total_months": 72,
+    "romad": 2.07
+  },
+  "champion_parameters": {
+    "choppiness_index_period": 14,
+    "choppiness_index_threshold": 45.0,
+    "cmo_period": 14,
+    "cmo_threshold": 20.0,
+    "donchian_breakout_period": 20,
+    "macro_ema_period": 200,
+    "tp_atr_multiplier": 3.5,
+    "sl_atr_multiplier": 2.0,
+    "base_lot": 0.10,
+    "monthly_profit_lock": 300.0,
+    "monthly_loss_breaker": -250.0,
+    "defensive_drawdown_threshold": 120.0,
+    "defensive_lot_multiplier": 0.25
+  },
+  "frictional_costs": {
+    "spread_usd": 0.25,
+    "commission_per_lot_usd": 6.00,
+    "slippage_model": "Next-bar open fill causality"
+  },
+  "role_in_portfolio": "H1 Low-Entropy Expansion Engine (filters chop regimes via fractal dimension)"
+}
