@@ -1,0 +1,26 @@
+{
+  "strategy_id": "STRATEGY_65",
+  "strategy_name": "Gold H1 Chande Kroll Stop Dynamic Volatility Breakout (CKS-KFD)",
+  "champion_metrics": {
+    "p_period": 14,
+    "cks_mult": 2.5,
+    "q_period": 20,
+    "tp_mult": 5.0,
+    "sl_mult": 2.5,
+    "kfd_thresh": 1.4,
+    "monthly_profit_lock": 200.0,
+    "monthly_loss_breaker": 250.0,
+    "use_kfd": true,
+    "total_trades": 148,
+    "trades_per_year": 24.7,
+    "net_profit": 4063.06,
+    "pf": 1.337,
+    "win_rate": 41.22,
+    "max_dd": 2717.44,
+    "romad": 1.5,
+    "mcr": 59.72,
+    "pos_months": 43,
+    "total_months": 72
+  },
+  "runtime_seconds": 182.3
+}
