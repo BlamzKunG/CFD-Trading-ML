@@ -1,0 +1,25 @@
+{
+  "strategy_id": "STRATEGY_85",
+  "strategy_name": "Gold H1 Detrended Price Oscillator Cycle Extremes (DPO-CET-KFD)",
+  "champion": {
+    "period": 24,
+    "trigger_mode": "dpo_extreme_reversion",
+    "trend_filter": "ema50",
+    "use_kfd": true,
+    "kfd_thresh": 1.4,
+    "tp_mult": 4.0,
+    "sl_mult": 2.0,
+    "profit_lock": 250.0,
+    "total_trades": 127,
+    "net_profit": 7480.71,
+    "pf": 2.089,
+    "win_rate": 48.82,
+    "max_dd": 713.9,
+    "romad": 10.48,
+    "mcr": 62.5,
+    "pos_months": 45,
+    "total_months": 72,
+    "score": 365.55
+  },
+  "runtime_seconds": 588.1
+}
