@@ -1,0 +1,24 @@
+{
+  "strategy_id": "STRATEGY_55",
+  "strategy_name": "Gold H1 Market Structure Break of Structure (BOS-KFD)",
+  "champion_metrics": {
+    "swing_k": 4,
+    "tp_mult": 4.5,
+    "sl_mult": 1.5,
+    "kfd_thresh": 1.45,
+    "monthly_profit_lock": 250.0,
+    "monthly_loss_breaker": 250.0,
+    "use_kfd": true,
+    "total_trades": 245,
+    "trades_per_year": 40.8,
+    "net_profit": 7320.56,
+    "pf": 1.56,
+    "win_rate": 35.1,
+    "max_dd": 1259.26,
+    "romad": 5.81,
+    "mcr": 59.72,
+    "pos_months": 43,
+    "total_months": 72
+  },
+  "runtime_seconds": 264.66
+}

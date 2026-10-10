@@ -129,6 +129,7 @@ All complete sweep CSV databases, JSON champions, Python backtesting engines, an
 | **S37: Quad-Engine Institutional Composite (QE-IAC)**| Gold H1+M15, EUR H1 | **1.942** 🏆 | **+$31,292.59** 🏆 | **$1,781.09** | **68.06% (49/72)** 🏆 | 🏆 **Grand Portfolio Master** (4 Engines) |
 | **S36: KAMA Dynamic Efficiency Ratio (KAMA-KER)** | Gold H1 | **2.715** 🏆 | **+$10,635.37** | **$1,310.91** | 44.44% (32/72) | 🏆 **All-Time High PF Single Engine** (`Gold_H1_KAMA_Efficiency_Master_EA.mq5`) |
 | **S35: Vortex Indicator Velocity & Skew (VIM-VSB)** | Gold H1 | **2.232** 🏆 | **+$12,575.02** | **$1,222.54** | 44.44% (32/72) | 🏆 **Vortex Champion EA** (`Gold_H1_Vortex_Velocity_Master_EA.mq5`) |
+| **S55: Market Structure BOS (BOS-KFD)** | Gold H1 | **1.560** 🏆 | **+$7,320.56** 🏆 | **$1,259.26** | **59.72% (43/72)** 🏆 | 🏆 **BOS Champion EA** (`Gold_H1_BOS_Structure_Master_EA.mq5`) |
 | **S34: Tri-Engine Risk-Isolated Composite (TE-ARIC)** | Gold H1 + M15 + EUR H1 | **1.586** 🏆 | **+$19,375.41** 🏆 | **$1,889.08** | **69.44% (50/72)** 🏆 | 🏆 **Master Portfolio Suite** |
 | **S33: Gold H1 Macro Structural Momentum (MSM-FHE)** | Gold H1 | **2.232** 🏆 | **+$12,575.02** | **$1,222.54** | 44.44% (32/72) | 🏆 **PF Champion EA** (`Gold_H1_MSM_FHE_Master_EA.mq5`) |
 | **S42: Asian Breakout Expansion (ARBE-Trend)** | Gold M15 | **1.817** 🏆 | **+$6,065.16** | **$1,041.50** | 48.61% (35/72) | 🏆 **Session Breakout Champion EA** (`Gold_M15_Asian_Breakout_Master_EA.mq5`) |
