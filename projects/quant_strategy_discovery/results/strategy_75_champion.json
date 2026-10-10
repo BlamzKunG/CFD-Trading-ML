@@ -1,0 +1,27 @@
+{
+  "strategy_id": "STRATEGY_75",
+  "strategy_name": "Gold H1 True Strength Index Momentum & Zero-Line Inflection (TSI-MZI-KFD)",
+  "champion": {
+    "r": 13,
+    "s": 7,
+    "sig_len": 5,
+    "trigger_mode": "inflection",
+    "trend_filter": "none",
+    "use_kfd": true,
+    "kfd_thresh": 1.35,
+    "tp_mult": 5.0,
+    "sl_mult": 2.0,
+    "profit_lock": 200.0,
+    "total_trades": 182,
+    "net_profit": 8173.2,
+    "pf": 1.666,
+    "win_rate": 40.66,
+    "max_dd": 895.81,
+    "romad": 9.12,
+    "mcr": 68.06,
+    "pos_months": 49,
+    "total_months": 72,
+    "score": 309.64
+  },
+  "runtime_seconds": 975.35
+}
