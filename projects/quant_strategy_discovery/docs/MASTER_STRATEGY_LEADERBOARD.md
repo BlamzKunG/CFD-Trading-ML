@@ -126,6 +126,7 @@ All complete sweep CSV databases, JSON champions, Python backtesting engines, an
 | **S35: Vortex Indicator Velocity & Skew (VIM-VSB)** | Gold H1 | **2.232** 🏆 | **+$12,575.02** | **$1,222.54** | 44.44% (32/72) | 🏆 **Vortex Champion EA** (`Gold_H1_Vortex_Velocity_Master_EA.mq5`) |
 | **S34: Tri-Engine Risk-Isolated Composite (TE-ARIC)** | Gold H1 + M15 + EUR H1 | **1.586** 🏆 | **+$19,375.41** 🏆 | **$1,889.08** | **69.44% (50/72)** 🏆 | 🏆 **Master Portfolio Suite** |
 | **S33: Gold H1 Macro Structural Momentum (MSM-FHE)** | Gold H1 | **2.232** 🏆 | **+$12,575.02** | **$1,222.54** | 44.44% (32/72) | 🏆 **PF Champion EA** (`Gold_H1_MSM_FHE_Master_EA.mq5`) |
+| **S42: Asian Breakout Expansion (ARBE-Trend)** | Gold M15 | **1.817** 🏆 | **+$6,065.16** | **$1,041.50** | 48.61% (35/72) | 🏆 **Session Breakout Champion EA** (`Gold_M15_Asian_Breakout_Master_EA.mq5`) |
 | **S30: Multi-Timeframe Fractal Expansion (MFE-SVE)** | Gold M15 | **1.352 – 1.834** | **+$4,841.46 – +$6,880.49** | **$685.35 – $1,341.45** | **62.50% (45/72)** | 🏆 **Gold M15 Champion EA** (`Gold_MFE_SVE_Master_EA.mq5`) |
 | **S31: Macro Structural Momentum (MSM-DEC)** | EURUSD H1 | **1.214 – 1.270** | **+$1,958.93 – +$2,082.04** | **$462.74 – $542.54** | **54.17% (39/72)** | 🏆 **FX Champion EA** (`EURUSD_H1_MSM_DEC_Master_EA.mq5`) |
 | **S32: Dual-Asset Risk-Isolated Composite (DA-ARIC)** | Gold M15 + EUR H1 | **1.297 – 1.452** | **+$6,800.39 – +$6,691.11** | **$817.37 – $1,253.08** | **66.67% (48/72)** | 🏆 **Portfolio Multi-Asset Suite** |
