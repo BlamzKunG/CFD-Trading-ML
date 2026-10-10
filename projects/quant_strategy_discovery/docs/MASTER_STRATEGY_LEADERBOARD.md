@@ -118,6 +118,7 @@ All complete sweep CSV databases, JSON champions, Python backtesting engines, an
 
 | Strategy ID & Architecture | Primary Asset & TF | Profit Factor (PF) | Net Profit (0.10 Lot) | Max Drawdown | MCR (Profitable Months / 72) | Production Status |
 | :--- | :--- | :---: | :---: | :---: | :---: | :--- |
+| **S43: Sex-Engine Supreme Suite (SE-SIC)** | Gold H1+M15, EUR H1 | **2.010** 🏆 | **+$51,323.37** 🏆 | **$2,570.30** | **69.44% (50/72)** 🏆 | 🏆 **Supreme 6-Engine Master Suite** |
 | **S40: Hierarchical ASAR Governance (H-ASAR)** | Gold H1+M15, EUR H1 | **1.514 – 2.043** 🏆 | **+$18,655 – +$45,258** 🏆 | **$2,471.04** | **68.06% (49/72)** 🏆 | 🏆 **Governance Law Validated** |
 | **S39: Quin-Engine Grand Institutional Suite (QE-GIAC)**| Gold H1+M15, EUR H1 | **2.043** 🏆 | **+$45,258.21** 🏆 | **$2,471.04** | **66.67% (48/72)** 🏆 | 🏆 **Supreme 5-Engine Portfolio Suite** |
 | **S38: HMA-CMO Velocity Expansion (HMA-CMO)** | Gold H1 | **2.375** 🏆 | **+$13,965.61** 🏆 | **$866.29** 🏆 | 50.00% (36/72) | 🏆 **HMA Champion EA** (`Gold_H1_HMA_CMO_Master_EA.mq5`) |
