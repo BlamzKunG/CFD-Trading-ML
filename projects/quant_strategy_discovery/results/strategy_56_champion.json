@@ -1,0 +1,139 @@
+{
+  "strategy_id": "STRATEGY_56",
+  "strategy_name": "Dec-Engine Supreme Institutional Composite (DE-DSIC)",
+  "engines": [
+    {
+      "label": "E1: Gold H1 KAMA Efficiency",
+      "total_trades": 125,
+      "net_profit": 10635.37,
+      "pf": 2.715,
+      "win_rate": 32.0,
+      "max_dd": 1310.91,
+      "romad": 8.11,
+      "mcr": 44.44,
+      "pos_months": 32,
+      "total_months": 72
+    },
+    {
+      "label": "E2: Gold H1 HMA-CMO Velocity",
+      "total_trades": 167,
+      "net_profit": 13965.62,
+      "pf": 2.375,
+      "win_rate": 28.14,
+      "max_dd": 866.29,
+      "romad": 16.12,
+      "mcr": 50.0,
+      "pos_months": 36,
+      "total_months": 72
+    },
+    {
+      "label": "E3: Gold H1 Vortex Velocity",
+      "total_trades": 153,
+      "net_profit": 12575.02,
+      "pf": 2.232,
+      "win_rate": 30.07,
+      "max_dd": 1222.54,
+      "romad": 10.29,
+      "mcr": 44.44,
+      "pos_months": 32,
+      "total_months": 72
+    },
+    {
+      "label": "E4: Gold M15 Asian Breakout",
+      "total_trades": 326,
+      "net_profit": 6065.15,
+      "pf": 1.817,
+      "win_rate": 14.72,
+      "max_dd": 1041.49,
+      "romad": 5.82,
+      "mcr": 48.61,
+      "pos_months": 35,
+      "total_months": 72
+    },
+    {
+      "label": "E5: Gold M15 SVE Fractal",
+      "total_trades": 250,
+      "net_profit": 5984.58,
+      "pf": 1.589,
+      "win_rate": 25.2,
+      "max_dd": 1238.66,
+      "romad": 4.83,
+      "mcr": 52.78,
+      "pos_months": 38,
+      "total_months": 72
+    },
+    {
+      "label": "E6: EURUSD H1 DEC Momentum",
+      "total_trades": 364,
+      "net_profit": 2097.62,
+      "pf": 1.315,
+      "win_rate": 22.25,
+      "max_dd": 523.99,
+      "romad": 4.0,
+      "mcr": 51.39,
+      "pos_months": 37,
+      "total_months": 72
+    },
+    {
+      "label": "E7: Gold H1 Supertrend Trailing",
+      "total_trades": 201,
+      "net_profit": 5356.74,
+      "pf": 1.444,
+      "win_rate": 38.81,
+      "max_dd": 2005.45,
+      "romad": 2.67,
+      "mcr": 48.61,
+      "pos_months": 35,
+      "total_months": 72
+    },
+    {
+      "label": "E8: Gold H1 CCI Momentum",
+      "total_trades": 134,
+      "net_profit": 1264.47,
+      "pf": 1.151,
+      "win_rate": 34.33,
+      "max_dd": 1330.78,
+      "romad": 0.95,
+      "mcr": 36.11,
+      "pos_months": 26,
+      "total_months": 72
+    },
+    {
+      "label": "E9: Gold H1 RVI Volatility",
+      "total_trades": 183,
+      "net_profit": 5374.83,
+      "pf": 1.568,
+      "win_rate": 37.16,
+      "max_dd": 996.35,
+      "romad": 5.39,
+      "mcr": 52.78,
+      "pos_months": 38,
+      "total_months": 72
+    },
+    {
+      "label": "E10: Gold H1 Market Structure BOS",
+      "total_trades": 178,
+      "net_profit": 4930.45,
+      "pf": 1.492,
+      "win_rate": 33.71,
+      "max_dd": 1120.72,
+      "romad": 4.4,
+      "mcr": 55.56,
+      "pos_months": 40,
+      "total_months": 72
+    }
+  ],
+  "portfolio_metrics": {
+    "label": "DEC-ENGINE SUPREME INSTITUTIONAL COMPOSITE (DE-DSIC)",
+    "total_trades": 2081,
+    "net_profit": 68249.86,
+    "pf": 1.752,
+    "win_rate": 27.73,
+    "max_dd": 3975.31,
+    "romad": 17.17,
+    "mcr": 68.06,
+    "pos_months": 49,
+    "total_months": 72
+  },
+  "runtime_seconds": 31.38
+}
