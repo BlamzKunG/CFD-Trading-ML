@@ -131,6 +131,7 @@ All complete sweep CSV databases, JSON champions, Python backtesting engines, an
 | **S32: Dual-Asset Risk-Isolated Composite (DA-ARIC)** | Gold M15 + EUR H1 | **1.297 – 1.452** | **+$6,800.39 – +$6,691.11** | **$817.37 – $1,253.08** | **66.67% (48/72)** | 🏆 **Portfolio Multi-Asset Suite** |
 | **S27: ASAR Precision Calibration**| Gold M15 | **1.300 – 1.359** | +$4,480.83 | $1,383.08 | 62.50% (45/72) | Production EA (`Gold_ASAR_DualRegime_Master_EA.mq5`) |
 | **S29: Fractal Dimension & Entropy**| Gold M15 | **1.368** | +$4,602.75 | $1,095.46 | 52.78% (38/72) | Validated Fractal Gating |
+| **S41: RMI Asian Liquidity Fade (RMI-ARLS)** | Gold M15 | 0.669 | -$2,350.52 | $2,729.40 | 23.61% (17/72) | ❌ **REJECTED (Breakout Trap on Gold)** |
 | **S24: ASAR Dual-Regime Master** | Gold M15 | **1.249** | +$4,890.81 | $1,515.28 | 58.33% (42/72) | Foundation Architecture |
 
 ### Key Institutional Rules Discovered (Strategies 01 – 34)
