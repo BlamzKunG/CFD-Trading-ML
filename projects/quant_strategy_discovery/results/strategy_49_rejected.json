@@ -1,0 +1,38 @@
+{
+  "strategy_id": "STRATEGY_49",
+  "strategy_name": "EURUSD London/NY Overlap Liquidity Sweep & Fade (FX-LOF)",
+  "asset": "EURUSD",
+  "timeframe": "M15",
+  "audit_horizon": "2020-01-01 to 2025-12-30 (72 Calendar Months)",
+  "status": "DECISIVELY REJECTED",
+  "rejection_reason": "While fading false breakouts on EURUSD M15 improved performance over breakout expansion (PF 0.916 vs 0.844), total trade expectancy remains negative across 1,038 trades due to fixed CFD friction absorption on M15 bars.",
+  "benchmark_metrics": {
+    "profit_factor": 0.916,
+    "net_profit": -652.71,
+    "max_drawdown": 1023.22,
+    "win_rate_pct": 39.40,
+    "total_trades": 1038,
+    "annual_trade_frequency": 173.0,
+    "monthly_consistency_ratio_pct": 38.89,
+    "profitable_months": 28,
+    "total_months": 72,
+    "romad": -0.64
+  },
+  "best_parameters_tested": {
+    "sweep_buffer_atr": 0.2,
+    "use_rsi_filter": false,
+    "tp_mult": 2.5,
+    "sl_mult": 1.5,
+    "monthly_profit_lock": 150.0,
+    "monthly_loss_breaker": 150.0,
+    "defensive_drawdown_threshold": 80.0
+  },
+  "frictional_costs": {
+    "spread_pip": 0.6,
+    "commission_per_lot_usd": 6.00,
+    "slippage_model": "Next-bar open fill causality"
+  },
+  "negative_knowledge_catalog": {
+    "finding": "The Intraday FX Friction Choke Law: Both breakout (S48, PF 0.844) and fade (S49, PF 0.916) fail on EURUSD M15 because the 1.2 pip roundturn friction consumes >8% of average bar excursion. EURUSD edge exists only on H1 macro timeframes."
+  }
+}

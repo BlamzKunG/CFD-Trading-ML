@@ -1,0 +1,41 @@
+{
+  "strategy_id": "STRATEGY_53",
+  "strategy_name": "Gold H1 Relative Volatility Index & Fractal Expansion (RVI-KFD)",
+  "asset": "XAUUSD",
+  "timeframe": "H1",
+  "audit_horizon": "2020-01-01 to 2025-12-30 (72 Calendar Months)",
+  "benchmark_metrics": {
+    "profit_factor": 1.365,
+    "net_profit": 4525.91,
+    "max_drawdown": 1321.81,
+    "win_rate_pct": 38.78,
+    "total_trades": 294,
+    "annual_trade_frequency": 49.0,
+    "monthly_consistency_ratio_pct": 50.00,
+    "profitable_months": 36,
+    "total_months": 72,
+    "romad": 3.42
+  },
+  "champion_parameters": {
+    "rvi_period": 14,
+    "rvi_upper_threshold": 60.0,
+    "rvi_lower_threshold": 40.0,
+    "macro_ema_period": 200,
+    "kfd_period": 24,
+    "kfd_enabled": true,
+    "kfd_threshold": 1.40,
+    "tp_atr_multiplier": 4.5,
+    "sl_atr_multiplier": 2.0,
+    "base_lot": 0.10,
+    "monthly_profit_lock": 200.0,
+    "monthly_loss_breaker": -250.0,
+    "defensive_drawdown_threshold": 120.0,
+    "defensive_lot_multiplier": 0.25
+  },
+  "frictional_costs": {
+    "spread_usd": 0.25,
+    "commission_per_lot_usd": 6.00,
+    "slippage_model": "Next-bar open fill causality"
+  },
+  "role_in_portfolio": "H1 Volatility Directional Skew Engine (measures standard deviation direction)"
+}

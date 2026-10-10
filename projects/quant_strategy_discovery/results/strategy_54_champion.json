@@ -1,0 +1,127 @@
+{
+  "strategy_id": "STRATEGY_54",
+  "strategy_name": "Non-Engine Supreme Institutional Composite (NE-NSIC)",
+  "engines": [
+    {
+      "label": "E1: Gold H1 KAMA Efficiency",
+      "total_trades": 125,
+      "net_profit": 10635.37,
+      "pf": 2.715,
+      "win_rate": 32.0,
+      "max_dd": 1310.91,
+      "romad": 8.11,
+      "mcr": 44.44,
+      "pos_months": 32,
+      "total_months": 72
+    },
+    {
+      "label": "E2: Gold H1 HMA-CMO Velocity",
+      "total_trades": 167,
+      "net_profit": 13965.62,
+      "pf": 2.375,
+      "win_rate": 28.14,
+      "max_dd": 866.29,
+      "romad": 16.12,
+      "mcr": 50.0,
+      "pos_months": 36,
+      "total_months": 72
+    },
+    {
+      "label": "E3: Gold H1 Vortex Velocity",
+      "total_trades": 153,
+      "net_profit": 12575.02,
+      "pf": 2.232,
+      "win_rate": 30.07,
+      "max_dd": 1222.54,
+      "romad": 10.29,
+      "mcr": 44.44,
+      "pos_months": 32,
+      "total_months": 72
+    },
+    {
+      "label": "E4: Gold M15 Asian Breakout",
+      "total_trades": 326,
+      "net_profit": 6065.15,
+      "pf": 1.817,
+      "win_rate": 14.72,
+      "max_dd": 1041.49,
+      "romad": 5.82,
+      "mcr": 48.61,
+      "pos_months": 35,
+      "total_months": 72
+    },
+    {
+      "label": "E5: Gold M15 SVE Fractal",
+      "total_trades": 250,
+      "net_profit": 5984.58,
+      "pf": 1.589,
+      "win_rate": 25.2,
+      "max_dd": 1238.66,
+      "romad": 4.83,
+      "mcr": 52.78,
+      "pos_months": 38,
+      "total_months": 72
+    },
+    {
+      "label": "E6: EURUSD H1 DEC Momentum",
+      "total_trades": 364,
+      "net_profit": 2097.62,
+      "pf": 1.315,
+      "win_rate": 22.25,
+      "max_dd": 523.99,
+      "romad": 4.0,
+      "mcr": 51.39,
+      "pos_months": 37,
+      "total_months": 72
+    },
+    {
+      "label": "E7: Gold H1 Supertrend Trailing",
+      "total_trades": 201,
+      "net_profit": 5356.74,
+      "pf": 1.444,
+      "win_rate": 38.81,
+      "max_dd": 2005.45,
+      "romad": 2.67,
+      "mcr": 48.61,
+      "pos_months": 35,
+      "total_months": 72
+    },
+    {
+      "label": "E8: Gold H1 CCI Momentum",
+      "total_trades": 138,
+      "net_profit": 3242.82,
+      "pf": 1.461,
+      "win_rate": 33.33,
+      "max_dd": 836.81,
+      "romad": 3.88,
+      "mcr": 43.06,
+      "pos_months": 31,
+      "total_months": 72
+    },
+    {
+      "label": "E9: Gold H1 RVI Volatility",
+      "total_trades": 183,
+      "net_profit": 5374.83,
+      "pf": 1.568,
+      "win_rate": 37.16,
+      "max_dd": 996.35,
+      "romad": 5.39,
+      "mcr": 52.78,
+      "pos_months": 38,
+      "total_months": 72
+    }
+  ],
+  "portfolio_metrics": {
+    "label": "NON-ENGINE SUPREME INSTITUTIONAL COMPOSITE (NE-NSIC)",
+    "total_trades": 1907,
+    "net_profit": 65297.76,
+    "pf": 1.823,
+    "win_rate": 27.11,
+    "max_dd": 3955.04,
+    "romad": 16.51,
+    "mcr": 69.44,
+    "pos_months": 50,
+    "total_months": 72
+  },
+  "runtime_seconds": 58.44
+}
