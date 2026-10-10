@@ -118,6 +118,7 @@ All complete sweep CSV databases, JSON champions, Python backtesting engines, an
 
 | Strategy ID & Architecture | Primary Asset & TF | Profit Factor (PF) | Net Profit (0.10 Lot) | Max Drawdown | MCR (Profitable Months / 72) | Production Status |
 | :--- | :--- | :---: | :---: | :---: | :---: | :--- |
+| **S39: Quin-Engine Grand Institutional Suite (QE-GIAC)**| Gold H1+M15, EUR H1 | **2.043** 🏆 | **+$45,258.21** 🏆 | **$2,471.04** | **66.67% (48/72)** 🏆 | 🏆 **Supreme 5-Engine Portfolio Suite** |
 | **S38: HMA-CMO Velocity Expansion (HMA-CMO)** | Gold H1 | **2.375** 🏆 | **+$13,965.61** 🏆 | **$866.29** 🏆 | 50.00% (36/72) | 🏆 **HMA Champion EA** (`Gold_H1_HMA_CMO_Master_EA.mq5`) |
 | **S37: Quad-Engine Institutional Composite (QE-IAC)**| Gold H1+M15, EUR H1 | **1.942** 🏆 | **+$31,292.59** 🏆 | **$1,781.09** | **68.06% (49/72)** 🏆 | 🏆 **Grand Portfolio Master** (4 Engines) |
 | **S36: KAMA Dynamic Efficiency Ratio (KAMA-KER)** | Gold H1 | **2.715** 🏆 | **+$10,635.37** | **$1,310.91** | 44.44% (32/72) | 🏆 **All-Time High PF Single Engine** (`Gold_H1_KAMA_Efficiency_Master_EA.mq5`) |
