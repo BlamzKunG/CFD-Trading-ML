@@ -1,0 +1,26 @@
+{
+  "strategy_id": "STRATEGY_73",
+  "strategy_name": "Gold H1 Ehlers Fisher Transform Gaussian Turning Points (EFT-GTP-KFD)",
+  "champion": {
+    "period": 8,
+    "trigger_mode": "cross_zero",
+    "extreme_thresh": 1.5,
+    "trend_filter": "ema200",
+    "use_kfd": false,
+    "kfd_thresh": 1.5,
+    "tp_mult": 5.0,
+    "sl_mult": 1.5,
+    "profit_lock": 250.0,
+    "total_trades": 358,
+    "net_profit": 8046.64,
+    "pf": 1.407,
+    "win_rate": 30.45,
+    "max_dd": 926.56,
+    "romad": 8.68,
+    "mcr": 61.11,
+    "pos_months": 44,
+    "total_months": 72,
+    "score": 227.29
+  },
+  "runtime_seconds": 1977.08
+}
