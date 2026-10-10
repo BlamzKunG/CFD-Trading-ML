@@ -1,0 +1,26 @@
+{
+  "strategy_id": "STRATEGY_79",
+  "strategy_name": "Gold H1 Directional Movement Index Trend Expansion (DMI-ADX-KFD)",
+  "champion": {
+    "di_len": 24,
+    "adx_len": 14,
+    "trigger_mode": "di_cross_adx20",
+    "trend_filter": "ema200",
+    "use_kfd": false,
+    "kfd_thresh": 1.5,
+    "tp_mult": 4.0,
+    "sl_mult": 2.5,
+    "profit_lock": 200.0,
+    "total_trades": 76,
+    "net_profit": 5503.08,
+    "pf": 1.933,
+    "win_rate": 50.0,
+    "max_dd": 649.64,
+    "romad": 8.47,
+    "mcr": 48.61,
+    "pos_months": 35,
+    "total_months": 72,
+    "score": 202.87
+  },
+  "runtime_seconds": 1155.22
+}
