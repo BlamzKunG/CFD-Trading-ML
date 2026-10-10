@@ -1,0 +1,24 @@
+{
+  "strategy_id": "STRATEGY_58",
+  "strategy_name": "Gold H1 Elder Force Index Dynamic Volume Breakout (EFI-KFD)",
+  "champion_metrics": {
+    "efi_period": 13,
+    "tp_mult": 4.5,
+    "sl_mult": 2.0,
+    "kfd_thresh": 1.45,
+    "monthly_profit_lock": 200.0,
+    "monthly_loss_breaker": 250.0,
+    "use_kfd": true,
+    "total_trades": 218,
+    "trades_per_year": 36.3,
+    "net_profit": 6504.05,
+    "pf": 1.476,
+    "win_rate": 41.28,
+    "max_dd": 1045.32,
+    "romad": 6.22,
+    "mcr": 62.5,
+    "pos_months": 45,
+    "total_months": 72
+  },
+  "runtime_seconds": 162.35
+}
