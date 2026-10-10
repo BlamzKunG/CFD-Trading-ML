@@ -118,6 +118,7 @@ All complete sweep CSV databases, JSON champions, Python backtesting engines, an
 
 | Strategy ID & Architecture | Primary Asset & TF | Profit Factor (PF) | Net Profit (0.10 Lot) | Max Drawdown | MCR (Profitable Months / 72) | Production Status |
 | :--- | :--- | :---: | :---: | :---: | :---: | :--- |
+| **S68: Septendec-Engine Supreme Suite (SE-STIC)** | Gold H1+M15, EUR H1 | **1.640** 🏆 | **+$105,361.47** 🏆 | **$5,382.19** | **72.22% (52/72)** 🏆 | 🏆 **Supreme 17-Engine Master Suite (Historic $105k+ Milestone, 3,234 Trades)** |
 | **S66: Sedec-Engine Supreme Suite (SE-SIC)** | Gold H1+M15, EUR H1 | **1.616** 🏆 | **+$96,318.59** 🏆 | **$5,121.19** | **72.22% (52/72)** 🏆 | 🏆 **Supreme 16-Engine Master Suite (Record $96.3k Net, 72.2% MCR)** |
 | **S63: Quattuordec-Engine Supreme Suite (QE-QUASIC)** | Gold H1+M15, EUR H1 | **1.648** 🏆 | **+$89,358.44** 🏆 | **$4,329.93** | **70.83% (51/72)** 🏆 | 🏆 **Supreme 14-Engine Master Suite** |
 | **S60: Duodec-Engine Supreme Suite (DE-USIC)** | Gold H1+M15, EUR H1 | **1.703** 🏆 | **+$80,993.13** 🏆 | **$4,554.42** | **70.83% (51/72)** 🏆 | 🏆 **Supreme 12-Engine Master Suite** |
@@ -133,6 +134,7 @@ All complete sweep CSV databases, JSON champions, Python backtesting engines, an
 | **S37: Quad-Engine Institutional Composite (QE-IAC)**| Gold H1+M15, EUR H1 | **1.942** 🏆 | **+$31,292.59** 🏆 | **$1,781.09** | **68.06% (49/72)** 🏆 | 🏆 **Grand Portfolio Master** (4 Engines) |
 | **S36: KAMA Dynamic Efficiency Ratio (KAMA-KER)** | Gold H1 | **2.715** 🏆 | **+$10,635.37** | **$1,310.91** | 44.44% (32/72) | 🏆 **All-Time High PF Single Engine** (`Gold_H1_KAMA_Efficiency_Master_EA.mq5`) |
 | **S35: Vortex Indicator Velocity & Skew (VIM-VSB)** | Gold H1 | **2.232** 🏆 | **+$12,575.02** | **$1,222.54** | 44.44% (32/72) | 🏆 **Vortex Champion EA** (`Gold_H1_Vortex_Velocity_Master_EA.mq5`) |
+| **S67: Linear Regression Slope & R² (LRS-R2-KFD)** | Gold H1 | **2.005 – 2.095** 🏆 | **+$7,969.13 – +$9,042.88** 🏆 | **$916.67 – $993.17** 🏆 | **55.56 – 62.50% (45/72)** 🏆 | 🏆 **Elite Statistical Trend EA (PF 2.095, DD $993)** (`Gold_H1_Linear_Regression_Slope_Master_EA.mq5`) |
 | **S61: McGinley Dynamic Trend (MGD-KFD)** | Gold H1 | **1.608 – 1.641** 🏆 | **+$7,208.95 – +$7,457.60** | **$853.93 – $920.35** 🏆 | **62.50 – 68.06% (49/72)** 🏆 | 🏆 **McGinley Dynamic Champion EA (Win Rate 49%)** (`Gold_H1_McGinley_Dynamic_Master_EA.mq5`) |
 | **S62: Schaff Trend Cycle (STC-KFD)** | Gold H1 | **1.547 – 1.573** 🏆 | **+$6,388.50 – +$6,740.67** | **$1,178.62 – $1,277.12** | **56.94 – 59.72% (43/72)** 🏆 | 🏆 **STC Champion EA (Dual-Stochastic MACD Cycle)** (`Gold_H1_Schaff_Trend_Cycle_Master_EA.mq5`) |
 | **S55: Market Structure BOS (BOS-KFD)** | Gold H1 | **1.560** 🏆 | **+$7,320.56** 🏆 | **$1,259.26** | **59.72% (43/72)** 🏆 | 🏆 **BOS Champion EA** (`Gold_H1_BOS_Structure_Master_EA.mq5`) |

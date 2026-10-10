@@ -1,0 +1,25 @@
+{
+  "strategy_id": "STRATEGY_67",
+  "strategy_name": "Gold H1 Linear Regression Slope & R-Squared Trend (LRS-R2-KFD)",
+  "champion_metrics": {
+    "period": 28,
+    "r2_thresh": 0.6,
+    "tp_mult": 5.0,
+    "sl_mult": 2.0,
+    "kfd_thresh": 1.35,
+    "monthly_profit_lock": 250.0,
+    "monthly_loss_breaker": 250.0,
+    "use_kfd": true,
+    "total_trades": 116,
+    "trades_per_year": 19.3,
+    "net_profit": 9042.88,
+    "pf": 2.095,
+    "win_rate": 43.1,
+    "max_dd": 993.17,
+    "romad": 9.11,
+    "mcr": 55.56,
+    "pos_months": 40,
+    "total_months": 72
+  },
+  "runtime_seconds": 388.28
+}
