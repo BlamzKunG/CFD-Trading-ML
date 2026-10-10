@@ -1,0 +1,37 @@
+{
+  "strategy_id": "STRATEGY_48",
+  "strategy_name": "EURUSD London/NY Overlap Range Expansion (FX-LOV)",
+  "asset": "EURUSD",
+  "timeframe": "M15",
+  "audit_horizon": "2020-01-01 to 2025-12-30 (72 Calendar Months)",
+  "status": "DECISIVELY REJECTED",
+  "rejection_reason": "Session range breakouts on EURUSD M15 suffer from severe mean-reverting chop and retail stop hunts during London/NY overlap, producing negative expectancy (PF 0.844) across all parameter combinations.",
+  "benchmark_metrics": {
+    "profit_factor": 0.844,
+    "net_profit": -1459.43,
+    "max_drawdown": 1899.94,
+    "win_rate_pct": 34.13,
+    "total_trades": 1134,
+    "annual_trade_frequency": 189.0,
+    "monthly_consistency_ratio_pct": 30.56,
+    "profitable_months": 22,
+    "total_months": 72,
+    "romad": -0.77
+  },
+  "best_parameters_tested": {
+    "buffer_atr_mult": 0.3,
+    "tp_mult": 3.0,
+    "sl_mult": 1.5,
+    "monthly_profit_lock": 200.0,
+    "monthly_loss_breaker": 150.0,
+    "defensive_drawdown_threshold": 80.0
+  },
+  "frictional_costs": {
+    "spread_pip": 0.6,
+    "commission_per_lot_usd": 6.00,
+    "slippage_model": "Next-bar open fill causality"
+  },
+  "negative_knowledge_catalog": {
+    "finding": "Gold and EURUSD possess opposite microstructure behaviors on session breakouts: Gold trend-expands (Strategy 42, PF 1.817), whereas EURUSD mean-reverts. Breakout trading on EURUSD M15 is mathematically destructive."
+  }
+}

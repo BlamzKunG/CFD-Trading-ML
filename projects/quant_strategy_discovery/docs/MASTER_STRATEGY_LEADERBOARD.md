@@ -138,11 +138,13 @@ All complete sweep CSV databases, JSON champions, Python backtesting engines, an
 | **S27: ASAR Precision Calibration**| Gold M15 | **1.300 – 1.359** | +$4,480.83 | $1,383.08 | 62.50% (45/72) | Production EA (`Gold_ASAR_DualRegime_Master_EA.mq5`) |
 | **S29: Fractal Dimension & Entropy**| Gold M15 | **1.368** | +$4,602.75 | $1,095.46 | 52.78% (38/72) | Validated Fractal Gating |
 | **S41: RMI Asian Liquidity Fade (RMI-ARLS)** | Gold M15 | 0.669 | -$2,350.52 | $2,729.40 | 23.61% (17/72) | ❌ **REJECTED (Breakout Trap on Gold)** |
+| **S48: EURUSD London/NY Overlap Breakout (FX-LOV)**| EURUSD M15 | 0.844 | -$1,459.43 | $1,899.94 | 30.56% (22/72) | ❌ **REJECTED (Mean-Reverting Overlap Trap)** |
 | **S24: ASAR Dual-Regime Master** | Gold M15 | **1.249** | +$4,890.81 | $1,515.28 | 58.33% (42/72) | Foundation Architecture |
 
-### Key Institutional Rules Discovered (Strategies 01 – 34)
+### Key Institutional Rules Discovered (Strategies 01 – 48)
 1. **The Law of Timeframe Friction Compression (The PF 2.2+ Engine):** Fixed CFD trading costs on Gold ($0.25 spread + $6.00 comm) absorb significant edge on M15, but drop to < 2.0% of ATR on H1. Combining H1 Macro Structural Channel with a 24-hour Katz Fractal Gate ($D \le 1.35$) unlocks unprecedented efficiency: **Profit Factor 2.232** with **+$12,575.02 net profit**!
 2. **Tri-Engine Asynchronous Risk Isolation (The 50-Month Win Engine):** Combining Gold H1 Macro + Gold M15 Intraday + EURUSD H1 Macro under decoupled calendar risk budgets drives total net profit to **+$19,375.41** with **PF 1.586** and **69.44% MCR (50 out of 72 calendar months profitable)**!
 3. **The Law of Premature Break-Even:** Never move Stop Loss to BE at +1.5R on Gold. Gold expands after retesting breakout levels; premature BE suffocates trades and crashes PF from 1.30 to < 0.95.
 4. **The Spread/Commission Friction Trap on Intraday FX & Asian Gold:** Scalping tight ranges on EURUSD M15 or Asian Gold is mathematically negative (PF 0.62–0.85). EURUSD requires H1 macro trends, and Gold requires London/NY expansion or H1 macro continuation.
+5. **The FX Breakout Inversion Law (Discovered in S48):** Breakouts from pre-market ranges on EURUSD M15 during London/NY Overlap fail 66% of the time (PF 0.844), contrasting sharply with Gold (S42, PF 1.817). EURUSD is deeply mean-reverting during liquidity overlaps and destroys directional breakout systems.
 
