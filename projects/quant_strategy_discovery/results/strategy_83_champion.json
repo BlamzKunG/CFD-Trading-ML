@@ -1,0 +1,26 @@
+{
+  "strategy_id": "STRATEGY_83",
+  "strategy_name": "Gold H1 Keltner Channels Volatility Squeeze & Band Expansion (KC-SVE-KFD)",
+  "champion": {
+    "ema_period": 20,
+    "mult": 2.0,
+    "trigger_mode": "band_breakout",
+    "trend_filter": "ema50",
+    "use_kfd": true,
+    "kfd_thresh": 1.35,
+    "tp_mult": 5.0,
+    "sl_mult": 2.5,
+    "profit_lock": 250.0,
+    "total_trades": 165,
+    "net_profit": 8381.59,
+    "pf": 1.706,
+    "win_rate": 47.27,
+    "max_dd": 1234.57,
+    "romad": 6.79,
+    "mcr": 62.5,
+    "pos_months": 45,
+    "total_months": 72,
+    "score": 254.35
+  },
+  "runtime_seconds": 995.71
+}
