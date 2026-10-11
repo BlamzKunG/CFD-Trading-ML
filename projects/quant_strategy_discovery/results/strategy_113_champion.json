@@ -1,0 +1,20 @@
+{
+  "strategy_id": "STRATEGY_113",
+  "champion": {
+    "chop_period": 20.0,
+    "chop_thresh": 38.2,
+    "tp_mult": 4.5,
+    "sl_mult": 1.5,
+    "kfd_thresh": 1.42,
+    "total_trades": 71.0,
+    "net_profit": 48163.98,
+    "pf": 2.296,
+    "win_rate": 40.85,
+    "max_dd": 8655.8,
+    "romad": 5.56,
+    "mcr": 40.28,
+    "pos_months": 29.0,
+    "total_months": 72.0
+  },
+  "runtime_seconds": 4.12
+}
