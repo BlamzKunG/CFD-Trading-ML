@@ -1,0 +1,23 @@
+{
+  "strategy_id": "STRATEGY_96",
+  "strategy_name": "Gold H1 MESA Adaptive Moving Average (MAMA-FAMA-KFD)",
+  "champion_metrics": {
+    "fast_limit": 0.4,
+    "slow_limit": 0.04,
+    "tp_mult": 4.5,
+    "sl_mult": 2.0,
+    "kfd_thresh": 1.4,
+    "monthly_profit_lock": 200.0,
+    "total_trades": 132.0,
+    "trades_per_year": 22.0,
+    "net_profit": 2663.47,
+    "pf": 1.283,
+    "win_rate": 39.39,
+    "max_dd": 1063.48,
+    "romad": 2.5,
+    "mcr": 58.33,
+    "pos_months": 42.0,
+    "total_months": 72.0
+  },
+  "runtime_seconds": 13.44
+}

@@ -1,0 +1,22 @@
+{
+  "strategy_id": "STRATEGY_97",
+  "strategy_name": "Gold H1 Volume Price Trend Accumulation (VPT-KFD)",
+  "champion_metrics": {
+    "signal_period": 10.0,
+    "tp_mult": 4.5,
+    "sl_mult": 2.0,
+    "kfd_thresh": 1.45,
+    "monthly_profit_lock": 200.0,
+    "total_trades": 236.0,
+    "trades_per_year": 39.3,
+    "net_profit": 5647.76,
+    "pf": 1.375,
+    "win_rate": 40.25,
+    "max_dd": 1019.82,
+    "romad": 5.54,
+    "mcr": 63.89,
+    "pos_months": 46.0,
+    "total_months": 72.0
+  },
+  "runtime_seconds": 11.52
+}

@@ -1,0 +1,23 @@
+{
+  "strategy_id": "STRATEGY_98",
+  "strategy_name": "Gold H1 Kaufman Adaptive Volatility Bands (KAVB-KFD)",
+  "champion_metrics": {
+    "band_mult": 1.5,
+    "er_thresh": 0.4,
+    "tp_mult": 3.5,
+    "sl_mult": 2.5,
+    "kfd_thresh": 1.45,
+    "monthly_profit_lock": 250.0,
+    "total_trades": 184.0,
+    "trades_per_year": 30.7,
+    "net_profit": 6158.98,
+    "pf": 1.474,
+    "win_rate": 50.0,
+    "max_dd": 1466.73,
+    "romad": 4.2,
+    "mcr": 58.33,
+    "pos_months": 42.0,
+    "total_months": 72.0
+  },
+  "runtime_seconds": 12.65
+}
