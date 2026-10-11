@@ -117,6 +117,7 @@ All complete sweep CSV databases, JSON champions, Python backtesting engines, an
 ## 6. Frontier Strategy Discovery: "กำไรทุกเดือน" (Consistent Monthly Benchmark) (Strategies 11 – 34)
 
 | Strategy ID & Architecture | Primary Asset & TF | Profit Factor (PF) | Net Profit (0.10 Lot) | Max Drawdown | MCR (Profitable Months / 72) | Production Status |
+| **S100: Duotriginta-Engine Supreme Suite (DE-STIC)** | Gold H1+M15, EUR H1 | **1.674** 🏆 | **+$225,844.54** 🏆 | **$9,796.10** | **84.72% (61/72)** 🏆🏆 | 🏆 **Centennial 32-Engine Master Suite (Historic $225.8k Net, 6,025 Trades, RoMaD 23.05x, PF 1.674, MCR 84.7%)** |
 | **S95: Unatriginta-Engine Supreme Suite (UE-STIC)** | Gold H1+M15, EUR H1 | **1.681** 🏆 | **+$219,579.19** 🏆 | **$9,110.80** | **83.33% (60/72)** 🏆🏆 | 🏆 **Supreme 31-Engine Master Suite (Historic $219.6k Net, 5,851 Trades, RoMaD 24.10x, PF 1.681, MCR 83.3%)** |
 | **S94: Triginta-Engine Supreme Suite (TE-STIC)** | Gold H1+M15, EUR H1 | **1.671** 🏆 | **+$211,849.34** 🏆 | **$8,932.11** | **83.33% (60/72)** 🏆🏆 | 🏆 **Supreme 30-Engine Master Suite (Historic $211.8k Net, 5,754 Trades, RoMaD 23.72x, PF 1.671, MCR 83.3%)** |
 | **S92: Undetriginta-Engine Supreme Suite (UE-STIC)** | Gold H1+M15, EUR H1 | **1.668** 🏆 | **+$205,506.82** 🏆 | **$8,632.83** | **86.11% (62/72)** 🏆🏆 | 🏆 **Supreme 29-Engine Master Suite (Historic $205.5k Net, 5,616 Trades, All-Time Record 86.11% MCR, RoMaD 23.81x, PF 1.668)** |
