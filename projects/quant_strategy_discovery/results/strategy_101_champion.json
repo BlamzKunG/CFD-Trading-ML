@@ -1,0 +1,23 @@
+{
+  "strategy_id": "STRATEGY_101",
+  "strategy_name": "Gold H1 TRIX Triple Exponential Momentum Acceleration (TRIX-KFD)",
+  "champion_metrics": {
+    "trix_period": 14.0,
+    "signal_period": 9.0,
+    "tp_mult": 3.5,
+    "sl_mult": 2.0,
+    "kfd_thresh": 1.45,
+    "monthly_profit_lock": 200.0,
+    "total_trades": 65.0,
+    "trades_per_year": 10.8,
+    "net_profit": 15942.17,
+    "pf": 1.365,
+    "win_rate": 38.46,
+    "max_dd": 10120.55,
+    "romad": 1.58,
+    "mcr": 34.72,
+    "pos_months": 25.0,
+    "total_months": 72.0
+  },
+  "runtime_seconds": 15.51
+}
