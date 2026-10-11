@@ -1,0 +1,26 @@
+{
+  "strategy_id": "STRATEGY_93",
+  "strategy_name": "Gold H1 Peter Martin Ulcer Index (UI-VCD-KFD)",
+  "champion": {
+    "period": 20,
+    "trigger_mode": "ui_smooth_thrust",
+    "trigger_thresh": 0.5,
+    "trend_filter": "ema200",
+    "use_kfd": true,
+    "kfd_thresh": 1.4,
+    "tp_mult": 5.0,
+    "sl_mult": 2.5,
+    "profit_lock": 200.0,
+    "total_trades": 97,
+    "net_profit": 7729.85,
+    "pf": 2.178,
+    "win_rate": 52.58,
+    "max_dd": 849.00,
+    "romad": 9.10,
+    "mcr": 59.72,
+    "pos_months": 43,
+    "total_months": 72,
+    "score": 345.06
+  },
+  "runtime_seconds": 716.58
+}
