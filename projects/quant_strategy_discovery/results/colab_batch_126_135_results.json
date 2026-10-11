@@ -1,0 +1,126 @@
+{
+  "batch": "WAVE_C",
+  "strategies": [
+    {
+      "label": "S126: Heikin-Ashi Volatility Delta Smoothed Trend",
+      "total_trades": 72,
+      "net_profit": 5580.56,
+      "pf": 1.095,
+      "win_rate": 34.72,
+      "max_dd": 13167.93,
+      "romad": 0.42,
+      "mcr": 34.72,
+      "pos_months": 25,
+      "total_months": 72
+    },
+    {
+      "label": "S127: Kaufman Adaptive Envelope Volatility Expansion",
+      "total_trades": 72,
+      "net_profit": 9673.62,
+      "pf": 1.147,
+      "win_rate": 45.83,
+      "max_dd": 11897.6,
+      "romad": 0.81,
+      "mcr": 45.83,
+      "pos_months": 33,
+      "total_months": 72
+    },
+    {
+      "label": "S128: Money Flow Index Volume Divergence & Ignition",
+      "total_trades": 68,
+      "net_profit": 2731.88,
+      "pf": 1.048,
+      "win_rate": 29.41,
+      "max_dd": 12695.3,
+      "romad": 0.22,
+      "mcr": 27.78,
+      "pos_months": 20,
+      "total_months": 72
+    },
+    {
+      "label": "S129: Rate of Change Zero-Lag Band Breakout",
+      "total_trades": 72,
+      "net_profit": -9181.21,
+      "pf": 0.861,
+      "win_rate": 29.17,
+      "max_dd": 19602.93,
+      "romad": -0.47,
+      "mcr": 29.17,
+      "pos_months": 21,
+      "total_months": 72
+    },
+    {
+      "label": "S130: Variable Index Dynamic Average Adaptive Filter",
+      "total_trades": 42,
+      "net_profit": 18554.04,
+      "pf": 1.598,
+      "win_rate": 40.48,
+      "max_dd": 5234.96,
+      "romad": 3.54,
+      "mcr": 23.61,
+      "pos_months": 17,
+      "total_months": 72
+    },
+    {
+      "label": "S131: Ehlers Decycler High-Pass Volatility Detrender",
+      "total_trades": 72,
+      "net_profit": 2580.85,
+      "pf": 1.044,
+      "win_rate": 33.33,
+      "max_dd": 14629.49,
+      "romad": 0.18,
+      "mcr": 33.33,
+      "pos_months": 24,
+      "total_months": 72
+    },
+    {
+      "label": "S132: Fractal Chaos Bands Breakout Extension",
+      "total_trades": 72,
+      "net_profit": -438.42,
+      "pf": 0.993,
+      "win_rate": 30.56,
+      "max_dd": 17346.43,
+      "romad": -0.03,
+      "mcr": 30.56,
+      "pos_months": 22,
+      "total_months": 72
+    },
+    {
+      "label": "S133: Dynamic Momentum Index Variable Period Explosion",
+      "total_trades": 69,
+      "net_profit": 3414.9,
+      "pf": 1.051,
+      "win_rate": 43.48,
+      "max_dd": 28845.34,
+      "romad": 0.12,
+      "mcr": 41.67,
+      "pos_months": 30,
+      "total_months": 72
+    },
+    {
+      "label": "S134: Range Action Verification Index Trend Break",
+      "total_trades": 68,
+      "net_profit": -14548.93,
+      "pf": 0.789,
+      "win_rate": 29.41,
+      "max_dd": 24651.58,
+      "romad": -0.59,
+      "mcr": 27.78,
+      "pos_months": 20,
+      "total_months": 72
+    },
+    {
+      "label": "S135: Price Volume Trend Volume Flow Acceleration",
+      "total_trades": 68,
+      "net_profit": -3716.65,
+      "pf": 0.945,
+      "win_rate": 33.82,
+      "max_dd": 17928.07,
+      "romad": -0.21,
+      "mcr": 31.94,
+      "pos_months": 23,
+      "total_months": 72
+    }
+  ],
+  "runtime_seconds": 2.82
+}
