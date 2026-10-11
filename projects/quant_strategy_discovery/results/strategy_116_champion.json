@@ -1,0 +1,21 @@
+{
+  "strategy_id": "STRATEGY_116",
+  "strategy_name": "Ehlers MESA Sine Wave Indicator Cycle Turning Points",
+  "champion": {
+    "total_trades": 72.0,
+    "net_profit": 42931.48,
+    "pf": 1.808,
+    "win_rate": 37.5,
+    "max_dd": 9708.67,
+    "romad": 4.42,
+    "mcr": 37.5,
+    "pos_months": 27.0,
+    "total_months": 72.0,
+    "cycle_period": 10.0,
+    "phase_deg": 30.0,
+    "tp_mult": 5.5,
+    "sl_mult": 2.0,
+    "kfd_thresh": 1.42
+  },
+  "runtime_seconds": 5.84
+}

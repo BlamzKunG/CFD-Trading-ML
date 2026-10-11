@@ -1,0 +1,23 @@
+{
+  "strategy_id": "STRATEGY_118",
+  "strategy_name": "Bollinger %B BandWidth Expansion Squeeze Ignition",
+  "champion": {
+    "total_trades": 69.0,
+    "net_profit": 52816.61,
+    "pf": 2.267,
+    "win_rate": 55.07,
+    "max_dd": 5044.54,
+    "romad": 10.47,
+    "mcr": 52.78,
+    "pos_months": 38.0,
+    "total_months": 72.0,
+    "bb_period": 14.0,
+    "bb_mult": 1.8,
+    "pct_b_hi": 0.8,
+    "pct_b_lo": 0.2,
+    "tp_mult": 3.5,
+    "sl_mult": 2.5,
+    "kfd_thresh": 1.38
+  },
+  "runtime_seconds": 12.31
+}
