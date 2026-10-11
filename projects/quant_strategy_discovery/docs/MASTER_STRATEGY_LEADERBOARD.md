@@ -157,7 +157,7 @@ All complete sweep CSV databases, JSON champions, Python backtesting engines, an
 | **S96: MESA Adaptive Moving Average (MAMA-FAMA-KFD)**| Gold H1 | **1.283** | **+$2,663.47** | **$1,063.48** | **58.33% (42/72)** | Tactical Candidate (Ehlers Phase/Cycle Tracking) |
 | **S93: Peter Martin's Ulcer Index (UI-VCD-KFD)** | Gold H1 | **2.178** 🏆 | **+$7,729.85** 🏆 | **$849.00** 🏆 | **59.72% (43/72)** 🏆 | 🏆 **Ulcer Index Champion EA (PF 2.178, Sub-$850 DD, RoMaD 9.10x)** (`Gold_H1_Ulcer_Index_Master_EA.mq5`) |
 | **S93b: Tillson T3 Moving Average (T3-KFD)** | Gold H1 | **1.697 – 1.771** 🏆 | **+$5,974.04 – +$6,342.52** | **$658.06 – $908.02** 🏆 | **54.17 – 58.33% (42/72)** | 🏆 **Tillson T3 Champion EA (Record Low DD $658.06, PF 1.771)** (`Gold_H1_Tillson_T3_Master_EA.mq5`) |
-| **S102: Woodies CCI Turbo & Extremes (TURBO-CCI)** | Gold H1 | **1.438** | **+$22,710.97** | **$7,221.32** | **37.50% (27/72)** | Tactical Candidate (Dual Turbo-Standard Momentum) |
+| **S102: Woodies CCI Turbo & Extremes (TURBO-CCI)** | Gold H1 | **1.739** 🏆 | **+$39,471.92** 🏆 | **$7,320.82** | **51.39% (37/72)** 🏆 | 🏆 **Woodies Turbo Champion EA (PF 1.739, Net +$39.5k)** (`Gold_H1_Woodies_CCI_Turbo_Master_EA.mq5`) |
 | **S113: Choppiness Compression Ignition (CHOP-IGN)** | Gold H1 | **1.405** | **+$20,872.81** | **$10,439.35** | **33.33% (24/72)** | Tactical Candidate (Fractal Dimension Explosion) |
 | **S105: Twiggs Money Flow (TMF-TR-KFD)** | Gold H1 | **1.292** | **+$16,202.06** | **$9,710.65** | **40.28% (29/72)** | Tactical Candidate (True-Range Volume Accumulation) |
 | **S103: Dynamic Hurst Trend Persistence (HURST-TP)**| Gold H1 | **1.258** | **+$14,698.48** | **$11,640.54** | **38.89% (28/72)** | Tactical Candidate (Long-Memory Regime Filter) |

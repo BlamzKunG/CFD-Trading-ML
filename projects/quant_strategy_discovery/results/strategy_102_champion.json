@@ -1,0 +1,21 @@
+{
+  "strategy_id": "STRATEGY_102",
+  "champion": {
+    "std_period": 20.0,
+    "turbo_period": 6.0,
+    "tp_mult": 4.5,
+    "sl_mult": 2.5,
+    "kfd_thresh": 1.38,
+    "profit_lock": 200.0,
+    "total_trades": 72.0,
+    "net_profit": 39471.92,
+    "pf": 1.739,
+    "win_rate": 51.39,
+    "max_dd": 7320.82,
+    "romad": 5.39,
+    "mcr": 51.39,
+    "pos_months": 37.0,
+    "total_months": 72.0
+  },
+  "runtime_seconds": 7.8
+}
