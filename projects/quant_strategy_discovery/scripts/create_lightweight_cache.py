@@ -20,13 +20,19 @@ def process_file(symbol, filepath):
         return
 
     print(f"[*] Processing {symbol} from {filepath}...")
-    df = pd.read_csv(filepath, usecols=["datetime", "open", "high", "low", "close"])
+    usecols = ["datetime", "open", "high", "low", "close"]
+    if symbol == "XAUUSD":
+        usecols.append("tick_volume")
+    df = pd.read_csv(filepath, usecols=usecols)
     df["datetime"] = pd.to_datetime(df["datetime"])
     df.set_index("datetime", inplace=True)
     df.sort_index(inplace=True)
     
     print(f"[*] Resampling {symbol} to H1...")
-    df_h1 = df.resample("1h").agg({"open": "first", "high": "max", "low": "min", "close": "last"}).dropna()
+    agg_dict = {"open": "first", "high": "max", "low": "min", "close": "last"}
+    if symbol == "XAUUSD":
+        agg_dict["tick_volume"] = "sum"
+    df_h1 = df.resample("1h").agg(agg_dict).dropna()
     df_h1.to_parquet(h1_path, compression="snappy")
     print(f"[+] Saved {h1_path} ({len(df_h1)} bars, {os.path.getsize(h1_path) / 1024:.1f} KB)")
     del df_h1

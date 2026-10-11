@@ -1,0 +1,26 @@
+{
+  "strategy_id": "STRATEGY_91",
+  "strategy_name": "Gold H1 Tushar Chande Momentum Oscillator (CMO-MPE-KFD)",
+  "champion": {
+    "period": 20,
+    "trigger_mode": "cmo_thrust_expansion",
+    "trigger_thresh": 40.0,
+    "trend_filter": "ema50",
+    "use_kfd": false,
+    "kfd_thresh": 1.5,
+    "tp_mult": 6.0,
+    "sl_mult": 2.0,
+    "profit_lock": 200.0,
+    "total_trades": 191,
+    "net_profit": 10193.44,
+    "pf": 1.835,
+    "win_rate": 38.22,
+    "max_dd": 1195.42,
+    "romad": 8.53,
+    "mcr": 68.06,
+    "pos_months": 49,
+    "total_months": 72,
+    "score": 368.2
+  },
+  "runtime_seconds": 1117.22
+}
