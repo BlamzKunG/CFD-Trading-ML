@@ -1,0 +1,28 @@
+{
+  "strategy_id": "STRATEGY_87",
+  "strategy_name": "Gold H1 Donald Dorsey Mass Index Volatility Reversal & Expansion (MASS-VRB-KFD)",
+  "champion": {
+    "ema_period": 7,
+    "sum_period": 25,
+    "trigger_family": "mass_expansion_ignition",
+    "trigger_param1": 25.5,
+    "trigger_param2": 0.0,
+    "trend_filter": "ema50",
+    "use_kfd": true,
+    "kfd_thresh": 1.35,
+    "tp_mult": 3.5,
+    "sl_mult": 2.0,
+    "profit_lock": 200.0,
+    "total_trades": 140,
+    "net_profit": 8357.21,
+    "pf": 2.156,
+    "win_rate": 54.29,
+    "max_dd": 632.46,
+    "romad": 13.21,
+    "mcr": 65.28,
+    "pos_months": 47,
+    "total_months": 72,
+    "score": 467.71
+  },
+  "runtime_seconds": 1527.1
+}
