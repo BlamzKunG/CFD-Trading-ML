@@ -150,6 +150,7 @@ All complete sweep CSV databases, JSON champions, Python backtesting engines, an
 | **S77: Chaikin Money Flow (CMF-VAB-KFD)** | Gold H1 | **2.270** 🏆 | **+$11,002.93** 🏆 | **$978.41** 🏆 | **73.61% (53/72)** 🏆 | 🏆 **CMF Champion EA (PF 2.270, Record 73.6% MCR)** (`Gold_H1_CMF_Volume_Master_EA.mq5`) |
 | **S79: Directional Movement Index (DMI-ADX-KFD)** | Gold H1 | **1.933** 🏆 | **+$5,503.08** | **$649.64** 🏆 | 48.61% (35/72) | 🏆 **DMI-ADX Champion EA (Lowest Single-Engine DD $649.64, PF 1.933)** (`Gold_H1_DMI_ADX_Master_EA.mq5`) |
 | **S81: Aroon Oscillator Extremes (AROON-TIE-KFD)** | Gold H1 | **1.531** 🏆 | **+$7,077.02** 🏆 | **$852.34** 🏆 | **58.33% (42/72)** 🏆 | 🏆 **Aroon Champion EA (Sub-$860 DD, PF 1.531, 234 Trades)** (`Gold_H1_Aroon_Oscillator_Master_EA.mq5`) |
+| **S99: Manning Stoller's STARCBands (STARC-ATR-KFD)** | Gold H1 | **1.504** 🏆 | **+$6,265.35** 🏆 | **$1,487.80** | **56.94% (41/72)** 🏆 | 🏆 **STARCBands Champion EA (PF 1.504, 2.75R Asymmetry)** (`Gold_H1_STARC_Bands_Master_EA.mq5`) |
 | **S98: Kaufman Adaptive Volatility Bands (KAVB-KFD)** | Gold H1 | **1.474** | **+$6,158.98** | **$1,466.73** | **58.33% (42/72)** | Tactical Candidate (Dynamic ER Volatility Envelopes) |
 | **S97: Volume Price Trend Accumulation (VPT-KFD)** | Gold H1 | **1.375** | **+$5,647.76** | **$1,019.82** | **63.89% (46/72)** | Tactical Candidate (Volume Momentum Expansion) |
 | **S96: MESA Adaptive Moving Average (MAMA-FAMA-KFD)**| Gold H1 | **1.283** | **+$2,663.47** | **$1,063.48** | **58.33% (42/72)** | Tactical Candidate (Ehlers Phase/Cycle Tracking) |

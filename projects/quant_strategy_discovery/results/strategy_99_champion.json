@@ -1,0 +1,27 @@
+{
+  "strategy_id": "STRATEGY_99",
+  "strategy_name": "Gold H1 Manning Stoller STARCBands (STARC-ATR-KFD)",
+  "champion": {
+    "sma_period": 14,
+    "atr_period": 14,
+    "multiplier": 1.5,
+    "trigger_mode": "starc_breakout",
+    "trend_filter": "ema50",
+    "use_kfd": true,
+    "kfd_thresh": 1.4,
+    "tp_mult": 5.5,
+    "sl_mult": 2.0,
+    "profit_lock": 200.0,
+    "total_trades": 174,
+    "net_profit": 6265.35,
+    "pf": 1.504,
+    "win_rate": 35.63,
+    "max_dd": 1487.80,
+    "romad": 4.21,
+    "mcr": 56.94,
+    "pos_months": 41,
+    "total_months": 72,
+    "score": 139.10
+  },
+  "runtime_seconds": 197.52
+}
