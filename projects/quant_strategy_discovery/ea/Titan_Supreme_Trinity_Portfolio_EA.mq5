@@ -88,9 +88,9 @@ int OnInit()
    m_trade_e2.SetExpertMagicNumber(InpMagic_E2);
    m_trade_e3.SetExpertMagicNumber(InpMagic_E3);
 
-   m_trade_e1.SetMarginMode();
-   m_trade_e2.SetMarginMode();
-   m_trade_e3.SetMarginMode();
+   m_trade_e1.SetMarginMode(); m_trade_e1.SetTypeFillingBySymbol(_Symbol);
+   m_trade_e2.SetMarginMode(); m_trade_e2.SetTypeFillingBySymbol(_Symbol);
+   m_trade_e3.SetMarginMode(); m_trade_e3.SetTypeFillingBySymbol(_Symbol);
 
    m_hATR    = iATR(_Symbol, PERIOD_H1, InpAtrPeriod);
    m_hEMA200 = iMA(_Symbol, PERIOD_H1, InpEmaPeriod, 0, MODE_EMA, PRICE_CLOSE);
@@ -101,7 +101,7 @@ int OnInit()
       return(INIT_FAILED);
    }
 
-   m_e1.magic = InpMagic_E1; m_e1.enabled = InpEnable_KAMA_Engine; m_e1.isMonthLocked = false; m_e1.monthlyRealizedPnL = 0.0;
+   m_e1.magic = InpMagic_E1; m_e1.enabled = InpEnable_E1_KAMA;     m_e1.isMonthLocked = false; m_e1.monthlyRealizedPnL = 0.0;
    m_e2.magic = InpMagic_E2; m_e2.enabled = InpEnable_E2_HMA;       m_e2.isMonthLocked = false; m_e2.monthlyRealizedPnL = 0.0;
    m_e3.magic = InpMagic_E3; m_e3.enabled = InpEnable_E3_BOS;       m_e3.isMonthLocked = false; m_e3.monthlyRealizedPnL = 0.0;
 
