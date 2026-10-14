@@ -1,0 +1,72 @@
+{
+  "study": "Quantum Titan Reverse Engineering",
+  "source_ea": "QuantumTitanbyFuckFickFock.mq5",
+  "original_mode_1": {
+    "label": "Quantum Titan Core A (Original Mode 1: $5 SL, $25 TP)",
+    "total_trades": 254,
+    "net_profit": -11102.4,
+    "pf": 0.484,
+    "win_rate": 83.07,
+    "max_dd": 11965.2,
+    "romad": -0.93,
+    "mcr": 40.28,
+    "pos_months": 29,
+    "total_months": 72
+  },
+  "original_mode_2": {
+    "label": "Quantum Titan Core A (Original Mode 2: $10 SL, $50 TP)",
+    "total_trades": 266,
+    "net_profit": -24659.6,
+    "pf": 0.315,
+    "win_rate": 86.47,
+    "max_dd": 25276.6,
+    "romad": -0.98,
+    "mcr": 50.0,
+    "pos_months": 36,
+    "total_months": 72
+  },
+  "champion_core_a": {
+    "label": "Core A",
+    "total_trades": 0,
+    "net_profit": 0.0,
+    "pf": 0.0,
+    "win_rate": 0.0,
+    "max_dd": 0.0,
+    "romad": 0.0,
+    "mcr": 0.0,
+    "pos_months": 0,
+    "total_months": 72
+  },
+  "champion_core_b": {
+    "label": "Core B Pivot (LB:36, PB:0.5x, SL:2.5x, TP:3.5x, KFD:1.42)",
+    "total_trades": 72,
+    "net_profit": 28299.87,
+    "pf": 1.53,
+    "win_rate": 52.78,
+    "max_dd": 8890.04,
+    "romad": 3.18,
+    "mcr": 52.78,
+    "pos_months": 38,
+    "total_months": 72,
+    "params": {
+      "lookback": 36,
+      "pullback_atr": 0.5,
+      "sl_mult": 2.5,
+      "tp_mult": 3.5,
+      "kfd_thresh": 1.42
+    }
+  },
+  "hybrid_composite": {
+    "label": "QUANTUM TITAN CLEAN QUANT HYBRID (CORE A + CORE B)",
+    "total_trades": 72,
+    "net_profit": 28299.87,
+    "pf": 1.53,
+    "win_rate": 52.78,
+    "max_dd": 8890.04,
+    "romad": 3.18,
+    "mcr": 52.78,
+    "pos_months": 38,
+    "total_months": 72
+  },
+  "runtime_seconds": 29.23
+}

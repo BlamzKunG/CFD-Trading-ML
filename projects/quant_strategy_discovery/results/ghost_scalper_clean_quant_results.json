@@ -1,0 +1,148 @@
+{
+  "Raw_GHOST_A": {
+    "trades": 1547,
+    "net_profit": 483014.8,
+    "profit_factor": 4.013,
+    "win_rate": 64.96,
+    "max_dd": 2538.4,
+    "romad": 190.28,
+    "mcr": 95.83,
+    "profitable_months": 69,
+    "total_months": 72
+  },
+  "Raw_GHOST_B": {
+    "trades": 2176,
+    "net_profit": 549584.4,
+    "profit_factor": 3.194,
+    "win_rate": 61.72,
+    "max_dd": 3573.8,
+    "romad": 153.78,
+    "mcr": 95.83,
+    "profitable_months": 69,
+    "total_months": 72
+  },
+  "Raw_GHOST_C": {
+    "trades": 2186,
+    "net_profit": 541410.4,
+    "profit_factor": 2.682,
+    "win_rate": 70.77,
+    "max_dd": 5313.6,
+    "romad": 101.89,
+    "mcr": 91.67,
+    "profitable_months": 66,
+    "total_months": 72
+  },
+  "Raw_GHOST_D": {
+    "trades": 586,
+    "net_profit": 246274.4,
+    "profit_factor": 3.481,
+    "win_rate": 78.84,
+    "max_dd": 3298.2,
+    "romad": 74.67,
+    "mcr": 94.44,
+    "profitable_months": 68,
+    "total_months": 72
+  },
+  "Raw_Portfolio_All_4_Lanes": {
+    "trades": 6495,
+    "net_profit": 1820284.0,
+    "profit_factor": 3.188,
+    "win_rate": 67.08,
+    "max_dd": 9045.2,
+    "romad": 201.24,
+    "mcr": 98.61,
+    "profitable_months": 71,
+    "total_months": 72
+  },
+  "Enhanced_TrendFilter_GHOST_A": {
+    "trades": 339,
+    "net_profit": 153711.6,
+    "profit_factor": 6.092,
+    "win_rate": 69.03,
+    "max_dd": 1688.2,
+    "romad": 91.05,
+    "mcr": 91.67,
+    "profitable_months": 66,
+    "total_months": 72
+  },
+  "Enhanced_TrendFilter_GHOST_B": {
+    "trades": 539,
+    "net_profit": 195762.6,
+    "profit_factor": 4.481,
+    "win_rate": 66.6,
+    "max_dd": 1501.8,
+    "romad": 130.35,
+    "mcr": 84.72,
+    "profitable_months": 61,
+    "total_months": 72
+  },
+  "Enhanced_TrendFilter_GHOST_C": {
+    "trades": 455,
+    "net_profit": 173704.0,
+    "profit_factor": 4.036,
+    "win_rate": 74.51,
+    "max_dd": 3881.6,
+    "romad": 44.75,
+    "mcr": 86.11,
+    "profitable_months": 62,
+    "total_months": 72
+  },
+  "Enhanced_TrendFilter_GHOST_D": {
+    "trades": 210,
+    "net_profit": 139905.0,
+    "profit_factor": 7.241,
+    "win_rate": 86.67,
+    "max_dd": 2087.2,
+    "romad": 67.03,
+    "mcr": 86.11,
+    "profitable_months": 62,
+    "total_months": 72
+  },
+  "Enhanced_Portfolio_Trend_KFD": {
+    "trades": 1543,
+    "net_profit": 663083.2,
+    "profit_factor": 4.993,
+    "win_rate": 72.2,
+    "max_dd": 4172.2,
+    "romad": 158.93,
+    "mcr": 94.44,
+    "profitable_months": 68,
+    "total_months": 72
+  },
+  "Best_Dynamic_Portfolio": {
+    "config": "Dynamic_SL1.5_TP5.0_Off0.15",
+    "metrics": {
+      "trades": 1461,
+      "net_profit": 249396.11,
+      "profit_factor": 1.777,
+      "win_rate": 55.51,
+      "max_dd": 25412.8,
+      "romad": 9.81,
+      "mcr": 70.83,
+      "profitable_months": 51,
+      "total_months": 72
+    }
+  },
+  "ASAR_Governed_Ghost_Portfolio": {
+    "trades": 394,
+    "net_profit": 175096.6,
+    "profit_factor": 5.059,
+    "win_rate": 73.35,
+    "max_dd": 2278.6,
+    "romad": 76.84,
+    "mcr": 79.17,
+    "profitable_months": 57,
+    "total_months": 72
+  },
+  "EURUSD_Ghost_Portfolio_Dynamic": {
+    "trades": 884,
+    "net_profit": 31040.31,
+    "profit_factor": 1.627,
+    "win_rate": 53.85,
+    "max_dd": 3859.67,
+    "romad": 8.04,
+    "mcr": 66.67,
+    "profitable_months": 48,
+    "total_months": 72
+  }
+}

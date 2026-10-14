@@ -1,0 +1,48 @@
+{
+  "study": "Quantum Titan Core B Multi-Asset Reverse Engineering",
+  "gold_champion": {
+    "label": "Quantum Titan Core B Gold H1 (LB:30, PB:0.5x, SL:2.5x, TP:3.5x, KFD:1.42)",
+    "total_trades": 72,
+    "net_profit": 28299.87,
+    "pf": 1.53,
+    "win_rate": 52.78,
+    "max_dd": 8890.04,
+    "romad": 3.18,
+    "mcr": 52.78,
+    "pos_months": 38,
+    "total_months": 72,
+    "params": {
+      "symbol": "XAUUSD",
+      "lookback": 30,
+      "pullback_atr": 0.5,
+      "sl_mult": 2.5,
+      "tp_mult": 3.5,
+      "kfd_thresh": 1.42
+    }
+  },
+  "eur_champion": {
+    "label": "EURUSD Core B",
+    "total_trades": 0,
+    "net_profit": 0.0,
+    "pf": 0.0,
+    "win_rate": 0.0,
+    "max_dd": 0.0,
+    "romad": 0.0,
+    "mcr": 0.0,
+    "pos_months": 0,
+    "total_months": 72
+  },
+  "dual_asset_portfolio": {
+    "label": "QUANTUM TITAN CLEAN QUANT: DUAL-ASSET PORTFOLIO (XAUUSD + EURUSD)",
+    "total_trades": 72,
+    "net_profit": 28299.87,
+    "pf": 1.53,
+    "win_rate": 52.78,
+    "max_dd": 8890.04,
+    "romad": 3.18,
+    "mcr": 52.78,
+    "pos_months": 38,
+    "total_months": 72
+  },
+  "runtime_seconds": 25.21
+}
