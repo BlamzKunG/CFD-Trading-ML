@@ -1,0 +1,234 @@
+{
+  "XAUUSD": {
+    "lanes": {
+      "Lane_0_D1_Conservative": {
+        "trades": 108,
+        "net_profit": 5567.6,
+        "profit_factor": 1.837,
+        "win_rate": 75.0,
+        "max_dd": 1456.8,
+        "romad": 3.82,
+        "mcr": 48.61,
+        "profitable_months": 35,
+        "total_months": 72
+      },
+      "Lane_1_D1_Asymmetric": {
+        "trades": 199,
+        "net_profit": 4620.3,
+        "profit_factor": 1.72,
+        "win_rate": 66.33,
+        "max_dd": 738.2,
+        "romad": 6.26,
+        "mcr": 56.94,
+        "profitable_months": 41,
+        "total_months": 72
+      },
+      "Lane_2_D1_Agile": {
+        "trades": 342,
+        "net_profit": 4094.5,
+        "profit_factor": 1.361,
+        "win_rate": 56.43,
+        "max_dd": 1122.1,
+        "romad": 3.65,
+        "mcr": 65.28,
+        "profitable_months": 47,
+        "total_months": 72
+      },
+      "Lane_3_H4_Asymmetric": {
+        "trades": 411,
+        "net_profit": 12216.8,
+        "profit_factor": 1.721,
+        "win_rate": 44.53,
+        "max_dd": 854.4,
+        "romad": 14.3,
+        "mcr": 66.67,
+        "profitable_months": 48,
+        "total_months": 72
+      },
+      "Lane_4_H1_Medium": {
+        "trades": 452,
+        "net_profit": 11992.9,
+        "profit_factor": 1.659,
+        "win_rate": 87.83,
+        "max_dd": 1965.5,
+        "romad": 6.1,
+        "mcr": 69.44,
+        "profitable_months": 50,
+        "total_months": 72
+      },
+      "Lane_5_H1_MicroRetest": {
+        "trades": 377,
+        "net_profit": 10786.5,
+        "profit_factor": 1.729,
+        "win_rate": 91.51,
+        "max_dd": 2747.4,
+        "romad": 3.93,
+        "mcr": 73.61,
+        "profitable_months": 53,
+        "total_months": 72
+      }
+    },
+    "portfolios": {
+      "Asymmetric_Trio_L1_L2_L3": {
+        "trades": 952,
+        "net_profit": 20931.6,
+        "profit_factor": 1.603,
+        "win_rate": 53.36,
+        "max_dd": 1145.5,
+        "romad": 18.27,
+        "mcr": 65.28,
+        "profitable_months": 47,
+        "total_months": 72
+      },
+      "Asymmetric_Duo_L1_L3": {
+        "trades": 610,
+        "net_profit": 16837.1,
+        "profit_factor": 1.721,
+        "win_rate": 51.64,
+        "max_dd": 764.6,
+        "romad": 22.02,
+        "mcr": 62.5,
+        "profitable_months": 45,
+        "total_months": 72
+      },
+      "High_Expectancy_Quad_L1_L3_L4_L5": {
+        "trades": 1439,
+        "net_profit": 39616.5,
+        "profit_factor": 1.703,
+        "win_rate": 73.45,
+        "max_dd": 3131.9,
+        "romad": 12.65,
+        "mcr": 75.0,
+        "profitable_months": 54,
+        "total_months": 72
+      },
+      "Multi_Horizon_Quintet_L0_L1_L3_L4_L5": {
+        "trades": 1547,
+        "net_profit": 45184.1,
+        "profit_factor": 1.717,
+        "win_rate": 73.56,
+        "max_dd": 2769.9,
+        "romad": 16.31,
+        "mcr": 75.0,
+        "profitable_months": 54,
+        "total_months": 72
+      }
+    }
+  },
+  "EURUSD": {
+    "lanes": {
+      "Lane_0_D1_Conservative": {
+        "trades": 43,
+        "net_profit": 223.4,
+        "profit_factor": 1.061,
+        "win_rate": 62.79,
+        "max_dd": 1211.8,
+        "romad": 0.18,
+        "mcr": 30.56,
+        "profitable_months": 22,
+        "total_months": 72
+      },
+      "Lane_1_D1_Asymmetric": {
+        "trades": 147,
+        "net_profit": 1003.3,
+        "profit_factor": 1.216,
+        "win_rate": 66.67,
+        "max_dd": 544.9,
+        "romad": 1.84,
+        "mcr": 48.61,
+        "profitable_months": 35,
+        "total_months": 72
+      },
+      "Lane_2_D1_Agile": {
+        "trades": 210,
+        "net_profit": 1558.4,
+        "profit_factor": 1.277,
+        "win_rate": 61.43,
+        "max_dd": 474.5,
+        "romad": 3.28,
+        "mcr": 58.33,
+        "profitable_months": 42,
+        "total_months": 72
+      },
+      "Lane_3_H4_Asymmetric": {
+        "trades": 180,
+        "net_profit": 36.4,
+        "profit_factor": 1.005,
+        "win_rate": 37.78,
+        "max_dd": 1329.9,
+        "romad": 0.03,
+        "mcr": 48.61,
+        "profitable_months": 35,
+        "total_months": 72
+      },
+      "Lane_4_H1_Medium": {
+        "trades": 107,
+        "net_profit": 616.7,
+        "profit_factor": 1.129,
+        "win_rate": 91.59,
+        "max_dd": 1241.5,
+        "romad": 0.5,
+        "mcr": 50.0,
+        "profitable_months": 36,
+        "total_months": 72
+      },
+      "Lane_5_H1_MicroRetest": {
+        "trades": 63,
+        "net_profit": 105.1,
+        "profit_factor": 1.035,
+        "win_rate": 95.24,
+        "max_dd": 1855.2,
+        "romad": 0.06,
+        "mcr": 33.33,
+        "profitable_months": 24,
+        "total_months": 72
+      }
+    },
+    "portfolios": {
+      "Asymmetric_Trio_L1_L2_L3": {
+        "trades": 537,
+        "net_profit": 2598.1,
+        "profit_factor": 1.146,
+        "win_rate": 54.93,
+        "max_dd": 1578.7,
+        "romad": 1.65,
+        "mcr": 51.39,
+        "profitable_months": 37,
+        "total_months": 72
+      },
+      "Asymmetric_Duo_L1_L3": {
+        "trades": 327,
+        "net_profit": 1039.7,
+        "profit_factor": 1.085,
+        "win_rate": 50.76,
+        "max_dd": 1702.1,
+        "romad": 0.61,
+        "mcr": 50.0,
+        "profitable_months": 36,
+        "total_months": 72
+      },
+      "High_Expectancy_Quad_L1_L3_L4_L5": {
+        "trades": 497,
+        "net_profit": 1761.5,
+        "profit_factor": 1.088,
+        "win_rate": 65.19,
+        "max_dd": 3555.6,
+        "romad": 0.5,
+        "mcr": 52.78,
+        "profitable_months": 38,
+        "total_months": 72
+      },
+      "Multi_Horizon_Quintet_L0_L1_L3_L4_L5": {
+        "trades": 540,
+        "net_profit": 1984.9,
+        "profit_factor": 1.084,
+        "win_rate": 65.0,
+        "max_dd": 3434.1,
+        "romad": 0.58,
+        "mcr": 54.17,
+        "profitable_months": 39,
+        "total_months": 72
+      }
+    }
+  }
+}
