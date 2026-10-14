@@ -1,0 +1,137 @@
+{
+  "Raw_OneShoot_TightTrail": {
+    "label": "Raw_OneShoot_TightTrail",
+    "trades": 8197,
+    "net_profit": 1896140.8,
+    "profit_factor": 3.8,
+    "win_rate": 83.49,
+    "max_dd": 2897.2,
+    "romad": 654.47,
+    "mcr": 100.0,
+    "profitable_months": 72,
+    "total_months": 72
+  },
+  "Fixed_SL5_TP10": {
+    "label": "Fixed_SL5_TP10",
+    "trades": 4771,
+    "net_profit": 47637.4,
+    "profit_factor": 1.03,
+    "win_rate": 34.04,
+    "max_dd": 50011.2,
+    "romad": 0.95,
+    "mcr": 52.78,
+    "profitable_months": 38,
+    "total_months": 72
+  },
+  "Fixed_SL5_TP15": {
+    "label": "Fixed_SL5_TP15",
+    "trades": 4041,
+    "net_profit": 107075.4,
+    "profit_factor": 1.072,
+    "win_rate": 26.35,
+    "max_dd": 26252.0,
+    "romad": 4.08,
+    "mcr": 54.17,
+    "profitable_months": 39,
+    "total_months": 72
+  },
+  "Fixed_SL5_TP20": {
+    "label": "Fixed_SL5_TP20",
+    "trades": 3515,
+    "net_profit": 102891.0,
+    "profit_factor": 1.074,
+    "win_rate": 21.19,
+    "max_dd": 49946.4,
+    "romad": 2.06,
+    "mcr": 43.06,
+    "profitable_months": 31,
+    "total_months": 72
+  },
+  "Fixed_SL5_TP25": {
+    "label": "Fixed_SL5_TP25",
+    "trades": 3134,
+    "net_profit": 75119.6,
+    "profit_factor": 1.058,
+    "win_rate": 17.49,
+    "max_dd": 66190.4,
+    "romad": 1.13,
+    "mcr": 51.39,
+    "profitable_months": 37,
+    "total_months": 72
+  },
+  "Enhanced_SL5_TP15_EMA200_KFD": {
+    "label": "Enhanced_SL5_TP15_EMA200_KFD",
+    "trades": 1157,
+    "net_profit": 118805.8,
+    "profit_factor": 1.294,
+    "win_rate": 30.16,
+    "max_dd": 13540.2,
+    "romad": 8.77,
+    "mcr": 58.33,
+    "profitable_months": 42,
+    "total_months": 72
+  },
+  "Enhanced_SL5_TP20_EMA200_KFD": {
+    "label": "Enhanced_SL5_TP20_EMA200_KFD",
+    "trades": 1086,
+    "net_profit": 141348.4,
+    "profit_factor": 1.348,
+    "win_rate": 25.23,
+    "max_dd": 13039.6,
+    "romad": 10.84,
+    "mcr": 63.89,
+    "profitable_months": 46,
+    "total_months": 72
+  },
+  "Enhanced_SL5_TP25_EMA200_KFD": {
+    "label": "Enhanced_SL5_TP25_EMA200_KFD",
+    "trades": 1012,
+    "net_profit": 156392.8,
+    "profit_factor": 1.395,
+    "win_rate": 21.84,
+    "max_dd": 19548.6,
+    "romad": 8.0,
+    "mcr": 62.5,
+    "profitable_months": 45,
+    "total_months": 72
+  },
+  "Best_Dynamic_OneShoot": {
+    "config": "Dynamic_Wing3_SL1.5_TP6.0",
+    "metrics": {
+      "label": "Dynamic_Wing3_SL1.5_TP6.0",
+      "trades": 791,
+      "net_profit": 186749.65,
+      "profit_factor": 1.484,
+      "win_rate": 27.94,
+      "max_dd": 22401.41,
+      "romad": 8.34,
+      "mcr": 72.22,
+      "profitable_months": 52,
+      "total_months": 72
+    }
+  },
+  "ASAR_Governed_OneShoot": {
+    "label": "ASAR_Governed_OneShoot",
+    "trades": 72,
+    "net_profit": 6456.8,
+    "profit_factor": 1.235,
+    "win_rate": 23.61,
+    "max_dd": 4505.4,
+    "romad": 1.43,
+    "mcr": 23.61,
+    "profitable_months": 17,
+    "total_months": 72
+  },
+  "EURUSD_OneShoot_Dynamic": {
+    "label": "EURUSD_OneShoot_Dynamic",
+    "trades": 139,
+    "net_profit": -3740.87,
+    "profit_factor": 0.802,
+    "win_rate": 29.5,
+    "max_dd": 5763.23,
+    "romad": -0.65,
+    "mcr": 41.67,
+    "profitable_months": 30,
+    "total_months": 72
+  }
+}

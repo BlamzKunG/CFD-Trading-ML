@@ -1,0 +1,38 @@
+{
+  "Quantum_Titan_CoreB": {
+    "label": "Quantum_Titan_CoreB",
+    "trades": 419,
+    "net_profit": 109330.17,
+    "profit_factor": 1.303,
+    "win_rate": 47.26,
+    "max_dd": 25457.73,
+    "romad": 4.29,
+    "mcr": 58.33,
+    "profitable_months": 42,
+    "total_months": 72
+  },
+  "Ghost_Scalper_Enhanced_Portfolio": {
+    "label": "Ghost_Enhanced",
+    "trades": 1543,
+    "net_profit": 663083.2,
+    "profit_factor": 4.993,
+    "win_rate": 72.2,
+    "max_dd": 3881.6,
+    "romad": 170.83,
+    "mcr": 94.44,
+    "profitable_months": 68,
+    "total_months": 72
+  },
+  "Titan_Ghost_Sovereign_Ensemble": {
+    "label": "Titan_Ghost_Sovereign_Ensemble",
+    "trades": 1962,
+    "net_profit": 772413.37,
+    "profit_factor": 2.466,
+    "win_rate": 66.87,
+    "max_dd": 15136.96,
+    "romad": 51.03,
+    "mcr": 84.72,
+    "profitable_months": 61,
+    "total_months": 72
+  }
+}
