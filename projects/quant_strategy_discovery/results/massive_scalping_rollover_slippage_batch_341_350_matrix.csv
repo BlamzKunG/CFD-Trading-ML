@@ -1,0 +1,11 @@
+strategy_id,strategy_name,annual_trades,net_profit,pf,win_rate,max_dd,romad,mcr,status
+S341,S291 Supertrend (24h Unrestricted),341.7,30590.19,1.44,39.07,1680.04,18.21,75.0,CHAMPION
+S342,S291 Supertrend + Rollover Freeze (Skip 21-23 UTC),339.7,29961.17,1.438,39.06,1659.43,18.06,75.0,CHAMPION
+S343,S296 Tactical Duo (24h Unrestricted),536.7,37579.25,1.244,34.81,4533.9,8.29,68.06,CHAMPION
+S344,S296 Tactical Duo + Rollover Freeze,532.2,36280.04,1.24,34.79,4533.9,8.0,66.67,CHAMPION
+S345,S296 Adverse Slippage Shock ($0.15/oz fill drag),531.7,29355.37,1.189,34.01,4626.9,6.34,62.5,CHAMPION
+S346,S296 Severe Slippage Shock ($0.30/oz fill drag),532.2,21521.26,1.134,33.32,6067.53,3.55,54.17,TACTICAL CANDIDATE
+S347,S296 Extreme Latency Shock ($0.45/oz fill drag),532.7,13177.71,1.08,32.54,10467.41,1.26,47.22,TACTICAL CANDIDATE
+S348,S296 Production Hardened Edition,532.2,36280.04,1.24,34.79,4533.9,8.0,66.67,CHAMPION
+S349,S296 Compounding Hardened Edition,532.2,91638.14,1.236,34.79,13601.69,6.74,65.28,CHAMPION
+S350,S296 Governed Kelly Hardened Edition,497.8,34702.11,1.22,34.72,3937.94,8.81,63.89,CHAMPION

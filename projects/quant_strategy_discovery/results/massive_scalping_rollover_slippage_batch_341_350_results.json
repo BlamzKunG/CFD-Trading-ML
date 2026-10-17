@@ -1,0 +1,126 @@
+{
+  "generated_at": "2026-10-17 01:06:52",
+  "total_runtime_s": 36.86,
+  "results": [
+    {
+      "strategy_id": "S341",
+      "strategy_name": "S291 Supertrend (24h Unrestricted)",
+      "annual_trades": 341.7,
+      "net_profit": 30590.19,
+      "pf": 1.44,
+      "win_rate": 39.07,
+      "max_dd": 1680.04,
+      "romad": 18.21,
+      "mcr": 75.0,
+      "status": "CHAMPION"
+    },
+    {
+      "strategy_id": "S342",
+      "strategy_name": "S291 Supertrend + Rollover Freeze (Skip 21-23 UTC)",
+      "annual_trades": 339.7,
+      "net_profit": 29961.17,
+      "pf": 1.438,
+      "win_rate": 39.06,
+      "max_dd": 1659.43,
+      "romad": 18.06,
+      "mcr": 75.0,
+      "status": "CHAMPION"
+    },
+    {
+      "strategy_id": "S343",
+      "strategy_name": "S296 Tactical Duo (24h Unrestricted)",
+      "annual_trades": 536.7,
+      "net_profit": 37579.25,
+      "pf": 1.244,
+      "win_rate": 34.81,
+      "max_dd": 4533.9,
+      "romad": 8.29,
+      "mcr": 68.06,
+      "status": "CHAMPION"
+    },
+    {
+      "strategy_id": "S344",
+      "strategy_name": "S296 Tactical Duo + Rollover Freeze",
+      "annual_trades": 532.2,
+      "net_profit": 36280.04,
+      "pf": 1.24,
+      "win_rate": 34.79,
+      "max_dd": 4533.9,
+      "romad": 8.0,
+      "mcr": 66.67,
+      "status": "CHAMPION"
+    },
+    {
+      "strategy_id": "S345",
+      "strategy_name": "S296 Adverse Slippage Shock ($0.15/oz fill drag)",
+      "annual_trades": 531.7,
+      "net_profit": 29355.37,
+      "pf": 1.189,
+      "win_rate": 34.01,
+      "max_dd": 4626.9,
+      "romad": 6.34,
+      "mcr": 62.5,
+      "status": "CHAMPION"
+    },
+    {
+      "strategy_id": "S346",
+      "strategy_name": "S296 Severe Slippage Shock ($0.30/oz fill drag)",
+      "annual_trades": 532.2,
+      "net_profit": 21521.26,
+      "pf": 1.134,
+      "win_rate": 33.32,
+      "max_dd": 6067.53,
+      "romad": 3.55,
+      "mcr": 54.17,
+      "status": "TACTICAL CANDIDATE"
+    },
+    {
+      "strategy_id": "S347",
+      "strategy_name": "S296 Extreme Latency Shock ($0.45/oz fill drag)",
+      "annual_trades": 532.7,
+      "net_profit": 13177.71,
+      "pf": 1.08,
+      "win_rate": 32.54,
+      "max_dd": 10467.41,
+      "romad": 1.26,
+      "mcr": 47.22,
+      "status": "TACTICAL CANDIDATE"
+    },
+    {
+      "strategy_id": "S348",
+      "strategy_name": "S296 Production Hardened Edition",
+      "annual_trades": 532.2,
+      "net_profit": 36280.04,
+      "pf": 1.24,
+      "win_rate": 34.79,
+      "max_dd": 4533.9,
+      "romad": 8.0,
+      "mcr": 66.67,
+      "status": "CHAMPION"
+    },
+    {
+      "annual_trades": 532.2,
+      "net_profit": 91638.14,
+      "pf": 1.236,
+      "win_rate": 34.79,
+      "max_dd": 13601.69,
+      "romad": 6.74,
+      "mcr": 65.28,
+      "strategy_id": "S349",
+      "strategy_name": "S296 Compounding Hardened Edition",
+      "status": "CHAMPION"
+    },
+    {
+      "annual_trades": 497.8,
+      "net_profit": 34702.11,
+      "pf": 1.22,
+      "win_rate": 34.72,
+      "max_dd": 3937.94,
+      "romad": 8.81,
+      "mcr": 63.89,
+      "strategy_id": "S350",
+      "strategy_name": "S296 Governed Kelly Hardened Edition",
+      "status": "CHAMPION"
+    }
+  ]
+}
