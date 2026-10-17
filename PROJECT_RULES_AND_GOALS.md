@@ -1,31 +1,33 @@
-# Project Constitution: Rule-Based CFD Quantitative Research & Logic Template Discovery (V3.0)
+# Project Constitution: Scalping Rule-Based CFD Quantitative Research & Logic Template Discovery (V6.0)
 
 **Repository:** `CFD-Trading-ML`  
-**Scope:** Advanced Rule-Based CFD Trading Strategy Discovery & Parameter Sweeping Engine  
-**Core Target:** Deterministic Strategy Logic Templates with Consistent Monthly Profitability ("กำไรทุกเดือน")  
+**Scope:** High-Frequency & Scalping Quantitative Strategy Discovery with Multi-Timeframe Matrix (M1, M5, M15) on Google Colab  
+**Primary Asset:** `XAUUSD` (Gold)  
+**Trade Volume Expectation:** ~300+ Trades/Year (ยืดหยุ่นได้ 250–800+ Trades/ปี เน้น Active Turnover ไม่ปล่อยให้เงินทุนแช่นิ่ง)  
 **Execution Mode:** Continuous Non-Stop Autonomous Execution Loop (ทำงานเรื่อยๆ ห้ามหยุดพักเด็ดขาด)  
-**Last Updated:** 2026-10-09  
+**Last Updated:** 2026-10-17  
 
 ---
 
 ## 1. วิสัยทัศน์และเป้าหมายหลักของโปรเจกต์ (Core Vision & Mandate)
 
-1. **ส่งมอบตรรกะที่แน่นอน ไม่สะเปะสะปะ (Deterministic Logic Templates for EAs):**
+1. **มุ่งเน้นสาย Scalping & High-Turnover Edge (Scalping Research Mandate):**
+   * เปลี่ยนทิศทางจากระบบ Safe / Swing สู่การวิจัยระบบ **Scalping** เพื่อจับจังหวะทำกำไรรายวันจากความผันผวนของราคาทองคำ
+   * ออกแบบตรรกะให้เก็บกำไรสั้น กระชับ คุมความเสี่ยงแน่นหนา และมีจำนวนไม้เทรดสม่ำเสมอ
+2. **สถาปัตยกรรมทดสอบแบบ Multi-Timeframe Matrix (Colab Parallelism):**
+   * **กฎเหล็ก Multi-TF:** ทุก 1 สมมติฐาน/กลยุทธ์ที่คิดค้นขึ้น **ต้องไม่ทดสอบแค่ Timeframe เดียว** แต่ต้องส่งไปทดสอบขนานกันบน **`M1`, `M5`, และ `M15`** พร้อมกันบน Google Colab เพื่อพิสูจน์ Cross-Timeframe Robustness
+3. **ส่งมอบตรรกะที่แน่นอน ไม่สะเปะสะปะ (Deterministic Logic Templates for EAs):**
    * ทุกกลยุทธ์ที่ผ่านเกณฑ์จะต้องถูกจัดทำเป็น **"แม่แบบตรรกะที่สมบูรณ์ 100%"** สำหรับสร้าง EA
-   * ต้องระบุชัดเจนทั้ง: สูตรเงื่อนไขการเข้า (Trigger), ตัวกรองทิศทาง (Filter), สูตรคำนวณ Stop Loss, สูตรคำนวณ Take Profit และโค้ด MQL5 สำเร็จรูปที่นำไปใช้ได้ทันทีโดยไม่มีความคลุมเครือ
-2. **เป้าหมายผลลัพธ์: "กำไรทุกเดือน" (Consistent Monthly Profitability):**
-   * เพิ่มเกณฑ์การประเมินผลแบบ **72-Month Heatmap Analysis (2020–2025)**
-   * เป้าหมาย: อัตราส่วนเดือนที่ทำกำไร **Monthly Consistency Ratio (MCR) $\ge 80\% - 90\%$**
-   * เส้นกำไร (Equity Curve) ต้องเรียบสม่ำเสมอ ลดความผันผวนของผลตอบแทนรายเดือน
-3. **ขอบเขตการคิดค้นที่ไม่จำกัด (Unlimited Strategy Scope):**
-   * **เสาหลักที่ 1 (Proprietary In-House):** ตรรกะเชิงปริมาณที่ออกแบบขึ้นมาใหม่เอง (เช่น Asymmetric Volatility Skew, Microstructure Range Compression, Liquidity Vacuums)
-   * **เสาหลักที่ 2 (Institutional & Quant Papers):** งานวิจัยและอัลกอริทึมจากสถาบันและเว็บไซต์ Quantitative ชั้นนำ
-   * **เสาหลักที่ 3 (Hybrid & Cross-Regime Ensemble):** การผสานกลยุทธ์ที่ทำกำไรต่างสภาวะตลาด (เช่น Trend ในช่วง NY + Mean Reversion ในช่วง Asian)
-4. **ความครอบคลุมของสินทรัพย์ (Multi-Asset Expansion):**
-   * ปัจจุบันรองรับข้อมูล M1 ความละเอียดสูง:
-     - ทองคำ `XAUUSD_M1.csv.gz` (2.11 ล้านแท่ง, 2020–2025)
-     - ค่าเงินหลัก `EURUSD_M1.csv.gz` (2020–2025)
-   * รองรับการขยายผลไปยังสินทรัพย์และ Timeframe อื่นๆ เพิ่มเติมตามไฟล์ใน DATA โฟลเดอร์
+   * ต้องระบุชัดเจนทั้ง: Trigger, Filter, Stop Loss, Take Profit และโค้ด MQL5 สำเร็จรูปที่นำไปใช้ได้ทันที
+4. **ความหลากหลายของตรรกะอย่างกว้างขวาง (Unlimited Strategy Scope):**
+   * กระจายการค้นคว้าครอบคลุมทุก Archetype ของสาย Scalping:
+     - Session Open & Liquidity Sweeps (London/NY Open, Asia Sweep, Judas Swings)
+     - Momentum & Volatility Breakout (Keltner/BB Squeeze, Volume Expansion)
+     - Fast Pullback & Continuation (EMA Ribbon, Supertrend Micro)
+     - Mean Reversion & Overbought/Oversold (RSI Extremes, Institutional VWAP Deviations)
+     - Order Flow & Microstructure Imbalance (FVG Retest, Candle Body/Range Spikes)
+5. **โฟกัสสินทรัพย์ XAUUSD เป็นหลัก:**
+   * โฟกัสทองคำ `XAUUSD` เป็นสนามทดสอบหลักตัวเดียวก่อน เนื่องจาก ATR กว้าง อัตราส่วน Friction ต่อผลตอบแทนต่ำที่สุด ชนะค่าสเปรดและคอมมิชชั่นได้ดีที่สุด
 
 ---
 
@@ -34,29 +36,38 @@
 1. **Strict Causality (ห้าม Lookahead เด็ดขาด):**
    * สัญญาณที่คอนเฟิร์มเมื่อปิดแท่ง $i$ ต้องเข้าออเดอร์ที่ราคาเปิดแท่งถัดไป $i+1$ เท่านั้น
    * การตรวจสอบ Stop Loss และ Take Profit ระหว่างแท่งต้องใช้หลักการ Worst-Case Check เสมอ
-2. **ต้นทุนการเทรดสถาบันสมจริง:**
-   * ทองคำ (XAUUSD): Spread $\ge \$0.25$ ($25.00/Lot) + Commission $\$6.00$/Lot + Slippage
-   * ค่าเงิน (EURUSD): Spread $\ge 0.5$ pips + Commission $\$6.00$/Lot
+2. **ต้นทุนการเทรดสถาบันสมจริง (Realistic Institutional Friction):**
+   * ทองคำ (XAUUSD): Spread $\ge \$0.25$ ($25.00/Lot) + Commission $\$6.00$/Lot + Slippage Buffer
    * ขนาดสัญญามาตรฐานในการเปรียบเทียบ: 0.10 Lot
+   * การ Scalp ต้องมี Take Profit เพียงพอที่จะครอบคลุมต้นทุน Friction รวม $0.31 ได้อย่างมั่นคง
 3. **การทดสอบความทนทาน (Stress Testing):**
    * ทดสอบสเปรด 2 เท่า ($0.50) เพื่อพิสูจน์ความทนทานต่อสเปรดถ่าง
    * ตรวจสอบผลตอบแทนแยกรายปี (2020–2025) และรายเดือน (72 เดือน)
    * Monte Carlo Permutation 1,000 รอบเพื่อหา Drawdown ที่ 95% และ 99% CI
+4. **การประเมินผลลัพธ์ (Performance Expectations):**
+   * คาดหวังการเทรด: ~300+ trades/ปี
+   * Profit Factor เป้าหมาย: $\ge 1.50$
+   * Monthly Consistency Ratio (MCR) เป้าหมาย: $\ge 70\% - 90\%$
 
 ---
 
-## 3. ระเบียบปฏิบัติการทำงานแบบไม่หยุดพัก (Mandatory Continuous Non-Stop Execution Loop)
+## 3. สถาปัตยกรรมการประมวลผลและการป้องกันฮาร์ดแวร์ (Hardware & Colab Protocol)
 
-1. **กฎเหล็ก: ทำงานเรื่อยๆ ห้ามหยุดพักเด็ดขาด (Non-Stop Autonomy):**
-   * AI จะต้อง **ไม่หยุดรอคำสั่งให้ทำงานต่ออย่างเด็ดขาด**
-   * เมื่อส่งรายงานผลของกลยุทธ์ใดกลยุทธ์หนึ่งเสร็จสิ้น พร้อมสำรองข้อมูลเรียบร้อยแล้ว **ต้องเริ่มคิดค้น เขียนโค้ด และสั่งรันกลยุทธ์ถัดไปในคิวทันทีโดยไม่ต้องรอให้ผู้ใช้สั่ง**
-2. **การประหยัด Token สูงสุด (Maximum Token Efficiency):**
-   * รันการคำนวณขนาดใหญ่แบบ Background Process ไม่วนลูปตรวจสอบคำสั่งซ้ำๆ
-3. **จังหวะเวลาการรายงาน:**
-   * ส่งรายงานสรุปผลทุกๆ 30 นาที หรือเมื่อเสร็จสิ้นแต่ละกลยุทธ์/Milestone
-4. **วงจรชีวิตการบริหาร Task (Task Management Lifecycle):**
-   * หลังส่งรายงาน ให้ตรวจเช็ค Task: หาก Task ใดจบแล้ว (`DONE`/`EXITED`) ให้สั่ง Kill ทันทีเพื่อคืน RAM
-   * หาก Task ใดกำลังคำนวณตามเป้าหมายปกติ ให้ปล่อยให้รันต่อไปอย่างอิสระ
-5. **การสำรองข้อมูลคู่ขนาน (Dual-Storage Redundancy):**
-   * GitHub Repository: Commit & Push สู่ `origin/main` เสมอ
-   * Phone Storage: สำเนาไฟล์ทั้งหมดลง `/mnt/sdcard/Download/EA/quant_strategy_discovery/` เสมอ
+1. **ห้ามรันการคำนวณหนักบนเครื่องมือถือเด็ดขาด:** ใช้เครื่องโทรศัพท์เป็น Client Controller, Code Generator, Documentation และ Local Backup เท่านั้น
+2. **Google Colab Cloud Execution:** การทำ Parameter Sweeps ขนาดใหญ่, Multi-Timeframe Sweeps (M1, M5, M15) และ Batch Run ต้องสั่งผ่าน Google Colab CLI (`colab`) เสมอ
+3. **Dedicated Parquet Cache & Resource Safety:** ใช้ไฟล์ Parquet ที่จัดเตรียมไว้ รันคำสั่งด้วย `nice -n 19`, คุม Single-thread และเรียก `gc.collect()` เสมอ
+
+---
+
+### 4. วงจรการทำงานต่อเนื่องแบบไม่หยุดพัก (Autonomous Continuous Loop)
+
+1. **Non-Stop Autonomous Mandate:** ระบบ/Agent ต้องทำงานต่อเนื่องแบบอัตโนมัติ ห้ามหยุดพักหรือรอคำสั่งจากผู้ใช้ระหว่างรอบ
+2. **Pre-Report Task Launch & Anti-Suspension Watchdog:** ก่อนจบเทิร์นหรือส่งรายงาน Milestone ต้องสั่งรัน Background Task ของกลยุทธ์ถัดไปไว้เสมอ (ห้ามปล่อยให้ระบบว่าง 0 tasks) หากต้องเตรียมงานให้ตั้ง Watchdog Timer (`schedule`) 120 วินาทีเพื่อปลุกขึ้นมาทำงานต่อทันที
+3. **Task Lifecycle Hygiene:** เมื่อ Task ใดทำงานเสร็จ (`DONE`/`EXITED`) ต้องรีบ Kill เพื่อคืนหน่วยความจำทันที
+
+---
+
+## 5. การสำรองข้อมูลคู่ขนาน (Dual-Storage Redundancy)
+
+1. **GitHub Repository:** Commit & Push สู่ `origin/main` ด้วยตัวตน `BlamzKunG` เสมอ
+2. **Local Storage:** สำเนาไฟล์และ Artifacts ทั้งหมดลง `/mnt/sdcard/Download/EA/quant_strategy_discovery/` เสมอ
