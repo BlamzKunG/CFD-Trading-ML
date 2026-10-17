@@ -408,6 +408,30 @@ graph TD
    - **MQL5 Source File:** [`Gold_M15_Sovereign_Quartet_Scalper_Master_EA.mq5`](file:///root/CFD-Trading-ML/projects/quant_strategy_discovery/ea/Gold_M15_Sovereign_Quartet_Scalper_Master_EA.mq5)
    - **Logic Documentation:** [`STRATEGY_300_SOVEREIGN_QUARTET_SCALPER_LOGIC_TEMPLATE.md`](file:///root/CFD-Trading-ML/projects/quant_strategy_discovery/docs/STRATEGY_300_SOVEREIGN_QUARTET_SCALPER_LOGIC_TEMPLATE.md)
 
+---
+
+## 9. Frontier Scalping Discovery: Volume Microstructure & Cumulative Delta (Batch 21 - Strategies S401–S410)
+
+By resampling 5-minute institutional tick volume across all 141,567 M15 bars, Batch 21 explored Volume Climax Ignitions, Cumulative Volume Delta (CVD) momentum alignment, and dynamic volume scaling.
+
+| Strategy ID & Architecture | Volume Microstructure Mechanism | Annual Trades | Net Profit ($) | Profit Factor | Win Rate (%) | Max Drawdown | RoMaD | MCR (%) | Empirical Status |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+| **S401: Baseline S296 Benchmark** | Price-Only Baseline (0.10 Lot) | **536.7 tr/yr** | **+$37,579.25** | **1.244** | 34.81% | **$4,533.90** | 8.29x | **68.06%** | 🏆 **Production Standard** |
+| **S402: Volume Climax Ignition** | Breakout Bar Volume > 1.3x EMA20 | 177.3 tr/yr | **+$10,682.96** | 1.296 | 39.10% | **$1,466.01** | 7.29x | 63.89% | ⚠️ Under-Turnover Penalty |
+| **S403: CVD Momentum Alignment** | 20-Bar Cumulative Delta Filter | 260.3 tr/yr | **+$27,119.80** | **1.525** 🏆 | **40.14%** 🏆 | **$1,057.67** 🏆 | **25.64x** 🏆 | **72.22%** 🏆 | 🏆 **ALL-TIME HIGHEST ROMAD (25.64x)** |
+| **S404: Climax Exhaustion Exit** | Exit on Volume > 3.5x EMA20 Wick | 341.7 tr/yr | **+$30,445.39** | **1.438** | 39.02% | **$1,680.04** | 18.12x | **73.61%** | 🏆 Robust Trailing Alternative |
+| **S405: Tactical Duo B + Volume Surge**| Both Engines Require Vol > 1.2x | 297.5 tr/yr | **+$14,358.60** | 1.164 | 34.40% | $3,937.33 | 3.65x | 56.94% | ⚠️ Over-Filtering Drag |
+| **S406: Tactical Duo B + CVD Filter** | Supertrend CVD + TTM Base | **455.3 tr/yr** | **+$34,108.86** | **1.251** | 34.66% | **$4,136.98** | 8.24x | 63.89% | 🏆 High-Turnover Delta Duo |
+| **S407: Solo TTM Volume Expansion** | Squeeze Breakout + Volume > 1.2x | 120.2 tr/yr | +$3,675.63 | 1.071 | 27.46% | $3,765.76 | 0.98x | 54.17% | Sub-Optimal Standalone |
+| **S408: Hybrid Volume Duo** | ST Base + TTM Volume Expansion | **461.8 tr/yr** | **+$34,265.83** | **1.283** 🏆 | **36.05%** | **$2,807.69** 🏆 | **12.20x** 🏆 | 62.50% | 🏆 **Sub-$2.9k Drawdown Duo** |
+| **S409: Dynamic Volume Sizing** | Scale Lot 0.8x to 1.3x by RelVol | **536.7 tr/yr** 🏆 | **+$40,011.88** 🏆 | **1.252** 🏆 | 34.81% | **$4,305.66** 🏆 | **9.29x** 🏆 | **65.28%** | 🏆 **BREAKS $40k NET ON 0.10 LOT BASE** |
+| **S410: Sovereign Volume-Confirmed**| ST Base + TTM Vol Expansion Apex | **461.8 tr/yr** | **+$34,265.83** | **1.283** | 36.05% | **$2,807.69** | **12.20x** | 62.50% | 🏆 **Apex Volume Duo EA Candidate** |
+
+### Key Empirical Law Discovered: The Cumulative Delta Symmetry Law
+1. **The CVD Alpha Multiplier:** Requiring 20-bar Cumulative Volume Delta ($CVD_{20} > 0$ for Longs, $< 0$ for Shorts) on Supertrend entries (Strategy S403) compresses Maximum Drawdown to an unprecedented **$1,057.67** over 6 years on Gold, driving Profit Factor to **1.525** and RoMaD to an all-time record **25.64x**!
+2. **The Volume Sizing Booster (S409):** Sizing positions dynamically between 0.8x and 1.3x based on relative tick volume unlocks **+$40,011.88 Net Profit** while keeping drawdown constrained at **$4,305.66** across 536.7 trades/year.
+
+
 
 
 

@@ -1,0 +1,11 @@
+strategy_id,strategy_name,total_trades,annual_trades,net_profit,pf,win_rate,max_dd,romad,mcr,status
+S401,Baseline S296 Benchmark (No Volume Filter),3220,536.7,37579.25,1.244,34.81,4533.9,8.29,68.06,CHAMPION
+S402,Solo Supertrend Volume Climax Ignition (>1.3x),1064,177.3,10682.96,1.296,39.1,1466.01,7.29,63.89,TACTICAL CANDIDATE
+S403,Solo Supertrend CVD Momentum Alignment,1562,260.3,27119.8,1.525,40.14,1057.67,25.64,72.22,TACTICAL CANDIDATE
+S404,Solo Supertrend Volume Climax Exhaustion Exit,2050,341.7,30445.39,1.438,39.02,1680.04,18.12,73.61,CHAMPION
+S405,Tactical Duo B + Institutional Volume Surge,1785,297.5,14358.6,1.164,34.4,3937.33,3.65,56.94,TACTICAL CANDIDATE
+S406,Tactical Duo B + CVD Delta Filter,2732,455.3,34108.86,1.251,34.66,4136.98,8.24,63.89,CHAMPION
+S407,Solo TTM Squeeze Volume Expansion (>1.2x),721,120.2,3675.63,1.071,27.46,3765.76,0.98,54.17,TACTICAL CANDIDATE
+S408,Hybrid Duo: ST Base + TTM Volume Expansion,2771,461.8,34265.83,1.283,36.05,2807.69,12.2,62.5,CHAMPION
+S409,Tactical Duo B Dynamic Volume Sizing (0.8x-1.3x),3220,536.7,40011.88,1.252,34.81,4305.66,9.29,65.28,CHAMPION
+S410,Sovereign Volume-Confirmed Master Scalper (Apex),2771,461.8,34265.83,1.283,36.05,2807.69,12.2,62.5,CHAMPION
