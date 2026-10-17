@@ -1,0 +1,11 @@
+strategy_id,strategy_name,total_trades,annual_trades,net_profit,pf,win_rate,max_dd,romad,mcr,status
+S391,Pure Trend Core (S291 Solo Supertrend),2050,341.7,30590.19,1.44,39.07,1680.04,18.21,75.0,CHAMPION
+S392,Tactical Duo B Standard (S296 Market),3220,536.7,37579.25,1.244,34.81,4533.9,8.29,68.06,CHAMPION
+S393,Tactical Duo B Hybrid (S389 Market+Limit),3027,504.5,38236.53,1.279,35.45,4148.83,9.22,68.06,CHAMPION
+S394,Master Scalper Quartet Standard (S300 Suite),7490,1248.3,45106.06,1.155,28.3,7451.17,6.05,65.28,CHAMPION
+S395,Master Scalper Quartet Governed ($1.2k Cap),6633,1105.5,31889.87,1.129,28.07,4921.67,6.48,59.72,TACTICAL CANDIDATE
+S396,Dynamic Compounding Hybrid Duo (1% Risk),3027,504.5,297770.61,1.324,35.45,86137.68,3.46,63.89,CHAMPION
+S397,Dynamic Compounding Master Quartet (1% Risk),7490,1248.3,483003.71,1.166,28.3,314609.27,1.54,63.89,CHAMPION
+S398,Risk-Parity Allocated Sovereign Portfolio,7297,1216.2,44958.53,1.173,28.4,6247.78,7.2,68.06,CHAMPION
+S399,"Conservative Prop-Firm Edition ($1,000 Cap)",2847,474.5,29380.8,1.234,35.3,3891.5,7.55,63.89,CHAMPION
+S400,Centennial Grand Champion Scalper Suite (Apex),7058,1176.3,40050.25,1.162,28.34,4942.12,8.1,66.67,CHAMPION
