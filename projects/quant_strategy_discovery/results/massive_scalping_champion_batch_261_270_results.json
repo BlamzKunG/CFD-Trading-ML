@@ -1,0 +1,116 @@
+{
+  "generated_at": "2026-10-17 00:17:11",
+  "total_runtime_s": 36.09,
+  "results": [
+    {
+      "strategy_id": "S261",
+      "strategy_name": "Supertrend (ATR 14, Mult 3.0, EMA 200, 24h)",
+      "annual_trades": 341.7,
+      "net_profit": 66005.57,
+      "pf": 1.08,
+      "win_rate": 34.29,
+      "max_dd": 61912.72,
+      "mcr": 50.0,
+      "status": "TACTICAL CANDIDATE"
+    },
+    {
+      "strategy_id": "S262",
+      "strategy_name": "Supertrend (ATR 14, Mult 3.0, EMA 200, London/NY)",
+      "annual_trades": 238.7,
+      "net_profit": 2158.41,
+      "pf": 1.004,
+      "win_rate": 34.64,
+      "max_dd": 55629.78,
+      "mcr": 50.0,
+      "status": "TACTICAL CANDIDATE"
+    },
+    {
+      "strategy_id": "S263",
+      "strategy_name": "Supertrend (ATR 10, Mult 2.5, EMA 200, 24h)",
+      "annual_trades": 429.3,
+      "net_profit": -49328.53,
+      "pf": 0.947,
+      "win_rate": 33.42,
+      "max_dd": 85234.53,
+      "mcr": 43.06,
+      "status": "REJECTED"
+    },
+    {
+      "strategy_id": "S264",
+      "strategy_name": "Supertrend (ATR 10, Mult 2.5, EMA 200, London/NY)",
+      "annual_trades": 281.7,
+      "net_profit": -68788.03,
+      "pf": 0.896,
+      "win_rate": 33.08,
+      "max_dd": 73505.59,
+      "mcr": 40.28,
+      "status": "REJECTED"
+    },
+    {
+      "strategy_id": "S265",
+      "strategy_name": "Supertrend (ATR 14, Mult 3.5, EMA 200, 24h)",
+      "annual_trades": 278.2,
+      "net_profit": 77068.31,
+      "pf": 1.099,
+      "win_rate": 33.43,
+      "max_dd": 73077.8,
+      "mcr": 45.83,
+      "status": "TACTICAL CANDIDATE"
+    },
+    {
+      "strategy_id": "S266",
+      "strategy_name": "Supertrend (ATR 14, Mult 3.5, EMA 100, 24h)",
+      "annual_trades": 346.5,
+      "net_profit": 63513.88,
+      "pf": 1.066,
+      "win_rate": 33.43,
+      "max_dd": 85964.1,
+      "mcr": 45.83,
+      "status": "TACTICAL CANDIDATE"
+    },
+    {
+      "strategy_id": "S267",
+      "strategy_name": "Supertrend (ATR 7,  Mult 2.2, EMA 200, London/NY)",
+      "annual_trades": 317.7,
+      "net_profit": -71175.64,
+      "pf": 0.898,
+      "win_rate": 33.26,
+      "max_dd": 78287.59,
+      "mcr": 43.06,
+      "status": "REJECTED"
+    },
+    {
+      "strategy_id": "S268",
+      "strategy_name": "Supertrend (ATR 14, Mult 3.0, EMA 300, 24h)",
+      "annual_trades": 326.7,
+      "net_profit": 42585.66,
+      "pf": 1.055,
+      "win_rate": 34.08,
+      "max_dd": 61560.32,
+      "mcr": 47.22,
+      "status": "TACTICAL CANDIDATE"
+    },
+    {
+      "strategy_id": "S269",
+      "strategy_name": "Supertrend (ATR 20, Mult 3.0, EMA 200, 24h)",
+      "annual_trades": 339.7,
+      "net_profit": 7105.24,
+      "pf": 1.009,
+      "win_rate": 33.51,
+      "max_dd": 94848.71,
+      "mcr": 45.83,
+      "status": "TACTICAL CANDIDATE"
+    },
+    {
+      "strategy_id": "S270",
+      "strategy_name": "Supertrend (ATR 14, Mult 2.8, EMA 200, 24h)",
+      "annual_trades": 369.7,
+      "net_profit": 21155.88,
+      "pf": 1.025,
+      "win_rate": 34.17,
+      "max_dd": 77738.1,
+      "mcr": 50.0,
+      "status": "TACTICAL CANDIDATE"
+    }
+  ]
+}
