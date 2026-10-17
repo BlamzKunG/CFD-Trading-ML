@@ -1,0 +1,11 @@
+strategy_id,strategy_name,annual_trades,net_profit,pf,win_rate,max_dd,romad,mcr,wfe_ratio,status
+S361,S291 Solo Supertrend WFE (Walk-Forward OOS 2022-2025),347.5,25026.37,1.507,39.64,1680.04,14.9,77.08,2.383,CHAMPION
+S362,S296 Tactical Duo B WFE (Walk-Forward OOS 2022-2025),543.8,29734.28,1.268,35.4,4533.9,6.56,70.83,2.265,CHAMPION
+S363,S300 Master Scalper Quartet WFE (Walk-Forward OOS 2022-2025),1340.8,38739.62,1.181,30.3,7309.91,5.3,66.67,2.126,CHAMPION
+S364,"S291 Parameter Plateau Robustness (Mult 2.6x, Retention 80.7%)",401.7,27395.13,1.365,39.46,1815.59,15.09,66.67,,CHAMPION
+S365,S296 Parameter Plateau Robustness (Min Squeeze 6 Bars),545.7,33232.58,1.207,34.36,4838.37,6.87,63.89,,CHAMPION
+S366,S296 Underwater Stress Audit (Max Consec Losses: 18),536.7,37579.25,1.244,34.81,4533.9,8.29,68.06,,CHAMPION
+S367,S291 Year-by-Year Consistency (Min Annual PF: 1.134),341.7,30590.19,1.382,39.14,1680.04,18.21,75.0,,CHAMPION
+S368,S296 Year-by-Year Consistency (Min Annual PF: 1.014),536.7,37579.26,1.212,34.81,4533.9,8.29,68.05,,CHAMPION
+S369,S300 Year-by-Year Consistency (Min Annual PF: 1.053),1308.3,51470.2,1.152,30.18,7309.91,7.04,65.28,,CHAMPION
+S370,S370 Walk-Forward Certified Sovereign Scalper (S296 Master),536.7,37579.25,1.244,34.81,4533.9,8.29,68.06,,CHAMPION

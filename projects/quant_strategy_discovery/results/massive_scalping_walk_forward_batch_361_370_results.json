@@ -1,0 +1,439 @@
+{
+  "generated_at": "2026-10-17 01:18:41",
+  "total_runtime_s": 28.92,
+  "results": [
+    {
+      "strategy_id": "S361",
+      "strategy_name": "S291 Solo Supertrend WFE (Walk-Forward OOS 2022-2025)",
+      "annual_trades": 347.5,
+      "net_profit": 25026.37,
+      "pf": 1.507,
+      "win_rate": 39.64,
+      "max_dd": 1680.04,
+      "romad": 14.9,
+      "mcr": 77.08,
+      "wfe_ratio": 2.383,
+      "status": "CHAMPION"
+    },
+    {
+      "strategy_id": "S362",
+      "strategy_name": "S296 Tactical Duo B WFE (Walk-Forward OOS 2022-2025)",
+      "annual_trades": 543.8,
+      "net_profit": 29734.28,
+      "pf": 1.268,
+      "win_rate": 35.4,
+      "max_dd": 4533.9,
+      "romad": 6.56,
+      "mcr": 70.83,
+      "wfe_ratio": 2.265,
+      "status": "CHAMPION"
+    },
+    {
+      "strategy_id": "S363",
+      "strategy_name": "S300 Master Scalper Quartet WFE (Walk-Forward OOS 2022-2025)",
+      "annual_trades": 1340.8,
+      "net_profit": 38739.62,
+      "pf": 1.181,
+      "win_rate": 30.3,
+      "max_dd": 7309.91,
+      "romad": 5.3,
+      "mcr": 66.67,
+      "wfe_ratio": 2.126,
+      "status": "CHAMPION"
+    },
+    {
+      "strategy_id": "S364",
+      "strategy_name": "S291 Parameter Plateau Robustness (Mult 2.6x, Retention 80.7%)",
+      "annual_trades": 401.7,
+      "net_profit": 27395.13,
+      "pf": 1.365,
+      "win_rate": 39.46,
+      "max_dd": 1815.59,
+      "romad": 15.09,
+      "mcr": 66.67,
+      "status": "CHAMPION"
+    },
+    {
+      "strategy_id": "S365",
+      "strategy_name": "S296 Parameter Plateau Robustness (Min Squeeze 6 Bars)",
+      "annual_trades": 545.7,
+      "net_profit": 33232.58,
+      "pf": 1.207,
+      "win_rate": 34.36,
+      "max_dd": 4838.37,
+      "romad": 6.87,
+      "mcr": 63.89,
+      "status": "CHAMPION"
+    },
+    {
+      "strategy_id": "S366",
+      "strategy_name": "S296 Underwater Stress Audit (Max Consec Losses: 18)",
+      "annual_trades": 536.7,
+      "net_profit": 37579.25,
+      "pf": 1.244,
+      "win_rate": 34.81,
+      "max_dd": 4533.9,
+      "romad": 8.29,
+      "mcr": 68.06,
+      "status": "CHAMPION"
+    },
+    {
+      "strategy_id": "S367",
+      "strategy_name": "S291 Year-by-Year Consistency (Min Annual PF: 1.134)",
+      "annual_trades": 341.7,
+      "net_profit": 30590.19,
+      "pf": 1.382,
+      "win_rate": 39.14,
+      "max_dd": 1680.04,
+      "romad": 18.21,
+      "mcr": 75.0,
+      "status": "CHAMPION"
+    },
+    {
+      "strategy_id": "S368",
+      "strategy_name": "S296 Year-by-Year Consistency (Min Annual PF: 1.014)",
+      "annual_trades": 536.7,
+      "net_profit": 37579.26,
+      "pf": 1.212,
+      "win_rate": 34.81,
+      "max_dd": 4533.9,
+      "romad": 8.29,
+      "mcr": 68.05,
+      "status": "CHAMPION"
+    },
+    {
+      "strategy_id": "S369",
+      "strategy_name": "S300 Year-by-Year Consistency (Min Annual PF: 1.053)",
+      "annual_trades": 1308.3,
+      "net_profit": 51470.2,
+      "pf": 1.152,
+      "win_rate": 30.18,
+      "max_dd": 7309.91,
+      "romad": 7.04,
+      "mcr": 65.28,
+      "status": "CHAMPION"
+    },
+    {
+      "strategy_id": "S370",
+      "strategy_name": "S370 Walk-Forward Certified Sovereign Scalper (S296 Master)",
+      "annual_trades": 536.7,
+      "net_profit": 37579.25,
+      "pf": 1.244,
+      "win_rate": 34.81,
+      "max_dd": 4533.9,
+      "romad": 8.29,
+      "mcr": 68.06,
+      "status": "CHAMPION"
+    }
+  ],
+  "walk_forward_windows": [
+    {
+      "is_years": [
+        2020,
+        2021
+      ],
+      "oos_year": 2022
+    },
+    {
+      "is_years": [
+        2021,
+        2022
+      ],
+      "oos_year": 2023
+    },
+    {
+      "is_years": [
+        2022,
+        2023
+      ],
+      "oos_year": 2024
+    },
+    {
+      "is_years": [
+        2023,
+        2024
+      ],
+      "oos_year": 2025
+    }
+  ],
+  "year_by_year": {
+    "S291": {
+      "2020": {
+        "trades": 310,
+        "annual_trades": 310.0,
+        "net_profit": 4346.56,
+        "pf": 1.392,
+        "win_rate": 39.35,
+        "max_dd": 1436.06,
+        "romad": 3.03,
+        "mcr": 75.0
+      },
+      "2021": {
+        "trades": 350,
+        "annual_trades": 350.0,
+        "net_profit": 1217.26,
+        "pf": 1.134,
+        "win_rate": 36.57,
+        "max_dd": 1278.75,
+        "romad": 0.95,
+        "mcr": 66.67
+      },
+      "2022": {
+        "trades": 350,
+        "annual_trades": 350.0,
+        "net_profit": 1335.76,
+        "pf": 1.134,
+        "win_rate": 40.29,
+        "max_dd": 1117.51,
+        "romad": 1.2,
+        "mcr": 66.67
+      },
+      "2023": {
+        "trades": 347,
+        "annual_trades": 347.0,
+        "net_profit": 3751.94,
+        "pf": 1.457,
+        "win_rate": 36.31,
+        "max_dd": 1128.54,
+        "romad": 3.32,
+        "mcr": 66.67
+      },
+      "2024": {
+        "trades": 366,
+        "annual_trades": 366.0,
+        "net_profit": 4044.05,
+        "pf": 1.323,
+        "win_rate": 37.98,
+        "max_dd": 1266.78,
+        "romad": 3.19,
+        "mcr": 83.33
+      },
+      "2025": {
+        "trades": 327,
+        "annual_trades": 327.0,
+        "net_profit": 15894.62,
+        "pf": 1.851,
+        "win_rate": 44.34,
+        "max_dd": 1680.04,
+        "romad": 9.46,
+        "mcr": 91.67
+      }
+    },
+    "S296": {
+      "2020": {
+        "trades": 501,
+        "annual_trades": 501.0,
+        "net_profit": 7569.9,
+        "pf": 1.328,
+        "win_rate": 35.53,
+        "max_dd": 1776.44,
+        "romad": 4.26,
+        "mcr": 75.0
+      },
+      "2021": {
+        "trades": 544,
+        "annual_trades": 544.0,
+        "net_profit": 275.08,
+        "pf": 1.014,
+        "win_rate": 31.8,
+        "max_dd": 2790.65,
+        "romad": 0.1,
+        "mcr": 50.0
+      },
+      "2022": {
+        "trades": 565,
+        "annual_trades": 565.0,
+        "net_profit": 3602.17,
+        "pf": 1.168,
+        "win_rate": 35.58,
+        "max_dd": 1633.05,
+        "romad": 2.21,
+        "mcr": 66.67
+      },
+      "2023": {
+        "trades": 514,
+        "annual_trades": 514.0,
+        "net_profit": 3681.13,
+        "pf": 1.219,
+        "win_rate": 33.46,
+        "max_dd": 2625.62,
+        "romad": 1.4,
+        "mcr": 58.33
+      },
+      "2024": {
+        "trades": 556,
+        "annual_trades": 556.0,
+        "net_profit": 3573.57,
+        "pf": 1.137,
+        "win_rate": 33.99,
+        "max_dd": 2867.48,
+        "romad": 1.25,
+        "mcr": 58.33
+      },
+      "2025": {
+        "trades": 540,
+        "annual_trades": 540.0,
+        "net_profit": 18877.41,
+        "pf": 1.403,
+        "win_rate": 38.52,
+        "max_dd": 4533.9,
+        "romad": 4.16,
+        "mcr": 100.0
+      }
+    },
+    "S300": {
+      "2020": {
+        "trades": 1259,
+        "annual_trades": 1259.0,
+        "net_profit": 10377.71,
+        "pf": 1.235,
+        "win_rate": 31.37,
+        "max_dd": 2008.34,
+        "romad": 5.17,
+        "mcr": 66.67
+      },
+      "2021": {
+        "trades": 1228,
+        "annual_trades": 1228.0,
+        "net_profit": 2352.87,
+        "pf": 1.068,
+        "win_rate": 28.66,
+        "max_dd": 3285.94,
+        "romad": 0.72,
+        "mcr": 58.33
+      },
+      "2022": {
+        "trades": 1325,
+        "annual_trades": 1325.0,
+        "net_profit": 4277.56,
+        "pf": 1.108,
+        "win_rate": 30.34,
+        "max_dd": 2498.95,
+        "romad": 1.71,
+        "mcr": 75.0
+      },
+      "2023": {
+        "trades": 1283,
+        "annual_trades": 1283.0,
+        "net_profit": 5055.49,
+        "pf": 1.147,
+        "win_rate": 28.76,
+        "max_dd": 2296.5,
+        "romad": 2.2,
+        "mcr": 58.33
+      },
+      "2024": {
+        "trades": 1349,
+        "annual_trades": 1349.0,
+        "net_profit": 2687.41,
+        "pf": 1.053,
+        "win_rate": 29.36,
+        "max_dd": 3940.3,
+        "romad": 0.68,
+        "mcr": 66.67
+      },
+      "2025": {
+        "trades": 1406,
+        "annual_trades": 1406.0,
+        "net_profit": 26719.16,
+        "pf": 1.299,
+        "win_rate": 32.57,
+        "max_dd": 7309.91,
+        "romad": 3.66,
+        "mcr": 66.67
+      }
+    }
+  },
+  "parameter_plateau_st": [
+    {
+      "trades": 3025,
+      "annual_trades": 504.2,
+      "net_profit": 24699.44,
+      "pf": 1.306,
+      "win_rate": 39.67,
+      "max_dd": 2951.11,
+      "romad": 8.37,
+      "mcr": 73.61,
+      "multiplier": 2.2
+    },
+    {
+      "trades": 2410,
+      "annual_trades": 401.7,
+      "net_profit": 27395.13,
+      "pf": 1.365,
+      "win_rate": 39.46,
+      "max_dd": 1815.59,
+      "romad": 15.09,
+      "mcr": 66.67,
+      "multiplier": 2.6
+    },
+    {
+      "trades": 2050,
+      "annual_trades": 341.7,
+      "net_profit": 30590.19,
+      "pf": 1.44,
+      "win_rate": 39.07,
+      "max_dd": 1680.04,
+      "romad": 18.21,
+      "mcr": 75.0,
+      "multiplier": 3.0
+    },
+    {
+      "trades": 1728,
+      "annual_trades": 288.0,
+      "net_profit": 27138.32,
+      "pf": 1.41,
+      "win_rate": 37.73,
+      "max_dd": 2001.1,
+      "romad": 13.56,
+      "mcr": 65.28,
+      "multiplier": 3.4
+    },
+    {
+      "trades": 1522,
+      "annual_trades": 253.7,
+      "net_profit": 27036.07,
+      "pf": 1.421,
+      "win_rate": 37.65,
+      "max_dd": 2174.82,
+      "romad": 12.43,
+      "mcr": 65.28,
+      "multiplier": 3.8
+    }
+  ],
+  "parameter_plateau_ttm": [
+    {
+      "trades": 3274,
+      "annual_trades": 545.7,
+      "net_profit": 33232.58,
+      "pf": 1.207,
+      "win_rate": 34.36,
+      "max_dd": 4838.37,
+      "romad": 6.87,
+      "mcr": 63.89,
+      "min_squeeze": 6
+    },
+    {
+      "trades": 3220,
+      "annual_trades": 536.7,
+      "net_profit": 37579.25,
+      "pf": 1.244,
+      "win_rate": 34.81,
+      "max_dd": 4533.9,
+      "romad": 8.29,
+      "mcr": 68.06,
+      "min_squeeze": 8
+    },
+    {
+      "trades": 3157,
+      "annual_trades": 526.2,
+      "net_profit": 37210.28,
+      "pf": 1.251,
+      "win_rate": 35.0,
+      "max_dd": 4329.73,
+      "romad": 8.59,
+      "mcr": 69.44,
+      "min_squeeze": 10
+    }
+  ]
+}
