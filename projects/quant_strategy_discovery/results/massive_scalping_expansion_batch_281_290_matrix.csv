@@ -1,0 +1,11 @@
+total_trades,annual_trades,net_profit,pf,win_rate,max_dd,romad,mcr,strategy_id,strategy_name,status
+2375,395.8,-135081.99,0.798,27.66,144842.53,-0.93,29.17,S281,M5 Supertrend Scalper (Session + ATR >= $1.80),REJECTED
+4693,782.2,-105636.63,0.905,33.99,131367.39,-0.8,29.17,S282,M5 Fast RSI Dip (Session + ATR >= $1.80),REJECTED
+525,87.5,-51647.36,0.575,24.76,53410.02,-0.97,27.14,S283,M5 Volume Spike Scalper (Vol > 2x + ATR >= $1.80),REJECTED
+2241,373.5,-173506.75,0.722,26.91,177644.9,-0.98,20.83,S284,"M15 Supertrend Fast (ATR 12, Mult 2.8, EMA 150)",REJECTED
+5308,884.7,-417479.64,0.731,26.22,435287.78,-0.96,11.11,S285,M15 Donchian Pulse Scalper (20-bar Ratchet),REJECTED
+4303,717.2,-319024.52,0.735,28.07,316329.02,-1.01,15.28,S286,M15 EMA 9/21 Cross Scalper (Ratchet Trailing),REJECTED
+7049,1174.8,-184924.33,0.891,33.28,203015.18,-0.91,27.78,S287,M15 Fast RSI Snapshot Scalper (3.0:1.2 RR),REJECTED
+9290,1548.3,-358431.09,0.845,31.74,365789.88,-0.98,11.11,S288,M15 Tactical Duo (Fast Supertrend + Fast RSI),REJECTED
+14598,2433.0,-775910.73,0.799,29.74,793234.16,-0.98,6.94,S289,M15 Tri-Force Scalper (Supertrend + RSI + Donchian),REJECTED
+18901,3150.2,-1094935.25,0.784,29.36,1095151.94,-1.0,8.33,S290,Mega-Scalper Quadrant Ensemble (Supertrend+RSI+Donch+EMA),REJECTED

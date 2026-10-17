@@ -208,30 +208,34 @@ All complete sweep CSV databases, JSON champions, Python backtesting engines, an
 
 ---
 
-## 7. High-Frequency Scalping Frontier (Multi-Timeframe Matrix M1 / M5 / M15 - Strategies S201 – S270)
+## 7. High-Frequency Scalping Frontier (Multi-Timeframe Matrix M1 / M5 / M15 - Strategies S201 – S300)
 
-Under the V6.0 Scalping Mandate, research pivoted towards high-turnover execution (**target ~300+ trades/year**) evaluated across a strict **Multi-Timeframe Matrix (`M1`, `M5`, `M15`)** with full institutional frictions ($0.25 spread + $6.00/lot commission). Over 70 strategy variants across 7 batches were audited.
+Under the V6.0 Scalping Mandate, research pivoted towards high-turnover execution (**target ~300+ trades/year**) evaluated across a strict **Multi-Timeframe Matrix (`M1`, `M5`, `M15`)** with full institutional frictions ($0.25 spread + $6.00/lot commission). Over 100 strategy variants across 10 batches were audited.
 
-### Scalping Leaderboard (Batches S201 – S270)
+### Scalping Leaderboard & Production Suites (Batches S201 – S300)
 
-| Strategy ID & Architecture | Primary Asset & TF | Annual Trades | Net Profit (0.10 Lot) | Profit Factor (PF) | Win Rate (%) | Max Drawdown | Status & Production Role |
-| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
-| **S259: Tactical Duo Scalper (Supertrend + RSI Dip)** | **XAUUSD M15** | **414.0 tr/yr** 🏆 | **+$70,918.73** 🏆 | **1.078** 🏆 | 35.39% | $63,450.64 | 🏆 **PRODUCTION SCALPING MASTER EA** (`Gold_M15_Tactical_Duo_Scalper_Master_EA.mq5`) |
-| **S265: Supertrend Ratchet Alpha (ATR 14, Mult 3.5)** | **XAUUSD M15** | **278.2 tr/yr** | **+$77,068.31** 🏆 | **1.099** 🏆 | 33.43% | $73,077.80 | 🏆 **Highest Net Scalping Engine** |
-| **S261: Supertrend Ratchet Fast (ATR 14, Mult 3.0)** | **XAUUSD M15** | **341.7 tr/yr** 🏆 | **+$66,005.57** 🏆 | **1.080** 🏆 | 34.29% | $61,912.72 | 🏆 **High-Turnover Scalper Core** |
-| **S252: Dual Trend Scalper (Supertrend + ZL-MACD)** | **XAUUSD M15** | **1,066.7 tr/yr** ⚡ | **+$87,909.34** 🏆 | **1.031** | 33.31% | $114,426.25 | Ultra-High-Frequency Momentum Ensemble |
-| **S266: Supertrend Fast EMA (EMA 100 Filter)** | **XAUUSD M15** | **346.5 tr/yr** 🏆 | **+$63,513.88** 🏆 | **1.066** | 33.43% | $85,964.10 | Active Scalper Candidate |
-| **S221: Fast RSI Snapshot Scalper (Oversold Dip)** | **XAUUSD M15** | 72.3 tr/yr | **+$2,458.11** | **1.048** | 38.07% | $4,582.10 | Standalone Low-DD Dip Scalper (PF 1.048) |
-| **S245: FVG Retest Volatility Scalper (ATR $\ge \$1.80$)**| **XAUUSD M5** | 467.5 tr/yr | -$12,850.10 | 0.974 | 32.10% | $42,100.50 | Volatility Gated Micro-Scalper |
-| **S237: Bollinger Bands Squeeze Expansion Scalper** | **XAUUSD M15** | 210.3 tr/yr | -$15,240.20 | 0.960 | 31.80% | $38,500.00 | Post-Squeeze Breakout Scalper |
-| **S233: Asian High/Low Liquidity Sweep Scalper** | **XAUUSD M5** | **339.7 tr/yr** 🏆 | -$18,450.30 | 0.950 | 36.40% | $35,200.00 | High-Frequency Liquidity Hunter |
-| **S201–S210: Unconstrained Micro Scalpers on M1** | **XAUUSD M1** | 5,000–24,000/yr | -$150k to -$750k | 0.20–0.60 | 25–40% | Severe | ❌ **DECISIVELY REJECTED (Friction Choke Law)** |
-| **S211–S220: Early Breakeven Stop Variants** | **XAUUSD M5/M15** | 300–600/yr | -$40k to -$90k | 0.45–0.70 | 56.00% | Severe | ❌ **DECISIVELY REJECTED (The Breakeven Trap)** |
+| Strategy ID & Architecture | Primary Asset & TF | Annual Trades | Net Profit (0.10 Lot) | Profit Factor (PF) | Win Rate (%) | Max Drawdown | RoMaD | MCR (%) | Status & Production Role |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+| **S291: Supertrend Trailing Core Engine** | **XAUUSD M15** | **341.7 tr/yr** 🏆 | **+$30,590.19** 🏆 | **1.440** 🏆 | **39.07%** | **$1,680.04** 🏆 | **18.21x** 🏆 | **75.00%** 🏆 | 🏆 **TIER 1 SCALPING CORE CHAMPION** |
+| **S296: Tactical Duo B (Supertrend + TTM Squeeze)** | **XAUUSD M15** | **536.7 tr/yr** 🏆 | **+$37,579.25** 🏆 | **1.244** 🏆 | **34.81%** | **$4,533.90** | **8.29x** | **68.06%** | 🏆 **PRODUCTION HIGH-FREQUENCY DUO EA** (`Gold_M15_Tactical_Duo_Squeeze_Scalper_Master_EA.mq5`) |
+| **S295: Tactical Duo A (Supertrend + ZL-MACD)** | **XAUUSD M15** | **723.8 tr/yr** 🏆 | **+$39,263.82** 🏆 | **1.193** 🏆 | 29.56% | $5,161.43 | 7.61x | **69.44%** | 🏆 **Active Swing Scalper Duo** |
+| **S298: Dynamic Trinity (ST + ZL + TTM Squeeze)** | **XAUUSD M15** | **918.8 tr/yr** ⚡ | **+$46,252.89** 🏆 | **1.161** 🏆 | 29.09% | $7,912.11 | 5.85x | 63.89% | Ultra-High-Frequency Multi-Engine Suite |
+| **S300: Master Scalper Balanced Suite** | **XAUUSD M15** | **1,248.3 tr/yr** ⚡⚡ | **+$45,106.06** 🏆 | **1.155** 🏆 | 28.30% | $7,451.17 | 6.05x | **65.28%** | 🏆 **Master Scalper Balanced Suite (4 Engines)** |
+| **S299: Sovereign Quartet (ST + ZL + TTM + FVG)** | **XAUUSD M15** | **1,248.3 tr/yr** ⚡⚡ | **+$51,959.03** 🏆 | **1.127** | 28.30% | $10,314.45 | 5.04x | 61.11% | Maximum Capital Turnover Quartet |
+| **S259: Tactical Duo (Supertrend + RSI Dip)** | **XAUUSD M15** | **414.0 tr/yr** 🏆 | **+$70,918.73** 🏆 | **1.078** | 35.39% | $63,450.64 | 1.12x | 52.78% | Tactical Dip Scalper EA (`Gold_M15_Tactical_Duo_Scalper_Master_EA.mq5`) |
+| **S293: Solo TTM Squeeze Breakout 3R** | **XAUUSD M15** | 195.0 tr/yr | **+$6,989.06** | **1.083** | 27.35% | $4,779.26 | 1.46x | 52.78% | Volatility Compression Breakout Engine |
+| **S292: Solo Zero-Lag MACD 4R** | **XAUUSD M15** | **382.2 tr/yr** 🏆 | **+$8,673.63** | **1.065** | 21.06% | $6,197.11 | 1.40x | 56.94% | High-Momentum Wave Inflection Engine |
+| **S294: Solo FVG Retest Mitigation 3R** | **XAUUSD M15** | **329.5 tr/yr** 🏆 | **+$5,706.15** | **1.047** | 26.10% | $6,210.33 | 0.92x | 50.70% | Orderflow Imbalance Retest Engine |
+| **S281–S290: Gated M5 Session Scalpers & Fast Cuts**| **XAUUSD M5/M15** | 300–1,500/yr | -$50k to -$400k | 0.57–0.90 | 24–33% | Severe | < 0 | < 30% | ❌ **REJECTED (Noise Floor Choke)** |
+| **S271–S280: Multi-Timeframe M15/M5 Pullback Models**| **XAUUSD M5** | 850–2,600/yr | -$250k to -$860k | 0.67–0.83 | 28–31% | Severe | < 0 | < 20% | ❌ **REJECTED (Sub-ATR Friction Trap)** |
+| **S201–S210: Unconstrained Micro Scalpers on M1** | **XAUUSD M1** | 5,000–24,000/yr | -$150k to -$750k | 0.20–0.60 | 25–40% | Severe | < 0 | < 10% | ❌ **REJECTED (M1 Friction Choke Law)** |
+| **S211–S220: Early Breakeven Stop Variants** | **XAUUSD M5/M15** | 300–600/yr | -$40k to -$90k | 0.45–0.70 | 56.00% | Severe | < 0 | < 25% | ❌ **REJECTED (The Breakeven Trap)** |
 
 ### Core Empirical Laws Discovered in Scalping
-1. **The M1 Micro-Friction Choke Law:** On M1, unconstrained signal triggers fire thousands of times per year. Fixed round-turn friction ($0.25 spread + $0.60 commission = $31 per 0.10 lot round-turn) represents 25%–40% of the entire M1 bar range ($0.80–$1.50). Scalping M1 without aggressive volatility gates is mathematically terminal.
+1. **The M1 Micro-Friction Choke Law:** On M1, unconstrained signal triggers fire thousands of times per year. Fixed round-turn friction ($0.25 spread + $0.60 commission = $31 per 0.10 lot round-turn) represents 25%–40% of the entire M1 bar range ($0.80–$1.50). Scalping M1 without multi-dollar range expansion is mathematically terminal.
 2. **The Breakeven Trap in Scalping:** Moving Stop Loss to Breakeven (+0.10) after +1.0 ATR gain increased win rate to 56% but cratered Profit Factor to 0.50. Intraday Gold swings constantly retest entry levels; scratch exits create a net financial loss of -$0.75 per trade after commissions, accumulating thousands of friction losses.
-3. **Dynamic Volatility Ratchet vs. Fixed RR:** Fixed take-profits (e.g. 1.5R–2.0R) cut winners short on Gold and fail to overcome the spread burden. A dynamic ratchet trailing stop (Supertrend ATR 3.0–3.5) allows winners to run into massive multi-dollar fat tails ($80–$150/trade) while cutting losses at $25–$35, unlocking +$70k+ net expectancy.
-4. **The Duo Synergy Law:** Combining a trend-following dynamic ratchet engine (Supertrend) with an active mean-reversion dip engine (Fast RSI Snapshot) unlocks **414 trades/year** with **+$70,918.73 net profit**, satisfying both active capital turnover and sustained statistical edge.
+3. **Dynamic Volatility Ratchet vs. Fixed RR:** Fixed take-profits (e.g. 1.5R–2.0R) cut winners short on Gold and fail to overcome the spread burden. A dynamic ratchet trailing stop (Supertrend ATR 3.0–3.5) allows winners to run into massive multi-dollar fat tails ($80–$150/trade) while cutting losses at $25–$35, unlocking +$30k+ net expectancy with a low $1,680 drawdown.
+4. **The High-Frequency Ensemble Multiplier Law (Batch 10 Breakthrough):** To achieve high trade turnover (500–1,200+ trades/year) without falling into the M1/M5 micro-noise trap, combine multiple orthogonal M15 engines (Supertrend Ratchet + TTM Squeeze Breakout + Zero-Lag MACD + FVG Retest). Strategy 296 (Tactical Duo B) unlocks **536.7 trades/year** with **PF 1.244**, **+$37,579.25 net profit**, and **68.06% MCR**, while Strategy 300 delivers **1,248 trades/year** with **+$45,106.06 net profit**!
+
 
 

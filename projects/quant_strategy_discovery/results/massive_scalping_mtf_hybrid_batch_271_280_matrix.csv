@@ -1,0 +1,11 @@
+total_trades,annual_trades,net_profit,pf,win_rate,max_dd,romad,mcr,strategy_id,strategy_name,status
+9404,1567.3,-480640.55,0.686,29.25,488809.2,-0.98,8.33,S271,M15 Supertrend + M5 Fast RSI Dip (Ratchet Trailing),REJECTED
+9704,1617.3,-259306.57,0.831,28.53,270224.66,-0.96,18.06,S272,M15 Supertrend + M5 Fast RSI Dip (Asymmetric 3.5:1.2 RR),REJECTED
+10072,1678.7,-434592.49,0.73,31.55,451368.25,-0.96,11.11,S273,M15 Supertrend + M5 Stochastic %K Pop (Ratchet Trailing),REJECTED
+5124,854.0,-253586.19,0.697,28.71,260459.77,-0.97,11.11,S274,M15 Supertrend + M5 BB Dip Bounce (Ratchet Trailing),REJECTED
+15763,2627.2,-863093.4,0.678,29.43,866316.9,-1.0,1.39,S275,M15 Supertrend + M5 FVG Retest (Ratchet Trailing),REJECTED
+6341,1056.8,-446093.95,0.573,24.22,452316.12,-0.99,4.17,S276,M15 Supertrend + M5 Volume Force (Ratchet Trailing),REJECTED
+5907,984.5,-296824.36,0.685,28.27,301304.21,-0.99,11.11,S277,M15 Supertrend + M5 EMA 9/21 Cross (Ratchet Trailing),REJECTED
+3114,519.0,-130820.74,0.77,26.53,145169.16,-0.9,22.22,S278,M15 Supertrend + M5 Supertrend Ratchet Scalper,REJECTED
+12821,2136.8,-730061.26,0.709,28.57,735432.55,-0.99,8.33,S279,Multi-TF Tactical Duo: M15 Supertrend + M5 Fast RSI,REJECTED
+28584,4764.0,-1593154.66,0.693,29.04,1598525.95,-1.0,1.39,S280,Multi-TF Sovereign Scalper: M15 Core + M5 RSI + M5 FVG,REJECTED
