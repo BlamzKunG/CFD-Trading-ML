@@ -1,0 +1,11 @@
+strategy_id,strategy_name,total_trades,annual_trades,net_profit,pf,win_rate,max_dd,romad,mcr,status
+S411,Solo Z-Score Extreme Reversion (|Z| >= 2.5),2704,450.7,-18960.8,0.798,39.05,21535.77,-0.88,31.94,REJECTED
+S412,High-Frequency Z-Score Reversion (|Z| >= 2.0),4176,696.0,-19393.18,0.855,42.29,22761.95,-0.85,25.0,REJECTED
+S413,Asian Session Z-Score Reversion (22-07 UTC),1169,194.8,-5012.84,0.853,41.23,6304.35,-0.8,29.17,REJECTED
+S414,Trend-Aligned Connors RSI-2 Pullback Scalper,6439,1073.2,-26415.97,0.741,56.44,27784.67,-0.95,12.5,REJECTED
+S415,Aggressive Connors RSI-2 Extremes (<=5 / >=95),3256,542.7,-12901.66,0.76,56.14,15111.73,-0.85,18.06,REJECTED
+S416,Orthogonal Ensemble A: S296 + Z-Score Reversion,5924,987.3,18618.45,1.075,36.75,6521.17,2.86,55.56,TACTICAL CANDIDATE
+S417,Orthogonal Ensemble B: S296 + Asian Reversion,4389,731.5,32566.42,1.173,36.52,4613.2,7.06,62.5,TACTICAL CANDIDATE
+S418,Orthogonal Ensemble C: S296 + Connors RSI-2,9659,1609.8,11163.29,1.044,49.23,13674.98,0.82,47.22,TACTICAL CANDIDATE
+S419,Triple Orthogonal Suite (ST + TTM + RSI2),9659,1609.8,20331.86,1.103,49.23,5825.49,3.49,54.17,TACTICAL CANDIDATE
+S420,Centennial Statistical-Trend Hybrid Master (Apex),10828,1804.7,18326.73,1.087,48.37,6795.04,2.7,52.78,TACTICAL CANDIDATE
