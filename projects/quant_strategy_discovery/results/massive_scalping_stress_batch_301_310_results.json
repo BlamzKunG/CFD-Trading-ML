@@ -1,0 +1,54 @@
+{
+  "generated_at": "2026-10-17 00:40:55",
+  "total_runtime_s": 48.59,
+  "results": [
+    {
+      "scenario": "Baseline (Spread $0.25, Comm $0.60)",
+      "strategy": "S296 Tactical Duo B (537 tr/yr)",
+      "net_profit": 37579.25,
+      "pf": 1.244,
+      "monte_carlo_p95_dd": 6593.15,
+      "monte_carlo_worst_dd": 14532.67
+    },
+    {
+      "scenario": "Baseline (Spread $0.25, Comm $0.60)",
+      "strategy": "S300 Master Quartet (1248 tr/yr)",
+      "net_profit": 45106.06,
+      "pf": 1.155,
+      "monte_carlo_p95_dd": 8051.46,
+      "monte_carlo_worst_dd": 16395.6
+    },
+    {
+      "scenario": "Elevated (Spread $0.35, Comm $0.80)",
+      "strategy": "S296 Tactical Duo B (537 tr/yr)",
+      "net_profit": 32175.26,
+      "pf": 1.205,
+      "monte_carlo_p95_dd": 7407.73,
+      "monte_carlo_worst_dd": 15796.5
+    },
+    {
+      "scenario": "Elevated (Spread $0.35, Comm $0.80)",
+      "strategy": "S300 Master Quartet (1248 tr/yr)",
+      "net_profit": 37161.76,
+      "pf": 1.125,
+      "monte_carlo_p95_dd": 9271.71,
+      "monte_carlo_worst_dd": 17719.16
+    },
+    {
+      "scenario": "Severe (Spread $0.50, Comm $1.00)",
+      "strategy": "S296 Tactical Duo B (537 tr/yr)",
+      "net_profit": 23558.43,
+      "pf": 1.145,
+      "monte_carlo_p95_dd": 9348.51,
+      "monte_carlo_worst_dd": 20097.21
+    },
+    {
+      "scenario": "Severe (Spread $0.50, Comm $1.00)",
+      "strategy": "S300 Master Quartet (1248 tr/yr)",
+      "net_profit": 23155.16,
+      "pf": 1.076,
+      "monte_carlo_p95_dd": 12447.54,
+      "monte_carlo_worst_dd": 24453.54
+    }
+  ]
+}

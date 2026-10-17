@@ -1,0 +1,7 @@
+scenario,strategy,net_profit,pf,monte_carlo_p95_dd,monte_carlo_worst_dd
+"Baseline (Spread $0.25, Comm $0.60)",S296 Tactical Duo B (537 tr/yr),37579.25,1.244,6593.15,14532.67
+"Baseline (Spread $0.25, Comm $0.60)",S300 Master Quartet (1248 tr/yr),45106.06,1.155,8051.46,16395.6
+"Elevated (Spread $0.35, Comm $0.80)",S296 Tactical Duo B (537 tr/yr),32175.26,1.205,7407.73,15796.5
+"Elevated (Spread $0.35, Comm $0.80)",S300 Master Quartet (1248 tr/yr),37161.76,1.125,9271.71,17719.16
+"Severe (Spread $0.50, Comm $1.00)",S296 Tactical Duo B (537 tr/yr),23558.43,1.145,9348.51,20097.21
+"Severe (Spread $0.50, Comm $1.00)",S300 Master Quartet (1248 tr/yr),23155.16,1.076,12447.54,24453.54
