@@ -1,0 +1,11 @@
+strategy_id,strategy_name,total_trades,annual_trades,net_profit,pf,win_rate,max_dd,romad,mcr,status
+S381,Baseline S296 Market Order Benchmark,3220,536.7,37579.25,1.244,34.81,4533.9,8.29,68.06,CHAMPION
+S382,S296 Shallow Limit Pullback (-0.2x ATR),2568,428.0,32018.98,1.264,33.72,3851.66,8.31,62.5,CHAMPION
+S383,S296 Moderate Limit Pullback (-0.4x ATR),1992,332.0,32506.27,1.348,34.44,2876.66,11.3,63.89,CHAMPION
+S384,S296 Deep Limit Pullback (-0.6x ATR),1422,237.0,22932.32,1.342,34.25,2395.6,9.57,62.5,TACTICAL CANDIDATE
+S385,S296 Latency Lag Shock (1-Bar Delay),3173,528.8,36065.06,1.244,34.19,3986.43,9.05,65.28,CHAMPION
+S386,"S296 Random Asymmetric Slippage Shock [0, 40c]",3224,537.3,23233.09,1.143,33.34,4990.69,4.66,58.33,TACTICAL CANDIDATE
+S387,S300 Master Quartet Shallow Limit Orders (-0.2x),6838,1139.7,39414.33,1.15,27.27,5846.81,6.74,58.33,CHAMPION
+S388,S300 Master Quartet Slippage Shock ($0.20/oz),7494,1249.0,26809.95,1.088,27.68,7681.53,3.49,55.56,TACTICAL CANDIDATE
+S389,Hybrid Execution: ST Market + TTM Limit (-0.2x),3027,504.5,38236.53,1.279,35.45,4148.83,9.22,68.06,CHAMPION
+S390,Sovereign Production Execution Standard (S296 Market),3220,536.7,37579.25,1.244,34.81,4533.9,8.29,68.06,CHAMPION
