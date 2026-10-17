@@ -1,0 +1,126 @@
+{
+  "generated_at": "2026-10-17 00:14:08",
+  "total_runtime_s": 6.04,
+  "results": [
+    {
+      "strategy_id": "S251",
+      "strategy_name": "Solo Supertrend Trailing Scalper",
+      "annual_trades": 341.7,
+      "net_profit": 66005.57,
+      "pf": 1.08,
+      "win_rate": 34.29,
+      "max_dd": 61912.72,
+      "romad": 1.07,
+      "mcr": 52.78,
+      "status": "TACTICAL CANDIDATE"
+    },
+    {
+      "strategy_id": "S252",
+      "strategy_name": "Dual Trend: Supertrend + ZL-MACD",
+      "annual_trades": 1066.7,
+      "net_profit": 87909.34,
+      "pf": 1.031,
+      "win_rate": 33.31,
+      "max_dd": 114426.25,
+      "romad": 0.77,
+      "mcr": 51.39,
+      "status": "TACTICAL CANDIDATE"
+    },
+    {
+      "strategy_id": "S253",
+      "strategy_name": "Trend & Retest: Supertrend + FVG Retest",
+      "annual_trades": 772.2,
+      "net_profit": 33464.48,
+      "pf": 1.022,
+      "win_rate": 32.4,
+      "max_dd": 93191.31,
+      "romad": 0.36,
+      "mcr": 45.83,
+      "status": "TACTICAL CANDIDATE"
+    },
+    {
+      "strategy_id": "S254",
+      "strategy_name": "Trinity Scalper: Supertrend + TTM + FVG",
+      "annual_trades": 1360.2,
+      "net_profit": 30951.47,
+      "pf": 1.012,
+      "win_rate": 32.62,
+      "max_dd": 114199.2,
+      "romad": 0.27,
+      "mcr": 45.83,
+      "status": "TACTICAL CANDIDATE"
+    },
+    {
+      "strategy_id": "S255",
+      "strategy_name": "Quartet Scalper: Supertrend + ZL + TTM + FVG",
+      "annual_trades": 2085.2,
+      "net_profit": 52855.23,
+      "pf": 1.012,
+      "win_rate": 32.7,
+      "max_dd": 173341.84,
+      "romad": 0.3,
+      "mcr": 44.44,
+      "status": "TACTICAL CANDIDATE"
+    },
+    {
+      "strategy_id": "S256",
+      "strategy_name": "Pentad Supreme Scalper: All 5 Engines",
+      "annual_trades": 2157.5,
+      "net_profit": 57768.39,
+      "pf": 1.012,
+      "win_rate": 32.96,
+      "max_dd": 168468.91,
+      "romad": 0.34,
+      "mcr": 45.83,
+      "status": "TACTICAL CANDIDATE"
+    },
+    {
+      "strategy_id": "S257",
+      "strategy_name": "Trend & Momentum: ZL-MACD + TTM Squeeze",
+      "annual_trades": 1313.0,
+      "net_profit": 19390.75,
+      "pf": 1.006,
+      "win_rate": 32.88,
+      "max_dd": 96279.18,
+      "romad": 0.2,
+      "mcr": 40.28,
+      "status": "TACTICAL CANDIDATE"
+    },
+    {
+      "strategy_id": "S258",
+      "strategy_name": "Orderflow & Squeeze: FVG Retest + TTM Squeeze",
+      "annual_trades": 1018.5,
+      "net_profit": -35054.1,
+      "pf": 0.979,
+      "win_rate": 32.06,
+      "max_dd": 93499.32,
+      "romad": -0.37,
+      "mcr": 45.83,
+      "status": "REJECTED"
+    },
+    {
+      "strategy_id": "S259",
+      "strategy_name": "Tactical Duo: Supertrend + RSI Snapshot",
+      "annual_trades": 414.0,
+      "net_profit": 70918.73,
+      "pf": 1.078,
+      "win_rate": 35.39,
+      "max_dd": 63450.64,
+      "romad": 1.12,
+      "mcr": 52.78,
+      "status": "TACTICAL CANDIDATE"
+    },
+    {
+      "strategy_id": "S260",
+      "strategy_name": "Multi-Regime Trio: Supertrend + FVG + RSI",
+      "annual_trades": 844.5,
+      "net_profit": 38377.63,
+      "pf": 1.024,
+      "win_rate": 33.1,
+      "max_dd": 85728.31,
+      "romad": 0.45,
+      "mcr": 44.44,
+      "status": "TACTICAL CANDIDATE"
+    }
+  ]
+}
