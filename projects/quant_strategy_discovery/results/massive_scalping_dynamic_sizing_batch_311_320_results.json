@@ -1,0 +1,126 @@
+{
+  "generated_at": "2026-10-17 00:46:34",
+  "total_runtime_s": 17.26,
+  "results": [
+    {
+      "annual_trades": 536.7,
+      "net_profit": 37579.25,
+      "pf": 1.244,
+      "win_rate": 34.81,
+      "max_dd": 4533.9,
+      "romad": 8.29,
+      "mcr": 68.06,
+      "strategy_id": "S311",
+      "strategy_name": "S296 Fixed 0.10 Lot Benchmark",
+      "status": "CHAMPION"
+    },
+    {
+      "annual_trades": 514.8,
+      "net_profit": 31468.04,
+      "pf": 1.221,
+      "win_rate": 34.8,
+      "max_dd": 4779.9,
+      "romad": 6.58,
+      "mcr": 65.28,
+      "strategy_id": "S312",
+      "strategy_name": "S296 Monthly Risk Governor ($1,200 Cap)",
+      "status": "CHAMPION"
+    },
+    {
+      "annual_trades": 536.7,
+      "net_profit": 95576.95,
+      "pf": 1.243,
+      "win_rate": 34.81,
+      "max_dd": 13601.69,
+      "romad": 7.03,
+      "mcr": 66.67,
+      "strategy_id": "S313",
+      "strategy_name": "S296 Dynamic Compounding Sizing",
+      "status": "CHAMPION"
+    },
+    {
+      "annual_trades": 536.7,
+      "net_profit": 45095.11,
+      "pf": 1.244,
+      "win_rate": 34.81,
+      "max_dd": 5440.68,
+      "romad": 8.29,
+      "mcr": 68.06,
+      "strategy_id": "S314",
+      "strategy_name": "S296 Half-Kelly Sizing",
+      "status": "CHAMPION"
+    },
+    {
+      "annual_trades": 502.3,
+      "net_profit": 36191.7,
+      "pf": 1.225,
+      "win_rate": 34.74,
+      "max_dd": 3969.92,
+      "romad": 9.12,
+      "mcr": 65.28,
+      "strategy_id": "S315",
+      "strategy_name": "S296 Governed Kelly Hybrid",
+      "status": "CHAMPION"
+    },
+    {
+      "annual_trades": 1248.3,
+      "net_profit": 45106.06,
+      "pf": 1.155,
+      "win_rate": 28.3,
+      "max_dd": 7451.17,
+      "romad": 6.05,
+      "mcr": 65.28,
+      "strategy_id": "S316",
+      "strategy_name": "S300 Quartet Fixed Benchmark",
+      "status": "CHAMPION"
+    },
+    {
+      "annual_trades": 1156.7,
+      "net_profit": 36809.46,
+      "pf": 1.141,
+      "win_rate": 28.14,
+      "max_dd": 5519.65,
+      "romad": 6.67,
+      "mcr": 62.5,
+      "strategy_id": "S317",
+      "strategy_name": "S300 Monthly Risk Governor ($1,500 Cap)",
+      "status": "CHAMPION"
+    },
+    {
+      "annual_trades": 1248.3,
+      "net_profit": 118329.55,
+      "pf": 1.148,
+      "win_rate": 28.3,
+      "max_dd": 22353.5,
+      "romad": 5.29,
+      "mcr": 65.28,
+      "strategy_id": "S318",
+      "strategy_name": "S300 Dynamic Compounding Sizing",
+      "status": "CHAMPION"
+    },
+    {
+      "annual_trades": 1226.3,
+      "net_profit": 46262.9,
+      "pf": 1.131,
+      "win_rate": 28.16,
+      "max_dd": 7846.28,
+      "romad": 5.9,
+      "mcr": 62.5,
+      "strategy_id": "S319",
+      "strategy_name": "S300 Governed Compounding Hybrid",
+      "status": "CHAMPION"
+    },
+    {
+      "annual_trades": 1105.2,
+      "net_profit": 48986.17,
+      "pf": 1.171,
+      "win_rate": 30.15,
+      "max_dd": 6793.44,
+      "romad": 7.21,
+      "mcr": 56.94,
+      "strategy_id": "S320",
+      "strategy_name": "Production Sovereign Adaptive Scalper",
+      "status": "CHAMPION"
+    }
+  ]
+}

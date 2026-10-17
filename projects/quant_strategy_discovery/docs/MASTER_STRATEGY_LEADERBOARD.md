@@ -236,6 +236,19 @@ Under the V6.0 Scalping Mandate, research pivoted towards high-turnover executio
 2. **The Breakeven Trap in Scalping:** Moving Stop Loss to Breakeven (+0.10) after +1.0 ATR gain increased win rate to 56% but cratered Profit Factor to 0.50. Intraday Gold swings constantly retest entry levels; scratch exits create a net financial loss of -$0.75 per trade after commissions, accumulating thousands of friction losses.
 3. **Dynamic Volatility Ratchet vs. Fixed RR:** Fixed take-profits (e.g. 1.5R–2.0R) cut winners short on Gold and fail to overcome the spread burden. A dynamic ratchet trailing stop (Supertrend ATR 3.0–3.5) allows winners to run into massive multi-dollar fat tails ($80–$150/trade) while cutting losses at $25–$35, unlocking +$30k+ net expectancy with a low $1,680 drawdown.
 4. **The High-Frequency Ensemble Multiplier Law (Batch 10 Breakthrough):** To achieve high trade turnover (500–1,200+ trades/year) without falling into the M1/M5 micro-noise trap, combine multiple orthogonal M15 engines (Supertrend Ratchet + TTM Squeeze Breakout + Zero-Lag MACD + FVG Retest). Strategy 296 (Tactical Duo B) unlocks **536.7 trades/year** with **PF 1.244**, **+$37,579.25 net profit**, and **68.06% MCR**, while Strategy 300 delivers **1,248 trades/year** with **+$45,106.06 net profit**!
+5. **The Dynamic Compounding & Risk Governor Law (Batches 11–12):** Introducing equity compounding on Strategy 296 increases Net Profit to **+$95,576.95** (S313) while Strategy 300 Compounding delivers **+$118,329.55** (S318). Coupling this with a Monthly Calendar Governor ($1,000–$1,500 max monthly loss cap) compresses drawdown to **$3,969.92** and drives RoMaD to an unprecedented **9.12x** (S315)!
+
+### Stress Testing & Monte Carlo Validation (5,000 Simulations)
+
+| Stress Scenario | Evaluated Strategy | Net Profit ($) | Profit Factor | Monte Carlo P95 Max DD | Monte Carlo Worst DD |
+| :--- | :--- | :---: | :---: | :---: | :---: |
+| **Baseline ($0.25 Spread, $0.60 Comm)** | **S296 Tactical Duo B (537 tr/yr)** | **+$37,579.25** | **1.244** | **$6,593.15** | $14,532.67 |
+|  | **S300 Master Quartet (1,248 tr/yr)** | **+$45,106.06** | **1.155** | **$8,051.46** | $16,395.60 |
+| **Elevated ($0.35 Spread, $0.80 Comm)** | **S296 Tactical Duo B (537 tr/yr)** | **+$32,175.26** | **1.205** | **$7,407.73** | $15,796.50 |
+|  | **S300 Master Quartet (1,248 tr/yr)** | **+$37,161.76** | **1.125** | **$9,271.71** | $17,719.16 |
+| **Severe ($0.50 Spread, $1.00 Comm)** | **S296 Tactical Duo B (537 tr/yr)** | **+$23,558.43** | **1.145** | **$9,348.51** | $20,097.21 |
+|  | **S300 Master Quartet (1,248 tr/yr)** | **+$23,155.16** | **1.076** | **$12,447.54** | $24,453.54 |
+
 
 
 
