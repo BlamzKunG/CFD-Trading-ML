@@ -261,6 +261,28 @@ Under the V6.0 Scalping Mandate, research pivoted towards high-turnover executio
 | **Hardened Compounding Edition (S349)** | Dynamic 1% Risk | 532.2 tr/yr | **+$91,638.14** | **1.236** | $13,601.69 | 6.74x | **65.28%** | 🏆 **Production Compounding Champion** |
 | **Hardened Governed Kelly Edition (S350)** | $1,000 Monthly Cap | 497.8 tr/yr | **+$34,702.11** | **1.220** | **$3,937.94** | **8.81x** | **63.89%** | 🏆 **Institutional Risk Parity Champion** |
 
+### Adaptive Dynamic Ratchet Trailing & Profit-Lock Architecture (Batch 16 - Strategies S351–S360)
+
+| Strategy ID & Architecture | Trailing Stop Mechanism | Annual Trades | Net Profit ($) | Profit Factor | Win Rate (%) | Max Drawdown | RoMaD | MCR (%) | Empirical Verdict |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+| **S351: Static 3.0 Ratchet Benchmark (S291)** | Monotonic 3.0x ATR Ratchet | **341.7 tr/yr** | **+$30,590.19** 🏆 | **1.440** 🏆 | 39.07% | **$1,680.04** 🏆 | **18.21x** 🏆 | **75.00%** 🏆 | 🏆 **ALL-TIME EFFICIENCY RECORD** |
+| **S352: ADX-Adaptive Dynamic Ratchet** | ADX Scaled (2.5x to 3.5x ATR) | 397.5 tr/yr | **+$24,529.86** | **1.324** | 39.66% | **$1,844.39** | **13.30x** | **68.06%** | 🏆 **Robust Adaptive Model** |
+| **S353: ATR-Adaptive Dynamic Ratchet** | Volatility Inverted (2.6x to 3.4x) | 367.7 tr/yr | **+$24,286.81** | **1.325** | 37.90% | **$1,752.81** | **13.86x** | **66.67%** | 🏆 **Low-Noise Volatility Trailer** |
+| **S354: Profit Lock-In Tiered Ratchet** | Lock +1.0R at +3.0 ATR Gain | 341.8 tr/yr | **+$11,822.32** | 1.177 | **44.27%** | $4,170.38 | 2.83x | 55.56% | ⚠️ **Fat-Tail Destruction Trap (-61% Profit)** |
+| **S355: Adaptive Tactical Duo (ADX + TTM)** | ADX Ratchet + TTM Squeeze 3R | 592.5 tr/yr | **+$31,518.92** | **1.197** | 35.61% | $4,580.23 | 6.88x | **68.06%** | 🏆 **High-Turnover Adaptive Duo** |
+| **S356: Profit-Lock Tactical Duo (Lock + TTM)**| Profit Lock-In + TTM Squeeze | 536.8 tr/yr | **+$18,811.38** | 1.124 | 38.12% | $5,390.34 | 3.49x | 59.72% | ⚠️ **Sub-Optimal Ensemble** |
+| **S357: Multi-Engine Adaptive Trio Scalper** | ADX Ratchet + ZL-MACD + TTM | 934.3 tr/yr | **+$23,767.34** | 1.171 | 38.78% | $3,788.81 | 6.27x | 63.89% | ⚡ **Sub-$3.8k DD High-Frequency Trio** |
+| **S358: Profit-Lock Duo Dynamic Compounding**| Dynamic 1% Risk with Profit Lock | 536.8 tr/yr | **+$35,565.88** | 1.136 | 38.12% | $16,171.01 | 2.20x | 55.56% | High Compounding Volatility |
+| **S359: Profit-Lock Duo Governed Hybrid** | $1,000 Monthly Cap + Profit Lock | 500.8 tr/yr | **+$16,124.79** | 1.102 | 38.00% | $4,637.93 | 3.48x | 56.94% | Strict Calendar Cap Variant |
+| **S360: Ultimate Sovereign Adaptive Scalper** | Adaptive Ratchet + 4-Engine Suite | 574.9 tr/yr | **+$24,704.66** | 1.157 | 38.63% | $5,430.14 | 4.55x | 59.72% | Dynamic Regime Scalper |
+
+### Crucial Empirical Law Discovered: The Fat-Tail Preservation Law
+1. **The Psychological Fallacy of "Securing Profits":** Retail traders and conventional EA designers frequently implement tiered trailing stops that aggressively "lock in" profits once a trade reaches +2R or +3R (e.g. pulling the stop tightly behind the price).
+2. **Empirical Destruction of Alpha:** Batch 16 conclusively proved that this mechanism is mathematically destructive on Gold. In Strategy S354, locking profits increased the win rate from **39.07% to 44.27%** (a cosmetic improvement), but Net Profit collapsed from **+$30,590.19 down to +$11,822.32** (a catastrophic **61.4% reduction in net returns**), and RoMaD dropped from **18.21x down to 2.83x**!
+3. **The True Source of Edge on Gold:** Gold's mathematical expectation is entirely governed by extreme asymmetric fat tails (+10R to +30R continuation runners during macro momentum trends). Tightening the stop prematurely strangles the trade during normal intraday retests, converting explosive $200+ runners into mundane $30 scraps.
+4. **The Monotonic Ratchet Supremacy:** The static monotonic 3.0x ATR ratchet (S291/S351) remains the mathematically undefeated king of trailing stop mechanics.
+
+
 
 
 

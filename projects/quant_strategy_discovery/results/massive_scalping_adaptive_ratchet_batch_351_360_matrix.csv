@@ -1,0 +1,11 @@
+strategy_id,strategy_name,annual_trades,net_profit,pf,win_rate,max_dd,romad,mcr,status
+S351,S291 Static 3.0 Ratchet Benchmark,341.7,30590.19,1.44,39.07,1680.04,18.21,75.0,CHAMPION
+S352,ADX-Adaptive Dynamic Ratchet (2.5 - 3.5 Mult),397.5,24529.86,1.324,39.66,1844.39,13.3,68.06,CHAMPION
+S353,ATR-Adaptive Dynamic Ratchet (2.6 - 3.4 Mult),367.7,24286.81,1.325,37.9,1752.81,13.86,66.67,CHAMPION
+S354,Profit Lock-In Tiered Ratchet (+3.0 ATR Lock),341.8,11822.32,1.177,44.27,4170.38,2.83,55.56,TACTICAL CANDIDATE
+S355,Adaptive Tactical Duo (ADX Ratchet + TTM Squeeze),592.5,31518.92,1.197,35.61,4580.23,6.88,68.06,TACTICAL CANDIDATE
+S356,Profit-Lock Tactical Duo (Lock Ratchet + TTM),536.8,18811.38,1.124,38.12,5390.34,3.49,59.72,TACTICAL CANDIDATE
+S357,Multi-Engine Adaptive Trio Scalper,934.3,23767.34,1.171,38.78,3788.81,6.27,63.89,TACTICAL CANDIDATE
+S358,Profit-Lock Duo Dynamic Compounding,536.8,35565.88,1.136,38.12,16171.01,2.2,55.56,CHAMPION
+S359,Profit-Lock Duo Governed Kelly Hybrid,500.8,16124.79,1.102,38.0,4637.93,3.48,56.94,CHAMPION
+S360,Ultimate Sovereign Adaptive Scalper,574.9,24704.66,1.157,38.63,5430.14,4.55,59.72,CHAMPION

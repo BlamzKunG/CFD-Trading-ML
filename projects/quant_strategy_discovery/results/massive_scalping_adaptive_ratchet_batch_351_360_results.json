@@ -1,0 +1,126 @@
+{
+  "generated_at": "2026-10-17 01:12:29",
+  "total_runtime_s": 9.08,
+  "results": [
+    {
+      "strategy_id": "S351",
+      "strategy_name": "S291 Static 3.0 Ratchet Benchmark",
+      "annual_trades": 341.7,
+      "net_profit": 30590.19,
+      "pf": 1.44,
+      "win_rate": 39.07,
+      "max_dd": 1680.04,
+      "romad": 18.21,
+      "mcr": 75.0,
+      "status": "CHAMPION"
+    },
+    {
+      "strategy_id": "S352",
+      "strategy_name": "ADX-Adaptive Dynamic Ratchet (2.5 - 3.5 Mult)",
+      "annual_trades": 397.5,
+      "net_profit": 24529.86,
+      "pf": 1.324,
+      "win_rate": 39.66,
+      "max_dd": 1844.39,
+      "romad": 13.3,
+      "mcr": 68.06,
+      "status": "CHAMPION"
+    },
+    {
+      "strategy_id": "S353",
+      "strategy_name": "ATR-Adaptive Dynamic Ratchet (2.6 - 3.4 Mult)",
+      "annual_trades": 367.7,
+      "net_profit": 24286.81,
+      "pf": 1.325,
+      "win_rate": 37.9,
+      "max_dd": 1752.81,
+      "romad": 13.86,
+      "mcr": 66.67,
+      "status": "CHAMPION"
+    },
+    {
+      "strategy_id": "S354",
+      "strategy_name": "Profit Lock-In Tiered Ratchet (+3.0 ATR Lock)",
+      "annual_trades": 341.8,
+      "net_profit": 11822.32,
+      "pf": 1.177,
+      "win_rate": 44.27,
+      "max_dd": 4170.38,
+      "romad": 2.83,
+      "mcr": 55.56,
+      "status": "TACTICAL CANDIDATE"
+    },
+    {
+      "strategy_id": "S355",
+      "strategy_name": "Adaptive Tactical Duo (ADX Ratchet + TTM Squeeze)",
+      "annual_trades": 592.5,
+      "net_profit": 31518.92,
+      "pf": 1.197,
+      "win_rate": 35.61,
+      "max_dd": 4580.23,
+      "romad": 6.88,
+      "mcr": 68.06,
+      "status": "TACTICAL CANDIDATE"
+    },
+    {
+      "strategy_id": "S356",
+      "strategy_name": "Profit-Lock Tactical Duo (Lock Ratchet + TTM)",
+      "annual_trades": 536.8,
+      "net_profit": 18811.38,
+      "pf": 1.124,
+      "win_rate": 38.12,
+      "max_dd": 5390.34,
+      "romad": 3.49,
+      "mcr": 59.72,
+      "status": "TACTICAL CANDIDATE"
+    },
+    {
+      "strategy_id": "S357",
+      "strategy_name": "Multi-Engine Adaptive Trio Scalper",
+      "annual_trades": 934.3,
+      "net_profit": 23767.34,
+      "pf": 1.171,
+      "win_rate": 38.78,
+      "max_dd": 3788.81,
+      "romad": 6.27,
+      "mcr": 63.89,
+      "status": "TACTICAL CANDIDATE"
+    },
+    {
+      "annual_trades": 536.8,
+      "net_profit": 35565.88,
+      "pf": 1.136,
+      "win_rate": 38.12,
+      "max_dd": 16171.01,
+      "romad": 2.2,
+      "mcr": 55.56,
+      "strategy_id": "S358",
+      "strategy_name": "Profit-Lock Duo Dynamic Compounding",
+      "status": "CHAMPION"
+    },
+    {
+      "annual_trades": 500.8,
+      "net_profit": 16124.79,
+      "pf": 1.102,
+      "win_rate": 38.0,
+      "max_dd": 4637.93,
+      "romad": 3.48,
+      "mcr": 56.94,
+      "strategy_id": "S359",
+      "strategy_name": "Profit-Lock Duo Governed Kelly Hybrid",
+      "status": "CHAMPION"
+    },
+    {
+      "annual_trades": 574.9,
+      "net_profit": 24704.66,
+      "pf": 1.157,
+      "win_rate": 38.63,
+      "max_dd": 5430.14,
+      "romad": 4.55,
+      "mcr": 59.72,
+      "strategy_id": "S360",
+      "strategy_name": "Ultimate Sovereign Adaptive Scalper",
+      "status": "CHAMPION"
+    }
+  ]
+}
