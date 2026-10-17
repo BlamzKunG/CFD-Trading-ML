@@ -1,0 +1,126 @@
+{
+  "generated_at": "2026-10-17 00:52:55",
+  "total_runtime_s": 41.21,
+  "results": [
+    {
+      "strategy_id": "S321",
+      "strategy_name": "Asian Sweep London Open 3.0R",
+      "annual_trades": 180.2,
+      "net_profit": -5183.73,
+      "pf": 0.858,
+      "win_rate": 23.31,
+      "max_dd": 7513.54,
+      "romad": -0.69,
+      "mcr": 36.11,
+      "status": "REJECTED"
+    },
+    {
+      "strategy_id": "S322",
+      "strategy_name": "Asian Sweep London Open 4.0R Asymmetric",
+      "annual_trades": 128.7,
+      "net_profit": -1466.42,
+      "pf": 0.949,
+      "win_rate": 18.52,
+      "max_dd": 6280.23,
+      "romad": -0.23,
+      "mcr": 31.94,
+      "status": "REJECTED"
+    },
+    {
+      "strategy_id": "S323",
+      "strategy_name": "London Sweep NY Open 3.0R",
+      "annual_trades": 170.7,
+      "net_profit": -999.19,
+      "pf": 0.981,
+      "win_rate": 25.59,
+      "max_dd": 5565.34,
+      "romad": -0.18,
+      "mcr": 41.67,
+      "status": "REJECTED"
+    },
+    {
+      "strategy_id": "S324",
+      "strategy_name": "London Sweep NY Open 4.0R",
+      "annual_trades": 135.8,
+      "net_profit": -5513.49,
+      "pf": 0.887,
+      "win_rate": 19.63,
+      "max_dd": 7143.48,
+      "romad": -0.77,
+      "mcr": 40.28,
+      "status": "REJECTED"
+    },
+    {
+      "strategy_id": "S325",
+      "strategy_name": "PDH / PDL Sweep Reversal 3.5R",
+      "annual_trades": 145.7,
+      "net_profit": -9554.65,
+      "pf": 0.802,
+      "win_rate": 20.37,
+      "max_dd": 9468.73,
+      "romad": -1.01,
+      "mcr": 40.28,
+      "status": "REJECTED"
+    },
+    {
+      "strategy_id": "S326",
+      "strategy_name": "Dual-Session Liquidity Hunter (London + NY)",
+      "annual_trades": 350.8,
+      "net_profit": -6182.92,
+      "pf": 0.931,
+      "win_rate": 24.42,
+      "max_dd": 11111.23,
+      "romad": -0.56,
+      "mcr": 33.33,
+      "status": "REJECTED"
+    },
+    {
+      "strategy_id": "S327",
+      "strategy_name": "Triple-Session Master Liquidity Hunter",
+      "annual_trades": 496.5,
+      "net_profit": -15737.57,
+      "pf": 0.885,
+      "win_rate": 23.23,
+      "max_dd": 17149.69,
+      "romad": -0.92,
+      "mcr": 30.56,
+      "status": "REJECTED"
+    },
+    {
+      "strategy_id": "S328",
+      "strategy_name": "SMC Hybrid Scalper: S296 + Asian Sweep",
+      "annual_trades": 716.8,
+      "net_profit": 32395.53,
+      "pf": 1.17,
+      "win_rate": 31.92,
+      "max_dd": 4205.86,
+      "romad": 7.7,
+      "mcr": 61.11,
+      "status": "CHAMPION"
+    },
+    {
+      "strategy_id": "S329",
+      "strategy_name": "Sovereign SMC Scalper: S296 + Dual-Session Sweeps",
+      "annual_trades": 887.5,
+      "net_profit": 31396.34,
+      "pf": 1.129,
+      "win_rate": 30.7,
+      "max_dd": 6276.18,
+      "romad": 5.0,
+      "mcr": 54.17,
+      "status": "TACTICAL CANDIDATE"
+    },
+    {
+      "strategy_id": "S330",
+      "strategy_name": "Institutional SMC Composite Suite",
+      "annual_trades": 1033.2,
+      "net_profit": 21841.68,
+      "pf": 1.075,
+      "win_rate": 29.25,
+      "max_dd": 9169.72,
+      "romad": 2.38,
+      "mcr": 54.17,
+      "status": "TACTICAL CANDIDATE"
+    }
+  ]
+}

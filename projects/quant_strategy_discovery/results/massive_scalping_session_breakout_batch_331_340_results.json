@@ -1,0 +1,126 @@
+{
+  "generated_at": "2026-10-17 00:54:55",
+  "total_runtime_s": 47.69,
+  "results": [
+    {
+      "strategy_id": "S331",
+      "strategy_name": "Asian Breakout London Open (Unfiltered)",
+      "annual_trades": 278.3,
+      "net_profit": -17088.28,
+      "pf": 0.644,
+      "win_rate": 23.41,
+      "max_dd": 18442.05,
+      "romad": -0.93,
+      "mcr": 8.33,
+      "status": "REJECTED"
+    },
+    {
+      "strategy_id": "S332",
+      "strategy_name": "Asian Breakout London Open (EMA 200 Filter)",
+      "annual_trades": 230.5,
+      "net_profit": -11697.09,
+      "pf": 0.698,
+      "win_rate": 24.51,
+      "max_dd": 14033.97,
+      "romad": -0.83,
+      "mcr": 19.44,
+      "status": "REJECTED"
+    },
+    {
+      "strategy_id": "S333",
+      "strategy_name": "London Breakout NY Open (Unfiltered)",
+      "annual_trades": 365.3,
+      "net_profit": -23283.56,
+      "pf": 0.706,
+      "win_rate": 25.91,
+      "max_dd": 25287.11,
+      "romad": -0.92,
+      "mcr": 22.22,
+      "status": "REJECTED"
+    },
+    {
+      "strategy_id": "S334",
+      "strategy_name": "London Breakout NY Open (EMA 200 Filter)",
+      "annual_trades": 325.2,
+      "net_profit": -17240.69,
+      "pf": 0.751,
+      "win_rate": 26.96,
+      "max_dd": 19152.79,
+      "romad": -0.9,
+      "mcr": 20.83,
+      "status": "REJECTED"
+    },
+    {
+      "strategy_id": "S335",
+      "strategy_name": "Dual-Session Breakout Expansion (EMA 200)",
+      "annual_trades": 420.0,
+      "net_profit": -25529.58,
+      "pf": 0.686,
+      "win_rate": 25.0,
+      "max_dd": 26738.54,
+      "romad": -0.95,
+      "mcr": 11.11,
+      "status": "REJECTED"
+    },
+    {
+      "strategy_id": "S336",
+      "strategy_name": "Volatility-Gated Dual Breakout (ATR >= $2.00)",
+      "annual_trades": 374.3,
+      "net_profit": -21698.17,
+      "pf": 0.724,
+      "win_rate": 26.76,
+      "max_dd": 22918.82,
+      "romad": -0.95,
+      "mcr": 16.67,
+      "status": "REJECTED"
+    },
+    {
+      "strategy_id": "S337",
+      "strategy_name": "Trend-Breakout Duo: Supertrend + Asian Breakout",
+      "annual_trades": 572.2,
+      "net_profit": 18893.11,
+      "pf": 1.175,
+      "win_rate": 33.21,
+      "max_dd": 5303.47,
+      "romad": 3.56,
+      "mcr": 55.56,
+      "status": "TACTICAL CANDIDATE"
+    },
+    {
+      "strategy_id": "S338",
+      "strategy_name": "Trend-Breakout Duo: Supertrend + Dual Breakout",
+      "annual_trades": 761.7,
+      "net_profit": 5060.61,
+      "pf": 1.034,
+      "win_rate": 31.31,
+      "max_dd": 13148.62,
+      "romad": 0.38,
+      "mcr": 40.28,
+      "status": "TACTICAL CANDIDATE"
+    },
+    {
+      "strategy_id": "S339",
+      "strategy_name": "Sovereign Trend-Breakout Trinity: S296 + Dual Breakout",
+      "annual_trades": 956.7,
+      "net_profit": 12049.67,
+      "pf": 1.051,
+      "win_rate": 30.51,
+      "max_dd": 15033.21,
+      "romad": 0.8,
+      "mcr": 47.22,
+      "status": "TACTICAL CANDIDATE"
+    },
+    {
+      "strategy_id": "S340",
+      "strategy_name": "Master Sovereign Breakout Suite (Balanced)",
+      "annual_trades": 1092.3,
+      "net_profit": 15925.0,
+      "pf": 1.075,
+      "win_rate": 30.3,
+      "max_dd": 10960.21,
+      "romad": 1.45,
+      "mcr": 41.67,
+      "status": "TACTICAL CANDIDATE"
+    }
+  ]
+}

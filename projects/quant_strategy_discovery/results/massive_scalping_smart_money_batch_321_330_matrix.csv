@@ -1,0 +1,11 @@
+strategy_id,strategy_name,annual_trades,net_profit,pf,win_rate,max_dd,romad,mcr,status
+S321,Asian Sweep London Open 3.0R,180.2,-5183.73,0.858,23.31,7513.54,-0.69,36.11,REJECTED
+S322,Asian Sweep London Open 4.0R Asymmetric,128.7,-1466.42,0.949,18.52,6280.23,-0.23,31.94,REJECTED
+S323,London Sweep NY Open 3.0R,170.7,-999.19,0.981,25.59,5565.34,-0.18,41.67,REJECTED
+S324,London Sweep NY Open 4.0R,135.8,-5513.49,0.887,19.63,7143.48,-0.77,40.28,REJECTED
+S325,PDH / PDL Sweep Reversal 3.5R,145.7,-9554.65,0.802,20.37,9468.73,-1.01,40.28,REJECTED
+S326,Dual-Session Liquidity Hunter (London + NY),350.8,-6182.92,0.931,24.42,11111.23,-0.56,33.33,REJECTED
+S327,Triple-Session Master Liquidity Hunter,496.5,-15737.57,0.885,23.23,17149.69,-0.92,30.56,REJECTED
+S328,SMC Hybrid Scalper: S296 + Asian Sweep,716.8,32395.53,1.17,31.92,4205.86,7.7,61.11,CHAMPION
+S329,Sovereign SMC Scalper: S296 + Dual-Session Sweeps,887.5,31396.34,1.129,30.7,6276.18,5.0,54.17,TACTICAL CANDIDATE
+S330,Institutional SMC Composite Suite,1033.2,21841.68,1.075,29.25,9169.72,2.38,54.17,TACTICAL CANDIDATE
