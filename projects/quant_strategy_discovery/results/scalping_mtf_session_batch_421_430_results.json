@@ -1,0 +1,122 @@
+[
+  {
+    "net_profit": 29961.174726313773,
+    "pf": 1.4378351067597974,
+    "total_trades": 2038,
+    "annual_trades": 339.6666666666667,
+    "max_dd": 1659.4256971897012,
+    "romad": 18.05514689633536,
+    "win_rate": 39.05789990186457,
+    "mcr": 75.0,
+    "strategy_id": "S421",
+    "name": "M15 Benchmark Solo Supertrend Core"
+  },
+  {
+    "net_profit": 25721.012215739538,
+    "pf": 1.2024214580031203,
+    "total_trades": 6223,
+    "annual_trades": 1037.1666666666667,
+    "max_dd": 2485.5960892470666,
+    "romad": 10.348025701766739,
+    "win_rate": 37.18463763458139,
+    "mcr": 65.27777777777779,
+    "strategy_id": "S422",
+    "name": "M5 Solo Supertrend Scalper"
+  },
+  {
+    "net_profit": 15796.541456374942,
+    "pf": 1.1736407682198733,
+    "total_trades": 2842,
+    "annual_trades": 473.6666666666667,
+    "max_dd": 2772.882246241326,
+    "romad": 5.696794906378494,
+    "win_rate": 31.94933145672062,
+    "mcr": 65.27777777777779,
+    "strategy_id": "S423",
+    "name": "Dual-Speed M15-Trend + M5-Squeeze Breakout"
+  },
+  {
+    "net_profit": 45757.71618268927,
+    "pf": 1.2870571512346274,
+    "total_trades": 4880,
+    "annual_trades": 813.3333333333334,
+    "max_dd": 3089.689723157775,
+    "romad": 14.809809489841985,
+    "win_rate": 34.91803278688524,
+    "mcr": 72.22222222222221,
+    "strategy_id": "S424",
+    "name": "Dual-Speed Multi-Timeframe Duo (M15 ST + M5 Squeeze)"
+  },
+  {
+    "net_profit": 3458.4207447860376,
+    "pf": 1.09044748148061,
+    "total_trades": 820,
+    "annual_trades": 136.66666666666666,
+    "max_dd": 5235.9937714116695,
+    "romad": 0.660508949355304,
+    "win_rate": 30.24390243902439,
+    "mcr": 47.22222222222222,
+    "strategy_id": "S425",
+    "name": "London Open Volatility Expansion Duo"
+  },
+  {
+    "net_profit": 22514.925208490546,
+    "pf": 1.3496003593386088,
+    "total_trades": 1216,
+    "annual_trades": 202.66666666666666,
+    "max_dd": 3200.202553357536,
+    "romad": 7.035468797082455,
+    "win_rate": 37.911184210526315,
+    "mcr": 62.5,
+    "strategy_id": "S426",
+    "name": "NY Open Volatility Expansion Duo"
+  },
+  {
+    "net_profit": 26260.476471582835,
+    "pf": 1.2801884767046912,
+    "total_trades": 1892,
+    "annual_trades": 315.3333333333333,
+    "max_dd": 4307.252914402908,
+    "romad": 6.096803924322886,
+    "win_rate": 35.676532769556026,
+    "mcr": 63.888888888888886,
+    "strategy_id": "S427",
+    "name": "Dual-Session Liquidity Overlap Duo"
+  },
+  {
+    "net_profit": 12390.518848947975,
+    "pf": 1.2270662095981029,
+    "total_trades": 1580,
+    "annual_trades": 263.3333333333333,
+    "max_dd": 2280.5416470594473,
+    "romad": 5.433147368707092,
+    "win_rate": 33.734177215189874,
+    "mcr": 59.72222222222222,
+    "strategy_id": "S428",
+    "name": "Dual-Speed Session Apex (M15 Trend + M5 Squeeze London/NY)"
+  },
+  {
+    "net_profit": 12336.337564836913,
+    "pf": 1.1508967703899733,
+    "total_trades": 2556,
+    "annual_trades": 426.0,
+    "max_dd": 3306.750681898276,
+    "romad": 3.730652459639051,
+    "win_rate": 31.768388106416275,
+    "mcr": 58.333333333333336,
+    "strategy_id": "S429",
+    "name": "Multi-Timeframe CVD Micro-Delta Ignition"
+  },
+  {
+    "net_profit": 52187.82945459943,
+    "pf": 1.2585777904204494,
+    "total_trades": 5280,
+    "annual_trades": 880.0,
+    "max_dd": 5113.2860842495575,
+    "romad": 10.206319105702587,
+    "win_rate": 34.28030303030303,
+    "mcr": 69.44444444444444,
+    "strategy_id": "S430",
+    "name": "Centennial Multi-Timeframe Sovereign Suite"
+  }
+]

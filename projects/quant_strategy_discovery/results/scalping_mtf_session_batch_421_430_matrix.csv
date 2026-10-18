@@ -1,0 +1,11 @@
+Strategy_ID,Strategy_Name,Annual_Trades,Total_Trades,Net_Profit,Profit_Factor,Win_Rate_Pct,Max_Drawdown,RoMaD,Monthly_Consistency_Pct
+S421,M15 Benchmark Solo Supertrend Core,339.7,2038,29961.17,1.438,39.06,1659.43,18.06,75.0
+S422,M5 Solo Supertrend Scalper,1037.2,6223,25721.01,1.202,37.18,2485.6,10.35,65.28
+S423,Dual-Speed M15-Trend + M5-Squeeze Breakout,473.7,2842,15796.54,1.174,31.95,2772.88,5.7,65.28
+S424,Dual-Speed Multi-Timeframe Duo (M15 ST + M5 Squeeze),813.3,4880,45757.72,1.287,34.92,3089.69,14.81,72.22
+S425,London Open Volatility Expansion Duo,136.7,820,3458.42,1.09,30.24,5235.99,0.66,47.22
+S426,NY Open Volatility Expansion Duo,202.7,1216,22514.93,1.35,37.91,3200.2,7.04,62.5
+S427,Dual-Session Liquidity Overlap Duo,315.3,1892,26260.48,1.28,35.68,4307.25,6.1,63.89
+S428,Dual-Speed Session Apex (M15 Trend + M5 Squeeze London/NY),263.3,1580,12390.52,1.227,33.73,2280.54,5.43,59.72
+S429,Multi-Timeframe CVD Micro-Delta Ignition,426.0,2556,12336.34,1.151,31.77,3306.75,3.73,58.33
+S430,Centennial Multi-Timeframe Sovereign Suite,880.0,5280,52187.83,1.259,34.28,5113.29,10.21,69.44

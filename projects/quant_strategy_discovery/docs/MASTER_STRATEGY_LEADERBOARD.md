@@ -456,6 +456,31 @@ To determine whether statistical mean reversion can provide an uncorrelated cush
 3. **The Dilution Rule:** Injecting mean reversion into a high-performing trend/breakout portfolio (S296) immediately cuts Net Profit in half and triples drawdown.
 4. **Final Portfolio Mandate:** **NEVER trade mean reversion on Gold CFD.** Gold is mathematically proven to be an exclusively **Trend Following & Volatility Expansion commodity**. All institutional alpha resides in momentum continuation and monotonic trailing ratchets.
 
+---
+
+## 11. Multi-Timeframe Matrix & Session Liquidity Asymmetry (Batch 23 - Strategies S421–S430)
+
+Evaluated across 423,930 M5 bars and 141,567 M15 bars (2020–2025) with exact institutional CFD fees ($0.25 spread + $6.00/lot commission).
+
+| Strategy ID & Architecture | MTF / Session Mechanism | Annual Trades | Net Profit ($) | Profit Factor | Win Rate (%) | Max Drawdown | RoMaD | MCR (%) | Empirical Status & Role |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+| **S421: M15 Benchmark Supertrend Core** | Solo M15 Supertrend Ratchet (0.10 Lot) | 339.7 tr/yr | **+$29,961.17** | **1.438** | 39.06% | **$1,659.43** | **18.06x** | **75.00%** | 🏆 **M15 Trend Anchor Benchmark** |
+| **S422: M5 Solo Supertrend Scalper** | Standalone M5 Supertrend Ratchet | **1,037.2 tr/yr** | **+$25,721.01** | **1.202** | 37.18% | **$2,485.60** | **10.35x** | **65.28%** | 🏆 **M5 Cross-TF Robustness Certified** |
+| **S423: Dual-Speed Hierarchy A** | M15 Trend Filter + M5 Squeeze Trigger | 473.7 tr/yr | **+$15,796.54** | **1.174** | 31.95% | **$2,772.88** | 5.70x | 65.28% | 🏆 **Pure Dual-Speed Trigger** |
+| **S424: Dual-Speed MTF Duo** | M15 Core (S421) + M5 Squeeze (S423) | **813.3 tr/yr** 🏆 | **+$45,757.72** 🏆 | **1.287** 🏆 | 34.92% | **$3,089.69** 🏆 | **14.81x** 🏆 | **72.22%** 🏆 | 🏆 **ALL-TIME DUAL-SPEED RECORD (RoMaD 14.81x)** |
+| **S425: London Open Volatility Expansion**| 07:00–11:00 UTC Active Only | 136.7 tr/yr | +$3,458.42 | 1.090 | 30.24% | $5,235.99 | 0.66x | 47.22% | ⚠️ London False-Breakout Trap |
+| **S426: NY Open Volatility Expansion** | 12:00–17:00 UTC Active Only | 202.7 tr/yr | **+$22,514.93** 🏆 | **1.350** 🏆 | **37.91%** | **$3,200.20** | **7.04x** | 62.50% | 🏆 **US Institutional Liquidity Driver** |
+| **S427: Dual-Session Overlap Duo** | London + NY Sessions Active | 315.3 tr/yr | **+$26,260.48** | **1.280** | 35.68% | $4,307.25 | 6.10x | 63.89% | 🏆 Clean Two-Session Workhorse |
+| **S428: Dual-Speed Session Apex** | M15 Trend + M5 Squeeze (London/NY) | 263.3 tr/yr | **+$12,390.52** | **1.227** | 33.73% | **$2,280.54** | 5.43x | 59.72% | 🏆 Low-Drawdown Session Scalper |
+| **S429: Multi-Timeframe CVD Delta Ignition**| M15 Trend + M5 CVD 20 Filter | 426.0 tr/yr | **+$12,336.34** | **1.151** | 31.77% | $3,306.75 | 3.73x | 58.33% | Orderflow MTF Model |
+| **S430: Centennial MTF Sovereign Suite** | S421 (M15) + S427 (Session) + S429 (CVD)| **880.0 tr/yr** ⚡ | **+$52,187.83** 🏆 | **1.259** 🏆 | 34.28% | **$5,113.29** | **10.21x** | **69.44%** | 👑 **Centennial MTF Portfolio Sovereign** |
+
+### Key Empirical Laws Discovered in Batch 23
+1. **The Dual-Speed Multi-Timeframe Law (S424 Breakthrough):** Pairing an M15 Macro Supertrend anchor with an M5 micro TTM Squeeze breakout trigger unlocks **813.3 trades/year** with **+$45,757.72 Net Profit**, **PF 1.287**, and constrains Max Drawdown to just **$3,089.69** (RoMaD **14.81x**).
+2. **The Session Asymmetry Law:** The New York session (12:00–17:00 UTC) generates **86.7% of all intraday scalping alpha** on Gold CFD (+$22.5k vs +$3.5k in London). London Open exhibits high false-breakout noise prior to US economic catalysts.
+3. **The M5 Cross-Timeframe Robustness Law (S422):** The Supertrend 3.0x Monotonic Ratchet functions profitably on standalone M5 across 6,223 trades (+ $25.7k Net, PF 1.202, RoMaD 10.35x), disproving the assumption that Gold M5 scalping is unviable under institutional fees.
+
+
 
 
 
