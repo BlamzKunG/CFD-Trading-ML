@@ -1,0 +1,11 @@
+Strategy_ID,Strategy_Name,Annual_Trades,Total_Trades,Net_Profit,Profit_Factor,Win_Rate_Pct,Max_Drawdown,RoMaD,Monthly_Consistency_Pct
+S431,Baseline S424 Dual-Speed Duo Benchmark,813.3,4880,45757.72,1.287,34.92,3089.69,14.81,72.22
+S432,NY Acceleration Dual-Speed (M15 Core + M5 NY Squeeze),512.7,3076,40065.67,1.375,38.17,2257.86,17.74,75.0
+S433,Dual Monotonic Ratchet (M15 Ratchet + M5 Ratchet),926.0,5556,51757.69,1.387,36.84,2443.95,21.18,76.39
+S434,Hybrid Execution Dual-Speed (M15 Market + M5 Limit Pullback),721.2,4327,41424.06,1.295,35.24,2752.64,15.05,70.83
+S435,Dynamic Volume Sized Dual-Speed,813.3,4880,47083.64,1.278,34.92,3327.76,14.15,72.22
+S436,NY Limit Acceleration Dual-Speed,469.5,2817,39185.06,1.404,38.23,2514.59,15.58,76.39
+S437,Dual-Speed Multi-Timeframe Trio Suite,1005.0,6030,51903.23,1.214,33.45,6217.76,8.35,66.67
+S438,Dual-Speed CVD Microstructure Quartet,957.3,5744,48443.03,1.208,33.44,5897.83,8.21,61.11
+S439,"Prop-Firm Governed Dual-Speed S424 ($1,200 Cap)",486.0,2916,12960.61,1.147,34.09,3010.53,4.31,52.78
+S440,Centennial Dual-Speed Sovereign Apex Suite,587.8,3527,17454.57,1.161,34.45,4115.53,4.24,52.78

@@ -1,0 +1,122 @@
+[
+  {
+    "net_profit": 45757.71618268927,
+    "pf": 1.2870571512346274,
+    "total_trades": 4880,
+    "annual_trades": 813.3333333333334,
+    "max_dd": 3089.689723157775,
+    "romad": 14.809809489841985,
+    "win_rate": 34.91803278688524,
+    "mcr": 72.22222222222221,
+    "strategy_id": "S431",
+    "name": "Baseline S424 Dual-Speed Duo Benchmark"
+  },
+  {
+    "net_profit": 40065.674025437336,
+    "pf": 1.3754241395469584,
+    "total_trades": 3076,
+    "annual_trades": 512.6666666666666,
+    "max_dd": 2257.858516973659,
+    "romad": 17.744988768888728,
+    "win_rate": 38.1664499349805,
+    "mcr": 75.0,
+    "strategy_id": "S432",
+    "name": "NY Acceleration Dual-Speed (M15 Core + M5 NY Squeeze)"
+  },
+  {
+    "net_profit": 51757.69294806445,
+    "pf": 1.387367646656958,
+    "total_trades": 5556,
+    "annual_trades": 926.0,
+    "max_dd": 2443.9482957951404,
+    "romad": 21.177900136886915,
+    "win_rate": 36.84305255579554,
+    "mcr": 76.38888888888889,
+    "strategy_id": "S433",
+    "name": "Dual Monotonic Ratchet (M15 Ratchet + M5 Ratchet)"
+  },
+  {
+    "net_profit": 41424.06317136837,
+    "pf": 1.2946808753194647,
+    "total_trades": 4327,
+    "annual_trades": 721.1666666666666,
+    "max_dd": 2752.641961490601,
+    "romad": 15.048838080248025,
+    "win_rate": 35.24381788768199,
+    "mcr": 70.83333333333334,
+    "strategy_id": "S434",
+    "name": "Hybrid Execution Dual-Speed (M15 Market + M5 Limit Pullback)"
+  },
+  {
+    "net_profit": 47083.64171644279,
+    "pf": 1.2783169679224418,
+    "total_trades": 4880,
+    "annual_trades": 813.3333333333334,
+    "max_dd": 3327.757519702798,
+    "romad": 14.148759769205729,
+    "win_rate": 34.91803278688524,
+    "mcr": 72.22222222222221,
+    "strategy_id": "S435",
+    "name": "Dynamic Volume Sized Dual-Speed"
+  },
+  {
+    "net_profit": 39185.058241510684,
+    "pf": 1.4042372927269084,
+    "total_trades": 2817,
+    "annual_trades": 469.5,
+    "max_dd": 2514.592871122186,
+    "romad": 15.583062646647681,
+    "win_rate": 38.232161874334395,
+    "mcr": 76.38888888888889,
+    "strategy_id": "S436",
+    "name": "NY Limit Acceleration Dual-Speed"
+  },
+  {
+    "net_profit": 51903.23362063728,
+    "pf": 1.2141460193978266,
+    "total_trades": 6030,
+    "annual_trades": 1005.0,
+    "max_dd": 6217.762644904811,
+    "romad": 8.347573972314583,
+    "win_rate": 33.449419568822556,
+    "mcr": 66.66666666666666,
+    "strategy_id": "S437",
+    "name": "Dual-Speed Multi-Timeframe Trio Suite"
+  },
+  {
+    "net_profit": 48443.02972909891,
+    "pf": 1.207772630948242,
+    "total_trades": 5744,
+    "annual_trades": 957.3333333333334,
+    "max_dd": 5897.834276201174,
+    "romad": 8.2136980220986,
+    "win_rate": 33.443593314763234,
+    "mcr": 61.111111111111114,
+    "strategy_id": "S438",
+    "name": "Dual-Speed CVD Microstructure Quartet"
+  },
+  {
+    "net_profit": 12960.612257579978,
+    "pf": 1.146675773018388,
+    "total_trades": 2916,
+    "annual_trades": 486.0,
+    "max_dd": 3010.5307495781126,
+    "romad": 4.305092136792239,
+    "win_rate": 34.08779149519891,
+    "mcr": 52.77777777777778,
+    "strategy_id": "S439",
+    "name": "Prop-Firm Governed Dual-Speed S424 ($1,200 Cap)"
+  },
+  {
+    "net_profit": 17454.565142659914,
+    "pf": 1.1614731633223232,
+    "total_trades": 3527,
+    "annual_trades": 587.8333333333334,
+    "max_dd": 4115.532190727108,
+    "romad": 4.241144117882879,
+    "win_rate": 34.44853983555429,
+    "mcr": 52.77777777777778,
+    "strategy_id": "S440",
+    "name": "Centennial Dual-Speed Sovereign Apex Suite"
+  }
+]

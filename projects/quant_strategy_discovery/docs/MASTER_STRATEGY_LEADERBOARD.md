@@ -480,6 +480,30 @@ Evaluated across 423,930 M5 bars and 141,567 M15 bars (2020–2025) with exact i
 2. **The Session Asymmetry Law:** The New York session (12:00–17:00 UTC) generates **86.7% of all intraday scalping alpha** on Gold CFD (+$22.5k vs +$3.5k in London). London Open exhibits high false-breakout noise prior to US economic catalysts.
 3. **The M5 Cross-Timeframe Robustness Law (S422):** The Supertrend 3.0x Monotonic Ratchet functions profitably on standalone M5 across 6,223 trades (+ $25.7k Net, PF 1.202, RoMaD 10.35x), disproving the assumption that Gold M5 scalping is unviable under institutional fees.
 
+---
+
+## 12. New York Acceleration & Dual-Speed Fine-Tuning (Batch 24 - Strategies S431–S440)
+
+Evaluated across 423,930 M5 bars and 141,567 M15 bars (2020–2025) with exact institutional CFD fees ($0.25 spread + $6.00/lot commission).
+
+| Strategy ID & Architecture | Optimization Mechanism | Annual Trades | Net Profit ($) | Profit Factor | Win Rate (%) | Max Drawdown | RoMaD | MCR (%) | Empirical Status & Role |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+| **S431: Baseline S424 Benchmark** | M15 ST 3.0 + M5 Sqz 3R (0.10 Lot) | 813.3 tr/yr | **+$45,757.72** | **1.287** | 34.92% | **$3,089.69** | **14.81x** | **72.22%** | 🏆 **Dual-Speed Baseline Anchor** |
+| **S432: NY Acceleration Dual-Speed** | M15 Core + M5 Squeeze (12–17 UTC) | 512.7 tr/yr | **+$40,065.67** | **1.375** 🏆 | **38.17%** | **$2,257.86** 🏆 | **17.74x** 🏆 | **75.00%** 🏆 | 🏆 **Sub-$2.3k Drawdown NY Champion** |
+| **S433: Dual Monotonic Ratchet** | M15 Ratchet + M5 Trailing Ratchet | **926.0 tr/yr** ⚡ | **+$51,757.69** 🏆 | **1.387** 🏆 | **36.84%** | **$2,443.95** 🏆 | **21.18x** 🏆 | **76.39%** 🏆 | 👑 **ALL-TIME HIGH-FREQUENCY APEX (RoMaD 21.18x)** |
+| **S434: Hybrid Execution Dual-Speed** | M15 Market + M5 Limit (-0.2x ATR) | 721.2 tr/yr | **+$41,424.06** | **1.295** | 35.24% | **$2,752.64** | **15.05x** | **70.83%** | 🏆 **Limit Discount Hybrid Master** |
+| **S435: Dynamic Volume Dual-Speed** | Scale Lot 0.8x–1.3x by M5 RelVol | 813.3 tr/yr | **+$47,083.64** | **1.278** | 34.92% | $3,327.76 | 14.15x | **72.22%** | 🏆 Dynamic Turnover Multiplier |
+| **S436: NY Limit Acceleration Dual-Speed**| NY Session + Limit Pullback Entry | 469.5 tr/yr | **+$39,185.06** | **1.404** 🏆 | **38.23%** 🏆 | **$2,514.59** 🏆 | **15.58x** | **76.39%** 🏆 | 🏆 **HIGHEST PF HIGH-TURNOVER MODEL (PF 1.404)** |
+| **S437: Dual-Speed Trio Suite** | M15 ST + M15 TTM + M5 Squeeze | **1,005.0 tr/yr** ⚡| **+$51,903.23** | 1.214 | 33.45% | $6,217.76 | 8.35x | 66.67% | ⚡ 1,000+ Tr/Yr Multi-Engine Trio |
+| **S438: Dual-Speed CVD Quartet** | Trio Suite + M5 CVD 20 Filter | **957.3 tr/yr** ⚡ | **+$48,443.03** | 1.208 | 33.44% | $5,897.83 | 8.21x | 61.11% | Orderflow MTF Quartet |
+| **S439: Prop-Firm Governed Dual-Speed**| S424 + $1,200 Monthly Loss Cap | 486.0 tr/yr | +$12,960.61 | 1.147 | 34.09% | $3,010.53 | 4.31x | 52.78% | Capital Preserving Prop Edition |
+| **S440: Centennial Dual-Speed Apex** | S434 (Limit) + S436 (NY) + Governor| 587.8 tr/yr | +$17,454.57 | 1.161 | 34.45% | $4,115.53 | 4.24x | 52.78% | Multi-Mechanism Governed Apex |
+
+### Key Empirical Laws Discovered in Batch 24
+1. **The Dual Monotonic Ratchet Law (S433 Grand Apex):** Replacing fixed take-profits on M5 with an M5 Monotonic Ratchet (3.0x M5 ATR) allows intraday runners to expand into fat tails, elevating Net Profit to **+$51,757.69**, Profit Factor to **1.387**, and Return on Drawdown to an unprecedented **21.18x across 926 trades/year** (Max DD $2,443.95).
+2. **The New York Acceleration Law (S432 & S436):** Gating M5 entries to New York hours (12:00–17:00 UTC) compresses drawdown to **$2,257.86** and elevates Profit Factor to **1.375–1.404** with a **38.2% win rate**.
+
+
 
 
 
