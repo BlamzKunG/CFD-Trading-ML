@@ -1,0 +1,11 @@
+Strategy_ID,Strategy_Name,Annual_Trades,Total_Trades,Net_Profit,Profit_Factor,Win_Rate_Pct,Max_Drawdown,RoMaD,Monthly_Consistency_Pct
+S441,Unconstrained M1 Supertrend Baseline,10988.3,65930,-108096.95,0.834,31.85,127372.5,-0.85,15.28
+S442,M1 Supertrend + Mild Vol Threshold ($0.80),1313.8,7883,27301.4,1.214,39.29,2717.84,10.05,70.83
+S443,M1 Supertrend + Moderate Vol Threshold ($1.20),575.2,3451,20996.16,1.29,40.6,2237.56,9.38,63.89
+S444,M1 Supertrend + High Vol Threshold ($1.60),284.3,1706,14837.42,1.337,41.62,1794.07,8.27,61.11
+S445,M1 NY Session Scalper,1154.3,6926,14261.01,1.166,37.02,1165.47,12.24,58.33
+S446,M1 NY Session + Volatility Filter ($1.00),430.8,2585,15852.19,1.348,41.47,896.34,17.69,65.28
+S447,M1 NY Session + High Vol Filter ($1.40),196.5,1179,12044.53,1.468,43.09,959.0,12.56,59.72
+S448,Dual-Timeframe M15 Core + M1 NY Sniper,770.5,4623,45813.37,1.402,40.41,2191.63,20.9,76.39
+S449,Dual-Timeframe M15 Core + M1 High-Vol Sniper,536.2,3217,42005.7,1.446,40.53,2125.12,19.77,73.61
+S450,Triple-Timeframe Centennial Master Suite (M15+M5+M1),1356.8,8141,67609.88,1.377,38.31,2768.49,24.42,79.17

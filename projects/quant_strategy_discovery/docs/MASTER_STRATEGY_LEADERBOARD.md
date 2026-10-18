@@ -503,6 +503,31 @@ Evaluated across 423,930 M5 bars and 141,567 M15 bars (2020–2025) with exact i
 1. **The Dual Monotonic Ratchet Law (S433 Grand Apex):** Replacing fixed take-profits on M5 with an M5 Monotonic Ratchet (3.0x M5 ATR) allows intraday runners to expand into fat tails, elevating Net Profit to **+$51,757.69**, Profit Factor to **1.387**, and Return on Drawdown to an unprecedented **21.18x across 926 trades/year** (Max DD $2,443.95).
 2. **The New York Acceleration Law (S432 & S436):** Gating M5 entries to New York hours (12:00–17:00 UTC) compresses drawdown to **$2,257.86** and elevates Profit Factor to **1.375–1.404** with a **38.2% win rate**.
 
+---
+
+## 13. M1 Microstructure Scalping & Sub-Minute Volatility Thresholding (Batch 25 - Strategies S441–S450)
+
+Evaluated across 2,116,595 M1 bars, 423,930 M5 bars, and 141,567 M15 bars (2020–2025) under exact institutional CFD fees ($0.25 spread + $6.00/lot commission).
+
+| Strategy ID & Architecture | Microstructure & Session Mechanism | Annual Trades | Total Trades | Net Profit ($) | Profit Factor | Win Rate (%) | Max Drawdown ($) | RoMaD | MCR (%) | Empirical Status & Architectural Role |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+| **S441: Unconstrained M1 Baseline** | Pure M1 Supertrend Ratchet (No Vol Filter) | 10,988.3 | 65,930 | -$108,096.95 | 0.834 | 31.85% | $127,372.50 | -0.85x | 15.28% | ❌ **MICROSTRUCTURE FRICTION TRAP REJECTED** |
+| **S442: M1 Mild Vol Threshold ($0.80)** | M15 Macro Gated + M1 $ATR \ge \$0.80$ | 1,313.8 | 7,883 | **+$27,301.40** | **1.214** | 39.29% | **$2,717.84** | **10.05x** | **70.83%** | 🏆 **Microstructure Turnaround Champion** |
+| **S443: M1 Moderate Vol Threshold ($1.20)**| M15 Macro Gated + M1 $ATR \ge \$1.20$ | 575.2 | 3,451 | **+$20,996.16** | **1.290** | 40.60% | **$2,237.56** | 9.38x | 63.89% | 🏆 High-Signal Low-Noise Scalper |
+| **S444: M1 High Vol Threshold ($1.60)** | M15 Macro Gated + M1 $ATR \ge \$1.60$ | 284.3 | 1,706 | **+$14,837.42** | **1.337** | 41.62% | **$1,794.07** | 8.27x | 61.11% | 🏆 Volatility Expansion Sniper |
+| **S445: M1 NY Session Scalper** | NY Session (12–17 UTC) + M15 Gated (No Vol) | 1,154.3 | 6,926 | **+$14,261.01** | **1.166** | 37.02% | **$1,165.47** | **12.24x** | 58.33% | 🏆 Low Drawdown Session Scalper |
+| **S446: M1 NY Volatility Filter ($1.00)** | NY Session + M15 Gated + M1 $ATR \ge \$1.00$ | 430.8 | 2,585 | **+$15,852.19** | **1.348** 🏆 | **41.47%** | **$896.34** 🏆 | **17.69x** 🏆 | 65.28% | 👑 **SUB-$900 DRAWDOWN MICRO SNIPER** |
+| **S447: M1 NY High Vol Filter ($1.40)** | NY Session + M15 Gated + M1 $ATR \ge \$1.40$ | 196.5 | 1,179 | **+$12,044.53** | **1.468** 🏆 | **43.09%** 🏆 | **$959.00** 🏆 | **12.56x** | 59.72% | 🏆 **HIGHEST PF STANDALONE M1 (PF 1.468)** |
+| **S448: Dual-Timeframe M15 + M1 NY Sniper** | M15 Core (S421) + M1 NY Sniper (S446) | 770.5 | 4,623 | **+$45,813.37** | **1.402** 🏆 | 40.41% | **$2,191.63** 🏆 | **20.90x** 🏆 | **76.39%** 🏆 | 🏆 **Dual-Timeframe Elite Matrix** |
+| **S449: Dual-Timeframe M15 + M1 High-Vol** | M15 Core (S421) + M1 NY High-Vol (S447) | 536.2 | 3,217 | **+$42,005.70** | **1.446** 🏆 | 40.53% | **$2,125.12** 🏆 | **19.77x** 🏆 | **73.61%** 🏆 | 🏆 High-PF Multi-Timeframe Duo |
+| **S450: Triple-Timeframe Centennial Suite**| M15 Core + M5 Ratchet (S433) + M1 Sniper (S446)| **1,356.8** ⚡ | **8,141** ⚡ | **+$67,609.88** 👑 | **1.377** 🏆 | 38.31% | **$2,768.49** 🏆 | **24.42x** 👑 | **79.17%** 👑 | 👑 **ALL-TIME GRAND CENTENNIAL APEX (RoMaD 24.42x)** |
+
+### Key Empirical Laws Discovered in Batch 25
+1. **The Microstructure Volatility Gating Law (S441 vs S442):** Pure unconstrained M1 scalping under standard broker friction generates a massive -$108k loss across 65,930 trades. However, applying an absolute volatility threshold ($ATR_{M1} \ge \$0.80$) with M15 Macro alignment flips the expectancy to **+$27,301.40 Net Profit** (PF 1.214, Max DD $2,717.84).
+2. **The New York Sub-Minute Precision Law (S446):** Restricting M1 triggers to New York hours (12:00–17:00 UTC) with $ATR \ge \$1.00$ produces **2,585 trades** with **+$15,852.19 Net Profit**, **PF 1.348**, and an all-time lowest drawdown of **$896.34** (RoMaD **17.69x**).
+3. **The Triple-Timeframe Centennial Master Law (S450):** Synthesizing M15 Macro Supertrend (S421) + M5 Dual Monotonic Ratchet (S433) + M1 NY Micro Sniper (S446) achieves **+$67,609.88 Net Profit**, **1,356.8 trades/year**, **PF 1.377**, Max DD **$2,768.49**, and an unprecedented **RoMaD of 24.42x** with **79.17% Monthly Consistency** (57/72 winning months).
+
+
 
 
 

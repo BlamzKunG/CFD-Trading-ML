@@ -1,0 +1,122 @@
+[
+  {
+    "net_profit": -108096.94897458953,
+    "pf": 0.8343258593840591,
+    "total_trades": 65930,
+    "annual_trades": 10988.333333333334,
+    "max_dd": 127372.49951114257,
+    "romad": -0.8486678787765579,
+    "win_rate": 31.851964204459275,
+    "mcr": 15.277777777777779,
+    "strategy_id": "S441",
+    "name": "Unconstrained M1 Supertrend Baseline"
+  },
+  {
+    "net_profit": 27301.403494472208,
+    "pf": 1.2141504165659187,
+    "total_trades": 7883,
+    "annual_trades": 1313.8333333333333,
+    "max_dd": 2717.8429289024293,
+    "romad": 10.045246987653394,
+    "win_rate": 39.28707344919447,
+    "mcr": 70.83333333333334,
+    "strategy_id": "S442",
+    "name": "M1 Supertrend + Mild Vol Threshold ($0.80)"
+  },
+  {
+    "net_profit": 20996.16246632036,
+    "pf": 1.2896078862327172,
+    "total_trades": 3451,
+    "annual_trades": 575.1666666666666,
+    "max_dd": 2237.563931997609,
+    "romad": 9.383491647354099,
+    "win_rate": 40.59692842654303,
+    "mcr": 63.888888888888886,
+    "strategy_id": "S443",
+    "name": "M1 Supertrend + Moderate Vol Threshold ($1.20)"
+  },
+  {
+    "net_profit": 14837.419137576631,
+    "pf": 1.336925293234958,
+    "total_trades": 1706,
+    "annual_trades": 284.3333333333333,
+    "max_dd": 1794.074913830978,
+    "romad": 8.270233881088917,
+    "win_rate": 41.61781946072685,
+    "mcr": 61.111111111111114,
+    "strategy_id": "S444",
+    "name": "M1 Supertrend + High Vol Threshold ($1.60)"
+  },
+  {
+    "net_profit": 14261.009275281403,
+    "pf": 1.1657096655264054,
+    "total_trades": 6926,
+    "annual_trades": 1154.3333333333333,
+    "max_dd": 1165.4727673740617,
+    "romad": 12.236244101535744,
+    "win_rate": 37.019924920589084,
+    "mcr": 58.333333333333336,
+    "strategy_id": "S445",
+    "name": "M1 NY Session Scalper"
+  },
+  {
+    "net_profit": 15852.190280646331,
+    "pf": 1.3483280593248268,
+    "total_trades": 2585,
+    "annual_trades": 430.8333333333333,
+    "max_dd": 896.3375033812636,
+    "romad": 17.685514910228505,
+    "win_rate": 41.47001934235976,
+    "mcr": 65.27777777777779,
+    "strategy_id": "S446",
+    "name": "M1 NY Session + Volatility Filter ($1.00)"
+  },
+  {
+    "net_profit": 12044.528588682222,
+    "pf": 1.468151721479929,
+    "total_trades": 1179,
+    "annual_trades": 196.5,
+    "max_dd": 958.9982054528596,
+    "romad": 12.559490226568816,
+    "win_rate": 43.08736217133164,
+    "mcr": 59.72222222222222,
+    "strategy_id": "S447",
+    "name": "M1 NY Session + High Vol Filter ($1.40)"
+  },
+  {
+    "net_profit": 45813.365006960565,
+    "pf": 1.4020845173453238,
+    "total_trades": 4623,
+    "annual_trades": 770.5,
+    "max_dd": 2191.631739409844,
+    "romad": 20.903769635722217,
+    "win_rate": 40.406662340471556,
+    "mcr": 76.38888888888889,
+    "strategy_id": "S448",
+    "name": "Dual-Timeframe M15 Core + M1 NY Sniper"
+  },
+  {
+    "net_profit": 42005.703314996164,
+    "pf": 1.4461188416584434,
+    "total_trades": 3217,
+    "annual_trades": 536.1666666666666,
+    "max_dd": 2125.122716169688,
+    "romad": 19.766248318453375,
+    "win_rate": 40.53465962076469,
+    "mcr": 73.61111111111111,
+    "strategy_id": "S449",
+    "name": "Dual-Timeframe M15 Core + M1 High-Vol Sniper"
+  },
+  {
+    "net_profit": 67609.88322871161,
+    "pf": 1.3774489619695631,
+    "total_trades": 8141,
+    "annual_trades": 1356.8333333333333,
+    "max_dd": 2768.485203786513,
+    "romad": 24.421255037317955,
+    "win_rate": 38.312246652745365,
+    "mcr": 79.16666666666666,
+    "strategy_id": "S450",
+    "name": "Triple-Timeframe Centennial Master Suite (M15+M5+M1)"
+  }
+]
