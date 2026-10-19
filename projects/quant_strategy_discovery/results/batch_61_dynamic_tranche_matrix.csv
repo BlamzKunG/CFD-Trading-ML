@@ -1,0 +1,31 @@
+Strategy_ID,Strategy_Name,Role,Annual_Trades,Total_Trades,Net_Profit,Profit_Factor,Win_Rate_Pct,True_Intra_Max_DD,RoMaD,MCR_Pct,Avg_Trade_PnL,MC_P50_DD,MC_P95_DD,Ruin_Probability_Pct
+S1026,"Dual-Tranche (T1: 1.2R, T2: 2.5R)",Dual-Tranche 1.2R/2.5R,65.0,390,2480.14,1.77,74.6,335.56,7.39,59.1,6.36,310.5,524.93,0.0
+S1027,"Dual-Tranche (T1: 1.5R, T2: 3.0R)",Dual-Tranche 1.5R/3.0R,59.8,359,2536.22,1.748,72.4,340.19,7.46,56.1,7.06,323.6,562.26,0.0
+S1028,"Dual-Tranche (T1: 1.5R, T2: 2.5R)",Dual-Tranche 1.5R/2.5R,63.3,380,2648.09,1.795,73.9,335.56,7.89,57.6,6.97,305.88,535.5,0.0
+S1029,"Dual-Tranche (T1: 1.8R, T2: 3.5R)",Dual-Tranche 1.8R/3.5R,57.5,345,2617.59,1.726,71.3,487.52,5.37,54.5,7.59,350.61,635.5,0.0
+S1030,"Dual-Tranche (T1: 1.5R, T2: 2.5R) + 50% Lock",Dual-Tranche 1.5R/2.5R + Lock,63.3,380,2648.09,1.795,73.9,335.56,7.89,57.6,6.97,305.88,535.5,0.0
+S1031,"Dual-Tranche (T1: 1.5R, T2: 3.0R) + 50% Lock",Dual-Tranche 1.5R/3.0R + Lock,59.8,359,2536.22,1.748,72.4,340.19,7.46,56.1,7.06,323.6,562.26,0.0
+S1032,Rapid Single-Tranche 1.2R Scale-Out,Rapid Tranche 1.2R Scale,49.3,296,2325.05,1.77,66.6,335.56,6.93,54.5,7.85,320.6,549.97,0.0
+S1033,Rapid Single-Tranche 1.4R Scale-Out,Rapid Tranche 1.4R Scale,48.5,291,2499.73,1.8,66.0,335.56,7.45,57.6,8.59,316.53,555.48,0.0
+S1034,Rapid Single-Tranche 1.6R Scale-Out,Rapid Tranche 1.6R Scale,47.7,286,2711.72,1.851,65.4,335.56,8.08,56.1,9.48,317.13,556.67,0.0
+S1035,Rapid Single-Tranche 1.8R Scale-Out,Rapid Tranche 1.8R Scale,46.3,278,2577.63,1.749,64.4,478.74,5.38,59.1,9.27,355.79,672.39,0.0
+S1036,Session Asymmetric (NY Rapid 1.2R Exit),NY Rapid De-Leveraging,49.2,295,2531.2,1.946,66.4,384.54,6.58,60.6,8.58,278.39,491.47,0.0
+S1037,Session Asymmetric (NY Rapid) + 50% Lock,NY Rapid + 50% Lock,49.2,295,2531.2,1.946,66.4,384.54,6.58,60.6,8.58,278.39,491.47,0.0
+S1038,Session Asymmetric Extreme (0.16 Lon / 0.04 NY),Session Asymmetric Extreme,49.2,295,2630.72,2.025,66.4,438.15,6.0,56.1,8.92,280.54,496.9,0.0
+S1039,Session Asymmetric Extreme + 50% Lock,Session Extreme + Lock,49.2,295,2630.72,2.025,66.4,438.15,6.0,56.1,8.92,280.54,496.9,0.0
+S1040,Sub-Risk Tranche Apex (0.10 Lon / 0.05 NY),Sub-Risk Tranche Apex,49.2,295,2043.92,1.848,66.4,277.32,7.37,60.6,6.93,246.76,441.68,0.0
+S1041,Sub-Risk Tranche Apex + 50% Lock,Sub-Risk Apex + Lock,49.2,295,2043.92,1.848,66.4,277.32,7.37,60.6,6.93,246.76,441.68,0.0
+S1042,Dual-Tranche Extreme (0.15 Lon / 0.04 NY),Dual-Tranche Extreme,64.8,389,2584.47,2.016,74.6,406.71,6.35,59.1,6.64,249.22,432.06,0.0
+S1043,Dual-Tranche Extreme + 50% Lock,Dual-Tranche Extreme + Lock,64.8,389,2584.47,2.016,74.6,406.71,6.35,59.1,6.64,249.22,432.06,0.0
+S1044,Prop-Firm Tranche Shield (0.05 Lon / 0.03 NY),Prop-Firm Tranche Shield,49.2,295,1079.46,1.759,66.4,146.89,7.35,60.6,3.66,148.61,268.51,0.0
+S1045,Prop-Firm Tranche Shield + 50% Lock,Prop-Firm Shield + Lock,49.2,295,1079.46,1.759,66.4,146.89,7.35,60.6,3.66,148.61,268.51,0.0
+S1046,Tranche Compounding 0.5% (1.5R Scale),Tranche Comp 0.5% (1.5R),47.7,286,1278.31,1.621,65.4,200.01,6.39,56.1,4.47,216.92,401.51,0.0
+S1047,Tranche Compounding 0.75% (1.5R Scale),Tranche Comp 0.75% (1.5R),47.7,286,1276.54,1.62,65.4,200.01,6.38,56.1,4.46,216.92,402.52,0.0
+S1048,Tranche Compounding 1.0% (1.5R Scale),Tranche Comp 1.0% (1.5R),47.7,286,1402.46,1.654,65.4,195.9,7.16,53.0,4.9,225.14,409.86,0.0
+S1049,Tranche Compounding 1.5% (1.5R Scale),Tranche Comp 1.5% (1.5R),47.7,286,1566.17,1.605,65.4,256.85,6.1,54.5,5.48,267.19,500.12,0.0
+S1050,Tranche Compounding 2.0% (1.5R Scale),Tranche Comp 2.0% (1.5R),47.7,286,1910.13,1.579,65.4,345.39,5.53,56.1,6.68,342.28,628.75,0.0
+S1051,Dual-Tranche Compounding 1.0% + 50% Lock,Dual-Tranche Comp 1.0% Lock,63.3,380,1450.73,1.708,73.9,189.64,7.65,62.1,3.82,183.04,330.32,0.0
+S1052,Dual-Tranche Compounding 1.5% + 50% Lock,Dual-Tranche Comp 1.5% Lock,63.3,380,1566.81,1.613,73.9,254.92,6.15,57.6,4.12,227.96,406.93,0.0
+S1053,Dual-Tranche Compounding 2.0% + 50% Lock,Dual-Tranche Comp 2.0% Lock,63.3,380,2012.01,1.613,73.9,311.61,6.46,57.6,5.29,293.27,533.32,0.0
+S1054,Grand Asymmetric Millennium Vault 2026,Millennium Vault 2026,64.8,389,1395.4,1.726,74.6,188.0,7.42,63.6,3.59,177.64,308.04,0.0
+S1055,Apex Sovereign Millennium Titan 2026,👑 Apex Sovereign Titan 2026,64.8,389,1548.87,1.67,74.6,241.0,6.43,60.6,3.98,214.71,367.43,0.0
