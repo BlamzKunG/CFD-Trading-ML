@@ -1,0 +1,31 @@
+Strategy_ID,Strategy_Name,Role,Annual_Trades,Total_Trades,Net_Profit,Profit_Factor,Win_Rate_Pct,True_Intra_Max_DD,RoMaD,MCR_Pct,Avg_Trade_PnL,MC_P50_DD,MC_P95_DD,Ruin_Probability_Pct
+S1086,Regime-Adaptive Tri-Tranche Base,Regime-Adaptive Base,54.0,324,2389.02,2.035,69.4,479.19,4.99,57.6,7.37,254.33,444.56,0.0
+S1087,Regime-Adaptive Tri-Tranche + 50% Lock,Regime-Adaptive + Lock,54.0,324,2389.02,2.035,69.4,479.19,4.99,57.6,7.37,254.33,444.56,0.0
+S1088,Regime-Adaptive (NY 1.1R Rapid 70%),Regime-Adaptive NY 1.1R,54.0,324,2500.75,2.083,69.4,469.77,5.32,62.1,7.72,249.89,433.36,0.0
+S1089,Regime-Adaptive (NY 1.1R Rapid) + Lock,Regime-Adaptive NY 1.1R + Lock,54.0,324,2500.75,2.083,69.4,469.77,5.32,62.1,7.72,249.89,433.36,0.0
+S1090,Regime-Adaptive (NY 1.2R Rapid 60%),Regime-Adaptive NY 1.2R,53.5,321,2577.04,1.994,69.2,438.15,5.88,59.1,8.03,268.28,464.35,0.0
+S1091,Regime-Adaptive (NY 1.2R Rapid) + Lock,Regime-Adaptive NY 1.2R + Lock,53.5,321,2577.04,1.994,69.2,438.15,5.88,59.1,8.03,268.28,464.35,0.0
+S1092,Regime-Adaptive Balanced (0.14/0.07/0.05),Regime-Adaptive Balanced,54.0,324,2412.65,1.902,69.4,387.09,6.23,60.6,7.45,267.78,466.13,0.0
+S1093,Regime-Adaptive Balanced + 50% Lock,Regime Balanced + Lock,54.0,324,2412.65,1.902,69.4,387.09,6.23,60.6,7.45,267.78,466.13,0.0
+S1094,Regime-Adaptive Sub-Risk (0.12/0.06/0.04),Regime Sub-Risk Base,54.0,324,2005.16,1.974,69.4,362.55,5.53,60.6,6.19,214.57,377.7,0.0
+S1095,Regime-Adaptive Sub-Risk + 50% Lock,Regime Sub-Risk + Lock,54.0,324,2005.16,1.974,69.4,362.55,5.53,60.6,6.19,214.57,377.7,0.0
+S1096,Prop-Firm Ultra-Floor (0.04/0.02/0.02),Prop-Firm Ultra-Floor Base,51.3,308,775.05,1.782,67.9,111.85,6.93,56.1,2.52,103.23,189.04,0.0
+S1097,Prop-Firm Ultra-Floor + 50% Lock,Prop-Firm Ultra-Floor + Lock,51.3,308,775.05,1.782,67.9,111.85,6.93,56.1,2.52,103.23,189.04,0.0
+S1098,Prop-Firm Shield Plus (0.05/0.03/0.02),Prop-Firm Shield Plus,54.0,324,916.02,1.826,69.4,138.66,6.61,57.6,2.83,111.33,197.95,0.0
+S1099,Prop-Firm Shield Plus + 50% Lock,Prop-Firm Shield Plus + Lock,54.0,324,916.02,1.826,69.4,138.66,6.61,57.6,2.83,111.33,197.95,0.0
+S1100,Prop-Firm Micro-Sprint (0.06/0.03/0.02),Prop-Firm Micro-Sprint,54.0,324,1082.34,1.947,69.4,165.46,6.54,59.1,3.34,115.57,201.01,0.0
+S1101,Prop-Firm Micro-Sprint + 50% Lock,Prop-Firm Sprint + Lock,54.0,324,1082.34,1.947,69.4,165.46,6.54,59.1,3.34,115.57,201.01,0.0
+S1102,Prop-Firm Static Tri-Tranche (0.05/0.03),Static Prop-Firm Tri-Tranche,54.0,324,1004.94,1.741,69.4,157.87,6.37,60.6,3.1,138.23,243.97,0.0
+S1103,Prop-Firm Static Tri-Tranche + Lock,Static Shield + Lock,54.0,324,1004.94,1.741,69.4,157.87,6.37,60.6,3.1,138.23,243.97,0.0
+S1104,Prop-Firm Precision Tight (T1: 1.1R),Prop-Firm Precision Tight,54.0,324,956.32,1.705,69.4,157.87,6.06,60.6,2.95,140.51,248.32,0.0
+S1105,Prop-Firm Precision Tight + 50% Lock,Precision Tight + Lock,54.0,324,956.32,1.705,69.4,157.87,6.06,60.6,2.95,140.51,248.32,0.0
+S1106,Regime Tri-Tranche Compounding 0.5%,Regime Comp 0.5% Shield,41.0,246,403.79,1.484,59.8,87.1,4.64,56.1,1.64,101.92,192.02,0.0
+S1107,Regime Tri-Tranche Compounding 0.75%,Regime Comp 0.75% Apex,49.8,299,605.66,1.548,66.9,126.94,4.77,56.1,2.03,119.53,212.16,0.0
+S1108,Regime Tri-Tranche Compounding 1.0%,Regime Comp 1.0% Engine,51.8,311,800.79,1.564,68.2,163.54,4.9,63.6,2.57,152.31,275.91,0.0
+S1109,Regime Tri-Tranche Compounding 1.25%,Regime Comp 1.25% Titan,52.5,315,914.52,1.51,68.6,193.51,4.73,63.6,2.9,191.36,348.59,0.0
+S1110,Regime Tri-Tranche Compounding 1.5%,Regime Comp 1.5% Maximum,52.8,317,1064.7,1.496,68.8,208.41,5.11,63.6,3.36,231.89,428.74,0.0
+S1111,Regime Tri-Tranche Comp 1.0% + 50% Lock,Regime Comp 1.0% Lock,51.8,311,800.79,1.564,68.2,163.54,4.9,63.6,2.57,152.31,275.91,0.0
+S1112,Regime Tri-Tranche Comp 1.25% + 50% Lock,Regime Comp 1.25% Lock,52.5,315,914.52,1.51,68.6,193.51,4.73,63.6,2.9,191.36,348.59,0.0
+S1113,Regime Tri-Tranche Comp 1.5% + 50% Lock,Regime Comp 1.5% Lock,52.8,317,1064.7,1.496,68.8,208.41,5.11,63.6,3.36,231.89,428.74,0.0
+S1114,Grand Asymmetric Regime Vault 2026,Grand Regime Vault 2026,51.8,311,800.79,1.564,68.2,163.54,4.9,63.6,2.57,152.31,275.91,0.0
+S1115,Apex Sovereign Regime Paragon 2026,👑 Apex Sovereign Regime Paragon 2026,52.5,315,914.52,1.51,68.6,193.51,4.73,63.6,2.9,191.36,348.59,0.0
