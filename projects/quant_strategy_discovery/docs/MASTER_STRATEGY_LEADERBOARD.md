@@ -574,6 +574,31 @@ Rigorous audit and stress testing of the S460 Grand Sovereign Apex across In-Sam
 2. **The Double-Spread Survival Law (S464):** Doubling broker spreads to $0.50 ($50.00/standard lot) preserves **+$41,331.75 Net Profit** with **PF 1.241**, confirming that institutional fee inflation cannot compromise system profitability.
 3. **The Monte Carlo Ergodicity Law (S467 & S468):** Across 1,000 randomized permutations, the 95% worst-case drawdown is bound at **$2,949.74**, the 99% crisis drawdown is bound at **$3,579.47**, and the probability of account ruin on a $10,000 balance is mathematically **0.00%**.
 
+---
+
+## 16. Parameter Plateau Analysis & Convex Robustness Audit (Batch 28 - Strategies S471–S480)
+
+Evaluated across 2,116,595 M1 bars, 423,930 M5 bars, and 141,567 M15 bars (2020–2025) under exact institutional CFD fees ($0.25 spread + $6.00/lot commission).
+
+| Strategy ID & Architecture | Parameter Variant Evaluated | Annual Trades | Total Trades | Net Profit ($) | Profit Factor | Win Rate (%) | Max Drawdown ($) | RoMaD | MCR (%) | Empirical Status & Architectural Role |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+| **S471: Plateau Core Baseline** | Standard (ST 3.0, M1 $1.00, $500 Gov) | 1,352.3 | 8,114 | **+$61,616.75** | **1.388** | 38.30% | **$2,095.15** | **29.41x** | 77.78% | 🏆 Plateau Core Reference |
+| **S472: Plateau Test 1** | M1 Volatility Gate $0.90 | **1,446.2** | 8,677 | **+$62,577.30** | **1.381** | 38.19% | **$2,068.93** | **30.25x** 👑 | **81.94%** 👑 | 👑 **81.94% MCR (59/72 WINNING MONTHS)** |
+| **S473: Plateau Test 2** | M1 Volatility Gate $1.10 | 1,275.8 | 7,655 | **+$59,468.42** | **1.385** | 37.88% | **$2,053.81** | **28.96x** | **80.56%** | 🏆 High-Signal Convex Neighbor |
+| **S474: Plateau Test 3** | Tight Ratchet (M1 ST 2.5x) | **1,502.8** | 9,017 | **+$61,557.57** | **1.372** | 38.02% | **$2,207.46** | **27.89x** | 77.78% | 🏆 1,500+ Tr/Yr High-Speed Variant |
+| **S475: Plateau Test 4** | Loose Ratchet (M1 ST 3.5x) | 1,248.5 | 7,491 | **+$58,959.13** | **1.382** | 37.89% | **$2,227.81** | **26.47x** | 77.78% | 🏆 Wide-Tail Runner Variant |
+| **S476: Governor Sweep 1** | $400 Daily Loss Limit | 1,349.0 | 8,094 | **+$61,978.32** | **1.393** 🏆 | 38.30% | **$1,999.67** 👑 | **30.99x** 👑 | 77.78% | 👑 **SUB-$2,000 MAX DRAWDOWN (RoMaD 31x)** |
+| **S477: Governor Sweep 2** | $600 Daily Loss Limit | 1,354.5 | 8,127 | **+$60,965.77** | **1.382** | 38.28% | $2,502.86 | 24.36x | 77.78% | 🏆 Relaxed Governor Variant |
+| **S478: Sizing Weight Sweep 1** | Equal Weight (1.0x / 1.0x / 1.0x) | 1,351.8 | 8,111 | **+$70,946.18** 👑 | **1.385** | 38.32% | $2,346.19 | **30.24x** | 77.78% | 👑 **+$70.9k Net Profit with RoMaD 30.2x** |
+| **S479: Sizing Weight Sweep 2** | Conservative Micro (0.50x M1) | 1,354.0 | 8,124 | **+$54,189.55** | **1.390** | 38.29% | **$2,145.36** | 25.26x | 77.78% | 🛡️ Conservative Capital Model |
+| **S480: Convex Robustness Master**| Median Convex Parameters (S480) | **1,351.2** | 8,107 | **+$61,963.42** 🏆 | **1.391** 🏆 | 38.32% | **$2,049.69** 🏆 | **30.23x** 👑 | 77.78% | 👑 **THE CONVEX SOVEREIGN MASTER APEX** |
+
+### Key Empirical Laws Discovered in Batch 28
+1. **The Law of the Convex Parameter Plateau:** Across the entire multi-dimensional parameter space (M1 volatility gate $0.90 to $1.10, Supertrend multiplier 2.5x to 3.5x, Daily loss governor $400 to $600), the Sovereign Centennial Apex maintains **Profit Factor between 1.372 and 1.393** (a microscopic 1.5% variance) and **RoMaD between 24.36x and 30.99x**.
+2. **Sub-$2,000 Drawdown Milestone (S476):** Tightening the daily loss limit to -$400 compresses the 6-year Maximum Drawdown across 8,094 trades to **$1,999.67**, achieving a staggering **30.99x Return on Max Drawdown**.
+3. **Packaging of Scalping Package 2 (`Scalping_p2`):** The Top 5 Champion EAs of Phase 2 have been organized, documented, and packaged in `projects/quant_strategy_discovery/Scalping_p2/`.
+
+
 
 
 

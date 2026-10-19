@@ -1,0 +1,11 @@
+Strategy_ID,Strategy_Name,Annual_Trades,Total_Trades,Net_Profit,Profit_Factor,Win_Rate_Pct,Max_Drawdown,RoMaD,Monthly_Consistency_Pct
+S471,Plateau Core Baseline (Standard),1352.3,8114,61616.75,1.388,38.3,2095.15,29.41,77.78
+S472,Plateau Test: M1 Vol Gate $0.90,1446.2,8677,62577.3,1.381,38.19,2068.93,30.25,81.94
+S473,Plateau Test: M1 Vol Gate $1.10,1275.8,7655,59468.42,1.385,37.88,2053.81,28.96,80.56
+S474,Plateau Test: Tight Ratchet (2.5x),1502.8,9017,61557.57,1.372,38.02,2207.46,27.89,77.78
+S475,Plateau Test: Loose Ratchet (3.5x),1248.5,7491,58959.13,1.382,37.89,2227.81,26.47,77.78
+S476,Governor Plateau: $400 Daily Cap,1349.0,8094,61978.32,1.393,38.3,1999.67,30.99,77.78
+S477,Governor Plateau: $600 Daily Cap,1354.5,8127,60965.77,1.382,38.28,2502.86,24.36,77.78
+S478,Sizing Plateau: Equal Weight + Gov,1351.8,8111,70946.18,1.385,38.32,2346.19,30.24,77.78
+S479,Sizing Plateau: Conservative Micro (0.5x),1354.0,8124,54189.55,1.39,38.29,2145.36,25.26,77.78
+S480,Convex Robustness Sovereign Master (S480),1351.2,8107,61963.42,1.391,38.32,2049.69,30.23,77.78

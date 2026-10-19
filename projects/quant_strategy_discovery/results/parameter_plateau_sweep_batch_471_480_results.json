@@ -1,0 +1,122 @@
+[
+  {
+    "net_profit": 61616.75205642028,
+    "pf": 1.3882381108048754,
+    "total_trades": 8114,
+    "annual_trades": 1352.3333333333333,
+    "max_dd": 2095.1532869198927,
+    "romad": 29.409185686362704,
+    "win_rate": 38.304165639635194,
+    "mcr": 77.77777777777779,
+    "strategy_id": "S471",
+    "name": "Plateau Core Baseline (Standard)"
+  },
+  {
+    "net_profit": 62577.30251346946,
+    "pf": 1.3805004951443725,
+    "total_trades": 8677,
+    "annual_trades": 1446.1666666666667,
+    "max_dd": 2068.934566406122,
+    "romad": 30.24614868423337,
+    "win_rate": 38.192923821597326,
+    "mcr": 81.94444444444444,
+    "strategy_id": "S472",
+    "name": "Plateau Test: M1 Vol Gate $0.90"
+  },
+  {
+    "net_profit": 59468.4231573158,
+    "pf": 1.3853600788582574,
+    "total_trades": 7655,
+    "annual_trades": 1275.8333333333333,
+    "max_dd": 2053.81499701547,
+    "romad": 28.95510220917326,
+    "win_rate": 37.88373612018289,
+    "mcr": 80.55555555555556,
+    "strategy_id": "S473",
+    "name": "Plateau Test: M1 Vol Gate $1.10"
+  },
+  {
+    "net_profit": 61557.56998256574,
+    "pf": 1.371705997721957,
+    "total_trades": 9017,
+    "annual_trades": 1502.8333333333333,
+    "max_dd": 2207.4579485509676,
+    "romad": 27.886180129942552,
+    "win_rate": 38.01707885105911,
+    "mcr": 77.77777777777779,
+    "strategy_id": "S474",
+    "name": "Plateau Test: Tight Ratchet (2.5x)"
+  },
+  {
+    "net_profit": 58959.13009979804,
+    "pf": 1.382210385489148,
+    "total_trades": 7491,
+    "annual_trades": 1248.5,
+    "max_dd": 2227.8081440902097,
+    "romad": 26.465084193269128,
+    "win_rate": 37.88546255506608,
+    "mcr": 77.77777777777779,
+    "strategy_id": "S475",
+    "name": "Plateau Test: Loose Ratchet (3.5x)"
+  },
+  {
+    "net_profit": 61978.322751304506,
+    "pf": 1.392800099790516,
+    "total_trades": 8094,
+    "annual_trades": 1349.0,
+    "max_dd": 1999.6692697572944,
+    "romad": 30.99428674964185,
+    "win_rate": 38.29997529033852,
+    "mcr": 77.77777777777779,
+    "strategy_id": "S476",
+    "name": "Governor Plateau: $400 Daily Cap"
+  },
+  {
+    "net_profit": 60965.76525826819,
+    "pf": 1.382474649802907,
+    "total_trades": 8127,
+    "annual_trades": 1354.5,
+    "max_dd": 2502.8615465370385,
+    "romad": 24.35842499662855,
+    "win_rate": 38.27980804724991,
+    "mcr": 77.77777777777779,
+    "strategy_id": "S477",
+    "name": "Governor Plateau: $600 Daily Cap"
+  },
+  {
+    "net_profit": 70946.17655436174,
+    "pf": 1.3851923440464848,
+    "total_trades": 8111,
+    "annual_trades": 1351.8333333333333,
+    "max_dd": 2346.1854138609924,
+    "romad": 30.238947073500636,
+    "win_rate": 38.31833312785107,
+    "mcr": 77.77777777777779,
+    "strategy_id": "S478",
+    "name": "Sizing Plateau: Equal Weight + Gov"
+  },
+  {
+    "net_profit": 54189.55254896766,
+    "pf": 1.3904965365275515,
+    "total_trades": 8124,
+    "annual_trades": 1354.0,
+    "max_dd": 2145.364379716666,
+    "romad": 25.25890383065107,
+    "win_rate": 38.29394387001477,
+    "mcr": 77.77777777777779,
+    "strategy_id": "S479",
+    "name": "Sizing Plateau: Conservative Micro (0.5x)"
+  },
+  {
+    "net_profit": 61963.4182942029,
+    "pf": 1.3913673490505878,
+    "total_trades": 8107,
+    "annual_trades": 1351.1666666666667,
+    "max_dd": 2049.6866336685853,
+    "romad": 30.23067881518019,
+    "win_rate": 38.32490440360183,
+    "mcr": 77.77777777777779,
+    "strategy_id": "S480",
+    "name": "Convex Robustness Sovereign Master (S480)"
+  }
+]
