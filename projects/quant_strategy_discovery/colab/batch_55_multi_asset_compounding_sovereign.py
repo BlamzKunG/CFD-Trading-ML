@@ -134,7 +134,6 @@ def simulate_discrete_engine(
             bar_low = lows[i]
             bar_high = highs[i]
             curr_unit = active_lot * point_value
-            comm_total = (commission_per_lot / 100.0) * curr_unit
 
             dip = min(0.0, (bar_low - entry_price) * curr_unit)
             if dip < deepest_dip:
@@ -148,7 +147,7 @@ def simulate_discrete_engine(
                     half_lot = round(active_lot * 0.5, 2)
                     remain_lot = round(active_lot - half_lot, 2)
                     p_unit = half_lot * point_value
-                    p_pnl = (tp_target - entry_price) * p_unit - (spread * p_unit) - ((commission_per_lot / 100.0) * p_unit)
+                    p_pnl = (tp_target - entry_price) * p_unit - (spread * p_unit) - (commission_per_lot * half_lot)
 
                     trades.append({
                         "engine": f"{engine_name}_T1",
@@ -187,8 +186,8 @@ def simulate_discrete_engine(
 
             if exit_hit:
                 days_held = (dates[i].date() - entry_time.date()).days
-                swap_cost = max(0, days_held) * (swap_long_daily / 100.0) * curr_unit
-                net_pnl = (exit_price - entry_price) * curr_unit - (spread * curr_unit) - ((commission_per_lot / 100.0) * curr_unit) - swap_cost
+                swap_cost = max(0, days_held) * swap_long_daily * active_lot
+                net_pnl = (exit_price - entry_price) * curr_unit - (spread * curr_unit) - (commission_per_lot * active_lot) - swap_cost
 
                 in_window = True
                 if start_date and entry_time < start_date: in_window = False
@@ -220,7 +219,6 @@ def simulate_discrete_engine(
             bar_low = lows[i]
             bar_high = highs[i]
             curr_unit = active_lot * point_value
-            comm_total = (commission_per_lot / 100.0) * curr_unit
 
             dip = min(0.0, (entry_price - bar_high) * curr_unit)
             if dip < deepest_dip:
@@ -233,7 +231,7 @@ def simulate_discrete_engine(
                     half_lot = round(active_lot * 0.5, 2)
                     remain_lot = round(active_lot - half_lot, 2)
                     p_unit = half_lot * point_value
-                    p_pnl = (entry_price - tp_target) * p_unit - (spread * p_unit) - ((commission_per_lot / 100.0) * p_unit)
+                    p_pnl = (entry_price - tp_target) * p_unit - (spread * p_unit) - (commission_per_lot * half_lot)
 
                     trades.append({
                         "engine": f"{engine_name}_T1",
@@ -270,7 +268,7 @@ def simulate_discrete_engine(
                 exit_reason = "TrendFlip"
 
             if exit_hit:
-                net_pnl = (entry_price - exit_price) * curr_unit - (spread * curr_unit) - ((commission_per_lot / 100.0) * curr_unit)
+                net_pnl = (entry_price - exit_price) * curr_unit - (spread * curr_unit) - (commission_per_lot * active_lot)
 
                 in_window = True
                 if start_date and entry_time < start_date: in_window = False
