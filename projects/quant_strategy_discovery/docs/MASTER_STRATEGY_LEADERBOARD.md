@@ -1124,6 +1124,38 @@ Evaluated on **Google Colab Cloud VM** infrastructure (`quant_research` cloud se
 3. **The Non-Correlated Multi-Asset Drawdown Buffer Law (S749 & S752):**
    While standalone EURUSD trend-following is vulnerable to Euro range-bound chop, coupling EURUSD with Gold CFD in an institutional multi-asset portfolio acts as an anti-phase volatility damper, reducing portfolio maximum drawdown by **32% to 45%** (down to **$1,200.04** in S749 and **$1,497.32** in S752 across 1,337 trades).
 
+---
+
+## 36. Fractal Multi-Timeframe Alignment & The M15 Friction Boundary (Batch 52 - Strategies S756–S785)
+
+Evaluated on **Google Colab Cloud VM** infrastructure (`quant_research` cloud session) across 423,930 M5 bars, 141,567 M15 bars, and 35,400 H1 bars (2020–2025) under 100% strict adherence to **Constitution V5.1 (Rules D.1 to D.7)**:
+- Base execution on M5 closed bars with strict +15M causal shift on M15 state and +1H causal shift on H1 state
+- $0.25 spread ($25.00/lot) + $6.00/lot commission + -$18/lot overnight Long swap
+- Pessimistic sequence (SL hit first if bar range spans both TP and SL)
+- Bar-close trailing only (ratchet effective next open)
+- Intra-bar adverse excursion equity tracking for true Max DD
+- Negative slippage (-$0.10/trade on SL fills).
+
+### M5 Fractal Exploration Summary & Empirical Findings (Batch 52)
+
+| Strategy ID & Architecture | Key Mechanism & Session Window | Annual Trades | Total Trades | Net Profit ($) | Profit Factor | Win Rate (%) | True Intra Max DD ($) | RoMaD | Empirical Status & Architectural Verdict |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+| **S756: M5 Fractal Core Baseline** | M5 ST 3.0x + M15 + H1 Gate (ATR $\ge \$1.00$) | 93.0 | 558 | -$305.58 | 0.982 | 32.4% | $3,139.23 | -0.10x | ❌ M5 Friction Drag Rejected |
+| **S758: M5 Fractal High Vol Floor**| M5 ATR $\ge \$1.20$ | 78.8 | 473 | -$318.29 | 0.979 | 31.7% | $2,956.25 | -0.11x | ❌ High-Vol M5 Chop Trap |
+| **S760: M5 Early London Fractal** | Early London (06–10 UTC) M5 Trigger | 36.3 | 218 | **+$137.64** | **1.024** | 28.9% | **$1,437.43** | **0.10x** | ⚖️ Weak M5 Positive Edge |
+| **S761: M5 NY Open Fractal** | NY Open (12–16 UTC) M5 Trigger | 52.3 | 314 | -$2,067.82 | 0.803 | 32.2% | $3,067.01 | -0.67x | ❌ NY Midday Attrition |
+| **S764: M5 Relaxed H1 Filter** | M15 Gated Only (No H1 Anchor) | 143.5 | 861 | **+$335.98** | **1.013** | 31.7% | $4,595.55 | **0.07x** | ⚖️ Weak Positive Baseline |
+| **S768: M5 Dynamic Vol Risk $150**| Dynamic Risk $150 on M5 | 92.3 | 554 | -$2,654.37 | 0.911 | 32.1% | $6,107.20 | -0.43x | ❌ Dynamic Sizing Drag on M5 |
+| **S778: M5 London (0.07) + Core (0.05)**| Asymmetric Session Allocation | 129.3 | 776 | -$56.44 | 0.995 | 31.4% | $2,506.78 | -0.02x | ⚖️ Near Breakeven Portfolio |
+| **S781: Fractal Sovereign Apex** | S778 + $140 Daily Governor | 129.3 | 776 | -$70.21 | 0.994 | 31.4% | $2,372.90 | -0.03x | ⚖️ Near Breakeven Governed |
+
+### Key Empirical Laws Discovered in Batch 52
+1. **The Fundamental Timeframe Threshold Law (The M15 Boundary Condition):**
+   In retail/institutional CFD Gold trading under standard institutional fee schedules ($0.25 spread + $6.00/lot commission = $3.10 round-turn cost per 0.10 lot), **M15 is the definitive lower-bound timeframe for robust standalone algorithmic trend extraction**. On M5, average bar ATR ($1.20–$1.80) causes friction to consume 17%–26% of each bar's range, degrading Profit Factor below 1.05. On M15, ATR ($4.00–$6.00) reduces friction to only 5% of bar amplitude, unlocking Profit Factors of 1.33–1.65.
+2. **Production Directive:**
+   All production capital must remain strictly anchored to **M15 Primary Execution** and **H1 Macro Closed Anchoring** (e.g. S700, S682, S725, S731). Sub-M15 timeframes are barred from standalone live deployment.
+
+
 
 
 
