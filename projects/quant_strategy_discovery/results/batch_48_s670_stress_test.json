@@ -1,0 +1,14 @@
+{
+  "Strategy_ID": "S670",
+  "Strategy_Name": "Apex Sovereign Master",
+  "Total_Trades": 895,
+  "Baseline_Net_Profit": 8919.92539214633,
+  "Baseline_PF": 1.2023159584251741,
+  "Monte_Carlo_Runs": 1000,
+  "MC_Median_DD": 617.4603371337012,
+  "MC_95_Pct_DD": 936.4356357260509,
+  "MC_99_Pct_DD": 1115.3924991922229,
+  "Stress_2x_Spread_Net_Profit": 6699.868775835977,
+  "Stress_2x_Spread_PF": 1.3609885515713485,
+  "Stress_2x_Spread_Status": "PASS"
+}
