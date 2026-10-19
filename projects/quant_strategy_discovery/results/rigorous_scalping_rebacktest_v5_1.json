@@ -1,0 +1,93 @@
+[
+  {
+    "net_profit": 775.1842512691642,
+    "pf": 1.0092575722936565,
+    "total_trades": 2038,
+    "annual_trades": 339.6666666666667,
+    "max_dd": 7881.777538717885,
+    "romad": 0.09835145022315131,
+    "win_rate": 32.28655544651619,
+    "mcr": 48.61111111111111,
+    "Strategy_ID": "S421",
+    "Strategy_Name": "M15 Solo Supertrend Scalper",
+    "Architecture": "Solo M15 Trend Following"
+  },
+  {
+    "net_profit": -4986.948726039651,
+    "pf": 0.781476740093861,
+    "total_trades": 2585,
+    "annual_trades": 430.8333333333333,
+    "max_dd": 5011.898188449613,
+    "romad": -0.995021953465164,
+    "win_rate": 73.69439071566731,
+    "mcr": 37.5,
+    "Strategy_ID": "S446",
+    "Strategy_Name": "M1 NY Micro Sniper",
+    "Architecture": "Solo M1 NY Session Sniper (12-17 UTC)"
+  },
+  {
+    "net_profit": -13123.423592646122,
+    "pf": 0.7991712550805857,
+    "total_trades": 4275,
+    "annual_trades": 712.5,
+    "max_dd": 14378.504623616162,
+    "romad": -0.9127112962144467,
+    "win_rate": 68.49122807017544,
+    "mcr": 25.0,
+    "Strategy_ID": "S430",
+    "Strategy_Name": "M15 Tactical Duo Hybrid",
+    "Architecture": "Hybrid Dual Engine (M15 Core + M5 Squeeze)"
+  },
+  {
+    "net_profit": -13324.390832658615,
+    "pf": 0.9056521293078964,
+    "total_trades": 7593,
+    "annual_trades": 1265.5,
+    "max_dd": 19382.47067773986,
+    "romad": -0.6874454270662845,
+    "win_rate": 59.94995390491242,
+    "mcr": 34.72222222222222,
+    "Strategy_ID": "S450",
+    "Strategy_Name": "Triple-Timeframe Matrix Master",
+    "Architecture": "Tri-Engine Pure Price Action (M15+M5+M1)"
+  },
+  {
+    "net_profit": -18110.372318685706,
+    "pf": 0.7945912338582488,
+    "total_trades": 6860,
+    "annual_trades": 1143.3333333333333,
+    "max_dd": 18706.06402704552,
+    "romad": -0.9681551550610245,
+    "win_rate": 70.45189504373178,
+    "mcr": 22.22222222222222,
+    "Strategy_ID": "S530",
+    "Strategy_Name": "Sovereign Intermarket Tri-Engine",
+    "Architecture": "Tri-Engine + EURUSD Macro Gate + 50/50 Staged"
+  },
+  {
+    "net_profit": -17314.26507462741,
+    "pf": 0.7978974800677928,
+    "total_trades": 6750,
+    "annual_trades": 1125.0,
+    "max_dd": 17925.53230776263,
+    "romad": -0.9658996328454629,
+    "win_rate": 70.53333333333333,
+    "mcr": 22.22222222222222,
+    "Strategy_ID": "S570",
+    "Strategy_Name": "Sovereign Governor Tri-Engine",
+    "Architecture": "Tri-Engine + Macro Gate + $200 Daily Governor"
+  },
+  {
+    "net_profit": -16462.562364370406,
+    "pf": 0.7991642145499489,
+    "total_trades": 6667,
+    "annual_trades": 1111.1666666666667,
+    "max_dd": 17073.952835247135,
+    "romad": -0.9641916270487414,
+    "win_rate": 70.51147442627868,
+    "mcr": 22.22222222222222,
+    "Strategy_ID": "S630",
+    "Strategy_Name": "Centennial Sovereign Chronos Apex",
+    "Architecture": "Tri-Engine + Macro Gate + 50/50 Staged + $160 Gov + Streak Downscale"
+  }
+]
