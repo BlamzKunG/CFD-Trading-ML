@@ -641,7 +641,7 @@ def main():
     json_path = os.path.join(RESULTS_DIR, "batch_54_walk_forward_resilience_results.json")
 
     df_res = pd.DataFrame(results_table)
-    df_res.to.csv(csv_path, index=False)
+    df_res.to_csv(csv_path, index=False)
 
     with open(json_path, "w") as f:
         json.dump(results_table, f, indent=2)
