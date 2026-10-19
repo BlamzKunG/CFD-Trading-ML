@@ -1,0 +1,31 @@
+Strategy_ID,Strategy_Name,Role,Annual_Trades,Total_Trades,Net_Profit,Profit_Factor,Win_Rate_Pct,True_Intra_Max_DD,RoMaD,MCR_Pct,Avg_Trade_PnL,MC_P50_DD,MC_P95_DD,Ruin_Probability_Pct
+S1116,Liquidity-Sweep Wick 30% Base,Liquidity-Sweep Base,54.0,324,2500.75,2.083,69.4,469.77,5.32,62.1,7.72,249.89,433.36,0.0
+S1117,Liquidity-Sweep Wick 30% + 50% Lock,Liquidity-Sweep + Lock,54.0,324,2500.75,2.083,69.4,469.77,5.32,62.1,7.72,249.89,433.36,0.0
+S1118,Liquidity-Sweep Wick 35% Precision,Wick 35% Precision,53.8,323,2521.63,2.102,69.7,469.77,5.37,63.1,7.81,247.19,438.1,0.0
+S1119,Liquidity-Sweep Wick 35% + 50% Lock,Wick 35% + Lock,53.8,323,2521.63,2.102,69.7,469.77,5.37,63.1,7.81,247.19,438.1,0.0
+S1120,Accelerated Ratchet Runner (ST 2.0),Accel Ratchet Runner,54.0,324,2658.76,2.209,71.6,469.77,5.66,62.1,8.21,237.13,409.74,0.0
+S1121,Accelerated Ratchet Runner + 50% Lock,Accel Ratchet + Lock,54.0,324,2658.76,2.209,71.6,469.77,5.66,62.1,8.21,237.13,409.74,0.0
+S1122,Liquidity-Sweep + Accelerated Ratchet,Sweep + Accel Ratchet,54.0,324,2658.76,2.209,71.6,469.77,5.66,62.1,8.21,237.13,409.74,0.0
+S1123,Sweep + Accel Ratchet + 50% Lock,Sweep + Accel + Lock,54.0,324,2658.76,2.209,71.6,469.77,5.66,62.1,8.21,237.13,409.74,0.0
+S1124,Sweep Balanced Asymmetric (0.14/0.07),Sweep Balanced Asym,54.0,324,2618.12,2.017,71.6,387.09,6.76,59.1,8.08,255.27,439.26,0.0
+S1125,Sweep Balanced Asym + 50% Lock,Sweep Balanced + Lock,54.0,324,2618.12,2.017,71.6,387.09,6.76,59.1,8.08,255.27,439.26,0.0
+S1126,Prop-Firm Micro-Tier (0.03/0.02/0.01),Prop-Firm Micro-Tier,34.7,208,612.76,1.858,53.8,97.91,6.26,50.0,2.95,80.74,144.73,0.0
+S1127,Prop-Firm Micro-Tier + 50% Lock,Micro-Tier + Lock,34.7,208,612.76,1.858,53.8,97.91,6.26,50.0,2.95,80.74,144.73,0.0
+S1128,Prop-Firm Ultra-Floor 2.0 (0.04/0.02),Ultra-Floor 2.0 Base,51.3,308,863.05,1.887,68.8,111.85,7.72,56.1,2.8,98.8,180.87,0.0
+S1129,Prop-Firm Ultra-Floor 2.0 + 50% Lock,Ultra-Floor 2.0 + Lock,51.3,308,863.05,1.887,68.8,111.85,7.72,56.1,2.8,98.8,180.87,0.0
+S1130,Prop-Firm Standard Shield (0.05/0.02),Standard Shield Base,51.3,308,928.37,1.941,68.8,138.66,6.7,56.1,3.01,100.32,181.34,0.0
+S1131,Prop-Firm Standard Shield + 50% Lock,Standard Shield + Lock,51.3,308,928.37,1.941,68.8,138.66,6.7,56.1,3.01,100.32,181.34,0.0
+S1132,Prop-Firm Sprint Accel (0.05/0.03),Sprint Accel Base,54.0,324,994.27,1.925,71.6,138.66,7.17,59.1,3.07,104.03,177.37,0.0
+S1133,Prop-Firm Sprint Accel + 50% Lock,Sprint Accel + Lock,54.0,324,994.27,1.925,71.6,138.66,7.17,59.1,3.07,104.03,177.37,0.0
+S1134,Prop-Firm Titan Shield (0.06/0.03),Titan Shield Base,54.0,324,1151.37,2.046,71.6,165.46,6.96,59.1,3.55,110.25,191.51,0.0
+S1135,Prop-Firm Titan Shield + 50% Lock,Titan Shield + Lock,54.0,324,1151.37,2.046,71.6,165.46,6.96,59.1,3.55,110.25,191.51,0.0
+S1136,Sweep Tri-Tranche Compounding 0.5%,Sweep Comp 0.5% Shield,41.0,246,352.19,1.425,60.2,87.1,4.04,54.5,1.43,102.95,189.34,0.0
+S1137,Sweep Tri-Tranche Compounding 0.75%,Sweep Comp 0.75% Apex,49.7,298,570.98,1.524,67.4,125.15,4.56,56.1,1.92,118.22,211.15,0.0
+S1138,Sweep Tri-Tranche Compounding 1.0%,Sweep Comp 1.0% Engine,51.8,311,743.19,1.534,69.1,163.54,4.54,62.1,2.39,149.48,274.28,0.0
+S1139,Sweep Tri-Tranche Compounding 1.25%,Sweep Comp 1.25% Titan,52.5,315,865.63,1.497,69.5,193.51,4.47,63.6,2.75,186.46,340.63,0.0
+S1140,Sweep Tri-Tranche Compounding 1.5%,Sweep Comp 1.5% Maximum,52.8,317,995.45,1.477,70.0,208.41,4.78,63.6,3.14,224.6,411.26,0.0
+S1141,Sweep Tri-Tranche Comp 1.0% + Lock,Sweep Comp 1.0% Lock,51.8,311,743.19,1.534,69.1,163.54,4.54,62.1,2.39,149.48,274.28,0.0
+S1142,Sweep Tri-Tranche Comp 1.25% + Lock,Sweep Comp 1.25% Lock,52.5,315,865.63,1.497,69.5,193.51,4.47,63.6,2.75,186.46,340.63,0.0
+S1143,Sweep Tri-Tranche Comp 1.5% + Lock,Sweep Comp 1.5% Lock,52.8,317,995.45,1.477,70.0,208.41,4.78,63.6,3.14,224.6,411.26,0.0
+S1144,Grand Asymmetric Sweep Vault 2026,Grand Sweep Vault 2026,51.8,311,743.19,1.534,69.1,163.54,4.54,62.1,2.39,149.48,274.28,0.0
+S1145,Apex Sovereign Sweep Paragon 2026,👑 Apex Sovereign Sweep Paragon 2026,52.5,315,865.63,1.497,69.5,193.51,4.47,63.6,2.75,186.46,340.63,0.0
