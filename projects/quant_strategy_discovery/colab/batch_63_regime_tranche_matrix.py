@@ -11,7 +11,7 @@ Scientific Hypotheses:
    - State B: Normal Volatility (1.05 <= VR < 1.30) -> Precision standard (T1: 1.2R @ 35%, T2: 2.4R @ 35%, Runner: 30%)
    - State C: High Expansion (VR >= 1.30) -> Momentum capture (T1: 1.5R @ 30%, T2: 3.0R @ 30%, Runner: 40%)
 2. Session Asymmetric Sizing:
-   - Early London: 0.16 lot / London Midday: 0.08 lot / NY Open: 0.04 lot (with ultra-rapid 1.0R / 75% exit)
+   - Early London: 0.16 lot / London Midday: 0.08 lot / NY Open: 0.04 lot (with ultra-rapid 1.0R / 75% or 1.1R / 70% exit)
 3. Sub-$140 Drawdown Floor Prop-Firm Challenge Optimization (0.04 / 0.02 / 0.02 lots)
 4. Micro-Compounding Matrix (0.5% to 1.5%) with 50% High-Water Mark Trailing Profit Lock
 5. Full 1,000-Run Monte Carlo Tail-Risk Resampling
@@ -100,7 +100,7 @@ def compute_supertrend(highs, lows, closes, atr, multiplier=3.0):
     return trend, band
 
 # -----------------------------------------------------------------------------
-# Discrete Regime-Adaptive Tri-Tranche Simulator (Rules D.1 - D.7 Compliant)
+# Discrete Multi-Tranche Simulator (Rules D.1 - D.7 Compliant)
 # -----------------------------------------------------------------------------
 def simulate_regime_tri_tranche_engine(
     opens, highs, lows, closes, dates,
@@ -108,7 +108,7 @@ def simulate_regime_tri_tranche_engine(
     point_value=100.0, lot_size=0.12, spread=0.25, commission_per_lot=6.00,
     sl_slippage=0.10, swap_long_daily=-18.0,
     initial_sl_atr_mult=3.0, compounding_risk_pct=0.0,
-    regime_mode=True, # Dynamic Regime-Adaptive Sizing
+    regime_mode=True,
     t1_def_mult=1.2, t1_def_ratio=0.35,
     t2_def_mult=2.4, t2_def_ratio=0.35,
     ny_rapid_mult=0.0, ny_rapid_ratio=0.0
@@ -116,377 +116,406 @@ def simulate_regime_tri_tranche_engine(
     n = len(closes)
     trades = []
     pos = 0
-    entry_idx = 0
     entry_price = 0.0
     current_sl = 0.0
+    tp1_target = 0.0
+    tp2_target = 0.0
+    tranche1_taken = False
+    tranche2_taken = False
     active_lot = lot_size
-    t1_closed = False
-    t2_closed = False
+    curr_unit = active_lot * point_value
+    entry_time = None
+    deepest_dip = 0.0
+    current_equity = 10000.0
 
-    t1_target = 0.0
-    t2_target = 0.0
-    t1_close_vol = 0.0
-    t2_close_vol = 0.0
+    for i in range(1, n - 1):
+        bar_open = opens[i]
+        bar_high = highs[i]
+        bar_low = lows[i]
+        bar_close = closes[i]
 
-    cumulative_pnl = 0.0
-    trade_peak_equity = 0.0
-    trade_max_adverse = 0.0
+        if pos == 1:
+            intra_lowest_pnl = (bar_low - entry_price) * curr_unit - (spread * curr_unit) - (commission_per_lot * active_lot)
+            if intra_lowest_pnl < deepest_dip:
+                deepest_dip = intra_lowest_pnl
 
-    for i in range(1, n):
-        cur_open = opens[i]
-        cur_high = highs[i]
-        cur_low = lows[i]
-        cur_close = closes[i]
-        cur_date = dates[i]
-        cur_atr = atr_values[i - 1]
-        cur_vr = vol_ratios[i - 1]
-        cur_st_band = st_bands[i - 1]
+            # Tranche 1 Scale-Out
+            if tp1_target > 0.0 and not tranche1_taken and active_lot >= 0.02:
+                if bar_high >= tp1_target:
+                    ratio = ny_rapid_ratio if (ny_rapid_ratio > 0.0) else (0.40 if (regime_mode and vol_ratios[i-1] < 1.05) else (0.30 if (regime_mode and vol_ratios[i-1] >= 1.30) else t1_def_ratio))
+                    t1_lot = round(active_lot * ratio, 2)
+                    t1_lot = max(0.01, min(t1_lot, round(active_lot - 0.01, 2)))
+                    remain_lot = round(active_lot - t1_lot, 2)
+                    t1_unit = t1_lot * point_value
+                    p_pnl = (tp1_target - entry_price) * t1_unit - (spread * t1_unit) - (commission_per_lot * t1_lot)
 
-        # -------------------------------------------------------------
-        # Active Position Management
-        # -------------------------------------------------------------
-        if pos != 0:
-            # Intra-bar adverse excursion (Rule D.3)
-            if pos == 1:
-                worst_price = cur_low
-                best_price = cur_high
-                unrealized_worst = (worst_price - entry_price) * active_lot * point_value
-                unrealized_best = (best_price - entry_price) * active_lot * point_value
-            else:
-                worst_price = cur_high
-                best_price = cur_low
-                unrealized_worst = (entry_price - worst_price) * active_lot * point_value
-                unrealized_best = (entry_price - best_price) * active_lot * point_value
+                    trades.append({
+                        "engine": f"{engine_name}_T1",
+                        "pos": 1,
+                        "entry_time": entry_time,
+                        "exit_time": dates[i],
+                        "entry_price": entry_price,
+                        "exit_price": tp1_target,
+                        "lot": t1_lot,
+                        "pnl": p_pnl,
+                        "deepest_dip": deepest_dip,
+                        "year": entry_time.year,
+                        "month": f"{entry_time.year}-{entry_time.month:02d}",
+                        "exit_reason": "Tranche1"
+                    })
+                    tranche1_taken = True
+                    current_equity += p_pnl
+                    active_lot = remain_lot
+                    curr_unit = active_lot * point_value
 
-            if unrealized_best > trade_peak_equity:
-                trade_peak_equity = unrealized_best
-            dd_drop = trade_peak_equity - unrealized_worst
-            if dd_drop > trade_max_adverse:
-                trade_max_adverse = dd_drop
+            # Tranche 2 Scale-Out
+            if tp2_target > 0.0 and tranche1_taken and not tranche2_taken and active_lot >= 0.02:
+                if bar_high >= tp2_target:
+                    ratio = 0.40 if (regime_mode and vol_ratios[i-1] < 1.05) else (0.30 if (regime_mode and vol_ratios[i-1] >= 1.30) else t2_def_ratio)
+                    t2_lot = round(active_lot * ratio, 2)
+                    t2_lot = max(0.01, min(t2_lot, round(active_lot - 0.01, 2)))
+                    remain_lot = round(active_lot - t2_lot, 2)
+                    t2_unit = t2_lot * point_value
+                    p_pnl = (tp2_target - entry_price) * t2_unit - (spread * t2_unit) - (commission_per_lot * t2_lot)
 
-            # Check Stop Loss & Bar-Close Ratchet
-            sl_hit = False
-            sl_exit_price = 0.0
+                    trades.append({
+                        "engine": f"{engine_name}_T2",
+                        "pos": 1,
+                        "entry_time": entry_time,
+                        "exit_time": dates[i],
+                        "entry_price": entry_price,
+                        "exit_price": tp2_target,
+                        "lot": t2_lot,
+                        "pnl": p_pnl,
+                        "deepest_dip": deepest_dip,
+                        "year": entry_time.year,
+                        "month": f"{entry_time.year}-{entry_time.month:02d}",
+                        "exit_reason": "Tranche2"
+                    })
+                    tranche2_taken = True
+                    current_equity += p_pnl
+                    active_lot = remain_lot
+                    curr_unit = active_lot * point_value
 
-            # Rule D.1 Pessimistic Sequence: If SL is breached intra-bar
-            if pos == 1 and cur_low <= current_sl:
-                sl_hit = True
-                sl_exit_price = current_sl - sl_slippage
-            elif pos == -1 and cur_high >= current_sl:
-                sl_hit = True
-                sl_exit_price = current_sl + sl_slippage
+            # Exit Checks (SL & TrendFlip)
+            exit_hit = False
+            exit_price = 0.0
+            exit_reason = ""
 
-            if sl_hit:
-                # Close entire remaining volume at SL
-                trade_days = max(1, (cur_date - dates[entry_idx]).total_seconds() / 86400.0)
-                swap_cost = (swap_long_daily * active_lot * trade_days) if pos == 1 else 0.0
-                comm_cost = commission_per_lot * active_lot * 2.0
-                raw_diff = (sl_exit_price - entry_price) if pos == 1 else (entry_price - sl_exit_price)
-                realized_pnl = (raw_diff - spread) * active_lot * point_value + swap_cost - comm_cost
+            sl_touched = (bar_low <= current_sl)
+            trend_flipped = (closes[i] < st_bands[i])
+
+            if sl_touched:
+                exit_hit = True
+                exit_price = current_sl - sl_slippage
+                exit_reason = "SL"
+            elif trend_flipped:
+                exit_hit = True
+                exit_price = opens[i + 1] - (spread * 0.5)
+                exit_reason = "TrendFlip"
+
+            if exit_hit:
+                hold_days = max(1, (dates[i] - entry_time).days)
+                swap_cost = hold_days * (swap_long_daily * active_lot)
+                net_pnl = (exit_price - entry_price) * curr_unit - (spread * curr_unit) - (commission_per_lot * active_lot) + swap_cost
 
                 trades.append({
                     "engine": engine_name,
-                    "entry_time": dates[entry_idx],
-                    "exit_time": cur_date,
-                    "pos": pos,
+                    "pos": 1,
+                    "entry_time": entry_time,
+                    "exit_time": dates[i],
                     "entry_price": entry_price,
-                    "exit_price": sl_exit_price,
+                    "exit_price": exit_price,
                     "lot": active_lot,
-                    "pnl": realized_pnl,
-                    "exit_reason": "SL_Hit",
-                    "intra_adverse_dd": trade_max_adverse
+                    "pnl": net_pnl,
+                    "deepest_dip": deepest_dip,
+                    "year": entry_time.year,
+                    "month": f"{entry_time.year}-{entry_time.month:02d}",
+                    "exit_reason": exit_reason
                 })
+                current_equity += net_pnl
                 pos = 0
                 active_lot = 0.0
                 continue
 
-            # Tranche 1 Evaluation
-            if not t1_closed and t1_close_vol >= 0.01:
-                t1_hit = (cur_high >= t1_target) if pos == 1 else (cur_low <= t1_target)
-                if t1_hit:
-                    trade_days = max(1, (cur_date - dates[entry_idx]).total_seconds() / 86400.0)
-                    swap_cost = (swap_long_daily * t1_close_vol * trade_days) if pos == 1 else 0.0
-                    comm_cost = commission_per_lot * t1_close_vol * 2.0
-                    raw_diff = (t1_target - entry_price) if pos == 1 else (entry_price - t1_target)
-                    t1_pnl = (raw_diff - spread) * t1_close_vol * point_value + swap_cost - comm_cost
+            # Trailing Ratchet SL (Rule D.2)
+            if st_bands[i] > current_sl:
+                current_sl = st_bands[i]
+
+        elif pos == -1:
+            intra_lowest_pnl = (entry_price - bar_high) * curr_unit - (spread * curr_unit) - (commission_per_lot * active_lot)
+            if intra_lowest_pnl < deepest_dip:
+                deepest_dip = intra_lowest_pnl
+
+            # Tranche 1 Scale-Out
+            if tp1_target > 0.0 and not tranche1_taken and active_lot >= 0.02:
+                if bar_low <= tp1_target:
+                    ratio = ny_rapid_ratio if (ny_rapid_ratio > 0.0) else (0.40 if (regime_mode and vol_ratios[i-1] < 1.05) else (0.30 if (regime_mode and vol_ratios[i-1] >= 1.30) else t1_def_ratio))
+                    t1_lot = round(active_lot * ratio, 2)
+                    t1_lot = max(0.01, min(t1_lot, round(active_lot - 0.01, 2)))
+                    remain_lot = round(active_lot - t1_lot, 2)
+                    t1_unit = t1_lot * point_value
+                    p_pnl = (entry_price - tp1_target) * t1_unit - (spread * t1_unit) - (commission_per_lot * t1_lot)
 
                     trades.append({
-                        "engine": engine_name,
-                        "entry_time": dates[entry_idx],
-                        "exit_time": cur_date,
-                        "pos": pos,
+                        "engine": f"{engine_name}_T1",
+                        "pos": -1,
+                        "entry_time": entry_time,
+                        "exit_time": dates[i],
                         "entry_price": entry_price,
-                        "exit_price": t1_target,
-                        "lot": t1_close_vol,
-                        "pnl": t1_pnl,
-                        "exit_reason": "Tranche1_TP",
-                        "intra_adverse_dd": trade_max_adverse
+                        "exit_price": tp1_target,
+                        "lot": t1_lot,
+                        "pnl": p_pnl,
+                        "deepest_dip": deepest_dip,
+                        "year": entry_time.year,
+                        "month": f"{entry_time.year}-{entry_time.month:02d}",
+                        "exit_reason": "Tranche1"
                     })
-                    active_lot = round(active_lot - t1_close_vol, 2)
-                    t1_closed = True
+                    tranche1_taken = True
+                    current_equity += p_pnl
+                    active_lot = remain_lot
+                    curr_unit = active_lot * point_value
 
-            # Tranche 2 Evaluation
-            if not t2_closed and t2_close_vol >= 0.01:
-                t2_hit = (cur_high >= t2_target) if pos == 1 else (cur_low <= t2_target)
-                if t2_hit:
-                    trade_days = max(1, (cur_date - dates[entry_idx]).total_seconds() / 86400.0)
-                    swap_cost = (swap_long_daily * t2_close_vol * trade_days) if pos == 1 else 0.0
-                    comm_cost = commission_per_lot * t2_close_vol * 2.0
-                    raw_diff = (t2_target - entry_price) if pos == 1 else (entry_price - t2_target)
-                    t2_pnl = (raw_diff - spread) * t2_close_vol * point_value + swap_cost - comm_cost
+            # Tranche 2 Scale-Out
+            if tp2_target > 0.0 and tranche1_taken and not tranche2_taken and active_lot >= 0.02:
+                if bar_low <= tp2_target:
+                    ratio = 0.40 if (regime_mode and vol_ratios[i-1] < 1.05) else (0.30 if (regime_mode and vol_ratios[i-1] >= 1.30) else t2_def_ratio)
+                    t2_lot = round(active_lot * ratio, 2)
+                    t2_lot = max(0.01, min(t2_lot, round(active_lot - 0.01, 2)))
+                    remain_lot = round(active_lot - t2_lot, 2)
+                    t2_unit = t2_lot * point_value
+                    p_pnl = (entry_price - tp2_target) * t2_unit - (spread * t2_unit) - (commission_per_lot * t2_lot)
 
                     trades.append({
-                        "engine": engine_name,
-                        "entry_time": dates[entry_idx],
-                        "exit_time": cur_date,
-                        "pos": pos,
+                        "engine": f"{engine_name}_T2",
+                        "pos": -1,
+                        "entry_time": entry_time,
+                        "exit_time": dates[i],
                         "entry_price": entry_price,
-                        "exit_price": t2_target,
-                        "lot": t2_close_vol,
-                        "pnl": t2_pnl,
-                        "exit_reason": "Tranche2_TP",
-                        "intra_adverse_dd": trade_max_adverse
+                        "exit_price": tp2_target,
+                        "lot": t2_lot,
+                        "pnl": p_pnl,
+                        "deepest_dip": deepest_dip,
+                        "year": entry_time.year,
+                        "month": f"{entry_time.year}-{entry_time.month:02d}",
+                        "exit_reason": "Tranche2"
                     })
-                    active_lot = round(active_lot - t2_close_vol, 2)
-                    t2_closed = True
+                    tranche2_taken = True
+                    current_equity += p_pnl
+                    active_lot = remain_lot
+                    curr_unit = active_lot * point_value
 
-            # Tranche 3 Trailing Ratchet Exit (Rule D.2 Bar-Close Mandate)
-            if active_lot >= 0.01:
-                close_st_exit = False
-                if pos == 1 and cur_close < cur_st_band:
-                    close_st_exit = True
-                elif pos == -1 and cur_close > cur_st_band:
-                    close_st_exit = True
+            # Exit Checks (SL & TrendFlip)
+            exit_hit = False
+            exit_price = 0.0
+            exit_reason = ""
 
-                if close_st_exit:
-                    exit_p = cur_close
-                    trade_days = max(1, (cur_date - dates[entry_idx]).total_seconds() / 86400.0)
-                    swap_cost = (swap_long_daily * active_lot * trade_days) if pos == 1 else 0.0
-                    comm_cost = commission_per_lot * active_lot * 2.0
-                    raw_diff = (exit_p - entry_price) if pos == 1 else (entry_price - exit_p)
-                    realized_pnl = (raw_diff - spread) * active_lot * point_value + swap_cost - comm_cost
+            sl_touched = (bar_high >= current_sl)
+            trend_flipped = (closes[i] > st_bands[i])
 
-                    trades.append({
-                        "engine": engine_name,
-                        "entry_time": dates[entry_idx],
-                        "exit_time": cur_date,
-                        "pos": pos,
-                        "entry_price": entry_price,
-                        "exit_price": exit_p,
-                        "lot": active_lot,
-                        "pnl": realized_pnl,
-                        "exit_reason": "Supertrend_Close",
-                        "intra_adverse_dd": trade_max_adverse
-                    })
-                    pos = 0
-                    active_lot = 0.0
-                    continue
+            if sl_touched:
+                exit_hit = True
+                exit_price = current_sl + sl_slippage
+                exit_reason = "SL"
+            elif trend_flipped:
+                exit_hit = True
+                exit_price = opens[i + 1] + (spread * 0.5)
+                exit_reason = "TrendFlip"
 
-                # Bar-Close Ratchet SL update (Rule D.2)
-                if pos == 1:
-                    if cur_st_band > current_sl:
-                        current_sl = cur_st_band
-                else:
-                    if cur_st_band < current_sl:
-                        current_sl = cur_st_band
+            if exit_hit:
+                net_pnl = (entry_price - exit_price) * curr_unit - (spread * curr_unit) - (commission_per_lot * active_lot)
+                trades.append({
+                    "engine": engine_name,
+                    "pos": -1,
+                    "entry_time": entry_time,
+                    "exit_time": dates[i],
+                    "entry_price": entry_price,
+                    "exit_price": exit_price,
+                    "lot": active_lot,
+                    "pnl": net_pnl,
+                    "deepest_dip": deepest_dip,
+                    "year": entry_time.year,
+                    "month": f"{entry_time.year}-{entry_time.month:02d}",
+                    "exit_reason": exit_reason
+                })
+                current_equity += net_pnl
+                pos = 0
+                active_lot = 0.0
+                continue
+
+            # Trailing Ratchet SL (Rule D.2)
+            if st_bands[i] < current_sl:
+                current_sl = st_bands[i]
 
         # -------------------------------------------------------------
-        # New Entry Signal Evaluation
+        # Signal Generation & Order Placement
         # -------------------------------------------------------------
         if pos == 0 and entry_signals[i] != 0:
-            pos = int(entry_signals[i])
-            entry_idx = i
-            entry_price = cur_open
-            t1_closed = False
-            t2_closed = False
-            trade_peak_equity = 0.0
-            trade_max_adverse = 0.0
+            pos = entry_signals[i]
+            entry_time = dates[i + 1]
+            deepest_dip = 0.0
+            tranche1_taken = False
+            tranche2_taken = False
 
-            # Dynamic Compounding Lot Sizing
             if compounding_risk_pct > 0.0:
-                cur_equity = max(2000.0, 10000.0 + cumulative_pnl)
-                risk_usd = cur_equity * (compounding_risk_pct / 100.0)
-                sl_dist = 3.0 * cur_atr
+                risk_usd = current_equity * (compounding_risk_pct / 100.0)
+                sl_dist = initial_sl_atr_mult * atr_values[i]
                 calc_lot = risk_usd / (sl_dist * point_value)
                 calc_lot = max(0.01, min(0.30, round(calc_lot, 2)))
                 active_lot = calc_lot
             else:
                 active_lot = round(lot_size, 2)
 
-            # Initial Stop Loss
-            if pos == 1:
-                current_sl = entry_price - (initial_sl_atr_mult * cur_atr)
-            else:
-                current_sl = entry_price + (initial_sl_atr_mult * cur_atr)
+            curr_unit = active_lot * point_value
 
-            # Determine Tranche Configuration
+            vr = vol_ratios[i]
             if ny_rapid_mult > 0.0:
-                # NY Rapid Exit Single-Tranche Override
-                t1_target = entry_price + (ny_rapid_mult * cur_atr) if pos == 1 else entry_price - (ny_rapid_mult * cur_atr)
-                t1_close_vol = round(active_lot * ny_rapid_ratio, 2)
-                t2_target = 0.0
-                t2_close_vol = 0.0
-                t2_closed = True
+                t1_m = ny_rapid_mult
+                t2_m = 0.0
             elif regime_mode:
-                # Tri-Tranche Regime Adaptive Logic:
-                if cur_vr < 1.05:
-                    # Regime A: Low Volatility (Fast Harvest)
-                    t1_m, t1_r = 1.0, 0.40
-                    t2_m, t2_r = 2.0, 0.40
-                elif cur_vr >= 1.30:
-                    # Regime C: High Expansion (Momentum Capture)
-                    t1_m, t1_r = 1.5, 0.30
-                    t2_m, t2_r = 3.0, 0.30
+                if vr < 1.05:
+                    t1_m, t2_m = 1.0, 2.0
+                elif vr >= 1.30:
+                    t1_m, t2_m = 1.5, 3.0
                 else:
-                    # Regime B: Normal Volatility (Precision Standard)
-                    t1_m, t1_r = 1.2, 0.35
-                    t2_m, t2_r = 2.4, 0.35
-
-                t1_target = entry_price + (t1_m * cur_atr) if pos == 1 else entry_price - (t1_m * cur_atr)
-                t1_close_vol = round(active_lot * t1_r, 2)
-                t2_target = entry_price + (t2_m * cur_atr) if pos == 1 else entry_price - (t2_m * cur_atr)
-                t2_close_vol = round(active_lot * t2_r, 2)
+                    t1_m, t2_m = 1.2, 2.4
             else:
-                # Static Tri-Tranche
-                t1_target = entry_price + (t1_def_mult * cur_atr) if pos == 1 else entry_price - (t1_def_mult * cur_atr)
-                t1_close_vol = round(active_lot * t1_def_ratio, 2)
-                t2_target = entry_price + (t2_def_mult * cur_atr) if pos == 1 else entry_price - (t2_def_mult * cur_atr)
-                t2_close_vol = round(active_lot * t2_def_ratio, 2)
+                t1_m = t1_def_mult
+                t2_m = t2_def_mult
 
-            # Ensure minimum lot validity
-            if t1_close_vol < 0.01: t1_closed = True
-            if t2_close_vol < 0.01: t2_closed = True
+            if pos == 1:
+                entry_price = opens[i + 1] + (spread * 0.5)
+                current_sl = entry_price - (initial_sl_atr_mult * atr_values[i])
+                tp1_target = entry_price + (t1_m * atr_values[i]) if t1_m > 0 else 0.0
+                tp2_target = entry_price + (t2_m * atr_values[i]) if t2_m > 0 else 0.0
+            else:
+                entry_price = opens[i + 1] - (spread * 0.5)
+                current_sl = entry_price + (initial_sl_atr_mult * atr_values[i])
+                tp1_target = entry_price - (t1_m * atr_values[i]) if t1_m > 0 else 0.0
+                tp2_target = entry_price - (t2_m * atr_values[i]) if t2_m > 0 else 0.0
 
     return trades
 
 # -----------------------------------------------------------------------------
-# Portfolio Trailing Governor & Performance Evaluator
+# Intraday Trailing Lock-In Governor Analytics
 # -----------------------------------------------------------------------------
 def analyze_trades_with_trailing_governor(trades, base_daily_limit=200.0, lock_in_ratio=0.50, years=6.0):
     if not trades:
         return {
-            "total_trades": 0, "annual_trades": 0.0, "net_profit": 0.0,
-            "pf": 0.0, "win_rate": 0.0, "max_dd": 0.0, "romad": 0.0,
-            "mcr": 0.0, "avg_trade": 0.0, "filtered_trades": []
+            "net_profit": 0.0, "pf": 0.0, "total_trades": 0, "annual_trades": 0.0,
+            "max_dd": 0.0, "romad": 0.0, "win_rate": 0.0, "mcr": 0.0,
+            "avg_trade": 0.0, "filtered_trades": []
         }
 
-    df = pd.DataFrame(trades)
-    df["exit_date"] = pd.to_datetime(df["exit_time"]).dt.date
-    df = df.sort_values("exit_time").reset_index(drop=True)
+    trades_sorted = sorted(trades, key=lambda t: t["exit_time"])
+    daily_groups = {}
+    for t in trades_sorted:
+        d = t["exit_time"].strftime("%Y-%m-%d")
+        daily_groups.setdefault(d, []).append(t)
 
     filtered_trades = []
-    daily_groups = df.groupby("exit_date")
+    for d, day_trades in daily_groups.items():
+        running_day_pnl = 0.0
+        peak_day_pnl = 0.0
+        effective_limit = base_daily_limit
+        circuit_tripped = False
 
-    for date, group in daily_groups:
-        daily_pnl = 0.0
-        daily_peak = 0.0
-        for _, row in group.iterrows():
-            floor = -base_daily_limit
-            if lock_in_ratio > 0.0 and daily_peak > 0.0:
-                locked_floor = daily_peak * (1.0 - lock_in_ratio)
-                floor = max(-base_daily_limit, locked_floor)
-
-            if daily_pnl <= floor:
+        for t in day_trades:
+            if circuit_tripped:
                 continue
 
-            filtered_trades.append(row.to_dict())
-            daily_pnl += row["pnl"]
-            if daily_pnl > daily_peak:
-                daily_peak = daily_pnl
+            filtered_trades.append(t)
+            running_day_pnl += t["pnl"]
 
-    if not filtered_trades:
-        return {
-            "total_trades": 0, "annual_trades": 0.0, "net_profit": 0.0,
-            "pf": 0.0, "win_rate": 0.0, "max_dd": 0.0, "romad": 0.0,
-            "mcr": 0.0, "avg_trade": 0.0, "filtered_trades": []
-        }
+            if running_day_pnl > peak_day_pnl:
+                peak_day_pnl = running_day_pnl
+                if lock_in_ratio > 0.0 and peak_day_pnl > 50.0:
+                    lock_floor = peak_day_pnl * (1.0 - lock_in_ratio)
+                    effective_limit = min(base_daily_limit, peak_day_pnl - lock_floor)
 
-    fdf = pd.DataFrame(filtered_trades)
-    pnls = fdf["pnl"].values
-    wins = pnls[pnls > 0]
-    losses = pnls[pnls < 0]
+            if running_day_pnl <= -effective_limit:
+                circuit_tripped = True
 
-    gross_profit = float(np.sum(wins)) if len(wins) > 0 else 0.0
-    gross_loss = float(abs(np.sum(losses))) if len(losses) > 0 else 0.0
-    net_profit = gross_profit - gross_loss
-    pf = (gross_profit / gross_loss) if gross_loss > 0 else (99.0 if gross_profit > 0 else 0.0)
-    win_rate = (len(wins) / len(pnls)) * 100.0 if len(pnls) > 0 else 0.0
+    cum_equity = 0.0
+    peak_equity = 0.0
+    max_intra_dd = 0.0
+    pnls = []
+    m_dict = {}
 
-    # True intra-bar maximum drawdown
-    cum_equity = np.cumsum(pnls)
-    peak_equity = np.maximum.accumulate(cum_equity)
-    closed_dd = peak_equity - cum_equity
+    for t in filtered_trades:
+        pnl = t["pnl"]
+        deepest = t.get("deepest_dip", 0.0)
+        intra_low = cum_equity + deepest
+        dd = peak_equity - intra_low
+        if dd > max_intra_dd:
+            max_intra_dd = dd
 
-    # Include intra-bar excursion
-    intra_dds = fdf["intra_adverse_dd"].values
-    true_max_dd = float(max(np.max(closed_dd) if len(closed_dd) > 0 else 0.0, np.max(intra_dds) if len(intra_dds) > 0 else 0.0))
-    if true_max_dd == 0.0:
-        true_max_dd = 1.0
+        cum_equity += pnl
+        if cum_equity > peak_equity:
+            peak_equity = cum_equity
 
-    romad = net_profit / true_max_dd if true_max_dd > 0 else 0.0
-    tot_trades = len(pnls)
-    ann_trades = tot_trades / years
-    avg_pnl = net_profit / tot_trades if tot_trades > 0 else 0.0
+        dd_after = peak_equity - cum_equity
+        if dd_after > max_intra_dd:
+            max_intra_dd = dd_after
 
-    # Maximum Consecutive Losses (MCR)
-    loss_streaks = []
-    cur_streak = 0
-    for p in pnls:
-        if p < 0:
-            cur_streak += 1
-        else:
-            if cur_streak > 0:
-                loss_streaks.append(cur_streak)
-            cur_streak = 0
-    if cur_streak > 0:
-        loss_streaks.append(cur_streak)
-    max_loss_streak = max(loss_streaks) if loss_streaks else 0
-    mcr = (max_loss_streak / tot_trades) * 100.0 if tot_trades > 0 else 0.0
+        pnls.append(pnl)
+        m = t["month"]
+        m_dict[m] = m_dict.get(m, 0.0) + pnl
+
+    total_net = cum_equity
+    wins = [p for p in pnls if p > 0]
+    losses = [abs(p) for p in pnls if p < 0]
+    tot_win = sum(wins)
+    tot_loss = sum(losses)
+
+    pf = (tot_win / tot_loss) if tot_loss > 0 else 999.0
+    total_trades = len(filtered_trades)
+    annual_trades = total_trades / years
+    win_rate = (len(wins) / total_trades * 100.0) if total_trades > 0 else 0.0
+    romad = (total_net / max_intra_dd) if max_intra_dd > 0 else 0.0
+    pos_m = sum(1 for v in m_dict.values() if v > 0)
+    mcr = (pos_m / len(m_dict) * 100.0) if m_dict else 0.0
+    avg_trade = total_net / total_trades if total_trades > 0 else 0.0
 
     return {
-        "total_trades": tot_trades,
-        "annual_trades": ann_trades,
-        "net_profit": net_profit,
+        "net_profit": total_net,
         "pf": pf,
-        "win_rate": win_rate,
-        "max_dd": true_max_dd,
+        "total_trades": total_trades,
+        "annual_trades": annual_trades,
+        "max_dd": max_intra_dd,
         "romad": romad,
+        "win_rate": win_rate,
         "mcr": mcr,
-        "avg_trade": avg_pnl,
+        "avg_trade": avg_trade,
         "filtered_trades": filtered_trades
     }
 
 # -----------------------------------------------------------------------------
-# 1,000-Run Monte Carlo Tail-Risk Simulator
+# 1,000-Run Monte Carlo Resampling Engine
 # -----------------------------------------------------------------------------
 def run_monte_carlo(trades, num_simulations=1000, initial_capital=10000.0):
-    if not trades or len(trades) < 10:
+    if not trades:
         return {"mc_p50_dd": 0.0, "mc_p95_dd": 0.0, "ruin_prob": 0.0}
 
-    pnls = np.array([t["pnl"] for t in trades], dtype=np.float64)
-    n = len(pnls)
+    trade_pnls = np.array([t["pnl"] for t in trades], dtype=np.float64)
+    n_trades = len(trade_pnls)
     max_dds = np.zeros(num_simulations, dtype=np.float64)
-    ruin_count = 0
+    ruined_count = 0
 
-    np.random.seed(42)
+    rng = np.random.default_rng(seed=42)
     for s in range(num_simulations):
-        sampled_pnls = np.random.choice(pnls, size=n, replace=True)
-        equity = initial_capital + np.cumsum(sampled_pnls)
-        peaks = np.maximum.accumulate(equity)
-        dds = peaks - equity
-        max_dd = np.max(dds)
-        max_dds[s] = max_dd
-        if np.min(equity) <= (initial_capital * 0.70): # 30% catastrophic ruin
-            ruin_count += 1
-
-    p50_dd = float(np.percentile(max_dds, 50))
-    p95_dd = float(np.percentile(max_dds, 95))
-    ruin_prob = float((ruin_count / num_simulations) * 100.0)
+        sampled_pnls = rng.choice(trade_pnls, size=n_trades, replace=True)
+        equity_curve = initial_capital + np.cumsum(sampled_pnls)
+        running_peak = np.maximum.accumulate(equity_curve)
+        dds = running_peak - equity_curve
+        max_dds[s] = np.max(dds)
+        if np.min(equity_curve) <= (initial_capital * 0.70):
+            ruined_count += 1
 
     return {
-        "mc_p50_dd": p50_dd,
-        "mc_p95_dd": p95_dd,
-        "ruin_prob": ruin_prob
+        "mc_p50_dd": float(np.percentile(max_dds, 50)),
+        "mc_p95_dd": float(np.percentile(max_dds, 95)),
+        "ruin_prob": float((ruined_count / num_simulations) * 100.0)
     }
 
 # -----------------------------------------------------------------------------
@@ -496,99 +525,95 @@ def main():
     t0 = time.time()
     print("=" * 100)
     print("BATCH 63: VOLATILITY-REGIME ADAPTIVE TRI-TRANCHE MATRIX (S1086 - S1115)")
-    print("====================================================================================================")
+    print("=" * 100)
 
-    # Resolve paths
-    base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-    DATA_DIR = os.path.join(base_dir, "data")
-    RESULTS_DIR = os.path.join(base_dir, "results")
+    REPO_ROOT = "/content/CFD-Trading-ML" if os.path.exists("/content/CFD-Trading-ML") else "/root/CFD-Trading-ML"
+    DATA_DIR = os.path.join(REPO_ROOT, "projects/quant_strategy_discovery/data")
+    RESULTS_DIR = os.path.join(REPO_ROOT, "projects/quant_strategy_discovery/results")
     os.makedirs(RESULTS_DIR, exist_ok=True)
 
     print(f"[+] Loading multi-frequency Gold and EURUSD datasets from {DATA_DIR}...")
-    gold_m15_path = os.path.join(DATA_DIR, "XAUUSD_M15.parquet")
-    gold_m5_path  = os.path.join(DATA_DIR, "XAUUSD_M5.parquet")
-    gold_h1_path  = os.path.join(DATA_DIR, "XAUUSD_H1.parquet")
-    eur_m15_path  = os.path.join(DATA_DIR, "EURUSD_M15.parquet")
+    df_m5 = pd.read_parquet(os.path.join(DATA_DIR, "XAUUSD_M5.parquet"))
+    df_m15 = pd.read_parquet(os.path.join(DATA_DIR, "XAUUSD_M15.parquet"))
+    df_h1 = pd.read_parquet(os.path.join(DATA_DIR, "XAUUSD_H1.parquet"))
+    df_eu = pd.read_parquet(os.path.join(DATA_DIR, "EURUSD_M15.parquet"))
 
-    df_m15 = pd.read_parquet(gold_m15_path).sort_values("time").reset_index(drop=True)
-    df_m5  = pd.read_parquet(gold_m5_path).sort_values("time").reset_index(drop=True)
-    df_h1  = pd.read_parquet(gold_h1_path).sort_values("time").reset_index(drop=True)
-    df_eu  = pd.read_parquet(eur_m15_path).sort_values("time").reset_index(drop=True)
+    m15_opens  = df_m15["open"].values.astype(np.float64)
+    m15_highs  = df_m15["high"].values.astype(np.float64)
+    m15_lows   = df_m15["low"].values.astype(np.float64)
+    m15_closes = df_m15["close"].values.astype(np.float64)
+    m15_dates  = pd.to_datetime(df_m15.index).to_pydatetime()
+    n_m15      = len(m15_closes)
 
-    # Standardize time
-    df_m15["time"] = pd.to_datetime(df_m15["time"])
-    df_m5["time"]  = pd.to_datetime(df_m5["time"])
-    df_h1["time"]  = pd.to_datetime(df_h1["time"])
-    df_eu["time"]  = pd.to_datetime(df_eu["time"])
+    m5_closes  = df_m5["close"].values.astype(np.float64)
+    h1_highs   = df_h1["high"].values.astype(np.float64)
+    h1_lows    = df_h1["low"].values.astype(np.float64)
+    h1_closes  = df_h1["close"].values.astype(np.float64)
+    eu_closes  = df_eu["close"].values.astype(np.float64)
 
-    # Compute M5 Alignment EMA
+    # Indicator Calculations
     print("[+] Calculating multi-timeframe indicators...")
-    m5_closes = df_m5["close"].values
-    m5_ema50 = compute_ema(m5_closes, 50)
-    df_m5["m5_ema50"] = m5_ema50
-    df_m5["m5_bull"] = df_m5["close"] > df_m5["m5_ema50"]
-    df_m5["m5_bear"] = df_m5["close"] < df_m5["m5_ema50"]
-
-    # Compute H1 Supertrend Trend Filter
-    h1_highs  = df_h1["high"].values
-    h1_lows   = df_h1["low"].values
-    h1_closes = df_h1["close"].values
-    h1_atr    = compute_atr(h1_highs, h1_lows, h1_closes, 14)
-    h1_trend, h1_band = compute_supertrend(h1_highs, h1_lows, h1_closes, h1_atr, 3.0)
-    df_h1["h1_trend"] = h1_trend
-
-    # Compute EURUSD Regime EMA
-    eu_closes = df_eu["close"].values
-    eu_ema50  = compute_ema(eu_closes, 50)
-    df_eu["eu_bull"] = df_eu["close"] > eu_ema50
-    df_eu["eu_bear"] = df_eu["close"] < eu_ema50
-
-    # Align multi-timeframe data to Gold M15
-    m15_opens  = df_m15["open"].values
-    m15_highs  = df_m15["high"].values
-    m15_lows   = df_m15["low"].values
-    m15_closes = df_m15["close"].values
-    m15_dates  = df_m15["time"]
-
-    m15_atr14  = compute_atr(m15_highs, m15_lows, m15_closes, 14)
+    m15_atr14 = compute_atr(m15_highs, m15_lows, m15_closes, 14)
     m15_atr100 = compute_atr(m15_highs, m15_lows, m15_closes, 100)
-    m15_vol_ratio = np.divide(m15_atr14, np.where(m15_atr100 == 0, 1.0, m15_atr100))
+    m15_vol_ratio = np.divide(m15_atr14, m15_atr100, out=np.ones_like(m15_atr14), where=m15_atr100 > 0)
+    st_t30, st_b30 = compute_supertrend(m15_highs, m15_lows, m15_closes, m15_atr14, 3.0)
+    m15_ema200 = compute_ema(m15_closes, 200)
 
-    st_tr30, st_b30 = compute_supertrend(m15_highs, m15_lows, m15_closes, m15_atr14, 3.0)
-    ema200 = compute_ema(m15_closes, 200)
+    # M5 Micro-Structure Alignment
+    m5_ema50 = compute_ema(m5_closes, 50)
+    m5_trend = np.where(m5_closes > m5_ema50, 1, -1)
+    df_m5_state = pd.DataFrame({
+        "time": pd.to_datetime(df_m5.index) + pd.Timedelta(minutes=5),
+        "m5_tr": m5_trend
+    }).sort_values("time")
 
-    # Merge H1, M5, EURUSD onto M15
-    df_m15_sub = pd.DataFrame({"time": df_m15["time"]})
-    df_h1_merge = pd.merge_asof(df_m15_sub, df_h1[["time", "h1_trend"]], on="time", direction="backward")
-    df_m5_merge = pd.merge_asof(df_m15_sub, df_m5[["time", "m5_bull", "m5_bear"]], on="time", direction="backward")
-    df_eu_merge = pd.merge_asof(df_m15_sub, df_eu[["time", "eu_bull", "eu_bear"]], on="time", direction="backward")
+    # H1 Macro Trend Alignment
+    h1_atr14 = compute_atr(h1_highs, h1_lows, h1_closes, 14)
+    h1_tr30, _ = compute_supertrend(h1_highs, h1_lows, h1_closes, h1_atr14, 3.0)
+    df_h1_state = pd.DataFrame({
+        "time": pd.to_datetime(df_h1.index) + pd.Timedelta(hours=1),
+        "h1_tr": h1_tr30
+    }).sort_values("time")
 
-    h1_trend_aligned = df_h1_merge["h1_trend"].values
-    m5_bull_aligned  = df_m5_merge["m5_bull"].values
-    m5_bear_aligned  = df_m5_merge["m5_bear"].values
-    eu_bull_aligned  = df_eu_merge["eu_bull"].values
-    eu_bear_aligned  = df_eu_merge["eu_bear"].values
+    # EURUSD Macro Alignment
+    eu_ema50 = compute_ema(eu_closes, 50)
+    eu_trend = np.where(eu_closes > eu_ema50, 1, -1)
+    df_eu_state = pd.DataFrame({
+        "time": pd.to_datetime(df_eu.index) + pd.Timedelta(minutes=15),
+        "eu_trend": eu_trend
+    }).sort_values("time")
 
-    n_bars = len(m15_closes)
-    print(f"[+] Synchronized {n_bars:,} Gold M15 bars under multi-frequency causal alignment.")
+    # Synchronize onto M15 Timeline
+    df_m15_time = pd.DataFrame({"time": pd.to_datetime(df_m15.index)})
+    m15_merged_h1 = pd.merge_asof(df_m15_time, df_h1_state, on="time", direction="backward")
+    m15_h1_trend = m15_merged_h1["h1_tr"].fillna(1).values.astype(np.int32)
 
-    # Generate Session-Specific Entry Signals
-    hours = m15_dates.dt.hour.values
+    m15_merged_eu = pd.merge_asof(df_m15_time, df_eu_state, on="time", direction="backward")
+    m15_eu_trend = m15_merged_eu["eu_trend"].fillna(1).values.astype(np.int32)
 
-    def generate_gold_signals(start_h, end_h, min_atr, min_vr=1.0):
-        sig = np.zeros(n_bars, dtype=np.int32)
-        for i in range(1, n_bars):
-            h = hours[i]
-            if start_h <= h < end_h:
-                if m15_atr14[i - 1] >= min_atr and m15_vol_ratio[i - 1] >= min_vr:
-                    # Bullish Confluence
-                    if (m15_closes[i - 1] > ema200[i - 1] and st_tr30[i - 1] == 1 and
-                        h1_trend_aligned[i - 1] == 1 and m5_bull_aligned[i - 1] and eu_bull_aligned[i - 1]):
-                        sig[i] = 1
-                    # Bearish Confluence
-                    elif (m15_closes[i - 1] < ema200[i - 1] and st_tr30[i - 1] == -1 and
-                          h1_trend_aligned[i - 1] == -1 and m5_bear_aligned[i - 1] and eu_bear_aligned[i - 1]):
-                        sig[i] = -1
+    m15_merged_m5 = pd.merge_asof(df_m15_time, df_m5_state, on="time", direction="backward")
+    m15_m5_trend = m15_merged_m5["m5_tr"].fillna(1).values.astype(np.int32)
+
+    del df_m5, df_m5_state, df_h1, df_h1_state, df_eu, df_eu_state, m15_merged_h1, m15_merged_eu, m15_merged_m5, df_m15_time
+    gc.collect()
+
+    print(f"[+] Synchronized {n_m15:,} Gold M15 bars under multi-frequency causal alignment.")
+
+    # Signal Generator
+    def generate_gold_signals(start_h, end_h, min_atr=1.50, min_vr=0.0):
+        sig = np.zeros(n_m15, dtype=np.int32)
+        for i in range(200, n_m15 - 1):
+            h = m15_dates[i].hour
+            if start_h <= h <= end_h:
+                if min_atr <= 0.0 or m15_atr14[i] >= min_atr:
+                    if min_vr > 0.0 and m15_vol_ratio[i] < min_vr:
+                        continue
+                    if st_t30[i] == 1 and st_t30[i - 1] == -1 and m15_closes[i] > m15_ema200[i]:
+                        if m15_h1_trend[i] == 1 and m15_eu_trend[i] == 1 and m15_m5_trend[i] == 1:
+                            sig[i] = 1
+                    elif st_t30[i] == -1 and st_t30[i - 1] == 1 and m15_closes[i] < m15_ema200[i]:
+                        if m15_h1_trend[i] == -1 and m15_eu_trend[i] == -1 and m15_m5_trend[i] == -1:
+                            sig[i] = -1
         return sig
 
     sig_early_lon = generate_gold_signals(6, 9, 1.50, min_vr=1.10)
