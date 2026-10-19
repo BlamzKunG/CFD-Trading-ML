@@ -1,0 +1,31 @@
+Strategy_ID,Strategy_Name,Role,Annual_Trades,Total_Trades,Net_Profit,Profit_Factor,Win_Rate_Pct,True_Intra_Max_DD,RoMaD,MCR_Pct,Avg_Trade_PnL,MC_P50_DD,MC_P95_DD,Ruin_Probability_Pct
+S996,Grand Centennial Benchmark,Centennial Benchmark,45.5,273,2703.91,1.77,63.7,476.21,5.68,59.1,9.9,357.26,644.38,0.0
+S997,Grand Centennial Extreme Benchmark,Centennial Extreme Benchmark,45.5,273,2623.03,1.873,63.7,538.73,4.87,56.1,9.61,351.81,657.71,0.0
+S998,Grand Centennial Sub-Risk,Centennial Sub-Risk,45.5,273,2274.34,1.8,63.7,391.19,5.81,62.1,8.33,285.71,506.04,0.0
+S999,Grand Centennial Prop-Firm Shield,Centennial Prop-Firm Shield,45.5,273,1604.25,1.703,63.7,267.35,6.0,59.1,5.88,227.89,407.78,0.0
+S1000,GRAND CENTENNIAL MONUMENT FLAGSHIP,"👑 CENTENNIAL MONUMENT FLAGSHIP (THE 1,000TH STRATEGY)",45.5,273,2703.91,1.77,63.7,476.21,5.68,59.1,9.9,357.26,644.38,0.0
+S1001,Centennial 0.5% Compounding Shield,Centennial 0.5% Compounding,45.5,273,1405.9,1.632,63.7,217.22,6.47,57.6,5.15,221.68,402.82,0.0
+S1002,Centennial 0.75% Compounding Apex,Centennial 0.75% Compounding,45.5,273,1404.13,1.631,63.7,217.22,6.46,57.6,5.14,221.68,403.4,0.0
+S1003,Centennial 1.0% Compounding Engine,Centennial 1.0% Compounding,45.5,273,1535.12,1.664,63.7,228.67,6.71,59.1,5.62,227.98,409.92,0.0
+S1004,Centennial 1.25% Compounding Growth,Centennial 1.25% Compounding,45.5,273,1595.42,1.64,63.7,249.69,6.39,57.6,5.84,242.05,439.2,0.0
+S1005,Centennial 1.5% Compounding Titan,Centennial 1.5% Compounding,45.5,273,1689.79,1.6,63.7,275.33,6.14,57.6,6.19,277.2,507.48,0.0
+S1006,Centennial 2.0% Compounding Apex,Centennial 2.0% Compounding,45.5,273,2147.35,1.602,63.7,364.55,5.89,57.6,7.87,347.79,622.53,0.0
+S1007,Centennial 2.5% Compounding Maximum,Centennial 2.5% Compounding,45.5,273,2595.6,1.576,63.7,455.1,5.7,59.1,9.51,447.71,815.5,0.0
+S1008,Centennial 1.0% Comp + 50% Lock-In,Centennial 1.0% Comp + Lock,45.5,273,1535.12,1.664,63.7,228.67,6.71,59.1,5.62,227.98,409.92,0.0
+S1009,Centennial 1.5% Comp + 50% Lock-In,Centennial 1.5% Comp + Lock,45.5,273,1689.79,1.6,63.7,275.33,6.14,57.6,6.19,277.2,507.48,0.0
+S1010,Centennial 2.0% Comp + 50% Lock-In,Centennial 2.0% Comp + Lock,45.5,273,2147.35,1.602,63.7,364.55,5.89,57.6,7.87,347.79,622.53,0.0
+S1011,Centennial Extreme + 1.0% Comp,Centennial Extreme 1.0% Comp,45.5,273,1535.12,1.664,63.7,228.67,6.71,59.1,5.62,227.98,409.92,0.0
+S1012,Centennial Extreme + 1.5% Comp,Centennial Extreme 1.5% Comp,45.5,273,1689.79,1.6,63.7,275.33,6.14,57.6,6.19,277.2,507.48,0.0
+S1013,Centennial Extreme + 2.0% Comp,Centennial Extreme 2.0% Comp,45.5,273,2147.35,1.602,63.7,364.55,5.89,57.6,7.87,347.79,622.53,0.0
+S1014,Centennial Extreme + 50% Lock,Centennial Extreme 50% Lock,45.5,273,2623.03,1.873,63.7,538.73,4.87,56.1,9.61,351.81,657.71,0.0
+S1015,Centennial Fortress + 0.4% Comp,Centennial Fortress 0.4% Comp,45.5,273,1405.9,1.632,63.7,217.22,6.47,57.6,5.15,221.68,402.82,0.0
+S1016,Centennial Fortress + 0.5% Comp,Centennial Fortress 0.5% Comp,45.5,273,1405.9,1.632,63.7,217.22,6.47,57.6,5.15,221.68,402.82,0.0
+S1017,Centennial Fortress + 0.75% Comp,Centennial Fortress 0.75% Comp,45.5,273,1404.13,1.631,63.7,217.22,6.46,57.6,5.14,221.68,403.4,0.0
+S1018,Centennial Fortress + 50% Lock,Centennial Fortress 50% Lock,45.5,273,1225.49,1.68,63.7,222.12,5.52,54.5,4.49,189.88,350.57,0.0
+S1019,Centennial Staged 1.5R Tranche,Centennial Staged 1.5R,47.7,286,2544.83,1.798,65.4,335.56,7.58,56.1,8.9,325.21,576.81,0.0
+S1020,Centennial Staged 2.5R Tranche,Centennial Staged 2.5R,43.3,260,2859.52,1.768,61.9,505.09,5.66,59.1,11.0,380.78,678.73,0.0
+S1021,Centennial Tight Ratchet (2.5x ST),Centennial Tight Ratchet 2.5x,51.2,307,362.56,1.074,59.3,1415.63,0.26,50.8,1.18,707.77,1410.53,0.0
+S1022,Centennial Wide Ratchet (3.5x ST),Centennial Wide Ratchet 3.5x,39.0,234,1104.51,1.293,61.5,635.67,1.74,59.7,4.72,497.31,985.74,0.0
+S1023,Centennial Asymmetry Plus (0.16 Lon),Centennial Asymmetry Plus,45.5,273,2483.6,1.927,63.7,555.08,4.47,51.5,9.1,350.53,665.75,0.0
+S1024,Centennial Millennial Vault (60% Lock),Centennial Millennial Vault,45.5,273,2274.34,1.8,63.7,391.19,5.81,62.1,8.33,285.71,506.04,0.0
+S1025,Centennial Millennium Sovereign Titan,👑 Centennial Millennium Sovereign Titan,45.5,273,1535.12,1.664,63.7,228.67,6.71,59.1,5.62,227.98,409.92,0.0
