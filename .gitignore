@@ -4,5 +4,3 @@ __pycache__/
 *.pyd
 .ipynb_checkpoints/
 *.log
-*.parquet
-projects/quant_strategy_discovery/data/
