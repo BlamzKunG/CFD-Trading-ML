@@ -439,42 +439,23 @@ def main():
     print("BATCH 60: STRATEGY 1,000 GRAND CENTENNIAL MONUMENT (Strategies S996 - S1025)")
     print("=" * 100)
 
-    base_dir = "/root/CFD-Trading-ML/projects/quant_strategy_discovery"
-    if not os.path.exists(base_dir):
-        base_dir = "/content/CFD-Trading-ML/projects/quant_strategy_discovery"
+    REPO_ROOT = "/content/CFD-Trading-ML" if os.path.exists("/content/CFD-Trading-ML") else "/root/CFD-Trading-ML"
+    DATA_DIR = os.path.join(REPO_ROOT, "projects/quant_strategy_discovery/data")
+    RESULTS_DIR = os.path.join(REPO_ROOT, "projects/quant_strategy_discovery/results")
+    os.makedirs(RESULTS_DIR, exist_ok=True)
 
-    gold_m15_path = os.path.join(base_dir, "data/XAUUSD_M15.csv")
-    gold_m5_path  = os.path.join(base_dir, "data/XAUUSD_M5.csv")
-    gold_h1_path  = os.path.join(base_dir, "data/XAUUSD_H1.csv")
-    eurusd_m15_path = os.path.join(base_dir, "data/EURUSD_M15.csv")
-
-    print(f"[+] Loading multi-frequency Gold and EURUSD datasets...")
-    df_m15 = pd.read_csv(gold_m15_path)
-    df_m15["time"] = pd.to_datetime(df_m15["time"])
-    df_m15.set_index("time", inplace=True)
-    df_m15.sort_index(inplace=True)
-
-    df_m5 = pd.read_csv(gold_m5_path)
-    df_m5["time"] = pd.to_datetime(df_m5["time"])
-    df_m5.set_index("time", inplace=True)
-    df_m5.sort_index(inplace=True)
-
-    df_h1 = pd.read_csv(gold_h1_path)
-    df_h1["time"] = pd.to_datetime(df_h1["time"])
-    df_h1.set_index("time", inplace=True)
-    df_h1.sort_index(inplace=True)
-
-    df_eu = pd.read_csv(eurusd_m15_path)
-    df_eu["time"] = pd.to_datetime(df_eu["time"])
-    df_eu.set_index("time", inplace=True)
-    df_eu.sort_index(inplace=True)
+    print(f"[+] Loading multi-frequency Gold and EURUSD datasets from {DATA_DIR}...")
+    df_m5 = pd.read_parquet(os.path.join(DATA_DIR, "XAUUSD_M5.parquet"))
+    df_m15 = pd.read_parquet(os.path.join(DATA_DIR, "XAUUSD_M15.parquet"))
+    df_h1 = pd.read_parquet(os.path.join(DATA_DIR, "XAUUSD_H1.parquet"))
+    df_eu = pd.read_parquet(os.path.join(DATA_DIR, "EURUSD_M15.parquet"))
 
     # Convert to NumPy
     m15_opens  = df_m15["open"].values.astype(np.float64)
     m15_highs  = df_m15["high"].values.astype(np.float64)
     m15_lows   = df_m15["low"].values.astype(np.float64)
     m15_closes = df_m15["close"].values.astype(np.float64)
-    m15_dates  = df_m15.index.to_pydatetime()
+    m15_dates  = pd.to_datetime(df_m15.index).to_pydatetime()
     n_m15      = len(m15_closes)
 
     m5_closes  = df_m5["close"].values.astype(np.float64)
@@ -650,8 +631,8 @@ def main():
     print("=" * 145)
 
     # 5. Export Results
-    out_csv = os.path.join(base_dir, "results/batch_60_centennial_monument_matrix.csv")
-    out_json = os.path.join(base_dir, "results/batch_60_centennial_monument_results.json")
+    out_csv = os.path.join(RESULTS_DIR, "batch_60_centennial_monument_matrix.csv")
+    out_json = os.path.join(RESULTS_DIR, "batch_60_centennial_monument_results.json")
     df_res = pd.DataFrame(results_table)
     df_res.to_csv(out_csv, index=False)
     with open(out_json, "w") as f:
