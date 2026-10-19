@@ -1,0 +1,31 @@
+Strategy_ID,Strategy_Name,Role,Annual_Trades,Total_Trades,Net_Profit,Profit_Factor,Win_Rate_Pct,True_Intra_Max_DD,RoMaD,MCR_Pct,Avg_Trade_PnL,MC_P50_DD,MC_P95_DD,Ruin_Probability_Pct
+S906,M5-Confluence Early London Solo,Early London M5 Confluence,1.8,11,1064.59,4.212,45.5,264.95,4.02,45.5,96.78,159.58,397.31,0.0
+S907,M5-Confluence London Midday Solo,London Midday M5 Confluence,4.8,29,208.15,1.162,27.6,876.27,0.24,30.8,7.18,610.5,1181.31,0.0
+S908,M5-Confluence NY Open Solo,NY Open M5 Confluence,21.0,126,2220.99,1.471,43.7,579.78,3.83,45.9,17.63,847.51,1553.8,0.0
+S909,M5-Confluence Tri-Phase Router,Tri-Phase M5 Confluence Router,27.7,166,2753.35,1.572,41.0,551.38,4.99,43.9,16.59,676.3,1201.06,0.0
+S910,M5-Confluence Dual-Phase Router,Dual-Phase M5 Confluence Router,22.8,137,3285.58,1.651,43.8,627.01,5.24,44.4,23.98,769.43,1457.46,0.0
+S911,M5-Confluence Router ($150 Gov),M5 Confluence Conservative Gov,27.7,166,2753.35,1.572,41.0,551.38,4.99,43.9,16.59,676.3,1201.06,0.0
+S912,M5-Confluence Router ($200 Gov),M5 Confluence Moderate Gov,27.7,166,2753.35,1.572,41.0,551.38,4.99,43.9,16.59,676.3,1201.06,0.0
+S913,M5-Confluence Prop-Firm Shield,Prop-Firm M5 Confluence Shield,27.7,166,1726.05,1.568,41.0,357.12,4.83,43.9,10.4,425.3,766.08,0.0
+S914,M5-Confluence London Overweight,London Overweight M5 Suite,27.7,166,2512.89,1.712,41.0,512.91,4.9,43.9,15.14,522.85,936.61,0.0
+S915,M5-Confluence London Extreme Overweight,London Extreme M5 Confluence,27.7,166,2630.98,1.801,41.0,560.67,4.69,42.4,15.85,527.38,980.2,0.0
+S916,Adaptive Ratchet Early London Solo,Adaptive Ratchet Early London,1.8,11,512.31,1.865,45.5,500.28,1.02,50.0,46.57,309.98,652.84,0.0
+S917,Adaptive Ratchet London Mid Solo,Adaptive Ratchet London Mid,5.7,34,-1125.13,0.488,29.4,1142.6,-0.98,27.6,-33.09,1410.26,2311.05,0.1
+S918,Adaptive Ratchet NY Open Solo,Adaptive Ratchet NY Open,20.2,121,1599.19,1.357,43.8,753.15,2.12,43.3,13.22,813.18,1652.6,0.0
+S919,Adaptive Ratchet Tri-Phase Router,Adaptive Ratchet Tri-Phase Router,27.5,165,1013.39,1.188,40.6,932.39,1.09,37.9,6.14,945.46,1920.05,0.0
+S920,Adaptive Ratchet Dual-Phase Router,Adaptive Ratchet Dual-Phase Router,22.0,132,2111.5,1.416,43.9,851.05,2.48,43.3,16.0,871.89,1697.94,0.0
+S921,Adaptive Ratchet London Overweight,Adaptive London Overweight,27.7,166,739.29,1.173,41.0,943.6,0.78,34.8,4.45,839.49,1641.41,0.0
+S922,Adaptive Ratchet London Extreme,Adaptive London Extreme Suite,27.3,164,674.18,1.164,40.9,1201.15,0.56,34.8,4.11,930.16,1906.54,0.0
+S923,Adaptive Ratchet Prop-Firm Shield,Adaptive Prop-Firm Shield,27.5,165,605.24,1.177,40.6,593.22,1.02,37.9,3.67,603.18,1239.89,0.0
+S924,Adaptive Router + 2.0R Partial TP,Adaptive Router + 2.0R TP,43.8,263,1199.67,1.245,62.7,631.8,1.9,47.0,4.56,611.06,1168.7,0.0
+S925,Adaptive Router + 2.5R Partial TP,Adaptive Router + 2.5R TP,41.5,249,1347.81,1.265,60.6,683.14,1.97,48.5,5.41,644.32,1230.7,0.0
+S926,Confluence Dynamic Vol Risk ($200),Confluence DynRisk $200,27.7,166,2135.67,1.526,41.0,609.93,3.5,43.9,12.87,571.54,1050.3,0.0
+S927,Confluence Dynamic Vol Risk ($250),Confluence DynRisk $250,27.7,166,2607.81,1.521,41.0,785.13,3.32,43.9,15.71,708.04,1292.83,0.0
+S928,Confluence Dynamic Vol Risk ($300),Confluence DynRisk $300,27.7,166,3075.11,1.511,41.0,930.65,3.3,43.9,18.52,850.1,1574.56,0.0
+S929,Adaptive Confluence DynRisk ($250),Adaptive DynRisk $250,27.7,166,562.89,1.103,41.0,1184.51,0.48,37.9,3.39,1013.75,2008.3,0.0
+S930,Adaptive Confluence DynRisk ($300),Adaptive DynRisk $300,27.7,166,674.71,1.104,41.0,1420.22,0.48,39.4,4.06,1197.43,2380.54,0.8
+S931,Confluence Router + 50% Lock-In Gov,Confluence Router + 50% Lock-In,27.7,166,2753.35,1.572,41.0,551.38,4.99,43.9,16.59,676.3,1201.06,0.0
+S932,Adaptive Router + 50% Lock-In Gov,Adaptive Router + 50% Lock-In,27.5,165,1013.39,1.188,40.6,932.39,1.09,37.9,6.14,945.46,1920.05,0.0
+S933,Adaptive 2.0R TP + 50% Lock-In Gov,Adaptive 2.0R TP + Lock-In Gov,43.8,263,1199.67,1.245,62.7,631.8,1.9,47.0,4.56,611.06,1168.7,0.0
+S934,Adaptive London Extreme + 50% Lock-In,Adaptive London Extreme Lock-In,27.3,164,674.18,1.164,40.9,1201.15,0.56,34.8,4.11,930.16,1906.54,0.0
+S935,Grand Sovereign Confluence Monument 2026,Flagship Confluence Monument 2026,44.2,265,805.39,1.183,63.0,670.23,1.2,50.0,3.04,551.41,1061.52,0.0
