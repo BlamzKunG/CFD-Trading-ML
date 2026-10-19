@@ -1087,6 +1087,44 @@ Evaluated on **Google Colab Cloud VM** infrastructure (`quant_research` cloud se
 3. **The Multi-Session Ensemble Diversification Law (S724 & S725 Breakthrough):**
    Blending S700 London/NY core with S682 Early London ignition at 0.07 lot each compressed maximum intra-bar drawdown to **$1,893.32**, boosted Return on Max Drawdown to **6.30x**, and capped the 1,000-run Monte Carlo 95% worst-case drawdown at **$2,649.79** with **0.00% risk of ruin**.
 
+---
+
+## 35. Dynamic Volatility Targeting & Multi-Asset Sovereign Portfolios (Batch 51 - Strategies S726–S755)
+
+Evaluated on **Google Colab Cloud VM** infrastructure (`quant_research` cloud session) across 141,567 M15 Gold bars, 35,400 H1 Gold bars, 149,266 EURUSD M15 bars, and 37,200 EURUSD H1 bars (2020–2025) under 100% strict adherence to **Constitution V5.1 (Rules D.1 to D.7)**:
+- $0.25 spread ($25.00/lot) + $6.00/lot commission + -$18/lot overnight Long swap for Gold CFD
+- 1.0 pip spread ($10.00/lot) + $6.00/lot commission + -$4/lot swap for EURUSD CFD
+- Pessimistic sequence (SL hit first if bar range spans both TP and SL)
+- Bar-close trailing only (ratchet effective next open)
+- Intra-bar adverse excursion equity tracking for true Max DD
+- Negative slippage (-$0.10/trade on Gold, -0.5 pip on EURUSD)
+- Anti-Lookahead Causality: Strict +1H timestamp shift on H1 bars.
+
+### Dynamic Sizing & Multi-Asset Leaderboard Highlights (Batch 51 Champions)
+
+| Strategy ID & Architecture | Key Structural Innovation & Regime Mechanism | Annual Trades | Total Trades | Net Profit ($) | Profit Factor | Win Rate (%) | True Intra Max DD ($) | RoMaD | MCR (%) | Empirical Status & Production Role |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+| **S727: S700 Dynamic Vol Risk $180** | S700 + Dyn Risk $180 (Lot 0.04–0.20) | 126.5 | 759 | **+$18,000.77** | **1.309** | 34.5% | $3,714.37 | 4.85x | 55.6% | 🏆 Balanced Dynamic Sizing |
+| **S730: S700 Dynamic Vol Risk $250** | S700 + Dyn Risk $250 (Lot 0.04–0.20) | 126.5 | 759 | **+$21,563.97** 👑 | **1.333** 🏆 | 34.5% | $3,816.41 | **5.65x** | 55.6% | 👑 High-Expectancy Dynamic Apex |
+| **S731: S700 Dynamic Vol Risk $300** | S700 + Dyn Risk $300 (Lot 0.04–0.20) | **127.3** ⚡ | **764** | **+$24,023.64** 👑 | **1.356** 👑 | **34.6%** | **$4,023.36** | **5.97x** 👑 | **56.9%** 🏆 | 👑 **ALL-TIME HIGH NET PROFIT CHAMPION ($24.0k)** |
+| **S733: S682 Dynamic Vol Risk $200** | S682 Early London + Dyn Risk $200 | 34.5 | 207 | **+$6,981.50** | **1.494** 🏆 | 32.4% | **$1,773.90** 💎 | 3.94x | 37.5% | 💎 Sub-$1.8k DD High-PF Dynamic ($7.0k Net) |
+| **S737: S700 2-Tranche 50/50 @ 2.5x** | 50% TP1 @ 2.5x ATR + Trailing Runner | 129.0 | 774 | +$4,323.81 | 1.143 | **53.5%** | **$1,838.29** 💎 | 2.35x | 55.6% | 🛡️ High Win-Rate Specialist (53.5% WR) |
+| **S742: Dual Ensemble 2-Tranche @ 2.5x**| S700+S682 (0.07 lot) + 50/50 @ 2.5x | **163.2** ⚡ | **979** | +$4,632.95 | 1.182 | **53.5%** | **$1,588.80** 👑 | 2.92x | 55.6% | 👑 **SUB-$1.6k DRAWDOWN FLOOR (53.5% WR)** |
+| **S749: Joint XAU+EUR Balanced (0.05)**| XAU (0.05 lot) + EURUSD (0.05 lot) | **188.5** ⚡ | **1,131** | **+$5,223.85** | **1.244** | 34.5% | **$1,200.04** 👑 | **4.35x** | **56.9%** | 👑 **ALL-TIME LOWEST PORTFOLIO DD ($1,200)** |
+| **S750: Joint XAU (0.07) + EUR (0.05)** | Core Multi-Asset Allocation | 188.5 | 1,131 | **+$7,505.45** | **1.259** | 34.5% | **$1,605.83** 💎 | **4.67x** | 55.6% | 💎 Core Multi-Asset Portfolio |
+| **S752: Triple Sovereign Multi-Asset Suite**| S700 (0.05) + S682 (0.05) + EUR (0.05) | **222.8** ⚡ | **1,337** | **+$7,525.68** 🏆 | **1.299** 🏆 | **34.2%** | **$1,497.32** 💎 | **5.03x** 🏆 | 54.2% | 🏆 **SUB-$1.5k DRAWDOWN MULTI-ASSET SUITE** |
+| **S754: Grand Sovereign Multi-Asset Apex** | S700 (0.07) + S682 (0.05) + EUR (0.05) | **222.5** ⚡ | **1,335** | **+$9,960.00** 🏆 | **1.307** 🏆 | **34.2%** | **$1,888.40** 💎 | **5.27x** 🏆 | 52.8% | 🏆 Sub-$1.9k Multi-Asset Apex ($10.0k Net) |
+| **S755: Centennial Multi-Asset Monument** | S700 (Dyn $150) + S682 (0.05) + EUR (0.05)| **222.2** ⚡ | **1,333** | **+$17,997.16** 👑 | **1.298** | 34.2% | $4,230.88 | 4.25x | 55.6% | 👑 All-Weather Multi-Asset Monument |
+
+### Key Empirical Laws Discovered in Batch 51
+1. **The Dynamic Volatility Expansion Law (S731 Breakthrough):**
+   Calibrating position sizing to dollar risk ($\text{Risk} = \$300$ per trade, lot clamped between 0.04 and 0.20 in 0.01 lot increments) doubled 6-year Net Profit from **+$12,218.45 (fixed 0.10 lot)** to an unprecedented record **+$24,023.64** with a Profit Factor of **1.356** and Return on Max Drawdown of **5.97x**.
+2. **The Prop-Firm Drawdown Floor Law (S742 Breakthrough):**
+   Executing a 2-tranche staged scale-out (taking 50% profit at 2.5x ATR and trailing 50%) on the Dual Sovereign Ensemble elevated the overall Win Rate to **53.5%** and compressed true intra-bar maximum drawdown to an astonishing **$1,588.80** across 979 trades over 6 full calendar years.
+3. **The Non-Correlated Multi-Asset Drawdown Buffer Law (S749 & S752):**
+   While standalone EURUSD trend-following is vulnerable to Euro range-bound chop, coupling EURUSD with Gold CFD in an institutional multi-asset portfolio acts as an anti-phase volatility damper, reducing portfolio maximum drawdown by **32% to 45%** (down to **$1,200.04** in S749 and **$1,497.32** in S752 across 1,337 trades).
+
+
 
 
 
