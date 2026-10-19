@@ -1,0 +1,11 @@
+Strategy_ID,Strategy_Name,Annual_Trades,Total_Trades,Net_Profit,Profit_Factor,Win_Rate_Pct,Max_Drawdown,RoMaD,Monthly_Consistency_Pct
+S481,S480 Sovereign Apex Baseline,935.3,5612,53131.62,1.414,36.94,1981.02,26.82,77.78
+S482,Standalone Asian M5 Reversion,1494.8,8969,-40564.22,0.679,36.58,40716.8,-1.0,1.39
+S483,Standalone Asian M15 Reversion,535.3,3212,-13439.84,0.803,43.31,14792.33,-0.91,19.44
+S484,Dual-Regime Sovereign (S480 + Asian M5),2426.8,14561,12663.41,1.05,36.71,12879.63,0.98,45.83
+S485,Dual-Regime Sovereign (S480 + Asian M15),1469.2,8815,39589.65,1.202,39.27,3081.3,12.85,68.06
+S486,Partial Scale-Out Payoff Engineered,935.3,5612,67642.95,1.527,36.94,1928.1,35.08,84.72
+S487,Dynamic Win Streak Boost (1.15x),935.3,5612,55560.21,1.425,36.94,2027.23,27.41,77.78
+S488,Dynamic Loss Streak Throttle (0.75x),935.3,5612,50840.9,1.447,36.94,1760.88,28.87,77.78
+S489,24-Hour Tri-Session Sovereign Matrix,1469.2,8815,37206.18,1.21,39.27,3323.07,11.2,66.67
+S490,24H Centennial Emperor Sovereign Master (S490),1465.3,8792,50857.12,1.26,39.24,2713.6,18.74,72.22

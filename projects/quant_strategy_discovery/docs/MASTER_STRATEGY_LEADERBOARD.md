@@ -598,6 +598,31 @@ Evaluated across 2,116,595 M1 bars, 423,930 M5 bars, and 141,567 M15 bars (2020�
 2. **Sub-$2,000 Drawdown Milestone (S476):** Tightening the daily loss limit to -$400 compresses the 6-year Maximum Drawdown across 8,094 trades to **$1,999.67**, achieving a staggering **30.99x Return on Max Drawdown**.
 3. **Packaging of Scalping Package 2 (`Scalping_p2`):** The Top 5 Champion EAs of Phase 2 have been organized, documented, and packaged in `projects/quant_strategy_discovery/Scalping_p2/`.
 
+---
+
+## 17. Asian Session Orthogonal Reversion & Payoff Engineering (Batch 29 - Strategies S481–S490)
+
+Evaluated across 2,116,595 M1 bars, 423,930 M5 bars, and 141,567 M15 bars (2020–2025) under exact institutional CFD fees ($0.25 spread + $6.00/lot commission). Investigating Asian session (00:00–06:00 UTC) Mean Reversion and Asymmetric Payoff Engineering (Partial Scale-Out & Streak Scaling).
+
+| Strategy ID & Architecture | Hypothesis & Structural Mechanism | Annual Trades | Total Trades | Net Profit ($) | Profit Factor | Win Rate (%) | Max Drawdown ($) | RoMaD | MCR (%) | Empirical Status & Architectural Role |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+| **S481: Sovereign Apex Baseline** | S480 Baseline Reference (Median Convex) | 935.3 | 5,612 | **+$53,131.62** | **1.414** | 36.94% | **$1,981.02** | **26.82x** | 77.78% | 🏆 Baseline Reference |
+| **S482: Standalone Asian M5 Reversion** | M5 Bollinger Band (20, 2.0) + RSI(14) <30/>70 | **1,494.8** | 8,969 | -$40,564.22 | 0.679 | 36.58% | $40,716.80 | -1.00x | 1.39% | ❌ **Rejected: Asian M5 Friction Trap** |
+| **S483: Standalone Asian M15 Reversion**| M15 Bollinger Band (20, 2.2) + RSI(14) <25/>75 | 535.3 | 3,212 | -$13,439.84 | 0.803 | 43.31% | $14,792.33 | -0.91x | 19.44% | ❌ **Rejected: Low Payoff Negative Drift** |
+| **S484: Dual-Regime Sovereign + Asian M5**| S480 Sovereign + Asian M5 Reversion Engine | **2,426.8** | 14,561 | +$12,663.41 | 1.050 | 36.71% | $12,879.63 | 0.98x | 45.83% | Diluted by M5 Friction |
+| **S485: Dual-Regime Sovereign + Asian M15**| S480 Sovereign + Asian M15 Reversion Engine| **1,469.2** | 8,815 | **+$39,589.65** | **1.202** | 39.27% | **$3,081.30** | **12.85x** | 68.06% | 🏆 Viable Multi-Session Hybrid |
+| **S486: Payoff Engineered Scale-Out** | **50% Take-Profit at 1.0x ATR + 50% Ratchet Runner** | **935.3** | **5,612** | **+$67,642.95** 👑 | **1.527** 👑 | 36.94% | **$1,928.10** 👑 | **35.08x** 👑 | **84.72%** 👑 | 👑 **ALL-TIME CAMPAIGN CHAMPION (RoMaD 35x, PF 1.53, MCR 85%)** |
+| **S487: Dynamic Win Streak Boost** | Size Boost 1.15x after 2 consecutive wins | 935.3 | 5,612 | **+$55,560.21** | **1.425** | 36.94% | **$2,027.23** | **27.41x** | 77.78% | 🏆 Convex Momentum Booster |
+| **S488: Dynamic Loss Streak Throttle**| Size Throttle 0.75x after 2 consecutive losses| 935.3 | 5,612 | **+$50,840.90** | **1.447** | 36.94% | **$1,760.88** 👑 | **28.87x** | 77.78% | 🛡️ **ALL-TIME LOWEST DRAWDOWN ($1,760)** |
+| **S489: 24-Hour Tri-Session Matrix** | Asian M15 + London M5 Ratchet + NY M1 Sniper | **1,469.2** | 8,815 | **+$37,206.18** | **1.210** | 39.27% | **$3,323.07** | **11.20x** | 66.67% | 🏆 Continuous 24-Hour Engagement |
+| **S490: 24H Centennial Emperor Sovereign**| 24H Suite + Adaptive Governor + Loss Throttle | **1,465.3** | 8,792 | **+$50,857.12** 🏆 | **1.260** | 39.24% | **$2,713.60** | **18.74x** | 72.22% | 👑 **TRUE 24-HOUR APEX SUITE (1,465 Tr/Yr)** |
+
+### Key Empirical Laws Discovered in Batch 29
+1. **The Asian Session Drift Trap (S482 & S483):** Mean reversion counter-trend entries in the Asian session fail dramatically on Gold (-$40.5k loss on M5). Low volume does not mean mean-reverting ranges; rather, low liquidity causes grinding drift where spread friction ($0.25) eats up small gains while sudden breakout spikes inflict unrecoverable losses.
+2. **The Payoff Scale-Out Optimization Law (S486 Breakthrough):** De-risking trades by locking in 50% at +1.0x ATR while ratcheting the remaining 50% with the trailing stop achieves an unprecedented **35.08x RoMaD**, a **1.527 Profit Factor** (surpassing Constitution benchmark), and **84.72% Monthly Consistency** (61/72 winning months), shattering all previous campaign benchmarks!
+3. **The Loss Streak Drawdown Compression Law (S488):** Dynamically throttling risk by 25% during drawdowns (after 2 consecutive losses) successfully drove the 6-year Maximum Drawdown down to an astonishing **$1,760.88** across 5,612 trades.
+
+
 
 
 

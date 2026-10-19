@@ -1,0 +1,122 @@
+[
+  {
+    "net_profit": 53131.61872070641,
+    "pf": 1.4142493417582973,
+    "total_trades": 5612,
+    "annual_trades": 935.3333333333334,
+    "max_dd": 1981.0162014757516,
+    "romad": 26.82038576015995,
+    "win_rate": 36.93870277975766,
+    "mcr": 77.77777777777779,
+    "strategy_id": "S481",
+    "name": "S480 Sovereign Apex Baseline"
+  },
+  {
+    "net_profit": -40564.221250930445,
+    "pf": 0.6791406481141414,
+    "total_trades": 8969,
+    "annual_trades": 1494.8333333333333,
+    "max_dd": 40716.8023824588,
+    "romad": -0.9962526248968389,
+    "win_rate": 36.58155870219645,
+    "mcr": 1.3888888888888888,
+    "strategy_id": "S482",
+    "name": "Standalone Asian M5 Reversion"
+  },
+  {
+    "net_profit": -13439.836558324121,
+    "pf": 0.8025459504879877,
+    "total_trades": 3212,
+    "annual_trades": 535.3333333333334,
+    "max_dd": 14792.328201513525,
+    "romad": -0.9085680344050898,
+    "win_rate": 43.30635118306351,
+    "mcr": 19.444444444444446,
+    "strategy_id": "S483",
+    "name": "Standalone Asian M15 Reversion"
+  },
+  {
+    "net_profit": 12663.414420254026,
+    "pf": 1.049889150188757,
+    "total_trades": 14561,
+    "annual_trades": 2426.8333333333335,
+    "max_dd": 12879.625272955076,
+    "romad": 0.983212954715767,
+    "win_rate": 36.71451136597761,
+    "mcr": 45.83333333333333,
+    "strategy_id": "S484",
+    "name": "Dual-Regime Sovereign (S480 + Asian M5)"
+  },
+  {
+    "net_profit": 39589.651515745056,
+    "pf": 1.2019537333581587,
+    "total_trades": 8815,
+    "annual_trades": 1469.1666666666667,
+    "max_dd": 3081.2957976609796,
+    "romad": 12.848377473463493,
+    "win_rate": 39.27396483267158,
+    "mcr": 68.05555555555556,
+    "strategy_id": "S485",
+    "name": "Dual-Regime Sovereign (S480 + Asian M15)"
+  },
+  {
+    "net_profit": 67642.94786047,
+    "pf": 1.52738928909896,
+    "total_trades": 5612,
+    "annual_trades": 935.3333333333334,
+    "max_dd": 1928.1020538155644,
+    "romad": 35.082659513073935,
+    "win_rate": 36.93870277975766,
+    "mcr": 84.72222222222221,
+    "strategy_id": "S486",
+    "name": "Partial Scale-Out Payoff Engineered"
+  },
+  {
+    "net_profit": 55560.20604985571,
+    "pf": 1.4246234782261435,
+    "total_trades": 5612,
+    "annual_trades": 935.3333333333334,
+    "max_dd": 2027.23184061535,
+    "romad": 27.406932417256655,
+    "win_rate": 36.93870277975766,
+    "mcr": 77.77777777777779,
+    "strategy_id": "S487",
+    "name": "Dynamic Win Streak Boost (1.15x)"
+  },
+  {
+    "net_profit": 50840.90077959932,
+    "pf": 1.4467750987048191,
+    "total_trades": 5612,
+    "annual_trades": 935.3333333333334,
+    "max_dd": 1760.8841746002,
+    "romad": 28.872370774268838,
+    "win_rate": 36.93870277975766,
+    "mcr": 77.77777777777779,
+    "strategy_id": "S488",
+    "name": "Dynamic Loss Streak Throttle (0.75x)"
+  },
+  {
+    "net_profit": 37206.182361220846,
+    "pf": 1.2096497857915942,
+    "total_trades": 8815,
+    "annual_trades": 1469.1666666666667,
+    "max_dd": 3323.0728775143107,
+    "romad": 11.196318507781694,
+    "win_rate": 39.27396483267158,
+    "mcr": 66.66666666666666,
+    "strategy_id": "S489",
+    "name": "24-Hour Tri-Session Sovereign Matrix"
+  },
+  {
+    "net_profit": 50857.12396064489,
+    "pf": 1.2604966676345457,
+    "total_trades": 8792,
+    "annual_trades": 1465.3333333333333,
+    "max_dd": 2713.6000006834056,
+    "romad": 18.741569851060138,
+    "win_rate": 39.24021838034577,
+    "mcr": 72.22222222222221,
+    "strategy_id": "S490",
+    "name": "24H Centennial Emperor Sovereign Master (S490)"
+  }
+]
