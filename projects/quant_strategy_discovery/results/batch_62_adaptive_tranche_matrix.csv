@@ -1,0 +1,31 @@
+Strategy_ID,Strategy_Name,Role,Annual_Trades,Total_Trades,Net_Profit,Profit_Factor,Win_Rate_Pct,True_Intra_Max_DD,RoMaD,MCR_Pct,Avg_Trade_PnL,MC_P50_DD,MC_P95_DD,Ruin_Probability_Pct
+S1056,Adaptive VR Dual-Tranche (1.5R/2.5R Base),Adaptive VR Dual-Tranche Base,53.3,320,2701.32,2.026,69.1,438.15,6.17,54.5,8.44,275.21,486.78,0.0
+S1057,Adaptive VR Dual-Tranche + 50% Lock,Adaptive VR Dual-Tranche + Lock,53.3,320,2701.32,2.026,69.1,438.15,6.17,54.5,8.44,275.21,486.78,0.0
+S1058,Adaptive VR Extended (1.8R/3.2R Base),Adaptive VR Extended Base,51.2,307,2435.35,1.837,67.8,545.77,4.46,54.5,7.93,349.5,658.75,0.0
+S1059,Adaptive VR Extended + 50% Lock,Adaptive VR Extended + Lock,51.2,307,2435.35,1.837,67.8,545.77,4.46,54.5,7.93,349.5,658.75,0.0
+S1060,Adaptive VR Compressed (1.3R/2.2R Base),Adaptive VR Compressed Base,53.7,322,2534.56,1.973,69.3,438.15,5.78,56.1,7.87,275.35,477.95,0.0
+S1061,Adaptive VR Compressed + 50% Lock,Adaptive VR Compressed + Lock,53.7,322,2534.56,1.973,69.3,438.15,5.78,56.1,7.87,275.35,477.95,0.0
+S1062,Adaptive VR Single-Tranche 1.6R,Adaptive VR Single 1.6R,49.0,294,2668.63,2.029,66.3,438.15,6.09,54.5,9.08,279.65,519.65,0.0
+S1063,Adaptive VR Single-Tranche 1.6R + Lock,Adaptive VR Single 1.6R + Lock,49.0,294,2668.63,2.029,66.3,438.15,6.09,54.5,9.08,279.65,519.65,0.0
+S1064,Balanced Asymmetric (0.14/0.07/0.05) Adaptive,Balanced Asymmetric Adaptive,53.3,320,2582.54,1.95,69.1,384.54,6.72,60.6,8.07,266.54,469.18,0.0
+S1065,Balanced Asymmetric Adaptive + 50% Lock,Balanced Asymmetric Adaptive + Lock,53.3,320,2582.54,1.95,69.1,384.54,6.72,60.6,8.07,266.54,469.18,0.0
+S1066,"Tri-Tranche Precision (T1: 1.2R, T2: 2.4R)",Tri-Tranche Precision Base,54.0,324,2472.18,2.074,69.4,469.77,5.26,62.1,7.63,249.42,434.62,0.0
+S1067,Tri-Tranche Precision + 50% Lock,Tri-Tranche Precision + Lock,54.0,324,2472.18,2.074,69.4,469.77,5.26,62.1,7.63,249.42,434.62,0.0
+S1068,"Tri-Tranche Precision (T1: 1.4R, T2: 2.8R)",Tri-Tranche Precision Extended,52.7,316,2496.42,2.027,68.7,460.35,5.42,62.1,7.9,260.31,472.02,0.0
+S1069,Tri-Tranche Precision Extended + 50% Lock,Tri-Tranche Extended + Lock,52.7,316,2496.42,2.027,68.7,460.35,5.42,62.1,7.9,260.31,472.02,0.0
+S1070,Tri-Tranche Sub-Risk (0.10/0.05/0.05),Tri-Tranche Sub-Risk Base,54.0,324,1996.93,1.834,69.4,279.87,7.14,62.1,6.16,241.17,413.81,0.0
+S1071,Tri-Tranche Sub-Risk + 50% Lock,Tri-Tranche Sub-Risk + Lock,54.0,324,1996.93,1.834,69.4,279.87,7.14,62.1,6.16,241.17,413.81,0.0
+S1072,Tri-Tranche Prop-Firm Shield (0.05/0.03),Tri-Tranche Prop-Firm Shield,54.0,324,1079.42,1.796,69.4,151.59,7.12,60.6,3.33,134.37,236.05,0.0
+S1073,Tri-Tranche Prop-Firm Shield + 50% Lock,Tri-Tranche Shield + Lock,54.0,324,1079.42,1.796,69.4,151.59,7.12,60.6,3.33,134.37,236.05,0.0
+S1074,Tri-Tranche Adaptive VR Hybrid,Tri-Tranche Adaptive Hybrid,54.0,324,2463.7,2.071,69.4,469.77,5.24,60.6,7.6,249.79,434.62,0.0
+S1075,Tri-Tranche Adaptive VR Hybrid + 50% Lock,Tri-Tranche Hybrid + Lock,54.0,324,2463.7,2.071,69.4,469.77,5.24,60.6,7.6,249.79,434.62,0.0
+S1076,Adaptive Tranche Compounding 0.5%,Adaptive Comp 0.5% Shield,53.3,320,1298.81,1.674,69.1,200.18,6.49,60.6,4.06,195.2,346.13,0.0
+S1077,Adaptive Tranche Compounding 0.75%,Adaptive Comp 0.75% Apex,53.3,320,1297.05,1.673,69.1,200.18,6.48,59.1,4.05,195.26,346.13,0.0
+S1078,Adaptive Tranche Compounding 1.0%,Adaptive Comp 1.0% Engine,53.3,320,1404.68,1.709,69.1,186.17,7.55,60.6,4.39,196.44,347.64,0.0
+S1079,Adaptive Tranche Compounding 1.5%,Adaptive Comp 1.5% Titan,53.3,320,1556.84,1.657,69.1,244.53,6.37,60.6,4.87,233.44,421.38,0.0
+S1080,Adaptive Tranche Compounding 2.0%,Adaptive Comp 2.0% Maximum,53.3,320,1914.64,1.643,69.1,331.69,5.77,62.1,5.98,291.64,521.16,0.0
+S1081,Adaptive Tranche Comp 1.0% + 50% Lock,Adaptive Comp 1.0% Lock,53.3,320,1404.68,1.709,69.1,186.17,7.55,60.6,4.39,196.44,347.64,0.0
+S1082,Adaptive Tranche Comp 1.5% + 50% Lock,Adaptive Comp 1.5% Lock,53.3,320,1556.84,1.657,69.1,244.53,6.37,60.6,4.87,233.44,421.38,0.0
+S1083,Tri-Tranche Compounding 1.0% + Lock,Tri-Tranche Comp 1.0% Lock,54.0,324,1205.45,1.669,69.4,195.31,6.17,62.1,3.72,188.09,329.37,0.0
+S1084,Grand Asymmetric Millennium Vault Plus,Millennium Vault Plus,53.3,320,1404.68,1.709,69.1,186.17,7.55,60.6,4.39,196.44,347.64,0.0
+S1085,Apex Sovereign Millennium Paragon 2026,👑 Apex Sovereign Paragon 2026,53.3,320,1556.84,1.657,69.1,244.53,6.37,60.6,4.87,233.44,421.38,0.0
