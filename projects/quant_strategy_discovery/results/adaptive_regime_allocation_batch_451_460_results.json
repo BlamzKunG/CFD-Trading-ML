@@ -1,0 +1,122 @@
+[
+  {
+    "net_profit": 67609.88322871161,
+    "pf": 1.3774489619695631,
+    "total_trades": 8141,
+    "annual_trades": 1356.8333333333333,
+    "max_dd": 2768.485203786513,
+    "romad": 24.421255037317955,
+    "win_rate": 38.312246652745365,
+    "mcr": 79.16666666666666,
+    "strategy_id": "S451",
+    "name": "S450 Centennial Baseline (Fixed 0.10 Lot)"
+  },
+  {
+    "net_profit": 59584.74841125452,
+    "pf": 1.3827069226697446,
+    "total_trades": 8141,
+    "annual_trades": 1356.8333333333333,
+    "max_dd": 2522.2953714639807,
+    "romad": 23.623223943304694,
+    "win_rate": 38.312246652745365,
+    "mcr": 79.16666666666666,
+    "strategy_id": "S452",
+    "name": "Triple-TF Risk Parity (1.0x / 0.85x / 0.70x)"
+  },
+  {
+    "net_profit": 71301.1570967841,
+    "pf": 1.3835530254119999,
+    "total_trades": 8141,
+    "annual_trades": 1356.8333333333333,
+    "max_dd": 2750.7929375454696,
+    "romad": 25.920219629619254,
+    "win_rate": 38.312246652745365,
+    "mcr": 77.77777777777779,
+    "strategy_id": "S453",
+    "name": "Triple-TF NY Liquidity Overweight"
+  },
+  {
+    "net_profit": 63802.22153674702,
+    "pf": 1.4004113066428572,
+    "total_trades": 6735,
+    "annual_trades": 1122.5,
+    "max_dd": 2701.9761805463568,
+    "romad": 23.613169500201074,
+    "win_rate": 37.93615441722346,
+    "mcr": 77.77777777777779,
+    "strategy_id": "S454",
+    "name": "High-Vol Precision Triple-TF (M1 ATR>=1.40)"
+  },
+  {
+    "net_profit": 67390.93773917582,
+    "pf": 1.3802259711533293,
+    "total_trades": 8104,
+    "annual_trades": 1350.6666666666667,
+    "max_dd": 2487.4545648390267,
+    "romad": 27.09232911899919,
+    "win_rate": 38.302073050345506,
+    "mcr": 79.16666666666666,
+    "strategy_id": "S455",
+    "name": "Prop-Firm Daily Governed Triple-TF ($500 Cap)"
+  },
+  {
+    "net_profit": 68530.00139816292,
+    "pf": 1.3920686134691742,
+    "total_trades": 8047,
+    "annual_trades": 1341.1666666666667,
+    "max_dd": 2418.1775049598873,
+    "romad": 28.339524810565837,
+    "win_rate": 38.3372685472847,
+    "mcr": 80.55555555555556,
+    "strategy_id": "S456",
+    "name": "Prop-Firm Tight Daily Governed ($350 Cap)"
+  },
+  {
+    "net_profit": 74370.87155157953,
+    "pf": 1.3774489619695693,
+    "total_trades": 8141,
+    "annual_trades": 1356.8333333333333,
+    "max_dd": 3045.3337241652043,
+    "romad": 24.421255037316573,
+    "win_rate": 38.312246652745365,
+    "mcr": 79.16666666666666,
+    "strategy_id": "S457",
+    "name": "Asymmetric Ratchet Multiplier (1.1x)"
+  },
+  {
+    "net_profit": 62315.567516076524,
+    "pf": 1.3897676079822356,
+    "total_trades": 8141,
+    "annual_trades": 1356.8333333333333,
+    "max_dd": 2489.818605219727,
+    "romad": 25.028155619624812,
+    "win_rate": 38.312246652745365,
+    "mcr": 77.77777777777779,
+    "strategy_id": "S458",
+    "name": "Risk Parity + NY Liquidity Expansion"
+  },
+  {
+    "net_profit": 56919.38522687919,
+    "pf": 1.4012764433069993,
+    "total_trades": 6735,
+    "annual_trades": 1122.5,
+    "max_dd": 2475.739055195867,
+    "romad": 22.990866144564674,
+    "win_rate": 37.93615441722346,
+    "mcr": 76.38888888888889,
+    "strategy_id": "S459",
+    "name": "Risk Parity + High-Vol Precision (S447)"
+  },
+  {
+    "net_profit": 61616.75205642028,
+    "pf": 1.3882381108048754,
+    "total_trades": 8114,
+    "annual_trades": 1352.3333333333333,
+    "max_dd": 2095.1532869198927,
+    "romad": 29.409185686362704,
+    "win_rate": 38.304165639635194,
+    "mcr": 77.77777777777779,
+    "strategy_id": "S460",
+    "name": "Grand Sovereign Centennial Apex (S460)"
+  }
+]

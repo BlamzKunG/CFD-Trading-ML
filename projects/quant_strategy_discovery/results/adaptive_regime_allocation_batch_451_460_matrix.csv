@@ -1,0 +1,11 @@
+Strategy_ID,Strategy_Name,Annual_Trades,Total_Trades,Net_Profit,Profit_Factor,Win_Rate_Pct,Max_Drawdown,RoMaD,Monthly_Consistency_Pct
+S451,S450 Centennial Baseline (Fixed 0.10 Lot),1356.8,8141,67609.88,1.377,38.31,2768.49,24.42,79.17
+S452,Triple-TF Risk Parity (1.0x / 0.85x / 0.70x),1356.8,8141,59584.75,1.383,38.31,2522.3,23.62,79.17
+S453,Triple-TF NY Liquidity Overweight,1356.8,8141,71301.16,1.384,38.31,2750.79,25.92,77.78
+S454,High-Vol Precision Triple-TF (M1 ATR>=1.40),1122.5,6735,63802.22,1.4,37.94,2701.98,23.61,77.78
+S455,Prop-Firm Daily Governed Triple-TF ($500 Cap),1350.7,8104,67390.94,1.38,38.3,2487.45,27.09,79.17
+S456,Prop-Firm Tight Daily Governed ($350 Cap),1341.2,8047,68530.0,1.392,38.34,2418.18,28.34,80.56
+S457,Asymmetric Ratchet Multiplier (1.1x),1356.8,8141,74370.87,1.377,38.31,3045.33,24.42,79.17
+S458,Risk Parity + NY Liquidity Expansion,1356.8,8141,62315.57,1.39,38.31,2489.82,25.03,77.78
+S459,Risk Parity + High-Vol Precision (S447),1122.5,6735,56919.39,1.401,37.94,2475.74,22.99,76.39
+S460,Grand Sovereign Centennial Apex (S460),1352.3,8114,61616.75,1.388,38.3,2095.15,29.41,77.78
