@@ -1,0 +1,11 @@
+Strategy_ID,Strategy_Name,Annual_Trades,Total_Trades,Net_Profit,Profit_Factor,Win_Rate_Pct,Max_Drawdown,RoMaD,Monthly_Consistency_Pct
+S461,In-Sample Walk-Forward (2020-2023),1217.8,4871,24352.37,1.3,37.43,1995.42,12.2,50.0
+S462,Pure Out-of-Sample Forward Test (2024-2025),1621.5,3243,37264.38,1.48,39.62,2095.15,17.79,27.78
+S463,Friction Stress 1.5x Spread ($0.375),1352.3,8114,51474.25,1.312,37.1,2307.65,22.31,72.22
+S464,Friction Stress 2.0x Spread ($0.50),1352.3,8114,41331.75,1.241,35.93,2666.61,15.5,66.67
+S465,Adverse Slippage Shock ($0.30/trade),1352.3,8114,37274.75,1.214,35.58,2811.11,13.26,65.28
+S466,Cross-Asset Macro Hedging (EURUSD Filter),1352.3,8114,60825.01,1.384,38.3,2190.23,27.77,80.56
+S467,Monte Carlo 95% Confidence Limit,1352.3,8114,61616.75,1.388,38.3,2949.74,20.89,77.78
+S468,Monte Carlo 99% Stress Limit,1352.3,8114,61616.75,1.388,38.3,3579.47,17.21,77.78
+S469,Dynamic Vol Sizing + Cross-Asset Multiplier,1352.3,8114,63866.26,1.384,38.3,2299.74,27.77,80.56
+S470,Institutional Bulletproof Sovereign Apex (S470),1352.3,8114,50682.51,1.308,37.06,2402.73,21.09,70.83

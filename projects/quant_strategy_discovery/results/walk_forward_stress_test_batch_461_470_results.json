@@ -1,0 +1,122 @@
+[
+  {
+    "net_profit": 24352.367617763768,
+    "pf": 1.3002373148264206,
+    "total_trades": 4871,
+    "annual_trades": 1217.75,
+    "max_dd": 1995.417534706885,
+    "romad": 12.20414634741645,
+    "win_rate": 37.4255799630466,
+    "mcr": 50.0,
+    "strategy_id": "S461",
+    "name": "In-Sample Walk-Forward (2020-2023)"
+  },
+  {
+    "net_profit": 37264.38443865655,
+    "pf": 1.4802218576474409,
+    "total_trades": 3243,
+    "annual_trades": 1621.5,
+    "max_dd": 2095.153286919902,
+    "romad": 17.785994309485183,
+    "win_rate": 39.623805118717236,
+    "mcr": 27.77777777777778,
+    "strategy_id": "S462",
+    "name": "Pure Out-of-Sample Forward Test (2024-2025)"
+  },
+  {
+    "net_profit": 51474.25205642041,
+    "pf": 1.311904920563934,
+    "total_trades": 8114,
+    "annual_trades": 1352.3333333333333,
+    "max_dd": 2307.653286919922,
+    "romad": 22.305886394712388,
+    "win_rate": 37.09637663298003,
+    "mcr": 72.22222222222221,
+    "strategy_id": "S463",
+    "name": "Friction Stress 1.5x Spread ($0.375)"
+  },
+  {
+    "net_profit": 41331.75205642039,
+    "pf": 1.2410494012701472,
+    "total_trades": 8114,
+    "annual_trades": 1352.3333333333333,
+    "max_dd": 2666.60767321002,
+    "romad": 15.49974991509189,
+    "win_rate": 35.925560759181664,
+    "mcr": 66.66666666666666,
+    "strategy_id": "S464",
+    "name": "Friction Stress 2.0x Spread ($0.50)"
+  },
+  {
+    "net_profit": 37274.75205642046,
+    "pf": 1.214134526507706,
+    "total_trades": 8114,
+    "annual_trades": 1352.3333333333333,
+    "max_dd": 2811.107673210021,
+    "romad": 13.25980943798435,
+    "win_rate": 35.58047818585162,
+    "mcr": 65.27777777777779,
+    "strategy_id": "S465",
+    "name": "Adverse Slippage Shock ($0.30/trade)"
+  },
+  {
+    "net_profit": 60825.00682938005,
+    "pf": 1.3844944995598651,
+    "total_trades": 8114,
+    "annual_trades": 1352.3333333333333,
+    "max_dd": 2190.2276705483746,
+    "romad": 27.77108866228098,
+    "win_rate": 38.304165639635194,
+    "mcr": 80.55555555555556,
+    "strategy_id": "S466",
+    "name": "Cross-Asset Macro Hedging (EURUSD Filter)"
+  },
+  {
+    "net_profit": 61616.75205642028,
+    "pf": 1.3882381108048754,
+    "total_trades": 8114,
+    "annual_trades": 1352.3333333333333,
+    "max_dd": 2949.7400225935617,
+    "romad": 20.88887548884518,
+    "win_rate": 38.304165639635194,
+    "mcr": 77.77777777777779,
+    "strategy_id": "S467",
+    "name": "Monte Carlo 95% Confidence Limit"
+  },
+  {
+    "net_profit": 61616.75205642028,
+    "pf": 1.3882381108048754,
+    "total_trades": 8114,
+    "annual_trades": 1352.3333333333333,
+    "max_dd": 3579.468089622061,
+    "romad": 17.213940874362173,
+    "win_rate": 38.304165639635194,
+    "mcr": 77.77777777777779,
+    "strategy_id": "S468",
+    "name": "Monte Carlo 99% Stress Limit"
+  },
+  {
+    "net_profit": 63866.257170849065,
+    "pf": 1.3844944995598696,
+    "total_trades": 8114,
+    "annual_trades": 1352.3333333333333,
+    "max_dd": 2299.739054075799,
+    "romad": 27.77108866228092,
+    "win_rate": 38.304165639635194,
+    "mcr": 80.55555555555556,
+    "strategy_id": "S469",
+    "name": "Dynamic Vol Sizing + Cross-Asset Multiplier"
+  },
+  {
+    "net_profit": 50682.506829379934,
+    "pf": 1.3080631474054643,
+    "total_trades": 8114,
+    "annual_trades": 1352.3333333333333,
+    "max_dd": 2402.7276705483855,
+    "romad": 21.093737526156026,
+    "win_rate": 37.059403500123246,
+    "mcr": 70.83333333333334,
+    "strategy_id": "S470",
+    "name": "Institutional Bulletproof Sovereign Apex (S470)"
+  }
+]
