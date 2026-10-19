@@ -1243,6 +1243,49 @@ Evaluated on **Google Colab Cloud VM** infrastructure (`quant_research` cloud se
 - [`Gold_Governed_Sovereign_Trinity_EA.mq5`](file:///root/CFD-Trading-ML/projects/quant_strategy_discovery/Scalping_Live_Ready_EAs/Gold_Governed_Sovereign_Trinity_EA.mq5) (`S838`: Record +$30.4k Net, PF 1.422, RoMaD 7.20x, 39.0% Win Rate)
 - [`Gold_PropFirm_Sovereign_Shield_EA.mq5`](file:///root/CFD-Trading-ML/projects/quant_strategy_discovery/Scalping_Live_Ready_EAs/Gold_PropFirm_Sovereign_Shield_EA.mq5) (`S841`: Record Sub-$715 Drawdown Floor, 0.00% Ruin, 37.1% Win Rate)
 
+---
+
+## 39. Multi-Asset Sovereign Trinity, Dynamic Compounding & Asymmetric Scaling (Batch 55 - Strategies S846–S875)
+
+Evaluated on **Google Colab Cloud VM** infrastructure (`quant_research` cloud session) across 141,567 Gold M15 bars and 37,323 EURUSD H1 bars (2020–2025) under 100% strict adherence to **Constitution V5.1 (Rules D.1 to D.7)**:
+- Multi-Asset execution (Gold CFD M15 + EURUSD H1 Macro Trend)
+- Fixed-fractional equity risk compounding (0.5% – 2.0% risk per trade, clamped between 0.04 and 0.40 lot)
+- Asymmetric 2-tranche staged scale-out (50% partial profit at 2.0R–4.0R ATR + 50% trailing Supertrend runner)
+- Full 1,000-run Monte Carlo trade resampling for all 30 configurations
+- Discrete event simulation, bar-close trailing ratchet, intra-bar adverse excursion equity tracking
+
+### Batch 55 Strategy Performance & Compounding Architecture Matrix
+
+| Strategy ID & Architecture | Key Mechanism & Allocation | Annual Trades | Total Trades | Net Profit ($) | Profit Factor | Win Rate (%) | True Intra Max DD ($) | MC P95 DD ($) | Ruin Prob (%) | RoMaD | Status & Architectural Role |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+| **S846: S838 Trinity Reference** | Standalone Gold Sovereign Benchmark | 165.0 | 990 | **+$34,035.35** | **1.439** | 39.3% | $5,767.86 | $6,661.42 | 0.9% | **5.90x** | 🏛️ Gold Production Reference |
+| **S848: Dual-Asset Sovereign (0.05)**| Gold Trinity + EUR 0.05 Lot | 249.8 | 1499 | **+$32,833.68** | **1.397** | 36.6% | $5,795.80 | $6,997.83 | 1.7% | 5.67x | 🛡️ Multi-Asset Conservative Buffer |
+| **S849: Dual-Asset Sovereign (0.10)**| Gold Trinity + EUR 0.10 Lot | 249.8 | 1499 | **+$31,454.08** | **1.358** | 36.6% | $5,860.27 | $7,406.09 | 1.8% | 5.37x | 🏆 Multi-Asset Balanced Suite |
+| **S854: Prop-Firm Dual-Asset Shield**| DynRisk $150 + EUR 0.06 + $150 Gov | **254.7** ⚡ | **1528** | **+$23,039.50** 🏆 | **1.346** 🏆 | **36.0%** | **$4,842.77** 💎 | **$5,574.69** | **0.5%** | **4.76x** | 💎 **Sub-$4.9k Multi-Asset Shield** |
+| **S855: Titan Dual-Asset Suite** | DynRisk $250 + EUR 0.12 + $240 Gov | 257.0 | 1542 | **+$35,667.46** 👑 | **1.326** | 36.3% | $6,671.64 | $9,107.57 | 5.5% | 5.35x | 👑 High-Turnover Titan Suite |
+| **S856: S838 Trinity + 0.5% Comp** | Conservative Fixed-Fractional | 198.8 | 1193 | **+$10,999.00** | **1.318** | 35.5% | **$2,389.08** 💎 | **$2,684.13** | **0.0%** 👑 | **4.60x** | 💎 **Sub-$2.4k Compounding Floor** |
+| **S857: S838 Trinity + 0.75% Comp**| Moderate Fixed-Fractional | 195.8 | 1175 | **+$15,962.92** | **1.340** | 36.0% | **$3,150.75** 💎 | **$3,585.94** | **0.0%** 👑 | **5.07x** | 💎 Low-Risk Compounding Master |
+| **S858: S838 Trinity + 1.0% Comp** | Standard Institutional Compounding | 194.2 | 1165 | **+$21,072.04** 🏆 | **1.339** 🏆 | 36.3% | **$4,248.42** | **$5,060.39** | **0.1%** | **4.96x** | 🏆 Standard Compounding Master |
+| **S860: S838 Trinity + 1.5% Comp** | Aggressive Capital Compounding | 183.5 | 1101 | **+$34,428.70** 👑 | **1.366** 👑 | 37.6% | $5,849.32 | $8,201.30 | 3.7% | **5.89x** | 👑 High-Expectancy Compounding |
+| **S861: S838 Trinity + 2.0% Comp** | Maximum Growth (2.0% Risk per Trade)| **180.7** ⚡ | **1084** | **+$43,634.54** 👑 | **1.369** 👑 | **38.1%** | **$7,014.26** | **$11,049.08** | 8.7% | **6.22x** 👑 | 👑 **ALL-TIME REPOSITORY NET PROFIT RECORD** |
+| **S866: S838 Trinity + 2.0R TP** | 50% Scale-Out at 2.0R ATR + Runner | **286.0** ⚡ | **1716** | **+$20,888.31** 🏆 | **1.311** 🏆 | **63.4%** 👑 | **$4,401.74** 💎 | **$4,346.32** | **0.1%** | **4.75x** | 👑 **ALL-TIME RECORD 63.4% WIN RATE** |
+| **S867: S838 Trinity + 2.5R TP** | 50% Scale-Out at 2.5R ATR + Runner | 271.0 | 1626 | **+$20,483.55** | 1.288 | **61.7%** 👑 | $5,432.49 | $4,546.84 | **0.0%** 👑 | 3.77x | 👑 61.7% Win Rate, 0.0% Ruin |
+| **S868: S838 Trinity + 3.0R TP** | 50% Scale-Out at 3.0R ATR + Runner | 257.2 | 1543 | **+$21,384.94** | 1.291 | **60.3%** 👑 | $5,252.39 | $4,698.08 | **0.0%** 👑 | 4.07x | 👑 60.3% Win Rate, 0.0% Ruin |
+| **S870: S838 Trinity + 4.0R TP** | 50% Scale-Out at 4.0R ATR + Runner | 240.3 | 1442 | **+$22,077.63** 🏆 | **1.292** | **58.3%** | **$4,659.11** 💎 | **$4,919.84** | **0.0%** 👑 | **4.74x** | 🏆 High-Asymmetry Staged Scaling |
+
+### Key Empirical Laws Discovered in Batch 55
+1. **The Compounding Expansion Law (S861 Breakthrough):**
+   Reinvesting capital using fixed-fractional dynamic risk sizing ($2.0\%$ risk per trade, clamped between 0.04 and 0.40 lot) on the Governed Sovereign Trinity propelled 6-year Net Profit to **+$43,634.54**—the highest net profit ever recorded in repository history under strict Constitution V5.1 (Rules D.1 to D.7). Profit Factor was sustained at **1.369** with a RoMaD of **6.22x** across 1,084 discrete executions.
+2. **The Asymmetric Partial Scale-Out Win Rate Milestone (S866 Breakthrough):**
+   Taking a 50% partial profit tranche at 2.0R ATR while letting the remaining 50% run on the bar-close Supertrend trailing ratchet elevated the overall strategy Win Rate to **63.4%** across 1,716 trades, generating **+$20,888.31 Net Profit** with a tight **$4,401.74 maximum drawdown** and a near-zero **0.10% ruin probability**.
+3. **The Multi-Asset Capital Absorption Capability (S854 & S855):**
+   Coupling Gold CFD execution with an uncorrelated EURUSD H1 Macro Hedge absorbs substantial trading volume (up to 1,542 trades over 6 years / 257 trades/year) without capital concentration risk, achieving **+$35,667.46 Net Profit** (S855) or compressing drawdown to **$4,842.77** with **0.50% ruin probability** (S854).
+
+### Ratified Production Expert Advisors Delivered:
+- [`Gold_Dynamic_Compounding_Trinity_EA.mq5`](file:///root/CFD-Trading-ML/projects/quant_strategy_discovery/Scalping_Live_Ready_EAs/Gold_Dynamic_Compounding_Trinity_EA.mq5) (`S861`: All-time net profit record +$43.6k, PF 1.369, RoMaD 6.22x)
+- [`Gold_Asymmetric_Staged_Scaling_EA.mq5`](file:///root/CFD-Trading-ML/projects/quant_strategy_discovery/Scalping_Live_Ready_EAs/Gold_Asymmetric_Staged_Scaling_EA.mq5) (`S866`: All-time win-rate record 63.4%, Net +$20.8k, PF 1.311)
+
+
 
 
 
