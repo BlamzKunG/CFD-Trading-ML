@@ -1,0 +1,31 @@
+Strategy_ID,Strategy_Name,Role,Annual_Trades,Total_Trades,Net_Profit,Profit_Factor,Win_Rate_Pct,True_Intra_Max_DD,RoMaD,MCR_Pct,Avg_Trade_PnL,MC_P50_DD,MC_P95_DD,Ruin_Probability_Pct
+S1146,Self-Contained Baseline (0.12/0.06/0.04),Self-Contained Base,106.5,639,1916.07,1.411,69.3,561.11,3.41,53.5,3.0,366.48,664.12,0.1
+S1147,Self-Contained + 50% Daily Lock,Self-Contained + Lock,106.5,639,1916.07,1.411,69.3,561.11,3.41,53.5,3.0,366.48,664.12,0.1
+S1148,Wick-Rejection 30% Precision,Wick 30% Precision,106.3,638,1972.87,1.428,69.4,561.11,3.52,53.5,3.09,362.11,674.53,0.0
+S1149,Wick-Rejection 30% + 50% Lock,Wick 30% + Lock,106.3,638,1972.87,1.428,69.4,561.11,3.52,53.5,3.09,362.11,674.53,0.0
+S1150,Linear Asymmetric Sizing (0.10/0.05/0.03),Linear Asym Base,106.5,639,1607.54,1.426,69.3,443.96,3.62,56.3,2.52,301.65,543.75,0.0
+S1151,Linear Asymmetric + 50% Daily Lock,Linear Asym + Lock,106.5,639,1607.54,1.426,69.3,443.96,3.62,56.3,2.52,301.65,543.75,0.0
+S1152,Monthly Target-Lock ($80 / 75% Lock),Monthly Lock $80,105.8,635,1569.14,1.416,69.1,443.96,3.53,56.3,2.47,314.5,579.67,0.0
+S1153,Monthly Target-Lock ($100 / 75% Lock),Monthly Lock $100,105.8,635,1869.54,1.401,69.1,561.11,3.33,53.5,2.94,380.59,703.4,0.0
+S1154,Dual Daily + Monthly Lock ($120 / $80),Dual Daily/Monthly Lock,105.8,635,1569.14,1.416,69.1,443.96,3.53,56.3,2.47,314.5,579.67,0.0
+S1155,Grand Linear Consistency Sovereign 2026,Grand Linear Sovereign,105.8,635,1869.54,1.401,69.1,561.11,3.33,53.5,2.94,380.59,703.4,0.0
+S1156,Ultra-Shield Micro-Tier (0.04/0.02/0.01),Ultra-Shield Micro,70.0,420,684.82,1.41,51.7,218.25,3.14,47.9,1.63,156.11,285.08,0.0
+S1157,Ultra-Shield Micro-Tier + 50% Lock,Micro-Tier + Lock,70.0,420,684.82,1.41,51.7,218.25,3.14,47.9,1.63,156.11,285.08,0.0
+S1158,Prop-Firm 5% Floor (0.05/0.02/0.02),Prop-Firm 5% Floor,100.7,604,883.63,1.399,66.4,241.84,3.65,52.1,1.46,180.01,325.71,0.0
+S1159,Prop-Firm 5% Floor + 50% Lock,Prop-Firm 5% + Lock,100.7,604,883.63,1.399,66.4,241.84,3.65,52.1,1.46,180.01,325.71,0.0
+S1160,Prop-Firm Dynamic Floor (0.06/0.03/0.02),Dynamic Floor Base,106.5,639,1071.61,1.422,69.3,265.48,4.04,54.9,1.68,199.3,360.84,0.0
+S1161,Prop-Firm Dynamic Floor + 50% Lock,Dynamic Floor + Lock,106.5,639,1071.61,1.422,69.3,265.48,4.04,54.9,1.68,199.3,360.84,0.0
+S1162,Sub-10% Shield (0.08/0.04/0.02),Sub-10% Shield Base,106.5,639,1195.16,1.411,69.3,370.65,3.22,54.9,1.87,243.3,435.48,0.0
+S1163,Sub-10% Shield + 50% Lock,Sub-10% Shield + Lock,106.5,639,1195.16,1.411,69.3,370.65,3.22,54.9,1.87,243.3,435.48,0.0
+S1164,Sub-10% Shield + Monthly Lock $60,Sub-10% Monthly $60,105.7,634,1056.4,1.419,69.2,265.48,3.98,54.9,1.67,198.92,358.85,0.0
+S1165,Sub-10% Shield + Monthly Lock $80,Sub-10% Monthly $80,105.8,635,1164.9,1.4,69.1,370.65,3.14,54.9,1.83,251.23,462.47,0.0
+S1166,Micro-Compounding 0.50% Risk,Comp 0.50% Base,85.8,515,330.77,1.177,60.2,251.99,1.31,49.3,0.64,190.84,373.08,0.0
+S1167,Micro-Compounding 0.75% Risk,Comp 0.75% Base,100.2,601,532.36,1.21,66.4,300.51,1.77,54.9,0.89,226.12,440.82,0.0
+S1168,Micro-Compounding 1.00% Risk,Comp 1.00% Base,103.7,622,671.43,1.204,67.8,417.4,1.61,50.7,1.08,279.66,552.6,0.0
+S1169,Micro-Compounding 1.25% Risk,Comp 1.25% Base,104.5,627,721.89,1.176,68.1,534.93,1.35,56.3,1.15,354.85,713.5,0.2
+S1170,Micro-Compounding 1.50% Risk,Comp 1.50% Base,105.0,630,848.44,1.172,68.4,637.94,1.33,54.9,1.35,442.02,813.37,0.4
+S1171,Comp 0.75% + Monthly Lock $100,Comp 0.75% Lock,100.2,601,532.36,1.21,66.4,300.51,1.77,54.9,0.89,226.12,440.82,0.0
+S1172,Comp 1.00% + Monthly Lock $120,Comp 1.00% Lock,103.7,622,671.43,1.204,67.8,417.4,1.61,50.7,1.08,279.66,552.6,0.0
+S1173,Comp 1.25% + Monthly Lock $150,Comp 1.25% Lock,104.5,627,721.89,1.176,68.1,534.93,1.35,56.3,1.15,354.85,713.5,0.2
+S1174,Grand Sovereign Consistency Vault 2026,Grand Consistency Vault,100.2,601,532.36,1.21,66.4,300.51,1.77,54.9,0.89,226.12,440.82,0.0
+S1175,Apex Sovereign Linear Consistency Paragon 2026,👑 Apex Sovereign Linear Consistency Paragon 2026,103.7,622,671.43,1.204,67.8,417.4,1.61,50.7,1.08,279.66,552.6,0.0
