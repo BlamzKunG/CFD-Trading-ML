@@ -1960,4 +1960,43 @@ Evaluated on **Google Colab Cloud VM** infrastructure (`quant_research` cloud se
 - [`Gold_OB_Expansion_Apex_EA.mq5`](file:///root/CFD-Trading-ML/projects/quant_strategy_discovery/Scalping_Live_Ready_EAs/Gold_OB_Expansion_Apex_EA.mq5) (`S1304`: Net +$16,568.42, PF 2.516, Max DD $253.69 [2.54%], RoMaD 65.31x, MC P95 DD $197.08, 0.00% Ruin, 506.0 trades/yr, 94.4% MCR, 100% Self-Contained, Auto Broker GMT Offset).
 - [`Gold_OB_PropFirm_Shield_EA.mq5`](file:///root/CFD-Trading-ML/projects/quant_strategy_discovery/Scalping_Live_Ready_EAs/Gold_OB_PropFirm_Shield_EA.mq5) (`S1315`: Net +$12,148.82, PF 2.509, Max DD $217.62 [2.18%], RoMaD 55.83x, MC P95 DD $204.85, 0.00% Ruin, 388.8 trades/yr, 93.1% MCR, 100% Self-Contained, Prop-Firm Safe).
 
+---
+
+## 55. Batch 71: Intraday Asian Range Sweep & Momentum Expansion Engine (S1326 - S1355)
+
+**Historical Period:** 2020 - 2025 (6 Full Multi-Year Regimes / 72 Calendar Months)  
+**Asset:** XAUUSD (Gold CFD) — Multi-Timeframe M15 Structure + M5 Confluence  
+**Broker Frictions:** Spread $0.25 ($25.00/lot), Commission $6.00/lot ($0.60/0.10 lot), Negative Slippage -$0.10/oz on SL, Long Swap -$18.00/lot/night  
+
+### Core Breakthroughs & Architectural Innovations
+1. **Asian Range Boundary Liquidity Harvesting:**
+   - Tracks the overnight Asian Session range (00:00 – 06:00 UTC).
+   - Enters when London or NY opening liquidity sweeps the Asian High or Low by $\$0.35 - \$0.50$ and closes back within the boundary, in confluence with the M15 Supertrend (2.5, 14) and EMA200 trend.
+2. **Sub-2% Ultra-Floor Drawdown Performance:**
+   - **S1345 (Prop-Firm Champion):** Generated **+$9,892.39** net profit with an ultra-tight **$189.33 (1.89%)** Max Intra-Bar Drawdown (PF **2.563**, RoMaD **52.25x**, 312.3 trades/year).
+   - **S1334 (Apex Champion):** Delivered **+$13,455.32** net profit with **$310.10 (3.10%)** Max Intra-Bar Drawdown (PF **2.480**, RoMaD **43.39x**, **90.3% MCR**, 402.5 trades/year).
+   - **S1344 (Micro-Floor Variant):** Recorded **$120.37 (1.20% Max DD)**.
+3. **100% Zero-Ruin Monte Carlo Tail-Risk Profile:**
+   - 1,000-permutation Monte Carlo tests confirm **0.00% Probability of Ruin** across all top models.
+
+### Batch 71 Strategy Leaderboard (Top 10 Highlights)
+
+| Strategy ID & Name | Architecture & Sizing | Ann. Tr | Tot. Tr | Net Profit ($) | Profit Factor | Win Rate (%) | True Intra Max DD ($) | MC P95 DD ($) | Ruin Prob (%) | RoMaD | Status & Production Role |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **S1334: Ext Monthly Lock $100**| 0.06/0.03/0.02 Lots + $100 Lock | **402.5** | **2415** | **+$13,455.32** | **2.480** 👑 | **56.3%** | **$310.10** 💎 | **$211.33** 👑 | **0.0%** | **43.39x** | 👑 **BATCH 71 ASIAN APEX CHAMPION (90.3% MCR)** |
+| **S1345: Prop Monthly Lock $80** | 0.05/0.025/0.02 Lots + $80 Lock | **312.3** | **1874** | **+$9,892.39** | **2.563** 👑 | **57.2%** | **$189.33** 👑 | **$173.94** 👑 | **0.0%** | **52.25x** 🏆 | 🛡️ **PROP-FIRM SUB-1.9% ULTRA-FLOOR CHAMPION** |
+| **S1330: Extended Asian Base** | 0.08/0.04/0.03 Lots | 441.2 | 2647 | +$17,869.14 | 2.235 | 55.5% | $458.25 | $317.44 | 0.0% | 38.99x | ⚡ High-Turnover Max Net Gain |
+| **S1328: Asian Balanced** | 0.06/0.03/0.02 Lots | 344.2 | 2065 | +$11,122.83 | 2.410 | 56.1% | $217.80 💎 | $217.88 | 0.0% | 51.07x | 💎 Balanced Micro-Floor |
+| **S1343: Prop Ext Sub-5% Shield**| 0.05/0.025/0.02 Lots | 441.2 | 2647 | +$12,661.89 | 2.307 | 55.6% | $349.16 | $203.66 | 0.0% | 36.26x | 🛡️ 90.3% MCR High-Volume Shield |
+| **S1340: Prop Sub-5% Base** | 0.05/0.025/0.02 Lots | 344.2 | 2065 | +$10,219.49 | 2.371 | 56.1% | $201.93 💎 | $196.06 | 0.0% | 50.61x | 🛡️ Sub-2.1% Prop Floor |
+| **S1344: Prop Monthly Lock $60** | 0.04/0.02/0.01 Lots + $60 Lock | 319.5 | 1917 | +$5,727.87 | 2.401 | 49.2% | **$120.37** 👑 | **$129.63** 👑 | **0.0%** | 47.59x | 👑 **All-Time Lowest DD in Batch 71 ($120.37)** |
+| **S1333: Monthly Lock $120** | 0.08/0.04/0.03 Lots + $120 Lock | 320.3 | 1922 | +$13,924.52 | 2.379 | 56.6% | $248.19 💎 | $293.10 | 0.0% | 56.10x | 💎 Controlled Risk Floor |
+| **S1353: Comp 0.75% + Lock $100** | 0.75% Compounding + $100 Lock | 213.8 | 1283 | +$22,167.40 | 2.205 | 57.9% | $745.23 | $625.91 | 0.0% | 29.75x | 🚀 90.3% MCR Compounding Engine |
+| **S1354: Comp 1.00% + Lock $120** | 1.00% Compounding + $120 Lock | 201.3 | 1208 | +$31,277.03 | 2.174 | 57.3% | $1,234.28 | $980.71 | 0.0% | 25.34x | 👑 91.7% MCR Growth Apex |
+
+### Ratified Production Expert Advisors Delivered:
+- [`Gold_Asian_Sweep_Apex_EA.mq5`](file:///root/CFD-Trading-ML/projects/quant_strategy_discovery/Scalping_Live_Ready_EAs/Gold_Asian_Sweep_Apex_EA.mq5) (`S1334`: Net +$13,455.32, PF 2.480, Max DD $310.10 [3.10%], RoMaD 43.39x, MC P95 DD $211.33, 0.00% Ruin, 402.5 trades/yr, 90.3% MCR, 100% Self-Contained, Auto Broker GMT Offset).
+- [`Gold_Asian_PropFirm_Shield_EA.mq5`](file:///root/CFD-Trading-ML/projects/quant_strategy_discovery/Scalping_Live_Ready_EAs/Gold_Asian_PropFirm_Shield_EA.mq5) (`S1345`: Net +$9,892.39, PF 2.563, Max DD $189.33 [1.89%], RoMaD 52.25x, MC P95 DD $173.94, 0.00% Ruin, 312.3 trades/yr, 100% Self-Contained, Prop-Firm Safe).
+
+
 
