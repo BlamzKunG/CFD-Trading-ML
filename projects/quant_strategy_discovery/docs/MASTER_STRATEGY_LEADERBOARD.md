@@ -1998,5 +1998,45 @@ Evaluated on **Google Colab Cloud VM** infrastructure (`quant_research` cloud se
 - [`Gold_Asian_Sweep_Apex_EA.mq5`](file:///root/CFD-Trading-ML/projects/quant_strategy_discovery/Scalping_Live_Ready_EAs/Gold_Asian_Sweep_Apex_EA.mq5) (`S1334`: Net +$13,455.32, PF 2.480, Max DD $310.10 [3.10%], RoMaD 43.39x, MC P95 DD $211.33, 0.00% Ruin, 402.5 trades/yr, 90.3% MCR, 100% Self-Contained, Auto Broker GMT Offset).
 - [`Gold_Asian_PropFirm_Shield_EA.mq5`](file:///root/CFD-Trading-ML/projects/quant_strategy_discovery/Scalping_Live_Ready_EAs/Gold_Asian_PropFirm_Shield_EA.mq5) (`S1345`: Net +$9,892.39, PF 2.563, Max DD $189.33 [1.89%], RoMaD 52.25x, MC P95 DD $173.94, 0.00% Ruin, 312.3 trades/yr, 100% Self-Contained, Prop-Firm Safe).
 
+---
+
+## 56. Batch 72: Momentum Velocity Expansion & Retest Engine (S1356 - S1385)
+
+**Historical Period:** 2020 - 2025 (6 Full Multi-Year Regimes / 72 Calendar Months)  
+**Asset:** XAUUSD (Gold CFD) — Multi-Timeframe M15 Structure + M5 Confluence  
+**Broker Frictions:** Spread $0.25 ($25.00/lot), Commission $6.00/lot ($0.60/0.10 lot), Negative Slippage -$0.10/oz on SL, Long Swap -$18.00/lot/night  
+
+### Core Breakthroughs & Architectural Innovations
+1. **Kinetic Momentum Velocity Impulse + Dynamic Retest:**
+   - Detects violent institutional momentum expansion bars where bar body $|Close - Open| \ge 0.65 \times \text{ATR}_{14}$ aligned with M15 Supertrend (14, 2.5), EMA 200, and M5 EMA 50.
+   - Enters on order flow mitigation when price pulls back to retest EMA 21 or taps into a recent Fair Value Gap (FVG) midpoint within a 5-6 bar lookback window.
+2. **Sub-3% Ultra-Low Drawdown with Zero Trade Starvation:**
+   - **S1373 (Batch 72 Apex Champion):** Generated **+$16,151.45** net profit (+161.5%) with **$296.49 (2.96%)** Max Intra-Bar Drawdown, **590.7 trades/year (~2.3 trades/day)**, PF **2.204**, RoMaD **54.48x**, and **90.3% Monthly Win Consistency (MCR)**.
+   - **S1364 (Apex Linear Model):** Delivered **+$16,739.95** net profit with **$343.47 (3.43%)** Max Intra-Bar Drawdown (PF **2.355**, **521.0 trades/year**, Monte Carlo P95 DD **$239.24**).
+   - **S1375 (Prop-Firm Shield Champion):** Generated **+$10,380.05** net profit with **$221.14 (2.21%)** Max Intra-Bar Drawdown (PF **2.265**, RoMaD **46.94x**, 374.5 trades/year).
+   - **S1366 (Micro-Floor Variant):** Set a microscopic Max Intra-Bar Drawdown of **$154.90 (1.55% Max DD)**.
+3. **100% Zero-Ruin Monte Carlo Tail-Risk Profile:**
+   - 1,000-permutation Monte Carlo simulations confirm **0.00% Probability of Ruin** across all top models.
+
+### Batch 72 Strategy Leaderboard (Top 10 Highlights)
+
+| Strategy ID & Name | Architecture & Sizing | Ann. Tr | Tot. Tr | Net Profit ($) | Profit Factor | Win Rate (%) | True Intra Max DD ($) | MC P95 DD ($) | Ruin Prob (%) | RoMaD | Status & Production Role |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **S1373: Prop Ext Sub-5% Shield**| 0.05/0.025/0.02 Lots | **590.7** | **3544** | **+$16,151.45** | **2.204** 👑 | **53.7%** | **$296.49** 💎 | **$222.60** 👑 | **0.0%** | **54.48x** | 👑 **BATCH 72 VELOCITY APEX CHAMPION (90.3% MCR)** |
+| **S1364: Ext Monthly Lock $100** | 0.08/0.04/0.03 Lots + $100 Lock | **521.0** | **3126** | **+$16,739.95** | **2.355** 👑 | **54.4%** | **$343.47** | **$239.24** 👑 | **0.0%** | **48.74x** | 💎 **APEX LINEAR HIGH-PF MODEL (88.9% MCR)** |
+| **S1375: Prop Monthly Lock $80** | 0.05/0.025/0.02 Lots + $80 Lock | **374.5** | **2247** | **+$10,380.05** | **2.265** 👑 | **53.0%** | **$221.14** 👑 | **$208.96** 👑 | **0.0%** | **46.94x** 🏆 | 🛡️ **PROP-FIRM SUB-2.3% SHIELD CHAMPION** |
+| **S1360: Extended Vel Base** | 0.08/0.04/0.03 Lots | 591.0 | 3546 | +$22,521.94 | 2.119 | 53.6% | $435.64 | $359.65 | 0.0% | 51.70x | ⚡ High-Turnover Max Net Gain |
+| **S1358: Velocity Balanced** | 0.06/0.03/0.02 Lots | 459.2 | 2755 | +$13,200.14 | 2.195 | 52.8% | $273.08 💎 | $259.37 | 0.0% | 48.34x | 💎 Balanced Micro-Floor |
+| **S1370: Prop Sub-5% Base** | 0.05/0.025/0.02 Lots | 458.7 | 2752 | +$12,195.09 | 2.176 | 52.8% | $221.14 💎 | $216.47 | 0.0% | 55.15x | 🛡️ Sub-2.3% Prop Floor |
+| **S1366: Prop Micro Base** | 0.03/0.02/0.01 Lots | 459.2 | 2755 | +$6,073.50 | 2.005 | 45.0% | **$154.90** 👑 | **$153.33** 👑 | **0.0%** | 39.21x | 👑 **All-Time Lowest DD in Batch 72 ($154.90)** |
+| **S1363: Monthly Lock $120** | 0.08/0.04/0.03 Lots + $120 Lock | 392.7 | 2356 | +$14,971.87 | 2.165 | 53.0% | $319.80 💎 | $338.47 | 0.0% | 46.82x | 💎 Controlled Risk Floor |
+| **S1385: Vel Paragon 2026** | 0.75% Compounding + $120 Lock | 274.5 | 1647 | +$30,281.98 | 2.174 | 56.3% | $845.96 | $689.28 | 0.0% | 35.80x | 👑 **94.4% MCR COMPOUNDING APEX PARAGON** |
+| **S1384: Comp 1.00% + Lock $120** | 1.00% Compounding + $120 Lock | 229.5 | 1377 | +$37,443.77 | 2.102 | 56.4% | $1,424.53 | $1,112.65 | 0.0% | 26.28x | 🚀 **97.2% MCR COMPOUNDING GROWTH APEX** |
+
+### Ratified Production Expert Advisors Delivered:
+- [`Gold_Velocity_Expansion_Apex_EA.mq5`](file:///root/CFD-Trading-ML/projects/quant_strategy_discovery/Scalping_Live_Ready_EAs/Gold_Velocity_Expansion_Apex_EA.mq5) (`S1373`: Net +$16,151.45, PF 2.204, Max DD $296.49 [2.96%], RoMaD 54.48x, MC P95 DD $222.60, 0.00% Ruin, 590.7 trades/yr, 90.3% MCR, 100% Self-Contained, Auto Broker GMT Offset).
+- [`Gold_Velocity_PropFirm_Shield_EA.mq5`](file:///root/CFD-Trading-ML/projects/quant_strategy_discovery/Scalping_Live_Ready_EAs/Gold_Velocity_PropFirm_Shield_EA.mq5) (`S1375`: Net +$10,380.05, PF 2.265, Max DD $221.14 [2.21%], RoMaD 46.94x, MC P95 DD $208.96, 0.00% Ruin, 374.5 trades/yr, 100% Self-Contained, Prop-Firm Safe).
+
+
 
 
