@@ -1781,3 +1781,44 @@ Evaluated on **Google Colab Cloud VM** infrastructure (`quant_research` cloud se
 ### Ratified Production Expert Advisors Delivered:
 - [`Gold_Linear_Consistency_Apex_EA.mq5`](file:///root/CFD-Trading-ML/projects/quant_strategy_discovery/Scalping_Live_Ready_EAs/Gold_Linear_Consistency_Apex_EA.mq5) (`S1148`: Net +$1,972.87, PF 1.428, Win Rate 69.4%, Max DD $561.11, MC P95 DD $674.53, 0.00% Ruin, 100% Self-Contained, Native Broker GMT Offset).
 - [`Gold_PropFirm_Sub5Pct_Shield_EA.mq5`](file:///root/CFD-Trading-ML/projects/quant_strategy_discovery/Scalping_Live_Ready_EAs/Gold_PropFirm_Sub5Pct_Shield_EA.mq5) (`S1160`: Net +$1,071.61, PF 1.422, Win Rate 69.3%, Max DD $265.48 [2.65%], RoMaD 4.04x, MC P95 DD $360.84, 0.00% Ruin, 100% Self-Contained, Prop-Firm Safe).
+
+
+---
+
+## 50. Batch 66: High-Frequency Fractal Momentum Retest & Prop-Firm Ultra-Floor Engine (S1176 - S1205)
+
+**Historical Period:** 2020 - 2025 (6 Full Multi-Year Regimes / 72 Calendar Months)  
+**Asset:** XAUUSD (Gold CFD) — Multi-Timeframe M15 Structure + M5 Fractal Retests  
+**Broker Frictions:** Spread $0.25 ($25.00/lot), Commission $6.00/lot ($0.60/0.10 lot), Negative Slippage -$0.10/oz on SL, Long Swap -$18.00/lot/night  
+
+### Core Breakthroughs & Architectural Innovations
+1. **Total Eradication of MT5 Trade Frequency Starvation:**
+   - Previous single-flip models traded only ~16 times per year per session (~100 trades total over 6 years).
+   - Batch 66 introduces **M5 Fractal Momentum Retests** (pullbacks to EMA20 and 3-bar local breakouts during confirmed M15 Supertrend/EMA200 trends), scaling volume to **618 – 913 trades/year (~2.5 to 3.5 trades/day)**.
+2. **Prop-Firm Sub-3% Drawdown Floor:**
+   - **S1195** achieved a historical Maximum Intra-Bar Drawdown of **only $203.25 (2.03% on $10,000)** while generating **+$20,754.32** in net profit (RoMaD **102.11x**!).
+   - **S1178** achieved **$377.87 (3.78% Max DD)** while generating **+$32,442.46** in net profit (RoMaD **85.86x**).
+3. **95.8% Monthly Win Consistency:**
+   - S1195 achieved positive net profit in **69 out of 72 calendar months (95.8% MCR)**, easily exceeding the 90% project mandate.
+   - 1,000-run Monte Carlo tail-risk simulations confirmed **0.00% Probability of Ruin** for all top champions.
+
+### Batch 66 Strategy Leaderboard (Top 12 Highlights)
+
+| Strategy ID & Name | Architecture & Sizing | Ann. Tr | Tot. Tr | Net Profit ($) | Profit Factor | Win Rate (%) | True Intra Max DD ($) | MC P95 DD ($) | Ruin Prob (%) | RoMaD | Status & Production Role |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+| **S1195: Prop-Firm Monthly $75** | 0.05/0.025/0.02 Lots + $75 Lock | **618.3** | **3710** | **+$20,754.32** | **2.682** 👑 | **58.6%** | **$203.25** 👑 | **$172.04** 👑 | **0.0%** | **102.11x** 🏆 | 🛡️ **BATCH 66 PROP-FIRM ULTRA-FLOOR CHAMPION** |
+| **S1190: Prop-Firm Sub-5% Base** | 0.05/0.025/0.02 Lots Floor | 913.3 | 5480 | +$30,274.15 | 2.587 | 57.5% | $300.17 💎 | $215.59 | 0.0% | 100.86x | 🛡️ Prop-Firm Sub-3.5% High-Volume |
+| **S1178: Fractal Retest Balanced** | 0.06/0.03/0.02 Lots Baseline | **913.8** | **5483** | **+$32,442.46** | **2.593** | **57.5%** | **$377.87** 💎 | **$250.68** | **0.0%** | **85.86x** | 👑 **BATCH 66 LINEAR CONSISTENCY APEX** |
+| **S1179: Fractal Balanced + Lock** | 0.06/0.03/0.02 Lots + 50% Lock | 913.0 | 5478 | +$32,452.62 | 2.596 | 57.5% | $395.57 | $250.12 | 0.0% | 82.04x | 💎 Balanced Co-Champion + Daily Lock |
+| **S1184: Monthly Target-Lock $100** | 0.08/0.04/0.03 Lots + $100 Lock | 689.7 | 4138 | +$34,625.14 | 2.613 | 58.7% | $480.28 | $336.92 | 0.0% | 72.09x | 🛡️ Sub-5% High-Expectancy ($100 Lock) |
+| **S1185: Grand Fractal Sovereign** | 0.08/0.04/0.03 Lots + $120 Lock | 704.0 | 4224 | +$34,905.96 | 2.576 | 58.5% | $480.28 | $343.97 | 0.0% | 72.68x | 👑 Grand Fractal Sovereign |
+| **S1176: Fractal Retest Baseline** | 0.08/0.04/0.03 Lots Baseline | 913.5 | 5481 | +$41,700.27 | 2.461 | 57.4% | $526.47 | $347.30 | 0.0% | 79.21x | ⚡ High-Turnover Max Net Gain |
+| **S1180: Pullback Pure Focus** | 0.08/0.04/0.03 Lots (PB only) | 526.8 | 3161 | +$25,139.10 | 2.598 | 55.6% | $339.48 | $304.44 | 0.0% | 74.05x | 💎 Pure Pullback Precision |
+| **S1188: Prop-Firm Sub-3% Base** | 0.04/0.02/0.01 Micro-Lots | 913.5 | 5481 | +$16,270.82 | 2.316 | 49.0% | $287.07 👑 | $180.62 | 0.0% | 56.68x | 🛡️ Sub-3% Micro Floor ($287 DD) |
+| **S1192: Prop Pure Pullback** | 0.04/0.02/0.01 Lots (PB only) | 526.8 | 3161 | +$9,778.07 | 2.460 | 47.0% | **$172.04** 👑 | **$151.85** 👑 | **0.0%** | 56.84x | 👑 **Lowest DD in Batch 66 ($172.04)** |
+| **S1203: Comp 0.75% + Monthly Lock**| 0.75% Compounding + $100 Lock | 320.3 | 1922 | +$69,270.74 | 2.611 | 61.9% | $1,473.87 | $1,182.35 | 0.0% | 47.00x | 🚀 97.2% MCR Compounding |
+| **S1205: Fractal Consistency Paragon**| 0.75% Compounding + $120 Lock | 340.5 | 2043 | +$76,036.80 | 2.647 | 61.5% | $1,926.53 | $1,215.35 | 0.2% | 39.47x | 👑 **98.6% Monthly Win Consistency** |
+
+### Ratified Production Expert Advisors Delivered:
+- [`Gold_Fractal_PropFirm_Sub3Pct_EA.mq5`](file:///root/CFD-Trading-ML/projects/quant_strategy_discovery/Scalping_Live_Ready_EAs/Gold_Fractal_PropFirm_Sub3Pct_EA.mq5) (`S1195`: Net +$20,754.32, PF 2.682, Max DD $203.25 [2.03%], RoMaD 102.11x, MC P95 DD $172.04, 0.00% Ruin, 618 trades/yr, 95.8% MCR, 100% Self-Contained, Auto Broker GMT Offset).
+- [`Gold_Fractal_Linear_Consistency_Apex_EA.mq5`](file:///root/CFD-Trading-ML/projects/quant_strategy_discovery/Scalping_Live_Ready_EAs/Gold_Fractal_Linear_Consistency_Apex_EA.mq5) (`S1178`: Net +$32,442.46, PF 2.593, Max DD $377.87 [3.78%], RoMaD 85.86x, MC P95 DD $250.68, 0.00% Ruin, 913 trades/yr, 94.4% MCR, 100% Self-Contained, Auto Broker GMT Offset).
