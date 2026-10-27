@@ -1900,3 +1900,64 @@ Evaluated on **Google Colab Cloud VM** infrastructure (`quant_research` cloud se
 ### Ratified Production Expert Advisors Delivered:
 - [`Gold_FVG_Sweep_Apex_EA.mq5`](file:///root/CFD-Trading-ML/projects/quant_strategy_discovery/Scalping_Live_Ready_EAs/Gold_FVG_Sweep_Apex_EA.mq5) (`S1244`: Net +$12,035.37, PF 2.529, Max DD $317.91 [3.18%], RoMaD 37.86x, MC P95 DD $198.71, 0.00% Ruin, 349.2 trades/yr, 90.3% MCR, 100% Self-Contained, Auto Broker GMT Offset).
 - [`Gold_FVG_PropFirm_Shield_EA.mq5`](file:///root/CFD-Trading-ML/projects/quant_strategy_discovery/Scalping_Live_Ready_EAs/Gold_FVG_PropFirm_Shield_EA.mq5) (`S1255`: Net +$8,405.68, PF 2.511, Max DD $158.47 [1.58%], RoMaD 53.04x, MC P95 DD $180.53, 0.00% Ruin, 267.2 trades/yr, 100% Self-Contained, Prop-Firm Safe).
+
+---
+
+## 53. Batch 69: Daily Anchored Multi-Sigma Bands & Microstructure Liquidity Engine (S1266 - S1295)
+
+**Historical Period:** 2020 - 2025 (6 Full Multi-Year Regimes / 72 Calendar Months)  
+**Asset:** XAUUSD (Gold CFD) — Multi-Timeframe M15 Bands + M5 Confluence  
+**Broker Frictions:** Spread $0.25 ($25.00/lot), Commission $6.00/lot ($0.60/0.10 lot), Negative Slippage -$0.10/oz on SL, Long Swap -$18.00/lot/night  
+**Empirical Verdict:** **DISQUALIFIED / REJECTED (Zero EAs Ratified)**
+
+### Diagnostic Findings & Research Notes
+1. **Trade Frequency Starvation:**
+   - Evaluated 30 multi-sigma anchored band models. All strategies produced only **13.3 to 15.7 trades/year** (80 to 94 total trades over 6 years).
+   - This violates Constitution V5.1 Section 4 requiring $\ge 150$ trades/year to ensure statistical significance and prevent MT5 tester starvation.
+2. **Monthly Consistency Collapse:**
+   - MCR ranged between **42.9% and 47.2%**, failing the $\ge 90\%$ project mandate.
+3. **Execution Decision:**
+   - In accordance with rigorous scientific honesty and user capital preservation, **ZERO Expert Advisors from Batch 69 are ratified for production deployment**.
+   - Quantitative development immediately transitions to Batch 70 to restore target frequency and monthly linearity.
+
+---
+
+## 54. Batch 70: Institutional Order Block (OB) & Liquidity Expansion Engine (S1296 - S1325)
+
+**Historical Period:** 2020 - 2025 (6 Full Multi-Year Regimes / 72 Calendar Months)  
+**Asset:** XAUUSD (Gold CFD) — Multi-Timeframe M15 Structure + M5 Confluence  
+**Broker Frictions:** Spread $0.25 ($25.00/lot), Commission $6.00/lot ($0.60/0.10 lot), Negative Slippage -$0.10/oz on SL, Long Swap -$18.00/lot/night  
+
+### Core Breakthroughs & Architectural Innovations
+1. **Order Block Mitigation & Liquidity Expansion Edge:**
+   - Detects when an institutional displacement candle (body $\ge 0.65\times \text{ATR}$) forms following an opposing candle.
+   - Enters on retracement into the 50% midpoint of the prior opposing candle (Order Block equilibrium) or Fair Value Gap (FVG) midpoint in the direction of the confirmed macro Supertrend & EMA200 trend.
+2. **Resolution of MT5 Tester Starvation:**
+   - Yields an optimal **388 to 572 trades/year (~1.5 to 2.2 trades/day)**, completely eliminating tester starvation while avoiding micro-scalping drag.
+3. **Sub-2.6% Ultra-Floor Drawdown Performance:**
+   - **S1304 (Apex Champion):** Net Profit **+$16,568.42**, PF **2.516**, Max DD **$253.69 (2.54%)**, **94.4% MCR**, 506.0 trades/yr.
+   - **S1315 (Prop-Firm Champion):** Net Profit **+$12,148.82**, PF **2.509**, Max DD **$217.62 (2.18%)**, **93.1% MCR**, 388.8 trades/yr.
+   - **S1314 (Micro-Floor Variant):** Max Intra-Bar Drawdown **$145.03 (1.45% Max DD)**.
+4. **100% Zero-Ruin Monte Carlo Profile:**
+   - 1,000-permutation Monte Carlo tests confirm **0.00% Probability of Ruin** across all top models.
+
+### Batch 70 Strategy Leaderboard (Top 10 Highlights)
+
+| Strategy ID & Name | Architecture & Sizing | Ann. Tr | Tot. Tr | Net Profit ($) | Profit Factor | Win Rate (%) | True Intra Max DD ($) | MC P95 DD ($) | Ruin Prob (%) | RoMaD | Status & Production Role |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **S1304: Ext Monthly Lock $100**| 0.06/0.03/0.02 Lots + $100 Lock | **506.0** | **3036** | **+$16,568.42** | **2.516** 👑 | **57.8%** | **$253.69** 💎 | **$197.08** 👑 | **0.0%** | **65.31x** | 👑 **BATCH 70 APEX LINEAR CHAMPION (94.4% MCR)** |
+| **S1315: Prop Monthly Lock $80** | 0.05/0.025/0.02 Lots + $80 Lock | **388.8** | **2333** | **+$12,148.82** | **2.509** | **57.2%** | **$217.62** 👑 | **$204.85** 👑 | **0.0%** | **55.83x** 🏆 | 🛡️ **PROP-FIRM SUB-2.2% ULTRA-FLOOR CHAMPION (93.1% MCR)** |
+| **S1300: Extended OB Expansion** | 0.08/0.04/0.03 Lots | 572.5 | 3435 | +$23,271.92 | 2.264 | 56.4% | $432.79 | $353.11 | 0.0% | 53.77x | ⚡ High-Turnover Max Net Gain (94.4% MCR) |
+| **S1298: OB Balanced** | 0.06/0.03/0.02 Lots | 454.5 | 2727 | +$14,467.35 | 2.407 | 56.3% | $314.41 💎 | $249.64 | 0.0% | 46.01x | 💎 Balanced Core (91.7% MCR) |
+| **S1313: Prop Ext Sub-5% Shield**| 0.05/0.025/0.02 Lots | 572.2 | 3433 | +$16,670.13 | 2.360 | 56.6% | $307.23 💎 | $216.24 | 0.0% | 54.26x | 🛡️ High-Volume Prop-Firm Shield (94.4% MCR) |
+| **S1310: Prop Sub-5% Base** | 0.05/0.025/0.02 Lots | 454.2 | 2725 | +$13,411.75 | 2.392 | 56.3% | $289.31 💎 | $225.02 | 0.0% | 46.36x | 🛡️ Sub-2.9% Prop Floor (93.1% MCR) |
+| **S1314: Prop Monthly Lock $60** | 0.04/0.02/0.01 Lots + $60 Lock | 413.5 | 2481 | +$7,150.71 | 2.359 | 49.7% | **$145.03** 👑 | **$162.75** 👑 | **0.0%** | 49.30x | 👑 **All-Time Lowest DD in Batch 70 ($145.03)** |
+| **S1302: Monthly Lock $100** | 0.08/0.04/0.03 Lots + $100 Lock | 378.2 | 2269 | +$16,867.09 | 2.437 | 57.5% | $339.35 | $338.00 | 0.0% | 49.70x | 💎 Controlled Risk Floor (90.3% MCR) |
+| **S1316: Comp OB 0.50% Risk** | 0.50% Risk Compounding | 454.7 | 2728 | +$29,066.62 | 2.159 | 56.4% | $457.82 | $425.74 | 0.0% | 63.49x | 🚀 Sub-4.6% Compounding Engine (93.1% MCR) |
+| **S1320: Comp OB 1.50% Risk** | 1.50% Risk Compounding | 443.7 | 2662 | +$110,193.78 👑 | 2.255 | 56.7% | $1,546.70 | $1,617.27 | 0.0% | 71.24x | 👑 **+1,100% Growth Milestone (91.7% MCR)** |
+
+### Ratified Production Expert Advisors Delivered:
+- [`Gold_OB_Expansion_Apex_EA.mq5`](file:///root/CFD-Trading-ML/projects/quant_strategy_discovery/Scalping_Live_Ready_EAs/Gold_OB_Expansion_Apex_EA.mq5) (`S1304`: Net +$16,568.42, PF 2.516, Max DD $253.69 [2.54%], RoMaD 65.31x, MC P95 DD $197.08, 0.00% Ruin, 506.0 trades/yr, 94.4% MCR, 100% Self-Contained, Auto Broker GMT Offset).
+- [`Gold_OB_PropFirm_Shield_EA.mq5`](file:///root/CFD-Trading-ML/projects/quant_strategy_discovery/Scalping_Live_Ready_EAs/Gold_OB_PropFirm_Shield_EA.mq5) (`S1315`: Net +$12,148.82, PF 2.509, Max DD $217.62 [2.18%], RoMaD 55.83x, MC P95 DD $204.85, 0.00% Ruin, 388.8 trades/yr, 93.1% MCR, 100% Self-Contained, Prop-Firm Safe).
+
+
