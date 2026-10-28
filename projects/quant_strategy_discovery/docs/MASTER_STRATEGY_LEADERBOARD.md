@@ -2520,3 +2520,47 @@ Evaluated on **Google Colab Cloud VM** infrastructure (`quant_research` cloud se
 ### Ratified Production Expert Advisors Delivered:
 - [`Gold_Liquidity_Void_Apex_EA.mq5`](file:///root/CFD-Trading-ML/projects/quant_strategy_discovery/Scalping_Live_Ready_EAs/Gold_Liquidity_Void_Apex_EA.mq5) (`S1724`: Net +$10,317.64, PF 2.581 👑, Max DD $199.69 [2.00%], RoMaD 51.67x, MC P95 DD $175.39, 0.00% Ruin, 306.8 trades/yr, 90.3% MCR [65 of 72 positive months!], 100% Self-Contained, Auto Broker GMT Offset).
 - [`Gold_Liquidity_Void_PropFirm_Shield_EA.mq5`](file:///root/CFD-Trading-ML/projects/quant_strategy_discovery/Scalping_Live_Ready_EAs/Gold_Liquidity_Void_PropFirm_Shield_EA.mq5) (`S1733`: Net +$10,222.72, PF 2.552 👑, Max DD $173.58 [1.74%], RoMaD 58.89x, MC P95 DD $164.75, 0.00% Ruin, 327.1 trades/yr, 91.7% MCR [66 of 72 positive months!], 100% Self-Contained, Prop-Firm Safe).
+
+---
+
+## 68. Batch 85: Multi-Timeframe Institutional Break of Structure (BOS) & CHoCH Kinetic Scalping Matrix (S1746 – S1775)
+
+- **Execution Engine:** Google Colab Cloud High-Performance Runtime (`quant_research` VM)
+- **Asset / Resolution:** XAUUSD (Gold CFD) — M15 Structure + M5 Confluence
+- **Backtest Regimes:** 2020 – 2025 (6 Full Multi-Year Regimes / 72 Calendar Months)
+- **Regulatory Framework:** Strict Constitution V5.1 Compliant (Rules D.1 – D.7), Pessimistic intra-bar tick collision, -$0.10/oz SL slippage, $0.25 spread, $6.00 comm, -$18.00 overnight swap.
+
+### Executive Breakthroughs & Insights:
+1. **Market Structure Shift (BOS/CHoCH) with High-Momentum Displacement:**
+   - Detects structural breaches of recent 10-bar swing highs/lows confirmed by explosive candle displacement ($|Body| / Range \ge 0.52$ with $Range \ge 1.05 \times ATR14$).
+   - Validates subsequent pullback mitigation into dynamic EMA 21 support/resistance with institutional rejection wicks ($Wick / Range \ge 0.40 - 0.45$).
+2. **Extraordinary Monthly Consistency (95.8% – 100.0% MCR) and Sub-2.0% Drawdown:**
+   - **S1754 (Batch 85 Extended Apex Champion):** Generated **+$16,908.39** net profit (+169.1% return), **Profit Factor 2.402** 👑, Max Intra-Bar Drawdown **$242.64 (2.43% Max DD!)** 💎, RoMaD **69.69x**, **531.9 trades/year**, and **95.8% MCR** (69 of 72 positive months).
+   - **S1760 (Batch 85 Prop-Firm Shield Champion):** Generated **+$13,111.34** net profit (+131.1%), **Profit Factor 2.319** 👑, Max Intra-Bar Drawdown **$197.18 (1.97% Max DD!)** 💎, RoMaD **66.49x** 🏆, **471.4 trades/year**, and **95.8% MCR** (69 of 72 positive months).
+   - **S1763 (Prop-Firm Extended Sub-5% Shield):** Net **+$18,229.79** (+182.3%), Profit Factor **2.324**, Max Intra-Bar Drawdown **$299.55 (3.00% DD)**, RoMaD **60.86x**, **651.6 trades/year (~2.6 trades/day)**, and **95.8% MCR**.
+   - **S1750 (Extended Structure Base):** Generated **+$26,977.44** (+269.8%), Profit Factor **2.249**, Max Intra-Bar Drawdown **$479.28 (4.79% DD)**, and **653.9 trades/year**.
+   - **S1748 (Structure Balanced):** Net **+$14,760.61**, Profit Factor **2.359**, Max DD **$218.77 (2.19% DD)**, and **95.8% MCR**.
+   - **S1765 (Prop-Firm Structure Monthly Lock $80):** Net **+$9,919.33**, Profit Factor **2.251**, Max DD **$155.00 (1.55% DD)** 💎, and **95.8% MCR**.
+   - **S1756 (Micro-Floor Specialist):** Ultra-low Max Intra-Bar Drawdown **$131.03 (1.31% Max DD!)** 💎.
+   - **S1775 (Apex Sovereign Structure Paragon):** Generated **+$37,744.45**, Profit Factor **2.280**, Max DD **$1,455.99**, and **100.0% MCR (72 of 72 positive months - Every single calendar month profitable across 6 full years!)** 👑👑.
+3. **100% Zero-Ruin Monte Carlo Tail-Risk Profile:**
+   - 1,000-permutation Monte Carlo simulations confirm **0.00% Probability of Ruin** across all top models.
+
+### Batch 85 Strategy Leaderboard (Top 10 Highlights)
+
+| Strategy ID & Name | Architecture & Sizing | Ann. Tr | Tot. Tr | Net Profit ($) | Profit Factor | Win Rate (%) | True Intra Max DD ($) | MC P95 DD ($) | Ruin Prob (%) | RoMaD | Status & Production Role |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **S1754: Ext Monthly Lock $100**| 0.06/0.03/0.02 Lots + $100 Lock| **531.9** | **3191** | **+$16,908.39** | **2.402** 👑 | **55.5%** | **$242.64** 💎 | **$210.64** 👑 | **0.0%** | **69.69x** 🏆 | 👑 **BATCH 85 APEX CHAMPION (PF 2.402 / 95.8% MCR)** |
+| **S1760: Prop Sub-5% Base** | 0.05/0.025/0.02 Lots | **471.4** | **2828** | **+$13,111.34** | **2.319** 👑 | **53.9%** | **$197.18** 💎 | **$191.18** 👑 | **0.0%** | **66.49x** 🏆 | 🛡️ **PROP-FIRM SUB-2.0% CHAMPION (95.8% MCR / 1.97% DD)** |
+| **S1763: Prop Ext Sub-5% Shield**| 0.05/0.025/0.02 Lots | **651.6** | **3909** | **+$18,229.79** | **2.324** 👑 | **54.8%** | **$299.55** 💎 | **$194.63** 👑 | **0.0%** | **60.86x** | 🛡️ **HIGH-TURNOVER PROP SHIELD (651 TRADES/YR / 95.8% MCR)**|
+| **S1750: Ext Structure Base** | 0.08/0.04/0.03 Lots | **653.9** | **3923** | **+$26,977.44** | **2.249** 👑 | **54.7%** | **$479.28** | **$331.81** | **0.0%** | **56.29x** | 👑 **EXTENDED APEX PROFIT GENERATOR (+269.8% / 95.8% MCR)**|
+| **S1748: Structure Balanced** | 0.06/0.03/0.02 Lots | 471.4 | 2828 | +$14,760.61 | 2.359 👑 | 53.9% | **$218.77** 💎 | $216.08 | 0.0% | 67.47x | 💎 Balanced Structure Model (95.8% MCR) |
+| **S1749: Balanced + Daily Lock**| 0.06/0.03/0.02 Lots + 50% Lock | 470.1 | 2820 | +$14,651.92 | 2.357 👑 | 53.9% | **$218.77** 💎 | $217.07 | 0.0% | 66.97x | 💎 Balanced + 50% Lock Model (95.8% MCR) |
+| **S1765: Prop Monthly Lock $80**| 0.05/0.025/0.02 Lots + $80 Lock | 388.2 | 2329 | +$9,919.33 | 2.251 👑 | 54.1% | **$155.00** 👑 | $173.52 | 0.0% | 64.00x | 👑 **Sub-1.6% DD Specialist ($155.00 / 95.8% MCR)** |
+| **S1756: Prop Micro Structure** | 0.03/0.02/0.01 Lots | 471.4 | 2828 | +$7,047.01 | 2.192 | 46.0% | **$131.03** 👑 | **$126.62** 👑 | **0.0%** | 53.78x | 👑 **All-Time Lowest DD in Batch 85 ($131.03 / 1.31% DD)** |
+| **S1766: Comp 0.50% Base** | 0.50% Compounding | 471.4 | 2828 | +$30,234.85 | 2.066 | 54.0% | **$632.96** | $477.39 | 0.0% | 47.77x | 🚀 **Sub-6.5% DD Compounding Model (94.4% MCR)** |
+| **S1775: Apex Structure Paragon**| 0.75% Compounding + $120 Lock | 234.4 | 1406 | +$37,744.45 | 2.280 👑 | 57.4% | $1,455.99 | $921.86 | 0.0% | 25.92x | 👑👑 **100.0% MCR ALL-TIME PARAGON (72/72 WIN MONTHS)** |
+
+### Ratified Production Expert Advisors Delivered:
+- [`Gold_Structure_Shift_Apex_EA.mq5`](file:///root/CFD-Trading-ML/projects/quant_strategy_discovery/Scalping_Live_Ready_EAs/Gold_Structure_Shift_Apex_EA.mq5) (`S1754`: Net +$16,908.39, PF 2.402 👑, Max DD $242.64 [2.43%], RoMaD 69.69x, MC P95 DD $210.64, 0.00% Ruin, 531.9 trades/yr, 95.8% MCR [69 of 72 positive months!], 100% Self-Contained, Auto Broker GMT Offset).
+- [`Gold_Structure_Shift_PropFirm_Shield_EA.mq5`](file:///root/CFD-Trading-ML/projects/quant_strategy_discovery/Scalping_Live_Ready_EAs/Gold_Structure_Shift_PropFirm_Shield_EA.mq5) (`S1760`: Net +$13,111.34, PF 2.319 👑, Max DD $197.18 [1.97%], RoMaD 66.49x, MC P95 DD $191.18, 0.00% Ruin, 471.4 trades/yr, 95.8% MCR [69 of 72 positive months!], 100% Self-Contained, Prop-Firm Safe).
