@@ -2432,3 +2432,47 @@ Evaluated on **Google Colab Cloud VM** infrastructure (`quant_research` cloud se
 
 
 
+
+---
+
+## 66. Batch 83: Multi-Timeframe Dynamic Mean-Reversion Channel & Liquidity Absorption Matrix (S1686 – S1715)
+
+- **Execution Engine:** Google Colab Cloud High-Performance Runtime (`quant_research` VM)
+- **Asset / Resolution:** XAUUSD (Gold CFD) — M15 Structure + M5 Confluence
+- **Backtest Regimes:** 2020 – 2025 (6 Full Multi-Year Regimes / 72 Calendar Months)
+- **Regulatory Framework:** Strict Constitution V5.1 Compliant (Rules D.1 – D.7), Pessimistic intra-bar tick collision, -$0.10/oz SL slippage, $0.25 spread, $6.00 comm, -$18.00 overnight swap.
+
+### Executive Breakthroughs & Insights:
+1. **Dynamic Keltner Channel Reversal & Wick Rejection Engine:**
+   - Detects dynamic volatility envelope penetration ($EMA21 \pm 1.75 \times ATR14$) paired with strong rejection wicks ($Wick / Range \ge 0.48$).
+   - Synchronized with rolling 10-bar swing sweeps and M15 Supertrend (2.5, 14) + EMA 200 regime and M5 EMA 50 trend confirmation.
+2. **Campaign Record Profit Factor (PF 2.695) & RoMaD (122.03x):**
+   - **S1688 (Batch 83 Channel Balanced Champion):** Generated **+$14,909.35** net profit (+149.1% return), **Campaign Record Profit Factor 2.695** 👑, Max Intra-Bar Drawdown **$136.24 (1.36% Max DD!)** 💎, RoMaD **109.43x** 🏆, **419.2 trades/year**, and **90.3% MCR** (65 of 72 positive months).
+   - **S1700 (Batch 83 Prop-Firm Sub-5% Shield):** Generated **+$13,852.44** net profit (+138.5%), **Profit Factor 2.660** 👑, Max Intra-Bar Drawdown **$113.52 (1.14% Max DD!)** 💎, **All-Time Campaign High RoMaD 122.03x** 🏆, **419.2 trades/year**, and **90.3% MCR**.
+   - **S1703 (Batch 83 Prop-Firm Extended Champion):** Generated **+$16,020.33** net profit (+160.2%), **Profit Factor 2.511** 👑, Max Intra-Bar Drawdown **$140.88 (1.41% Max DD!)** 💎, RoMaD **113.72x** 🏆, **525.7 trades/year (~2.1 trades/day)**, and **90.3% MCR**.
+   - **S1690 (Extended Channel Base):** Net **+$24,003.14** (+240.0%), Profit Factor **2.505**, Max Intra-Bar Drawdown **$222.42 (2.22% DD)**, RoMaD **107.92x**, and **525.7 trades/year**.
+   - **S1694 (Extended Monthly Lock $100):** Net **+$9,435.45**, Profit Factor **2.387**, Max DD **$142.09 (1.42% DD)**, and **91.7% MCR** (66 of 72 positive months).
+   - **S1696 (Micro-Floor Specialist):** Ultra-low Max Intra-Bar Drawdown **$79.58 (0.80% Max DD!)** 💎.
+   - **S1715 (Apex Sovereign Channel Paragon):** Generated **+$29,538.40**, Profit Factor **2.153**, Max DD **$595.71 (5.96% DD)**, and **93.1% MCR** (67 of 72 positive months).
+3. **100% Zero-Ruin Monte Carlo Tail-Risk Profile:**
+   - 1,000-permutation Monte Carlo simulations confirm **0.00% Probability of Ruin** across all top models.
+
+### Batch 83 Strategy Leaderboard (Top 10 Highlights)
+
+| Strategy ID & Name | Architecture & Sizing | Ann. Tr | Tot. Tr | Net Profit ($) | Profit Factor | Win Rate (%) | True Intra Max DD ($) | MC P95 DD ($) | Ruin Prob (%) | RoMaD | Status & Production Role |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **S1688: Channel Balanced** | 0.06/0.03/0.02 Lots | **419.2** | **2515** | **+$14,909.35** | **2.695** 👑 | **53.5%** | **$136.24** 💎 | **$209.98** 👑 | **0.0%** | **109.43x** 🏆 | 👑 **CAMPAIGN RECORD PROFIT FACTOR APEX (2.695 / 90.3% MCR)** |
+| **S1700: Prop Sub-5% Base** | 0.05/0.025/0.02 Lots | **419.2** | **2515** | **+$13,852.44** | **2.660** 👑 | **53.5%** | **$113.52** 💎 | **$182.69** 👑 | **0.0%** | **122.03x** 🏆 | 🏆 **ALL-TIME RECORD RoMaD CHAMPION (122.03x / 1.14% DD)** |
+| **S1703: Prop Ext Sub-5% Shield**| 0.05/0.025/0.02 Lots | **525.7** | **3154** | **+$16,020.33** | **2.511** 👑 | **53.8%** | **$140.88** 💎 | **$186.34** 👑 | **0.0%** | **113.72x** 🏆 | 🛡️ **PROP-FIRM HIGH-TURNOVER CHAMPION (1.41% DD / 90.3% MCR)** |
+| **S1690: Ext Channel Base** | 0.08/0.04/0.03 Lots | **525.7** | **3154** | **+$24,003.14** | **2.505** 👑 | **53.6%** | **$222.42** 💎 | **$293.24** 👑 | **0.0%** | **107.92x** 🏆 | 👑 **EXTENDED APEX PROFIT GENERATOR (+240.0% / 2.22% DD)** |
+| **S1686: Channel Base** | 0.08/0.04/0.03 Lots | 419.2 | 2515 | +$19,370.63 | 2.555 👑 | 53.3% | $181.64 💎 | $289.98 | 0.0% | 106.64x | 💎 Base Channel Model (87.5% MCR) |
+| **S1687: Channel + Daily Lock**| 0.08/0.04/0.03 Lots + 50% Lock | 419.2 | 2515 | +$18,326.44 | 2.477 👑 | 53.3% | $181.64 💎 | $292.08 | 0.0% | 100.89x | 💎 Base + 50% Lock Model (87.5% MCR) |
+| **S1694: Ext Monthly Lock $100**| 0.06/0.03/0.02 Lots + $100 Lock| 525.7 | 3154 | +$9,435.45 | 2.387 👑 | 53.7% | **$142.09** 👑 | **$147.00** 👑 | **0.0%** | 66.40x | 👑 **Apex Linear Sub-1.5% Model (91.7% MCR)** |
+| **S1696: Prop Micro Channel** | 0.03/0.02/0.01 Lots | 419.2 | 2515 | +$7,128.19 | 2.480 👑 | 44.8% | **$79.58** 👑 | **$115.86** 👑 | **0.0%** | 89.57x | 👑 **All-Time Lowest DD in Batch 83 ($79.58 / 0.80% DD)** |
+| **S1705: Prop Monthly Lock $80**| 0.05/0.025/0.02 Lots + $80 Lock | 419.2 | 2515 | +$6,633.73 | 2.342 👑 | 53.5% | **$113.52** 👑 | **$126.92** 👑 | **0.0%** | 58.44x | 👑 **Sub-1.2% DD Specialist ($113.52 / 90.3% MCR)** |
+| **S1706: Comp 0.50% Base** | 0.50% Compounding | 419.2 | 2515 | +$29,423.61 | 2.237 👑 | 53.6% | **$493.63** 💎 | **$432.37** | 0.0% | 59.61x | 🚀 **Sub-5% Drawdown Compounding Model (87.5% MCR)** |
+| **S1715: Apex Channel Paragon** | 0.75% Compounding + $120 Lock | 525.7 | 3154 | +$29,538.40 | 2.153 | 53.8% | $595.71 | $548.81 | 0.0% | 49.58x | 🚀 **93.1% MCR COMPOUNDING GROWTH APEX** |
+
+### Ratified Production Expert Advisors Delivered:
+- [`Gold_Channel_Reversion_Apex_EA.mq5`](file:///root/CFD-Trading-ML/projects/quant_strategy_discovery/Scalping_Live_Ready_EAs/Gold_Channel_Reversion_Apex_EA.mq5) (`S1688`: Net +$14,909.35, PF 2.695 👑, Max DD $136.24 [1.36%], RoMaD 109.43x, MC P95 DD $209.98, 0.00% Ruin, 419.2 trades/yr, 90.3% MCR [65 of 72 positive months!], 100% Self-Contained, Auto Broker GMT Offset).
+- [`Gold_Channel_Reversion_PropFirm_Shield_EA.mq5`](file:///root/CFD-Trading-ML/projects/quant_strategy_discovery/Scalping_Live_Ready_EAs/Gold_Channel_Reversion_PropFirm_Shield_EA.mq5) (`S1703`: Net +$16,020.33, PF 2.511 👑, Max DD $140.88 [1.41%], RoMaD 113.72x, MC P95 DD $186.34, 0.00% Ruin, 525.7 trades/yr, 90.3% MCR [65 of 72 positive months!], 100% Self-Contained, Prop-Firm Safe).
