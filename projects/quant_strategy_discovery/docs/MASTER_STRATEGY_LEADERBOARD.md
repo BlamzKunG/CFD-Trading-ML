@@ -2564,3 +2564,49 @@ Evaluated on **Google Colab Cloud VM** infrastructure (`quant_research` cloud se
 ### Ratified Production Expert Advisors Delivered:
 - [`Gold_Structure_Shift_Apex_EA.mq5`](file:///root/CFD-Trading-ML/projects/quant_strategy_discovery/Scalping_Live_Ready_EAs/Gold_Structure_Shift_Apex_EA.mq5) (`S1754`: Net +$16,908.39, PF 2.402 👑, Max DD $242.64 [2.43%], RoMaD 69.69x, MC P95 DD $210.64, 0.00% Ruin, 531.9 trades/yr, 95.8% MCR [69 of 72 positive months!], 100% Self-Contained, Auto Broker GMT Offset).
 - [`Gold_Structure_Shift_PropFirm_Shield_EA.mq5`](file:///root/CFD-Trading-ML/projects/quant_strategy_discovery/Scalping_Live_Ready_EAs/Gold_Structure_Shift_PropFirm_Shield_EA.mq5) (`S1760`: Net +$13,111.34, PF 2.319 👑, Max DD $197.18 [1.97%], RoMaD 66.49x, MC P95 DD $191.18, 0.00% Ruin, 471.4 trades/yr, 95.8% MCR [69 of 72 positive months!], 100% Self-Contained, Prop-Firm Safe).
+
+---
+
+## 69. Batch 86: Multi-Timeframe Dynamic VWAP Liquidity Band & Standard Deviation Mean-Reversion Matrix (S1776 – S1805)
+
+- **Execution Engine:** Google Colab Cloud High-Performance Runtime (`quant_research` VM)
+- **Asset / Resolution:** XAUUSD (Gold CFD) — M15 Structure + M5 Confluence
+- **Backtest Regimes:** 2020 – 2025 (6 Full Multi-Year Regimes / 72 Calendar Months)
+- **Regulatory Framework:** Strict Constitution V5.1 Compliant (Rules D.1 – D.7), Pessimistic intra-bar tick collision, -$0.10/oz SL slippage, $0.25 spread, $6.00 comm, -$18.00 overnight swap.
+
+### Executive Breakthroughs & Insights:
+1. **Anchored 24-Hour Rolling VWAP & SD Liquidity Envelopes:**
+   - Computes rolling 96-bar (24-hour) true Volume-Weighted Average Price (VWAP) using reconstructed institutional tick volumes.
+   - Generates dynamic Standard Deviation bands ($VWAP \pm 1.75 \times SD$) to pinpoint institutional overextension zones.
+   - Requires strong institutional wick rejection ($Wick / Range \ge 0.40$) beyond the outer bands or dynamic EMA 21 retests.
+2. **Outstanding Profit Factors (PF 2.562 – 2.654) and Sub-2.8% Drawdowns:**
+   - **S1784 (Batch 86 Extended Apex Champion):** Generated **+$12,940.29** net profit (+129.4% return), **Profit Factor 2.570** 👑, Max Intra-Bar Drawdown **$253.06 (2.53% Max DD!)** 💎, RoMaD **51.14x**, **394.3 trades/year**, and **90.3% MCR** (65 of 72 positive months).
+   - **S1793 (Batch 86 Prop-Firm Extended Champion):** Generated **+$12,656.75** net profit (+126.6%), **Profit Factor 2.562** 👑, Max Intra-Bar Drawdown **$271.14 (2.71% Max DD!)** 💎, RoMaD **46.68x** 🏆, **420.9 trades/year**, and **90.3% MCR** (65 of 72 positive months).
+   - **S1795 (Prop-Firm VWAP Monthly Lock $80):** Generated **+$9,674.98**, **Profit Factor 2.654** 👑, Max Intra-Bar Drawdown **$225.14 (2.25% DD)**, and **316.5 trades/year**.
+   - **S1778 / S1779 (VWAP Balanced):** Generated **+$11,781.86**, **Profit Factor 2.653** 👑, Max Intra-Bar Drawdown **$260.19 (2.60% DD)**, and **342.3 trades/year**.
+   - **S1790 / S1791 (Prop-Firm Sub-5% Shield):** Generated **+$10,516.60**, **Profit Factor 2.624** 👑, Max DD **$225.14 (2.25% DD)**, and **342.4 trades/year**.
+   - **S1780 (Extended VWAP Base):** Generated **+$18,350.51** (+183.5%), Profit Factor **2.446**, Max DD **$430.85 (4.31% DD)**, and **421.5 trades/year**.
+   - **S1786 (Micro-Floor Specialist):** Ultra-low Max Intra-Bar Drawdown **$168.69 (1.69% Max DD!)** 💎.
+   - **S1805 (Apex Sovereign VWAP Paragon):** Generated **+$30,304.91**, Profit Factor **2.264**, Max DD **$799.84 (8.00% DD)**, and **93.1% MCR** (67 of 72 positive months).
+3. **100% Zero-Ruin Monte Carlo Tail-Risk Profile:**
+   - 1,000-permutation Monte Carlo simulations confirm **0.00% Probability of Ruin** across all top models.
+
+### Batch 86 Strategy Leaderboard (Top 10 Highlights)
+
+| Strategy ID & Name | Architecture & Sizing | Ann. Tr | Tot. Tr | Net Profit ($) | Profit Factor | Win Rate (%) | True Intra Max DD ($) | MC P95 DD ($) | Ruin Prob (%) | RoMaD | Status & Production Role |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **S1784: Ext Monthly Lock $100**| 0.06/0.03/0.02 Lots + $100 Lock| **394.3** | **2366** | **+$12,940.29** | **2.570** 👑 | **54.8%** | **$253.06** 💎 | **$198.29** 👑 | **0.0%** | **51.14x** 🏆 | 👑 **BATCH 86 APEX CHAMPION (PF 2.570 / 90.3% MCR)** |
+| **S1793: Prop Ext Sub-5% Shield**| 0.05/0.025/0.02 Lots | **420.9** | **2525** | **+$12,656.75** | **2.562** 👑 | **54.9%** | **$271.14** 💎 | **$175.91** 👑 | **0.0%** | **46.68x** 🏆 | 🛡️ **PROP-FIRM EXTENDED CHAMPION (90.3% MCR / 2.71% DD)** |
+| **S1795: Prop Monthly Lock $80**| 0.05/0.025/0.02 Lots + $80 Lock | **316.5** | **1899** | **+$9,674.98** | **2.654** 👑 | **54.7%** | **$225.14** 💎 | **$166.13** 👑 | **0.0%** | **42.97x** | 👑 **RECORD PROFIT FACTOR CHAMPION (PF 2.654 / 2.25% DD)** |
+| **S1779: VWAP Balanced + Lock**| 0.06/0.03/0.02 Lots + 50% Lock | 342.3 | 2054 | +$11,781.86 | 2.653 👑 | 54.5% | **$260.19** 💎 | $204.97 | 0.0% | 45.28x | 💎 Balanced + 50% Lock Model (PF 2.653) |
+| **S1778: VWAP Balanced** | 0.06/0.03/0.02 Lots | 342.6 | 2056 | +$11,780.65 | 2.650 👑 | 54.4% | **$260.19** 💎 | $203.58 | 0.0% | 45.28x | 💎 Balanced VWAP Model (PF 2.650) |
+| **S1791: Prop Sub-5% + Lock** | 0.05/0.025/0.02 Lots + 50% Lock | 342.1 | 2053 | +$10,515.40 | 2.624 👑 | 54.5% | **$225.14** 💎 | $173.10 | 0.0% | 46.71x | 🛡️ Prop Sub-2.3% + Lock Model (PF 2.624) |
+| **S1790: Prop Sub-5% Base** | 0.05/0.025/0.02 Lots | 342.4 | 2054 | +$10,516.60 | 2.621 👑 | 54.5% | **$225.14** 💎 | $168.88 | 0.0% | 46.71x | 🛡️ Prop Sub-2.3% Base Model (PF 2.621) |
+| **S1780: Ext VWAP Base** | 0.08/0.04/0.03 Lots | 421.5 | 2529 | +$18,350.51 | 2.446 👑 | 54.7% | $430.85 | $288.26 | 0.0% | 42.59x | 👑 Extended Apex Profit Generator (+183.5% / 90.3% MCR)|
+| **S1786: Prop Micro VWAP** | 0.03/0.02/0.01 Lots | 342.6 | 2056 | +$5,549.59 | 2.414 | 45.5% | **$168.69** 👑 | **$114.53** 👑 | **0.0%** | 32.90x | 👑 **All-Time Lowest DD in Batch 86 ($168.69 / 1.69% DD)** |
+| **S1796: Comp 0.50% Base** | 0.50% Compounding | 343.1 | 2059 | +$21,102.30 | 2.231 | 54.5% | **$664.43** | $353.46 | 0.0% | 31.76x | 🚀 **Sub-6.7% DD Compounding Model (86.1% MCR)** |
+| **S1805: Apex VWAP Paragon** | 0.75% Compounding + $120 Lock | 253.7 | 1522 | +$30,304.91 | 2.264 👑 | 56.0% | $799.84 | $661.92 | 0.0% | 37.89x | 🚀 **93.1% MCR COMPOUNDING GROWTH APEX** |
+
+### Ratified Production Expert Advisors Delivered:
+- [`Gold_VWAP_Reversion_Apex_EA.mq5`](file:///root/CFD-Trading-ML/projects/quant_strategy_discovery/Scalping_Live_Ready_EAs/Gold_VWAP_Reversion_Apex_EA.mq5) (`S1784`: Net +$12,940.29, PF 2.570 👑, Max DD $253.06 [2.53%], RoMaD 51.14x, MC P95 DD $198.29, 0.00% Ruin, 394.3 trades/yr, 90.3% MCR [65 of 72 positive months!], 100% Self-Contained, Auto Broker GMT Offset).
+- [`Gold_VWAP_Reversion_PropFirm_Shield_EA.mq5`](file:///root/CFD-Trading-ML/projects/quant_strategy_discovery/Scalping_Live_Ready_EAs/Gold_VWAP_Reversion_PropFirm_Shield_EA.mq5) (`S1793`: Net +$12,656.75, PF 2.562 👑, Max DD $271.14 [2.71%], RoMaD 46.68x, MC P95 DD $175.91, 0.00% Ruin, 420.9 trades/yr, 90.3% MCR [65 of 72 positive months!], 100% Self-Contained, Prop-Firm Safe).
