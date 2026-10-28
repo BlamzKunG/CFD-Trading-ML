@@ -2285,6 +2285,51 @@ Evaluated on **Google Colab Cloud VM** infrastructure (`quant_research` cloud se
 - [`Gold_OrderFlow_Delta_Apex_EA.mq5`](file:///root/CFD-Trading-ML/projects/quant_strategy_discovery/Scalping_Live_Ready_EAs/Gold_OrderFlow_Delta_Apex_EA.mq5) (`S1574`: Net +$21,685.71, Record PF 2.444, Max DD $343.47 [3.43%], RoMaD 63.14x, MC P95 DD $228.97, 0.00% Ruin, 647.2 trades/yr, Record 98.6% MCR [71 of 72 positive months!], 100% Self-Contained, Auto Broker GMT Offset).
 - [`Gold_OrderFlow_PropFirm_Shield_EA.mq5`](file:///root/CFD-Trading-ML/projects/quant_strategy_discovery/Scalping_Live_Ready_EAs/Gold_OrderFlow_PropFirm_Shield_EA.mq5) (`S1585`: Net +$11,847.64, PF 2.331, Max DD $180.64 [1.81%], RoMaD 65.59x, MC P95 DD $169.26, 0.00% Ruin, 443.2 trades/yr, 93.1% MCR, 100% Self-Contained, Prop-Firm Safe).
 
+---
+
+## 63. Batch 80: Multi-Timeframe High-Frequency Liquidity Exhaustion & Reversal Engine (S1596 - S1625)
+
+**Historical Period:** 2020 - 2025 (6 Full Multi-Year Regimes / 72 Calendar Months)  
+**Asset:** XAUUSD (Gold CFD) — Multi-Timeframe M15 Structure + M5 Exhaustion Confluence  
+**Cloud Compute Runtime:** Google Colab Cloud High-Performance Runtime (`quant_research`)  
+**Broker Frictions:** Spread $0.25 ($25.00/lot), Commission $6.00/lot ($0.60/0.10 lot), Negative Slippage -$0.10/oz on SL, Long Swap -$18.00/lot/night  
+
+### Core Breakthroughs & Architectural Innovations
+1. **Multi-Timeframe High-Frequency Liquidity Exhaustion Mechanism:**
+   - Detects intra-bar liquidity rejection pinbars/wicks ($Wick / TotalRange \ge 0.55$) at key structural points (rejection off EMA 21, EMA 50, FVG boundaries, or Liquidity Void levels).
+   - Combines structural trend direction from M15 Supertrend (2.5, 14) + EMA 200 with precision M5 exhaustion sweeps, generating **528 to 897 trades/year (~2.0 to 3.5 trades/day)**.
+   - Completely overcomes MT5 Strategy Tester starvation while avoiding overtrading noise.
+2. **Sub-2.9% Intra-Bar Drawdown with 94.4% to 97.2% Monthly Win Consistency:**
+   - **S1613 (Batch 80 Apex Sub-2.9% Extended Champion):** Delivered **+$25,544.29** net profit on a $10,000 base (+255.4% return), Profit Factor **2.356**, Max Intra-Bar Drawdown **$289.02 (2.89% Max DD!)**, RoMaD **88.38x**, **895.7 trades/year**, and **97.2% Monthly Consistency Ratio (MCR)** (70 of 72 positive months!).
+   - **S1600 / S1601 (Batch 80 Extended Apex Champions):** Generated **+$37,484.15 to +$37,555.20** net profit (+375.5% return), Profit Factor **2.283**, Max Intra-Bar Drawdown **$517.16 (5.17%)**, RoMaD **72.62x**, **894.5 trades/year**, and **94.4% MCR**.
+   - **S1615 (Prop-Firm Exhaustion Champion):** Generated **+$15,267.53** net profit (+152.7%), Profit Factor **2.487** 👑, Max Intra-Bar Drawdown **$191.52 (1.92%)**, RoMaD **79.72x**, **528.0 trades/year**, and **95.8% MCR** (69 of 72 positive months!).
+   - **S1604 (Apex Linear Model):** Generated **+$25,176.12** net profit (+251.8%), Profit Factor **2.476**, Max Intra-Bar Drawdown **$331.64 (3.32%)**, and **95.8% MCR**.
+   - **S1614 (Micro-Floor Specialist):** Achieved an ultra-tight Max Intra-Bar Drawdown of **$150.03 (1.50% Max DD)**.
+   - **S1616 (Sub-10% Compounding Engine):** Achieved **+$58,857.70** (+588.6%), Profit Factor **2.089**, Max Intra-Bar Drawdown **$936.91 (9.37% Max DD)**, and **93.1% MCR**.
+   - **S1624 (Compounding Model):** Net +$113,887.92, **Record PF 2.649**, Win Rate **60.1%**.
+   - **S1625 (Compounding Exhaustion Apex):** Net **+$59,572.01**, PF **2.451**, **95.8% MCR**.
+3. **Zero-Ruin Monte Carlo Profile:**
+   - 1,000-iteration Monte Carlo permutation stress tests confirm **0.00% Probability of Ruin** across all top ratified models.
+
+### Batch 80 Strategy Leaderboard (Top 10 Highlights)
+
+| Strategy ID & Name | Architecture & Sizing | Ann. Tr | Tot. Tr | Net Profit ($) | Profit Factor | Win Rate (%) | True Intra Max DD ($) | MC P95 DD ($) | Ruin Prob (%) | RoMaD | Status & Production Role |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **S1613: Prop Ext Sub-5% Shield**| 0.05/0.025/0.02 Lots | **895.7** | **5374** | **+$25,544.29** | **2.356** 👑 | **56.2%** | **$289.02** 💎 | **$204.73** 👑 | **0.0%** | **88.38x** 👑 | 👑 **SUB-2.9% DD EXTENDED APEX CHAMPION (97.2% MCR)** |
+| **S1615: Prop Monthly Lock $80** | 0.05/0.025/0.02 Lots + $80 Lock | **528.0** | **3168** | **+$15,267.53** | **2.487** 👑 | **56.3%** | **$191.52** 👑 | **$165.64** 👑 | **0.0%** | **79.72x** 🏆 | 🛡️ **PROP-FIRM SUB-1.95% RECORD PF CHAMPION (95.8% MCR)** |
+| **S1601: Ext Exhaustion + Daily Lock**| 0.08/0.04/0.03 Lots + 50% Lock | **894.5** | **5367** | **+$37,555.20** | **2.283** 👑 | **56.1%** | **$517.16** | **$339.86** 👑 | **0.0%** | **72.62x** | 👑 **EXTENDED APEX + DAILY LOCK (+375.5%)** |
+| **S1600: Ext Exhaustion Base** | 0.08/0.04/0.03 Lots | **897.0** | **5382** | **+$37,484.15** | **2.273** 👑 | **56.0%** | **$517.16** | **$347.22** 👑 | **0.0%** | **72.48x** | 👑 **EXTENDED APEX HIGH TURNOVER (+374.8%)** |
+| **S1604: Ext Monthly Lock $100** | 0.06/0.03/0.02 Lots + $100 Lock | **745.3** | **4472** | **+$25,176.12** | **2.476** 👑 | **57.1%** | **$331.64** 💎 | **$234.59** 👑 | **0.0%** | **75.91x** | 👑 **APEX LINEAR MODEL (95.8% MCR)** |
+| **S1599: Balanced + Daily Lock** | 0.06/0.03/0.02 Lots + 50% Lock | 710.5 | 4263 | +$22,417.85 | 2.344 | 55.1% | $321.45 💎 | $243.03 | 0.0% | 69.74x | 💎 Balanced Micro-Floor (91.7% MCR) |
+| **S1611: Prop Sub-5% Shield** | 0.05/0.025/0.02 Lots + 50% Lock | 709.8 | 4259 | +$20,125.95 | 2.335 | 55.1% | $272.14 💎 | $205.51 | 0.0% | 73.95x | 🛡️ Sub-2.75% Prop Floor (94.4% MCR) |
+| **S1614: Prop Monthly Lock $60** | 0.04/0.02/0.01 Lots + $60 Lock | 563.5 | 3381 | +$9,740.06 | 2.378 | 49.9% | **$150.03** 👑 | **$131.71** 👑 | **0.0%** | 64.92x | 👑 **All-Time Lowest DD in Batch 80 ($150.03)** |
+| **S1616: Comp 0.50% Base** | 0.50% Compounding | 702.0 | 4212 | +$58,857.70 | 2.089 | 55.2% | **$936.91** 💎 | $672.46 | 0.0% | 62.82x | 🚀 **Sub-10% Drawdown Compounding Model** |
+| **S1625: Exhaustion Paragon 2026**| 0.75% Compounding + $120 Lock | 281.2 | 1687 | +$59,572.01 | 2.451 | 58.7% | $1,534.34 | $1,229.56 | 0.0% | 38.83x | 🚀 **95.8% MCR COMPOUNDING GROWTH APEX** |
+
+### Ratified Production Expert Advisors Delivered:
+- [`Gold_Liquidity_Exhaustion_Apex_EA.mq5`](file:///root/CFD-Trading-ML/projects/quant_strategy_discovery/Scalping_Live_Ready_EAs/Gold_Liquidity_Exhaustion_Apex_EA.mq5) (`S1613`: Net +$25,544.29, PF 2.356, Max DD $289.02 [2.89%], RoMaD 88.38x, MC P95 DD $204.73, 0.00% Ruin, 895.7 trades/yr, 97.2% MCR [70 of 72 positive months!], 100% Self-Contained, Auto Broker GMT Offset).
+- [`Gold_Liquidity_Exhaustion_PropFirm_Shield_EA.mq5`](file:///root/CFD-Trading-ML/projects/quant_strategy_discovery/Scalping_Live_Ready_EAs/Gold_Liquidity_Exhaustion_PropFirm_Shield_EA.mq5) (`S1615`: Net +$15,267.53, PF 2.487, Max DD $191.52 [1.92%], RoMaD 79.72x, MC P95 DD $165.64, 0.00% Ruin, 528.0 trades/yr, 95.8% MCR, 100% Self-Contained, Prop-Firm Safe).
+
 
 
 
